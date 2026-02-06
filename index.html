@@ -3,50 +3,772 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KFUPM - CE341</title>
+    <title>CE341 - KFUPM</title>
     <style>
+        :root {
+            --primary: #1a5f2a;
+            --primary-dark: #0d3d1a;
+            --primary-light: #2d8a3e;
+            --accent: #90EE90;
+            --bg-light: #f8faf9;
+            --bg-white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-muted: #666666;
+            --border: #e0e0e0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-hover: 0 4px 16px rgba(0,0,0,0.12);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        
         body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #1a5f2a 0%, #0d3d1a 100%);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
         }
-        .container {
+        
+        /* Navigation */
+        nav {
+            background: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 4rem 2rem;
             text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
             padding: 2rem;
         }
-        h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            color: white;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: fadeIn 1s ease-in;
+        
+        /* Section Cards */
+        .section-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .section-card h2 {
+            color: var(--primary);
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section-card h3 {
+            color: var(--text-dark);
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+        
+        .section-card p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        
+        /* Collapsible Sections */
+        .collapsible {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        
+        .collapsible-header {
+            background: var(--bg-light);
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        
+        .collapsible-header:hover {
+            background: #e8f5e9;
+        }
+        
+        .collapsible-header::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+        
+        .collapsible.active .collapsible-header::after {
+            transform: rotate(45deg);
+        }
+        
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: var(--bg-white);
+        }
+        
+        .collapsible.active .collapsible-content {
+            max-height: 1000px;
+        }
+        
+        .collapsible-inner {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        /* Example/Answer Box */
+        .example-box {
+            background: #e8f5e9;
+            border-left: 4px solid var(--primary);
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+        }
+        
+        .example-box h4 {
+            color: var(--primary);
             margin-bottom: 0.5rem;
         }
-        h2 {
-            font-size: clamp(1.5rem, 5vw, 3rem);
-            color: #90EE90;
-            text-align: center;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            animation: fadeIn 1.2s ease-in;
+        
+        /* Quiz Styles */
+        .quiz-item {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        .quiz-question {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .quiz-options {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+        
+        .quiz-options li {
+            padding: 0.5rem 0;
+            color: var(--text-muted);
+        }
+        
+        .answer-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        
+        .answer-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .answer-reveal {
+            display: none;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .answer-reveal.show {
+            display: block;
+        }
+        
+        .answer-reveal.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+        
+        /* Handout Content */
+        .handout-content {
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+        
+        .handout-content h4 {
+            color: var(--primary);
+            margin: 1.5rem 0 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        .handout-content ul, .handout-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .handout-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .handout-content code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', monospace;
+        }
+        
+        /* Instructor Card */
+        .instructor-card {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .instructor-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .instructor-info h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+        
+        .instructor-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        
+        .instructor-info .title {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        footer p {
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .instructor-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .section-card {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">CE341</div>
+            <ul class="nav-links">
+                <li><a href="#about" class="active">About</a></li>
+                <li><a href="#handouts">Handouts</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#quizzes">Quizzes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>CE341</h1>
+        <p>[Course Title Placeholder] - An undergraduate course at KFUPM exploring fundamental concepts and practical applications in civil and environmental engineering.</p>
+    </section>
+
     <div class="container">
-        <h1>KFUPM</h1>
-        <h2>CE341</h2>
+        <!-- About Section -->
+        <section id="about" class="section-card">
+            <h2>📚 About the Course</h2>
+            
+            <h3>Course Description</h3>
+            <p>[Course Description Placeholder] This course provides a comprehensive introduction to [subject area], covering theoretical foundations and practical methodologies. Students will develop critical thinking skills and gain hands-on experience through real-world applications and case studies. Topics include fundamental principles, advanced techniques, and contemporary challenges in the field.</p>
+            
+            <h3>Course Objectives</h3>
+            <p>By the end of this course, students will be able to:</p>
+            <ul>
+                <li>[Objective 1 Placeholder] Understand and apply core theoretical concepts</li>
+                <li>[Objective 2 Placeholder] Analyze and solve complex engineering problems</li>
+                <li>[Objective 3 Placeholder] Design and implement practical solutions</li>
+                <li>[Objective 4 Placeholder] Evaluate and interpret engineering data effectively</li>
+            </ul>
+            
+            <h3>Course Information</h3>
+            <p><strong>Credit Hours:</strong> [3-0-3] | <strong>Prerequisites:</strong> [Prerequisites Placeholder] | <strong>Semester:</strong> [Semester Placeholder]</p>
+            
+            <h3>Instructor</h3>
+            <div class="instructor-card">
+                <div class="instructor-avatar">FA</div>
+                <div class="instructor-info">
+                    <h4>Dr. Fahad Alqahtani</h4>
+                    <p class="title">Assistant Professor</p>
+                    <p>Department of Civil and Environmental Engineering</p>
+                    <p>King Fahd University of Petroleum & Minerals (KFUPM)</p>
+                    <p><strong>Office:</strong> [Building/Room Placeholder] | <strong>Email:</strong> [Email Placeholder] | <strong>Office Hours:</strong> [Days & Time Placeholder]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Handouts Section -->
+        <section id="handouts" class="section-card">
+            <h2>📖 Course Handouts</h2>
+            <p>Comprehensive lecture notes and reading materials organized by topic. Click to expand each handout.</p>
+            
+            <!-- Handout 1 -->
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <span>Handout 1: [Topic Placeholder - Introduction]</span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner handout-content">
+                        <h4>1.1 [Section Title Placeholder]</h4>
+                        <p>[Content Placeholder] This section introduces the fundamental concepts that form the foundation of our study. Understanding these principles is essential for progressing through the course material.</p>
+                        
+                        <p><strong>Key Concept 1:</strong> [Detailed explanation of the first key concept with relevant examples and context.]</p>
+                        
+                        <p><strong>Key Concept 2:</strong> [Detailed explanation of the second key concept, building upon the first with progressive complexity.]</p>
+                        
+                        <h4>1.2 [Section Title Placeholder]</h4>
+                        <p>[Content Placeholder] Building upon the previous section, we now explore more advanced topics and their practical applications.</p>
+                        
+                        <ul>
+                            <li><strong>[Point 1]:</strong> [Description of the first important point]</li>
+                            <li><strong>[Point 2]:</strong> [Description of the second important point]</li>
+                            <li><strong>[Point 3]:</strong> [Description of the third important point]</li>
+                        </ul>
+                        
+                        <h4>1.3 Summary</h4>
+                        <p>[Summary Placeholder] This handout covered the essential foundations of [topic]. Key takeaways include understanding [concept 1], [concept 2], and their interrelationships in practical applications.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Handout 2 -->
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <span>Handout 2: [Topic Placeholder - Core Concepts]</span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner handout-content">
+                        <h4>2.1 [Section Title Placeholder]</h4>
+                        <p>[Content Placeholder] This handout delves deeper into the core concepts introduced previously, providing more detailed analysis and mathematical formulations where applicable.</p>
+                        
+                        <p>The fundamental equation governing this phenomenon can be expressed as:</p>
+                        
+                        <div class="example-box">
+                            <strong>Formula:</strong> <code>[Formula Placeholder: E = mc² or relevant engineering formula]</code>
+                            <br><br>
+                            Where:
+                            <ul>
+                                <li><code>E</code> = [Variable description]</li>
+                                <li><code>m</code> = [Variable description]</li>
+                                <li><code>c</code> = [Variable description]</li>
+                            </ul>
+                        </div>
+                        
+                        <h4>2.2 [Section Title Placeholder]</h4>
+                        <p>[Content Placeholder] This section explores practical applications and case studies that demonstrate the real-world relevance of these concepts.</p>
+                        
+                        <ol>
+                            <li><strong>Application 1:</strong> [Description of first application]</li>
+                            <li><strong>Application 2:</strong> [Description of second application]</li>
+                            <li><strong>Application 3:</strong> [Description of third application]</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Handout 3 -->
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <span>Handout 3: [Topic Placeholder - Advanced Topics]</span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner handout-content">
+                        <h4>3.1 [Section Title Placeholder]</h4>
+                        <p>[Content Placeholder] This advanced handout covers specialized topics that build upon the foundational knowledge established in previous sessions.</p>
+                        
+                        <p><strong>Important Consideration:</strong> [Critical information about limitations, assumptions, or special conditions that apply to this topic.]</p>
+                        
+                        <h4>3.2 [Section Title Placeholder]</h4>
+                        <p>[Content Placeholder] Advanced methodologies and contemporary approaches are discussed here, with emphasis on current industry practices and research developments.</p>
+                        
+                        <div class="example-box">
+                            <h4>⚠️ Note</h4>
+                            <p>[Important note or warning about common mistakes, misconceptions, or critical considerations when applying these concepts.]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Examples Section -->
+        <section id="examples" class="section-card">
+            <h2>💡 Worked Examples</h2>
+            <p>Interactive examples with step-by-step solutions. Click to reveal the solution after attempting the problem yourself.</p>
+            
+            <!-- Example 1 -->
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <span>Example 1: [Problem Title Placeholder]</span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <p><strong>Problem:</strong> [Problem statement placeholder. Describe a realistic engineering problem that requires application of concepts from Handout 1. Include all necessary given data and parameters.]</p>
+                        
+                        <div class="example-box">
+                            <h4>Given:</h4>
+                            <ul>
+                                <li>[Parameter 1]: [Value and units]</li>
+                                <li>[Parameter 2]: [Value and units]</li>
+                                <li>[Parameter 3]: [Value and units]</li>
+                            </ul>
+                            
+                            <h4>Required:</h4>
+                            <p>[What needs to be calculated or determined]</p>
+                        </div>
+                        
+                        <button class="answer-btn" onclick="toggleAnswer('ans1')">Show Solution</button>
+                        
+                        <div id="ans1" class="answer-reveal">
+                            <h4>Solution:</h4>
+                            <p><strong>Step 1:</strong> [First step explanation with calculations]</p>
+                            
+                            <p><strong>Step 2:</strong> [Second step explanation with calculations]</p>
+                            
+                            <p><strong>Step 3:</strong> [Final step and result]</p>
+                            
+                            <p><strong>Final Answer:</strong> [Numerical answer with proper units]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Example 2 -->
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <span>Example 2: [Problem Title Placeholder]</span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <p><strong>Problem:</strong> [Problem statement placeholder for a more complex problem building on previous examples.]</p>
+                        
+                        <div class="example-box">
+                            <h4>Given:</h4>
+                            <ul>
+                                <li>[Parameter 1]: [Value and units]</li>
+                                <li>[Parameter 2]: [Value and units]</li>
+                                <li>[Parameter 3]: [Value and units]</li>
+                                <li>[Parameter 4]: [Value and units]</li>
+                            </ul>
+                            
+                            <h4>Required:</h4>
+                            <p>[What needs to be calculated or determined]</p>
+                        </div>
+                        
+                        <button class="answer-btn" onclick="toggleAnswer('ans2')">Show Solution</button>
+                        
+                        <div id="ans2" class="answer-reveal">
+                            <h4>Solution:</h4>
+                            <p><strong>Step 1:</strong> [First step explanation]</p>
+                            
+                            <p><strong>Step 2:</strong> [Second step explanation]</p>
+                            
+                            <p><strong>Step 3:</strong> [Third step explanation]</p>
+                            
+                            <p><strong>Step 4:</strong> [Final step and verification]</p>
+                            
+                            <p><strong>Final Answer:</strong> [Numerical answer with proper units]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Example 3 -->
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <span>Example 3: [Problem Title Placeholder - Advanced]</span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <p><strong>Problem:</strong> [Advanced problem statement that requires synthesis of multiple concepts.]</p>
+                        
+                        <div class="example-box">
+                            <h4>Given:</h4>
+                            <ul>
+                                <li>[Complex scenario description with all parameters]</li>
+                                <li>[Additional conditions or constraints]</li>
+                            </ul>
+                            
+                            <h4>Required:</h4>
+                            <p>[Multi-part question requiring comprehensive analysis]</p>
+                        </div>
+                        
+                        <button class="answer-btn" onclick="toggleAnswer('ans3')">Show Solution</button>
+                        
+                        <div id="ans3" class="answer-reveal">
+                            <h4>Solution:</h4>
+                            <p><strong>Part (a):</strong> [Solution to first part]</p>
+                            
+                            <p><strong>Part (b):</strong> [Solution to second part]</p>
+                            
+                            <p><strong>Part (c):</strong> [Solution to third part with final conclusions]</p>
+                            
+                            <p><strong>Discussion:</strong> [Engineering insights and practical implications]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quizzes Section -->
+        <section id="quizzes" class="section-card">
+            <h2>📝 Practice Quizzes</h2>
+            <p>Test your understanding with these practice questions. Click "Show Answer" to check your work.</p>
+            
+            <!-- Quiz 1 -->
+            <div class="quiz-item">
+                <div class="quiz-question">Question 1: [Question text placeholder. Write a clear, specific question testing understanding of a key concept from the first handout.]</div>
+                
+                <ul class="quiz-options">
+                    <li>A) [Option A text - plausible distractor]</li>
+                    <li>B) [Option B text - plausible distractor]</li>
+                    <li>C) [Option C text - correct answer]</li>
+                    <li>D) [Option D text - plausible distractor]</li>
+                </ul>
+                
+                <button class="answer-btn" onclick="toggleAnswer('quiz1')">Show Answer</button>
+                
+                <div id="quiz1" class="answer-reveal correct">
+                    <strong>Correct Answer: C</strong>
+                    <p>[Explanation of why C is correct and why other options are incorrect. Include reference to relevant concept from course material.]</p>
+                </div>
+            </div>
+            
+            <!-- Quiz 2 -->
+            <div class="quiz-item">
+                <div class="quiz-question">Question 2: [Question text placeholder focusing on conceptual understanding or calculation.]</div>
+                
+                <ul class="quiz-options">
+                    <li>A) [Option A text]</li>
+                    <li>B) [Option B text - correct answer]</li>
+                    <li>C) [Option C text]</li>
+                    <li>D) [Option D text]</li>
+                </ul>
+                
+                <button class="answer-btn" onclick="toggleAnswer('quiz2')">Show Answer</button>
+                
+                <div id="quiz2" class="answer-reveal correct">
+                    <strong>Correct Answer: B</strong>
+                    <p>[Explanation including calculation steps if applicable and reasoning for correct choice.]</p>
+                </div>
+            </div>
+            
+            <!-- Quiz 3 -->
+            <div class="quiz-item">
+                <div class="quiz-question">Question 3: [Question text placeholder requiring application of concepts to a new scenario.]</div>
+                
+                <ul class="quiz-options">
+                    <li>A) [Option A text]</li>
+                    <li>B) [Option B text]</li>
+                    <li>C) [Option C text]</li>
+                    <li>D) [Option D text - correct answer]</li>
+                </ul>
+                
+                <button class="answer-btn" onclick="toggleAnswer('quiz3')">Show Answer</button>
+                
+                <div id="quiz3" class="answer-reveal correct">
+                    <strong>Correct Answer: D</strong>
+                    <p>[Explanation connecting the scenario to course concepts and demonstrating correct reasoning.]</p>
+                </div>
+            </div>
+            
+            <!-- Quiz 4 -->
+            <div class="quiz-item">
+                <div class="quiz-question">Question 4: [Question text placeholder testing deeper understanding or common misconceptions.]</div>
+                
+                <ul class="quiz-options">
+                    <li>A) [Option A text - correct answer]</li>
+                    <li>B) [Option B text]</li>
+                    <li>C) [Option C text]</li>
+                    <li>D) [Option D text]</li>
+                </ul>
+                
+                <button class="answer-btn" onclick="toggleAnswer('quiz4')">Show Answer</button>
+                
+                <div id="quiz4" class="answer-reveal correct">
+                    <strong>Correct Answer: A</strong>
+                    <p>[Detailed explanation addressing common misconceptions and reinforcing correct understanding.]</p>
+                </div>
+            </div>
+            
+            <!-- Quiz 5 -->
+            <div class="quiz-item">
+                <div class="quiz-question">Question 5: [Question text placeholder for a comprehensive problem requiring synthesis of multiple concepts.]</div>
+                
+                <ul class="quiz-options">
+                    <li>A) [Option A text]</li>
+                    <li>B) [Option B text]</li>
+                    <li>C) [Option C text - correct answer]</li>
+                    <li>D) [Option D text]</li>
+                </ul>
+                
+                <button class="answer-btn" onclick="toggleAnswer('quiz5')">Show Answer</button>
+                
+                <div id="quiz5" class="answer-reveal correct">
+                    <strong>Correct Answer: C</strong>
+                    <p>[Comprehensive explanation demonstrating how to integrate multiple concepts from the course.]</p>
+                </div>
+            </div>
+        </section>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 CE341 - KFUPM | Dr. Fahad Alqahtani</p>
+        <p>Department of Civil and Environmental Engineering</p>
+    </footer>
+
+    <script>
+        // Toggle collapsible sections
+        function toggleCollapsible(element) {
+            const collapsible = element.parentElement;
+            collapsible.classList.toggle('active');
+        }
+        
+        // Toggle answer visibility
+        function toggleAnswer(answerId) {
+            const answer = document.getElementById(answerId);
+            answer.classList.toggle('show');
+            
+            // Update button text
+            const button = event.target;
+            if (answer.classList.contains('show')) {
+                button.textContent = 'Hide Answer';
+            } else {
+                button.textContent = 'Show Answer';
+            }
+        }
+        
+        // Highlight active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
