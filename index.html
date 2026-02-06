@@ -6,17 +6,20 @@
     <title>CE341 - KFUPM</title>
     <style>
         :root {
-            --primary: #1a5f2a;
-            --primary-dark: #0d3d1a;
-            --primary-light: #2d8a3e;
-            --accent: #90EE90;
-            --bg-light: #f8faf9;
-            --bg-white: #ffffff;
-            --text-dark: #1a1a1a;
-            --text-muted: #666666;
-            --border: #e0e0e0;
-            --shadow: 0 2px 8px rgba(0,0,0,0.08);
-            --shadow-hover: 0 4px 16px rgba(0,0,0,0.12);
+            --primary: #8b5cf6;
+            --primary-dark: #7c3aed;
+            --primary-light: #a78bfa;
+            --accent: #c4b5fd;
+            --bg-dark: #0f0f1a;
+            --bg-card: #1a1a2e;
+            --bg-hover: #252542;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #2d2d4a;
+            --shadow: 0 4px 20px rgba(139, 92, 246, 0.15);
+            --shadow-hover: 0 8px 30px rgba(139, 92, 246, 0.25);
+            --gradient-1: #8b5cf6;
+            --gradient-2: #ec4899;
         }
         
         * {
@@ -28,14 +31,15 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-            background: var(--bg-light);
+            color: var(--text-light);
+            background: var(--bg-dark);
         }
         
         /* Navigation */
         nav {
-            background: var(--bg-white);
-            box-shadow: var(--shadow);
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -75,10 +79,28 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-2) 50%, var(--primary-dark) 100%);
             color: white;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        .hero h1, .hero p {
+            position: relative;
+            z-index: 1;
         }
         
         .hero h1 {
@@ -103,11 +125,12 @@
         
         /* Section Cards */
         .section-card {
-            background: var(--bg-white);
-            border-radius: 12px;
+            background: var(--bg-card);
+            border-radius: 16px;
             padding: 2rem;
             margin-bottom: 2rem;
             box-shadow: var(--shadow);
+            border: 1px solid var(--border);
         }
         
         .section-card h2 {
@@ -120,7 +143,7 @@
         }
         
         .section-card h3 {
-            color: var(--text-dark);
+            color: var(--text-light);
             font-size: 1.25rem;
             margin: 1.5rem 0 0.75rem;
         }
@@ -133,13 +156,14 @@
         /* Collapsible Sections */
         .collapsible {
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 12px;
             margin-bottom: 1rem;
             overflow: hidden;
+            background: var(--bg-card);
         }
         
         .collapsible-header {
-            background: var(--bg-light);
+            background: var(--bg-hover);
             padding: 1rem 1.5rem;
             cursor: pointer;
             display: flex;
@@ -147,10 +171,11 @@
             align-items: center;
             font-weight: 600;
             transition: background 0.2s;
+            color: var(--text-light);
         }
         
         .collapsible-header:hover {
-            background: #e8f5e9;
+            background: rgba(139, 92, 246, 0.15);
         }
         
         .collapsible-header::after {
@@ -168,7 +193,7 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
-            background: var(--bg-white);
+            background: var(--bg-card);
         }
         
         .collapsible.active .collapsible-content {
@@ -178,11 +203,12 @@
         .collapsible-inner {
             padding: 1.5rem;
             border-top: 1px solid var(--border);
+            color: var(--text-light);
         }
         
         /* Example/Answer Box */
         .example-box {
-            background: #e8f5e9;
+            background: var(--bg-hover);
             border-left: 4px solid var(--primary);
             padding: 1rem 1.5rem;
             border-radius: 0 8px 8px 0;
@@ -190,22 +216,23 @@
         }
         
         .example-box h4 {
-            color: var(--primary);
+            color: var(--primary-light);
             margin-bottom: 0.5rem;
         }
         
         /* Quiz Styles */
         .quiz-item {
-            background: var(--bg-light);
-            border-radius: 8px;
+            background: var(--bg-hover);
+            border-radius: 12px;
             padding: 1.5rem;
             margin-bottom: 1rem;
+            border: 1px solid var(--border);
         }
         
         .quiz-question {
             font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .quiz-options {
@@ -235,11 +262,12 @@
         
         .answer-reveal {
             display: none;
-            background: #d4edda;
-            border: 1px solid #c3e6cb;
-            border-radius: 6px;
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
             padding: 1rem;
             margin-top: 1rem;
+            color: var(--text-light);
         }
         
         .answer-reveal.show {
@@ -247,18 +275,18 @@
         }
         
         .answer-reveal.correct {
-            background: #d4edda;
-            border-color: #28a745;
+            background: rgba(34, 197, 94, 0.15);
+            border-color: #22c55e;
         }
         
         /* Handout Content */
         .handout-content {
             line-height: 1.8;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .handout-content h4 {
-            color: var(--primary);
+            color: var(--primary-light);
             margin: 1.5rem 0 0.75rem;
             font-size: 1.1rem;
         }
@@ -273,10 +301,11 @@
         }
         
         .handout-content code {
-            background: #f4f4f4;
+            background: var(--bg-hover);
             padding: 0.2rem 0.4rem;
             border-radius: 4px;
             font-family: 'Monaco', 'Menlo', monospace;
+            color: var(--primary-light);
         }
         
         /* Instructor Card */
@@ -284,16 +313,17 @@
             display: flex;
             gap: 1.5rem;
             align-items: flex-start;
-            background: var(--bg-light);
+            background: var(--bg-hover);
             padding: 1.5rem;
-            border-radius: 8px;
+            border-radius: 12px;
             margin-top: 1rem;
+            border: 1px solid var(--border);
         }
         
         .instructor-avatar {
             width: 80px;
             height: 80px;
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--gradient-2) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -305,7 +335,7 @@
         }
         
         .instructor-info h4 {
-            color: var(--text-dark);
+            color: var(--text-light);
             margin-bottom: 0.25rem;
         }
         
@@ -315,21 +345,22 @@
         }
         
         .instructor-info .title {
-            color: var(--primary);
+            color: var(--primary-light);
             font-weight: 600;
         }
         
         /* Footer */
         footer {
-            background: var(--primary-dark);
-            color: white;
+            background: var(--bg-card);
+            color: var(--text-light);
             text-align: center;
             padding: 2rem;
             margin-top: 3rem;
+            border-top: 1px solid var(--border);
         }
         
         footer p {
-            opacity: 0.8;
+            color: var(--text-muted);
         }
         
         /* Responsive */
