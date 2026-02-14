@@ -9,172 +9,130 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        .syllabus-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 48px 32px;
+        .syllabus-section {
+            margin-bottom: 3rem;
         }
 
-        .syllabus-header {
-            text-align: center;
-            padding: 48px 32px;
-            background: linear-gradient(135deg, #f7f6f2 0%, #e8e6df 100%);
-            border-radius: 16px;
-            margin-bottom: 48px;
-            border: 1px solid rgba(54,64,66,0.08);
-        }
-
-        .syllabus-header h1 {
-            font-family: var(--font-heading);
-            font-size: clamp(2rem, 5vw, 2.75rem);
-            color: var(--ink);
-            margin-bottom: 16px;
-        }
-
-        .syllabus-meta {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 24px;
-            margin-top: 24px;
-        }
-
-        .meta-item {
-            text-align: center;
-        }
-
-        .meta-label {
-            font-size: 0.8rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 4px;
-        }
-
-        .meta-value {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--ink);
-        }
-
-        .section {
-            margin-bottom: 48px;
-        }
-
-        .section h2 {
+        .syllabus-section h2 {
             font-family: var(--font-heading);
             font-size: 1.5rem;
             color: var(--ink);
-            margin-bottom: 20px;
-            padding-bottom: 12px;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
             border-bottom: 2px solid var(--cta);
-            display: inline-block;
         }
 
-        .section h3 {
-            font-size: 1.15rem;
-            color: var(--ink);
-            margin: 24px 0 12px;
-        }
-
-        .section p, .section li {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: var(--muted);
-            margin-bottom: 12px;
-        }
-
-        .section ul {
-            margin-left: 24px;
-            margin-bottom: 16px;
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
         }
 
         .info-card {
-            background: var(--panel);
-            border-radius: 12px;
-            padding: 24px;
-            margin: 24px 0;
+            background: var(--panel-muted);
+            padding: 1.5rem;
+            border-radius: 8px;
             border-left: 4px solid var(--cta);
         }
 
         .info-card h3 {
-            margin-top: 0;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
             color: var(--cta);
         }
 
-        .assessment-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 24px 0;
+        .info-card p {
+            margin: 0;
+            color: var(--ink);
+            line-height: 1.6;
         }
 
-        .assessment-table th,
-        .assessment-table td {
+        .grade-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .grade-table th,
+        .grade-table td {
             padding: 12px 16px;
             text-align: left;
             border-bottom: 1px solid var(--border);
         }
 
-        .assessment-table th {
-            background: var(--bg-secondary);
+        .grade-table th {
+            background: var(--panel-muted);
             font-weight: 600;
             color: var(--ink);
         }
 
-        .assessment-table td {
-            color: var(--muted);
+        .grade-table td {
+            color: var(--ink);
         }
 
-        .schedule-grid {
-            display: grid;
-            gap: 16px;
+        .grade-table tr:hover td {
+            background: var(--panel-muted);
         }
 
-        .week-item {
-            display: grid;
-            grid-template-columns: 80px 1fr;
-            gap: 16px;
-            padding: 16px;
-            background: var(--panel);
-            border-radius: 8px;
+        .policy-box {
+            background: var(--panel-muted);
             border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
         }
 
-        .week-num {
-            font-weight: 700;
+        .policy-box h4 {
+            font-family: var(--font-heading);
             color: var(--cta);
+            margin-bottom: 0.75rem;
         }
 
-        .week-content {
-            color: var(--muted);
+        .policy-box ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .policy-box li {
+            margin-bottom: 0.5rem;
+            color: var(--ink);
         }
 
         .highlight-box {
-            background: #f0f7ff;
-            border-left: 4px solid #0066cc;
-            padding: 16px 20px;
-            margin: 24px 0;
-            border-radius: 0 8px 8px 0;
+            background: rgba(217, 119, 87, 0.1);
+            border: 1px solid var(--cta);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
         }
 
         .highlight-box p {
             margin: 0;
-            color: #004499;
+            color: var(--ink);
         }
 
-        @media (max-width: 768px) {
-            .syllabus-container {
-                padding: 24px 16px;
-            }
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
 
-            .syllabus-meta {
-                flex-direction: column;
-                gap: 16px;
-            }
+        .schedule-table th,
+        .schedule-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
 
-            .week-item {
-                grid-template-columns: 1fr;
-            }
+        .schedule-table th {
+            background: var(--panel-muted);
+            font-weight: 600;
+        }
+
+        .schedule-table tr:hover td {
+            background: var(--panel-muted);
         }
     </style>
 </head>
@@ -191,215 +149,298 @@
             </a>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="syllabus.html" class="nav-link active">Syllabus</a>
                 <a href="chapter1.html" class="nav-link">Ch 1</a>
                 <a href="chapter2.html" class="nav-link">Ch 2</a>
                 <a href="chapter3.html" class="nav-link">Ch 3</a>
                 <a href="chapter4.html" class="nav-link">Ch 4</a>
                 <a href="chapter5.html" class="nav-link">Ch 5</a>
                 <a href="chapter6.html" class="nav-link">Ch 6</a>
+                <a href="syllabus.html" class="nav-link active">Syllabus</a>
                 <a href="quizzes.html" class="nav-link">Quizzes</a>
             </div>
             <a href="quizzes.html" class="cta-button">Practice Quizzes</a>
         </div>
     </nav>
 
-    <main class="syllabus-container">
-        <div class="syllabus-header">
-            <h1>Course Syllabus</h1>
-            <p style="font-size: 1.2rem; color: var(--muted); margin-top: 8px;">CE 341: Transportation Engineering</p>
-            
-            <div class="syllabus-meta">
-                <div class="meta-item">
-                    <div class="meta-label">Instructor</div>
-                    <div class="meta-value">Dr. Fahad Alqahtani</div>
+    <main>
+        <div class="chapter-container">
+            <header class="chapter-header">
+                <div class="chapter-number">Course Information</div>
+                <h1 class="chapter-title">CE341 Syllabus</h1>
+                <p class="chapter-subtitle">Transportation Engineering - Second Semester 2025-2026</p>
+            </header>
+
+            <div class="chapter-content">
+                <div class="syllabus-section">
+                    <h2>Course Information</h2>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h3>Course</h3>
+                            <p><strong>CE341 - Transportation Engineering</strong><br>
+                            Term 252 (Second Semester 2025-2026)</p>
+                        </div>
+                        <div class="info-card">
+                            <h3>Instructor</h3>
+                            <p><strong>Dr. Fahad Alqahtani</strong><br>
+                            Office: Building 3 – Room 207<br>
+                            Email: fahadfardan@kfupm.edu.sa</p>
+                        </div>
+                        <div class="info-card">
+                            <h3>Office Hours</h3>
+                            <p>Via the link posted in Blackboard<br>
+                            Or by appointment</p>
+                        </div>
+                        <div class="info-card">
+                            <h3>Department</h3>
+                            <p>Civil & Environmental Engineering<br>
+                            King Fahd University of Petroleum & Minerals</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="meta-item">
-                    <div class="meta-label">Term</div>
-                    <div class="meta-value">251 (Fall 2025)</div>
+
+                <div class="syllabus-section">
+                    <h2>Course Catalog Description</h2>
+                    <p class="text-body">
+                        This course covers transportation system in Saudi Arabia; transportation planning and evaluation; vehicle characteristics; human factors; geometric design of highways and intersections; the basis of pavement design; introduction to capacity analysis of highways and intersections; introduction to airport planning and design; application of transportation-related software.
+                    </p>
                 </div>
-                <div class="meta-item">
-                    <div class="meta-label">Credits</div>
-                    <div class="meta-value">3 (3-0)</div>
+
+                <div class="syllabus-section">
+                    <h2>Textbook</h2>
+                    <div class="highlight-box">
+                        <p><strong>Garber, N. J., & Hoel, L. A. (2020).</strong> Traffic and Highway Engineering. Cengage Learning.</p>
+                    </div>
+                </div>
+
+                <div class="syllabus-section">
+                    <h2>Course Learning Outcomes</h2>
+                    <p class="text-body">By the end of this course, students will be able to:</p>
+                    <ul>
+                        <li>Understand the role of transportation engineering in society and Saudi Arabia</li>
+                        <li>Identify and describe Saudi Arabian transportation agencies and their functions</li>
+                        <li>Apply human factors and vehicle characteristics in transportation design</li>
+                        <li>Perform basic traffic engineering calculations and analysis</li>
+                        <li>Apply geometric design principles for highways and intersections</li>
+                        <li>Understand traffic safety principles and countermeasures</li>
+                        <li>Utilize transportation-related software for analysis and design</li>
+                    </ul>
+                </div>
+
+                <div class="syllabus-section">
+                    <h2>Grading Distribution</h2>
+                    <table class="grade-table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Weight</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Major Exam 1</td>
+                                <td>20%</td>
+                                <td>Comprehensive exam covering first part of course</td>
+                            </tr>
+                            <tr>
+                                <td>Major Exam 2</td>
+                                <td>20%</td>
+                                <td>Comprehensive exam covering second part of course</td>
+                            </tr>
+                            <tr>
+                                <td>Final Exam</td>
+                                <td>20%</td>
+                                <td>Comprehensive final examination</td>
+                            </tr>
+                            <tr>
+                                <td>Quizzes</td>
+                                <td>15%</td>
+                                <td>Regular in-class quizzes (all carry equal weight)</td>
+                            </tr>
+                            <tr>
+                                <td>Mini Case Studies</td>
+                                <td>15%</td>
+                                <td>In-class group assignments</td>
+                            </tr>
+                            <tr>
+                                <td>Final Presentation</td>
+                                <td>5%</td>
+                                <td>End of semester presentation on assigned topic</td>
+                            </tr>
+                            <tr>
+                                <td>Participation & Attendance</td>
+                                <td>5%</td>
+                                <td>Active engagement and regular attendance</td>
+                            </tr>
+                            <tr style="background: var(--panel-muted); font-weight: 600;">
+                                <td>Total</td>
+                                <td>100%</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="syllabus-section">
+                    <h2>Course Policies</h2>
+                    
+                    <div class="policy-box">
+                        <h4>General Notes</h4>
+                        <ul>
+                            <li>The information in this syllabus is tentative and subject to change based on instructional needs</li>
+                            <li>Changes will be announced in class and posted on Blackboard</li>
+                        </ul>
+                    </div>
+
+                    <div class="policy-box">
+                        <h4>Quizzes</h4>
+                        <ul>
+                            <li>All quizzes carry equal weight toward the final grade</li>
+                            <li>Quizzes will be conducted in class</li>
+                            <li>No make-up quizzes will be given unless for documented emergencies</li>
+                        </ul>
+                    </div>
+
+                    <div class="policy-box">
+                        <h4>Examinations</h4>
+                        <ul>
+                            <li>The two major exams and the final exam are coordinated between all sections</li>
+                            <li>Dates will be announced in advance</li>
+                            <li><strong>No make-up exams will be allowed</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="policy-box">
+                        <h4>Final Presentation</h4>
+                        <ul>
+                            <li>Presentations will be scheduled during the last two weeks of the semester</li>
+                            <li>Topics will be provided by the instructor</li>
+                            <li>All students must participate in their group's presentation</li>
+                        </ul>
+                    </div>
+
+                    <div class="policy-box">
+                        <h4>Mini Case Studies</h4>
+                        <ul>
+                            <li>Will be conducted in class</li>
+                            <li>Students will work in groups assigned by the instructor</li>
+                            <li>Results must be submitted either in class or after class based on instructions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="syllabus-section">
+                    <h2>Attendance and Participation Policy</h2>
+                    <div class="highlight-box">
+                        <p><strong>Important:</strong> University regulations regarding attendance will be strictly enforced. More than nine (9) unexcused absences will result in a DN grade.</p>
+                    </div>
+                    
+                    <div class="policy-box">
+                        <h4>Attendance Requirements</h4>
+                        <ul>
+                            <li>1 point will be deducted for each class missed from the participation grade</li>
+                            <li>Two late arrivals will be counted as one absence</li>
+                            <li>Students are expected to be attentive and engaged throughout the lecture</li>
+                        </ul>
+                    </div>
+
+                    <div class="policy-box">
+                        <h4>Classroom Conduct</h4>
+                        <ul>
+                            <li>Pay attention to the instructor and material presented</li>
+                            <li>Raise hand before asking questions</li>
+                            <li>Actively ask and answer questions when called upon</li>
+                            <li>Participate constructively in discussions</li>
+                        </ul>
+                    </div>
+
+                    <div class="policy-box">
+                        <h4>Prohibited Activities</h4>
+                        <ul>
+                            <li>The use of phones or distracting electronic devices is strictly prohibited</li>
+                            <li>Audio or video recording of lectures is strictly prohibited without prior written permission</li>
+                            <li>Any unauthorized recording will be reported and dealt with according to university regulations and Saudi laws, including the Anti-Cyber Crime Law</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="syllabus-section">
+                    <h2>Tentative Course Schedule</h2>
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Week</th>
+                                <th>Topic</th>
+                                <th>Activities</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1-2</td>
+                                <td>Introduction to Transportation Engineering</td>
+                                <td>Chapter 1, Quiz 1</td>
+                            </tr>
+                            <tr>
+                                <td>3-4</td>
+                                <td>Transportation Agencies in Saudi Arabia</td>
+                                <td>Chapter 2, Quiz 1</td>
+                            </tr>
+                            <tr>
+                                <td>5-6</td>
+                                <td>Driver, Pedestrian, Vehicle & Road Characteristics</td>
+                                <td>Chapter 3, Quiz 2</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Traffic Engineering Studies</td>
+                                <td>Chapter 4, Major Exam 1</td>
+                            </tr>
+                            <tr>
+                                <td>8-9</td>
+                                <td>Highway Design Standards</td>
+                                <td>Chapter 5, Mini Case Studies</td>
+                            </tr>
+                            <tr>
+                                <td>10-11</td>
+                                <td>Traffic Safety</td>
+                                <td>Chapter 6, Quiz 3</td>
+                            </tr>
+                            <tr>
+                                <td>12-13</td>
+                                <td>Highway Capacity and Level of Service</td>
+                                <td>Supplementary Material</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>Pavement Design Basics</td>
+                                <td>Major Exam 2</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>Airport Planning Introduction</td>
+                                <td>Supplementary Material</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>Final Presentations</td>
+                                <td>Student Presentations</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="syllabus-section">
+                    <h2>Academic Integrity</h2>
+                    <p class="text-body">
+                        Students are expected to maintain the highest standards of academic integrity. Any form of cheating, plagiarism, or academic dishonesty will be reported and dealt with according to university regulations.
+                    </p>
                 </div>
             </div>
-        </div>
-
-        <div class="section">
-            <h2>Course Description</h2>
-            <p>This course provides an introduction to transportation engineering principles and their application in the context of Saudi Arabia. Students will learn about various transportation modes, the agencies responsible for transportation infrastructure, and the technical fundamentals of highway design and traffic analysis.</p>
-            <p>The course covers the planning, design, operation, and maintenance of transportation systems with emphasis on highway and traffic engineering. Topics include transportation system components, human factors, vehicle characteristics, geometric design, traffic studies, and safety.</p>
-        </div>
-
-        <div class="section">
-            <h2>Course Learning Outcomes</h2>
-            <p>Upon successful completion of this course, students will be able to:</p>
-            <ul>
-                <li>Understand the role of transportation engineering in society and its relationship to other engineering disciplines</li>
-                <li>Identify and describe Saudi Arabian transportation agencies and their functions</li>
-                <li>Apply human factors and vehicle characteristics in transportation design</li>
-                <li>Perform basic traffic engineering calculations and analysis</li>
-                <li>Apply geometric design principles for highways and intersections</li>
-                <li>Understand traffic safety principles and crash analysis methods</li>
-                <li>Analyze transportation problems using engineering principles and professional judgment</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Assessment Breakdown</h2>
-            <table class="assessment-table">
-                <thead>
-                    <tr>
-                        <th>Assessment Component</th>
-                        <th>Weight</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Quiz 1</td>
-                        <td>5%</td>
-                        <td>Chapters 1-2: Introduction & Saudi Agencies</td>
-                    </tr>
-                    <tr>
-                        <td>Quiz 2</td>
-                        <td>5%</td>
-                        <td>Chapter 3: Driver, Vehicle & Road Characteristics</td>
-                    </tr>
-                    <tr>
-                        <td>Quiz 3</td>
-                        <td>5%</td>
-                        <td>Chapters 4-5: Traffic Studies & Design</td>
-                    </tr>
-                    <tr>
-                        <td>Quiz 4</td>
-                        <td>5%</td>
-                        <td>Chapter 6: Traffic Safety</td>
-                    </tr>
-                    <tr>
-                        <td>Project</td>
-                        <td>15%</td>
-                        <td>Transportation Engineering Design Project</td>
-                    </tr>
-                    <tr>
-                        <td>Midterm Exam</td>
-                        <td>25%</td>
-                        <td>Chapters 1-3</td>
-                    </tr>
-                    <tr>
-                        <td>Final Exam</td>
-                        <td>40%</td>
-                        <td>Comprehensive (All chapters)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="section">
-            <h2>Course Topics</h2>
-            <div class="schedule-grid">
-                <div class="week-item">
-                    <div class="week-num">Week 1</div>
-                    <div class="week-content">Introduction to Transportation Engineering: mobility vs accessibility, system components, modes of transport</div>
-                </div>
-                <div class="week-item">
-                    <div class="week-num">Week 2</div>
-                    <div class="week-content">Transportation Agencies in Saudi Arabia: MOT, TGA, RGA, GACA, MAWANI, SAR, NTSC</div>
-                </div>
-                <div class="week-item">
-                    <div class="week-num">Week 3</div>
-                    <div class="week-content">Driver Characteristics: visual acuity, perception-reaction time, PIEV theory</div>
-                </div>
-                <div class="week-item">
-                    <div class="week-num">Week 4</div>
-                    <div class="week-content">Vehicle Characteristics: static and kinematic characteristics, braking distance</div>
-                </div>
-                <div class="week-item">
-                    <div class="week-num">Week 5</div>
-                    <div class="week-content">Road Characteristics: sight distance, SSD, PSD, curve design</div>
-                </div>
-                <div class="week-item">
-                    <div class="week-num">Week 6</div>
-                    <div class="week-content">Traffic Engineering Studies: speed, volume, density studies</div>
-                </div>
-                <div class="week-item">
-                    <div class="week-num">Week 7</div>
-                    <div class="week-content">Midterm Exam Review and Examination</div>
-                </div>
-                <div class="week-item">
-                    <div class="week-num">Week 8</div>
-                    <div class="week-content">Highway Design Standards: design controls, horizontal alignment</div>
-                </div>
-                <div class="week-item">
-                    <div class="week-num">Week 9</div>
-                    <div class="week-content">Vertical Alignment: grades, vertical curves</div>
-                </div>
-                <div class="week-item">
-                    <div class="week-num">Week 10</div>
-                    <div class="week-content">Cross-section Elements: lanes, shoulders, medians</div>
-                </div>
-                <div class="week-item">
-                    <div class="week-num">Week 11</div>
-                    <div class="week-content">Intersection Design: types, capacity, channelization</div>
-                </div>
-                <div class="week-item">
-                    <div class="week-num">Week 12</div>
-                    <div class="week-content">Traffic Safety: crash analysis, countermeasures</div>
-                </div>
-                <div class="week-item">
-                    <div class="week-num">Week 13</div>
-                    <div class="week-content">Final Project Presentations</div>
-                </div>
-                <div class="week-item">
-                    <div class="week-num">Week 14</div>
-                    <div class="week-content">Final Exam Review</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Textbook & Resources</h2>
-            <div class="info-card">
-                <h3>Required Textbook</h3>
-                <p><strong>Traffic and Highway Engineering</strong><br>
-                Nicholas J. Garber and Lester A. Hoel<br>
-                Cengage Learning, 5th Edition (2014)</p>
-            </div>
-            <div class="highlight-box">
-                <p>📚 Additional course materials, practice problems, and interactive quizzes are available on the course website.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Contact Information</h2>
-            <div class="info-card">
-                <h3>Dr. Fahad Alqahtani</h3>
-                <p><strong>Office:</strong> Building 24, Room 3xx<br>
-                <strong>Email:</strong> fahad.alqahtani@kfupm.edu.sa<br>
-                <strong>Office Hours:</strong> Sunday & Tuesday, 10:00 AM - 12:00 PM<br>
-                <strong>Course Website:</strong> https://dr-fahad-space.github.io/kfupm-ce341/</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Course Policies</h2>
-            <h3>Attendance</h3>
-            <p>Regular attendance is expected. Students are responsible for all material covered in class, including announcements and schedule changes.</p>
-            
-            <h3>Academic Integrity</h3>
-            <p>All students are expected to uphold the highest standards of academic integrity. Cheating, plagiarism, or any form of academic dishonesty will result in severe penalties.</p>
-            
-            <h3>Late Work</h3>
-            <p>Late submissions will be penalized 10% per day unless prior arrangements have been made with the instructor.</p>
-        </div>
-
-        <div class="highlight-box" style="margin-top: 48px;">
-            <p>📝 <strong>Note:</strong> This syllabus is subject to modification. Any changes will be announced in class and updated on the course website.</p>
         </div>
     </main>
 
-    <footer class="site-footer" style="background: var(--bg-secondary); padding: 32px; text-align: center; border-top: 1px solid var(--border);">
-        <p style="color: var(--muted); font-size: 0.95rem;">© 2026 Dr. Fahad Alqahtani | KFUPM CE341 - Transportation Engineering</p>
+    <footer class="site-footer">
+        <p>© 2026 KFUPM CE341 - Transportation Engineering | Dr. Fahad Alqahtani</p>
     </footer>
 </body>
 </html>
