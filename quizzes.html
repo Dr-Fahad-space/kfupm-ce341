@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzes - CE341 Transportation Engineering | KFUPM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Quiz Cards Grid */
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin: 48px 0;
+        }
+
+        .quiz-card {
+            background: var(--panel);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-card:hover {
+            border-color: var(--cta);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            text-decoration: none;
+        }
+
+        .quiz-card:hover .quiz-title {
+            color: var(--cta);
+        }
+
+        /* Available Quiz Card */
+        .quiz-card.available {
+            border-color: var(--cta);
+            cursor: pointer;
+        }
+
+        .quiz-card.available::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--cta);
+        }
+
+        /* Coming Soon Quiz Card */
+        .quiz-card.coming-soon {
+            opacity: 0.6;
+            cursor: default;
+            background: var(--panel-muted);
+        }
+
+        .quiz-card.coming-soon:hover {
+            border-color: var(--border);
+            transform: none;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .quiz-card.coming-soon:hover .quiz-title {
+            color: var(--ink);
+        }
+
+        /* Status Badge */
+        .quiz-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            width: fit-content;
+        }
+
+        .quiz-status.available {
+            background: rgba(217, 119, 87, 0.15);
+            color: var(--cta);
+        }
+
+        .quiz-status.soon {
+            background: var(--muted);
+            color: #fff;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .quiz-status.available .status-dot {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Quiz Content */
+        .quiz-number {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .quiz-title {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 0 0 12px 0;
+            transition: color var(--transition-fast);
+        }
+
+        .quiz-chapters {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin: 0 0 16px 0;
+            line-height: 1.5;
+        }
+
+        .quiz-note {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-style: italic;
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Click Indicator */
+        .click-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--cta);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 12px;
+        }
+
+        .quiz-card.available:hover .click-indicator svg {
+            transform: translateX(4px);
+        }
+
+        .click-indicator svg {
+            transition: transform var(--transition-fast);
+        }
+
+        /* Page Header */
+        .quiz-page-header {
+            text-align: center;
+            padding: 48px 32px 32px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quiz-page-header h1 {
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            margin-bottom: 16px;
+            color: var(--ink);
+        }
+
+        .quiz-page-header p {
+            font-size: 1.15rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* Info Box */
+        .quiz-info-box {
+            background: #f0f7ff;
+            border-left: 4px solid #0066cc;
+            padding: 1rem 1.5rem;
+            margin: 2rem auto;
+            border-radius: 0 8px 8px 0;
+            max-width: 800px;
+        }
+
+        .quiz-info-box p {
+            margin: 0;
+            color: #004499;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .quiz-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                margin: 32px 0;
+            }
+
+            .quiz-card {
+                padding: 24px;
+            }
+
+            .quiz-page-header {
+                padding: 32px 16px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="site-nav-inner">
+            <a href="index.html" class="brand">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                CE341
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="syllabus.html" class="nav-link">Syllabus</a>
+                <a href="chapter1.html" class="nav-link">Ch 1</a>
+                <a href="chapter2.html" class="nav-link">Ch 2</a>
+                <a href="chapter3.html" class="nav-link">Ch 3</a>
+                <a href="chapter4.html" class="nav-link">Ch 4</a>
+                <a href="chapter5.html" class="nav-link">Ch 5</a>
+                <a href="chapter6.html" class="nav-link">Ch 6</a>
+                <a href="quizzes.html" class="nav-link active">Quizzes</a>
+            </div>
+            <a href="quizzes.html" class="cta-button">Practice Quizzes</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="quiz-page-header">
+            <h1>Practice Quizzes</h1>
+            <p>Test your knowledge with interactive quizzes covering each chapter. Track your progress and identify areas for improvement.</p>
+        </div>
+
+        <div class="quiz-info-box">
+            <p><strong>📋 How it works:</strong> Click on any available quiz to start. Each quiz contains multiple-choice questions designed to test your understanding at various Bloom's taxonomy levels.</p>
+        </div>
+
+        <div class="quiz-grid">
+            <!-- Quiz 1 - Available -->
+            <a href="quiz1_ch1_ch2.html" class="quiz-card available">
+                <span class="quiz-status available">
+                    <span class="status-dot"></span>
+                    Available Now
+                </span>
+                <span class="quiz-number">Quiz 1</span>
+                <h2 class="quiz-title">Chapters 1 & 2 Review</h2>
+                <p class="quiz-chapters">Covers: Introduction to Transportation Engineering, Transportation Agencies in Saudi Arabia</p>
+                <span class="click-indicator">
+                    Start Quiz
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </span>
+            </a>
+
+            <!-- Quiz 2 - Coming Soon -->
+            <div class="quiz-card coming-soon">
+                <span class="quiz-status soon">
+                    <span class="status-dot"></span>
+                    Coming Soon
+                </span>
+                <span class="quiz-number">Quiz 2</span>
+                <h2 class="quiz-title">Chapter 3 Review</h2>
+                <p class="quiz-chapters">Covers: Characteristics of Driver, Pedestrian, Vehicle & Road</p>
+                <p class="quiz-note">📅 Tuesday in class</p>
+            </div>
+
+            <!-- Quiz 3 - Coming Soon (Placeholder) -->
+            <div class="quiz-card coming-soon">
+                <span class="quiz-status soon">
+                    <span class="status-dot"></span>
+                    Coming Soon
+                </span>
+                <span class="quiz-number">Quiz 3</span>
+                <h2 class="quiz-title">Chapters 4 & 5 Review</h2>
+                <p class="quiz-chapters">Covers: Traffic Engineering Studies, Highway Design Standards</p>
+                <p class="quiz-note">Content will be added soon</p>
+            </div>
+
+            <!-- Quiz 4 - Coming Soon (Placeholder) -->
+            <div class="quiz-card coming-soon">
+                <span class="quiz-status soon">
+                    <span class="status-dot"></span>
+                    Coming Soon
+                </span>
+                <span class="quiz-number">Quiz 4</span>
+                <h2 class="quiz-title">Chapters 6 & Final Review</h2>
+                <p class="quiz-chapters">Covers: Traffic Safety, Course Overview</p>
+                <p class="quiz-note">Content will be added soon</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 Dr. Fahad Alqahtani | KFUPM CE341</p>
+    </footer>
+</body>
+</html>

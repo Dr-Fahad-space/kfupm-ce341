@@ -3,577 +3,653 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CE341 Quiz 1 - Transportation Engineering</title>
+  <title>CE341 Quiz 1 - Chapters 1 & 2 | Transportation Engineering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-
-    :root{
-      --primary:#5B6D92;
-      --primary-soft:#D5E3E6;
-      --neutral:#F0E2D2;
-      --neutral-soft:#EFEEE5;
-      --accent:#D18266;
-      --text:#364042;
-      --white:#FFFFFF;
-
-      --shadow: rgba(54,64,66,0.16);
-      --shadow-soft: rgba(54,64,66,0.10);
-      --border: rgba(54,64,66,0.10);
-      --border-strong: rgba(91,109,146,0.22);
-      --focus: rgba(209,130,102,0.40);
-    }
-
-    html,body{height:100%}
-    body{
-      font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
-      line-height:1.65;
-      color:var(--text);
-      background:
-        radial-gradient(1000px 520px at 15% -10%, rgba(213,227,230,0.85) 0%, rgba(239,238,229,0.75) 55%, rgba(240,226,210,1) 100%);
-      padding:28px 18px;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .container{
-      max-width: 980px;
+    /* Quiz-specific styles */
+    .quiz-page-container {
+      max-width: 900px;
       margin: 0 auto;
-      background: var(--white);
-      border-radius: 18px;
-      box-shadow: 0 18px 60px var(--shadow);
-      border: 1px solid var(--border);
-      overflow:hidden;
     }
 
-    .header{
-      padding: 30px 30px 22px;
-      background: linear-gradient(135deg, var(--primary) 0%, rgba(91,109,146,0.92) 55%, rgba(91,109,146,0.86) 100%);
-      color: var(--neutral-soft);
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--muted);
     }
 
-    .header-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
+    .breadcrumb a {
+      color: var(--cta);
+      text-decoration: none;
     }
 
-    .header h1{
-      font-size: 1.9rem;
-      letter-spacing: 0.2px;
-      line-height:1.25;
-      margin-bottom:8px;
+    .breadcrumb a:hover {
+      color: var(--cta-strong);
     }
 
-    .header-sub{
-      font-size: 0.98rem;
+    .breadcrumb-separator {
+      color: var(--muted);
+    }
+
+    .quiz-header-custom {
+      background: linear-gradient(135deg, var(--cta) 0%, #e88a6a 100%);
+      color: #fff;
+      padding: 40px;
+      border-radius: 16px 16px 0 0;
+      margin: -48px -64px 32px -64px;
+    }
+
+    .quiz-header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .quiz-title-section h1 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      margin: 0 0 8px 0;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .quiz-subtitle {
+      font-size: 1.1rem;
+      opacity: 0.95;
+      font-weight: 400;
+    }
+
+    .quiz-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.95rem;
       opacity: 0.95;
     }
 
-    .header-info{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px 18px;
-      margin-top: 16px;
-      font-size:0.95rem;
-      opacity:0.95;
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
     }
 
-    .meta-pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 6px 10px;
+    .toggle-all-btn {
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 12px 20px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .toggle-all-btn:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-1px);
+    }
+
+    .instructions-box {
+      background: var(--panel-muted);
+      border-left: 4px solid var(--cta);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .instructions-box h3 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .instructions-box p {
+      margin: 0;
+      color: var(--ink);
+    }
+
+    /* Question blocks */
+    .question-block {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--cta);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .question-block:hover {
+      border-color: var(--cta);
+      box-shadow: var(--shadow-md);
+    }
+
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    .question-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .marks-badge {
+      background: var(--cta);
+      color: #fff;
+      padding: 4px 12px;
       border-radius: 999px;
-      background: rgba(239,238,229,0.12);
-      border: 1px solid rgba(239,238,229,0.18);
+      font-weight: 600;
+      font-size: 0.85rem;
       white-space: nowrap;
     }
 
-    .meta-pill strong{color: var(--neutral-soft); font-weight:700}
-
-    .toggle-all{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(239,238,229,0.22);
-      background: rgba(209,130,102,0.14);
-      color: var(--neutral-soft);
-      cursor:pointer;
-      font-weight: 700;
-      font-size: 0.95rem;
-      user-select:none;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-    }
-
-    .toggle-all:hover{transform: translateY(-1px); background: rgba(209,130,102,0.22)}
-    .toggle-all:focus{outline: none; box-shadow: 0 0 0 4px var(--focus)}
-    .toggle-all svg{width:18px;height:18px;opacity:.95}
-
-    .instructions{
-      margin: 22px 30px 0;
-      padding: 16px 18px;
-      border-radius: 12px;
-      background: linear-gradient(180deg, rgba(240,226,210,0.70) 0%, rgba(239,238,229,0.92) 100%);
-      border: 1px solid var(--border);
-      border-left: 6px solid var(--accent);
-      box-shadow: 0 12px 28px var(--shadow-soft);
-    }
-
-    .instructions h3{
-      font-size: 1.05rem;
-      letter-spacing: 0.2px;
-      color: var(--primary);
-      margin-bottom: 6px;
-    }
-
-    .content{padding: 26px 30px 30px}
-
-    .question-block{
-      margin-bottom: 18px;
-      padding: 18px 18px 14px;
-      background: linear-gradient(180deg, rgba(239,238,229,0.92) 0%, rgba(213,227,230,0.22) 100%);
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      border-left: 6px solid rgba(91,109,146,0.95);
-      box-shadow: 0 10px 26px var(--shadow-soft);
-      transition: transform .14s ease, box-shadow .14s ease, border-left-color .14s ease;
-    }
-
-    .question-block:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 16px 40px var(--shadow);
-      border-left-color: var(--accent);
-    }
-
-    .question-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom: 10px;
-    }
-
-    .question-title{
-      font-size: 1.08rem;
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    .marks-badge{
-      background: var(--accent);
-      color: var(--neutral-soft);
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 0.9rem;
-      border: 1px solid rgba(54,64,66,0.08);
-      box-shadow: 0 10px 20px rgba(209,130,102,0.25);
-      white-space:nowrap;
-    }
-
-    .bloom-level{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
+    .bloom-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       padding: 4px 10px;
       border-radius: 999px;
-      font-size: 0.85rem;
-      background: rgba(213,227,230,0.95);
-      border: 1px solid var(--border-strong);
-      margin-bottom: 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: var(--panel-muted);
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .question-text{
-      font-size: 1.02rem;
-      line-height: 1.9;
-      margin: 8px 0 10px;
+    .question-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--ink);
+      margin: 0.5rem 0;
     }
 
-    /* Answer: click-to-expand (no separate button) */
-    details.answer{
-      margin-top: 10px;
-      border-radius: 12px;
-      background: var(--white);
-      border: 1px solid rgba(91,109,146,0.20);
-      overflow:hidden;
+    /* Answer details/summary */
+    .answer-details {
+      margin-top: 1rem;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
     }
 
-    details.answer[open]{border-color: rgba(209,130,102,0.35); box-shadow: 0 12px 28px var(--shadow-soft)}
-    summary.answer-label{
-      list-style:none;
-      cursor:pointer;
-      padding: 12px 14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      user-select:none;
-      font-weight: 800;
-      color: var(--primary);
-      background: linear-gradient(180deg, rgba(213,227,230,0.35) 0%, rgba(239,238,229,0.70) 100%);
-      border-bottom: 1px solid rgba(54,64,66,0.08);
-    }
-    summary.answer-label::-webkit-details-marker{display:none}
-
-    .answer-left{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
+    .answer-summary {
+      background: var(--panel-muted);
+      padding: 12px 16px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--cta);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      transition: all 0.2s ease;
+      user-select: none;
+      list-style: none;
     }
 
-    .answer-badge{
-      width: 26px;
-      height: 26px;
+    .answer-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .answer-summary:hover {
+      background: #ebe9e3;
+    }
+
+    .answer-left {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .answer-badge {
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      background: var(--accent);
-      color: var(--neutral-soft);
-      font-weight: 900;
-      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--cta);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
     }
 
-    .answer-chevron{
-      width:18px;height:18px;
-      opacity:0.9;
-      transform: rotate(0deg);
-      transition: transform .12s ease;
-      flex: 0 0 auto;
+    .answer-chevron {
+      transition: transform 0.2s ease;
+      font-size: 0.8rem;
     }
 
-    details.answer[open] .answer-chevron{transform: rotate(180deg)}
-
-    .answer-body{
-      padding: 12px 14px 14px;
-      line-height: 1.9;
+    .answer-details[open] .answer-chevron {
+      transform: rotate(180deg);
     }
 
-    .answer-body ul{margin: 8px 0 0 20px}
-    .answer-body li{margin: 6px 0}
-    .answer-body strong{color: var(--primary)}
-
-    .footer{
-      background: rgba(213,227,230,0.70);
-      border-top: 1px solid rgba(54,64,66,0.10);
-      padding: 18px 30px;
-      font-size: 0.92rem;
+    .answer-content {
+      padding: 1rem 1.25rem;
+      background: var(--panel-muted);
+      border-top: 1px solid var(--border);
+      animation: slideDown 0.3s ease;
     }
 
-    /* Accessibility */
-    summary.answer-label:focus{outline:none}
-    summary.answer-label:focus-visible{box-shadow: 0 0 0 4px var(--focus)}
-    a{color: var(--primary)}
-
-    @media (max-width: 768px){
-      body{padding: 18px 12px}
-      .header{padding: 22px 18px 18px}
-      .content{padding: 18px}
-      .instructions{margin: 16px 18px 0}
-      .header h1{font-size: 1.55rem}
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    @media print{
-      body{background: white; padding:0; color:#000}
-      .container{box-shadow:none; border:none}
-      .question-block{box-shadow:none}
-      .instructions{box-shadow:none}
-      .toggle-all{display:none}
-      details.answer{break-inside: avoid}
+    .answer-content ul {
+      margin: 0.5rem 0 0 1.5rem;
+      padding: 0;
+    }
+
+    .answer-content li {
+      margin: 0.4rem 0;
+      color: var(--ink);
+    }
+
+    .answer-content strong {
+      color: var(--cta);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .quiz-header-custom {
+        margin: -32px -24px 24px -24px;
+        padding: 24px;
+      }
+
+      .quiz-title-section h1 {
+        font-size: 1.5rem;
+      }
+
+      .quiz-header-top {
+        flex-direction: column;
+      }
+
+      .toggle-all-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .question-header {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .marks-badge {
+        align-self: flex-start;
+      }
+    }
+
+    @media print {
+      .quiz-header-custom {
+        background: var(--cta) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .toggle-all-btn {
+        display: none;
+      }
+
+      .answer-details {
+        break-inside: avoid;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <div class="header-top">
-        <div>
-          <h1>CE341: Transportation Engineering</h1>
-          <div class="header-sub">Quiz 1</div>
-        </div>
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <div class="site-nav-inner">
+      <a href="index.html" class="brand">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+        CE341
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="chapter1.html" class="nav-link">Ch 1</a>
+        <a href="chapter2.html" class="nav-link">Ch 2</a>
+        <a href="chapter3.html" class="nav-link">Ch 3</a>
+        <a href="chapter4.html" class="nav-link">Ch 4</a>
+        <a href="chapter5.html" class="nav-link">Ch 5</a>
+        <a href="chapter6.html" class="nav-link">Ch 6</a>
+        <a href="quizzes.html" class="nav-link active">Quizzes</a>
+      </div>
+      <a href="quizzes.html" class="cta-button">Practice Quizzes</a>
+    </div>
+  </nav>
 
-        <button id="toggleAll" class="toggle-all" type="button" aria-pressed="false">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M6 7h12M6 12h12M6 17h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          Show All Answers
-        </button>
+  <main>
+    <div class="chapter-container quiz-page-container">
+      <!-- Breadcrumb -->
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">›</span>
+        <a href="quizzes.html">Practice Quizzes</a>
+        <span class="breadcrumb-separator">›</span>
+        <span>Quiz 1</span>
       </div>
 
-      <div class="header-info" role="list">
-        <div class="meta-pill" role="listitem"><strong>Instructor:</strong> Dr. Fahad Alqahtani</div>
-        <div class="meta-pill" role="listitem"><strong>Date:</strong> February 5th, 2025</div>
-        <div class="meta-pill" role="listitem"><strong>Total Marks:</strong> 15</div>
+      <!-- Quiz Header -->
+      <div class="quiz-header-custom">
+        <div class="quiz-header-top">
+          <div class="quiz-title-section">
+            <h1>Quiz 1</h1>
+            <div class="quiz-subtitle">Chapters 1 & 2 — Transportation Engineering</div>
+          </div>
+          <button id="toggleAll" class="toggle-all-btn" type="button" aria-pressed="false">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M6 7h12M6 12h12M6 17h12"/>
+            </svg>
+            Show All Answers
+          </button>
+        </div>
+
+        <div class="quiz-meta">
+          <div class="meta-pill"><strong>Instructor:</strong> Dr. Fahad Alqahtani</div>
+          <div class="meta-pill"><strong>Date:</strong> February 5th, 2025</div>
+          <div class="meta-pill"><strong>Total Marks:</strong> 15</div>
+        </div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="instructions-box">
+        <h3>Instructions</h3>
+        <p>Answer all questions. Be concise and precise.</p>
+      </div>
+
+      <!-- Questions -->
+      <div class="questions-container">
+        <!-- Question 1 -->
+        <div class="question-block">
+          <div class="question-header">
+            <div class="question-title">Q1 – Conceptual Understanding</div>
+            <div class="marks-badge">2 marks</div>
+          </div>
+          <div class="bloom-tag">Bloom's Level: Understand</div>
+          <div class="question-text">
+            Explain the difference between mobility and accessibility. Give one example where improving mobility does not necessarily improve accessibility.
+          </div>
+
+          <details class="answer-details">
+            <summary class="answer-summary">
+              <span class="answer-left">
+                <span class="answer-badge">✓</span>
+                <span>Answer</span>
+              </span>
+              <svg class="answer-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="answer-content">
+              <p class="text-body">Mobility refers to how easily and efficiently movement occurs, while accessibility refers to how easily destinations can be reached. For example, increasing highway speeds may improve mobility but not accessibility if destinations remain far apart or poorly connected.</p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-block">
+          <div class="question-header">
+            <div class="question-title">Q2 – Transportation System Components (Part A)</div>
+            <div class="marks-badge">2 marks</div>
+          </div>
+          <div class="bloom-tag">Bloom's Level: Remember</div>
+          <div class="question-text">Identify the four main components of a transportation system.</div>
+
+          <details class="answer-details">
+            <summary class="answer-summary">
+              <span class="answer-left">
+                <span class="answer-badge">✓</span>
+                <span>Answer</span>
+              </span>
+              <svg class="answer-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="answer-content">
+              <ul>
+                <li>Users</li>
+                <li>Vehicles</li>
+                <li>Infrastructure</li>
+                <li>Control and management</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-block">
+          <div class="question-header">
+            <div class="question-title">Q3 – Transportation System Components (Part B)</div>
+            <div class="marks-badge">2 marks</div>
+          </div>
+          <div class="bloom-tag">Bloom's Level: Apply</div>
+          <div class="question-text">
+            Classify the following elements into the appropriate transportation system component:<br/>
+            a) Traffic signals<br/>
+            b) Road users
+          </div>
+
+          <details class="answer-details">
+            <summary class="answer-summary">
+              <span class="answer-left">
+                <span class="answer-badge">✓</span>
+                <span>Answer</span>
+              </span>
+              <svg class="answer-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="answer-content">
+              <p class="text-body">a) Traffic signals → Control and management<br/>
+              b) Road users → Users</p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question-block">
+          <div class="question-header">
+            <div class="question-title">Q4 – Human Factors in Transportation</div>
+            <div class="marks-badge">2 marks</div>
+          </div>
+          <div class="bloom-tag">Bloom's Level: Understand</div>
+          <div class="question-text">
+            Why do human factors make transportation engineering more complex and less predictable than many other civil engineering disciplines?
+          </div>
+
+          <details class="answer-details">
+            <summary class="answer-summary">
+              <span class="answer-left">
+                <span class="answer-badge">✓</span>
+                <span>Answer</span>
+              </span>
+              <svg class="answer-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="answer-content">
+              <p class="text-body">Transportation engineering is more complex because system performance depends on human perception, reaction time, judgment, and compliance, which vary among individuals and situations and cannot be fully controlled.</p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question-block">
+          <div class="question-header">
+            <div class="question-title">Q5 – Disciplinary Scope</div>
+            <div class="marks-badge">2 marks</div>
+          </div>
+          <div class="bloom-tag">Bloom's Level: Understand</div>
+          <div class="question-text">
+            Differentiate between transportation engineering and traffic engineering in terms of scope and primary focus.
+          </div>
+
+          <details class="answer-details">
+            <summary class="answer-summary">
+              <span class="answer-left">
+                <span class="answer-badge">✓</span>
+                <span>Answer</span>
+              </span>
+              <svg class="answer-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="answer-content">
+              <p class="text-body">Transportation engineering focuses on system-wide planning, design, and integration across modes, while traffic engineering concentrates on roadway operations such as flow, control, and safety.</p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question-block">
+          <div class="question-header">
+            <div class="question-title">Q6 – Institutional Roles</div>
+            <div class="marks-badge">2 marks</div>
+          </div>
+          <div class="bloom-tag">Bloom's Level: Remember / Understand</div>
+          <div class="question-text">
+            Which Saudi governmental entity is primarily responsible for national transportation and logistics policy, and why is this role critical?
+          </div>
+
+          <details class="answer-details">
+            <summary class="answer-summary">
+              <span class="answer-left">
+                <span class="answer-badge">✓</span>
+                <span>Answer</span>
+              </span>
+              <svg class="answer-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="answer-content">
+              <p class="text-body">The Ministry of Transport and Logistics Services, because it provides national policy direction, strategic planning, and coordination across transportation modes and agencies.</p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question-block">
+          <div class="question-header">
+            <div class="question-title">Q7 – Safety and Functional Coordination</div>
+            <div class="marks-badge">2 marks</div>
+          </div>
+          <div class="bloom-tag">Bloom's Level: Apply</div>
+          <div class="question-text">
+            An urban arterial road experiences repeated severe crashes at the same location. Identify three different functional entities that should be involved in addressing this problem, and briefly state the role of each.
+          </div>
+
+          <details class="answer-details">
+            <summary class="answer-summary">
+              <span class="answer-left">
+                <span class="answer-badge">✓</span>
+                <span>Answer</span>
+              </span>
+              <svg class="answer-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="answer-content">
+              <ul>
+                <li><strong>Traffic enforcement authorities:</strong> address unsafe driving behavior and violations.</li>
+                <li><strong>Road or infrastructure authorities:</strong> implement engineering improvements such as redesign, signage, or lighting.</li>
+                <li><strong>National safety investigation bodies:</strong> analyze crash causes and issue system-level safety recommendations.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question-block">
+          <div class="question-header">
+            <div class="question-title">Q8 – Application: Professional Judgment</div>
+            <div class="marks-badge">1 mark</div>
+          </div>
+          <div class="bloom-tag">Bloom's Level: Apply</div>
+          <div class="question-text">
+            You are a transportation engineer working on a case where a private company plans to operate a new commercial land transport service between cities. Which entity should you coordinate with first, and why?
+          </div>
+
+          <details class="answer-details">
+            <summary class="answer-summary">
+              <span class="answer-left">
+                <span class="answer-badge">✓</span>
+                <span>Answer</span>
+              </span>
+              <svg class="answer-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="answer-content">
+              <p class="text-body">The Transport General Authority (TGA), because it regulates commercial land transport services, including licensing, compliance, and operational requirements.</p>
+            </div>
+          </details>
+        </div>
       </div>
     </div>
+  </main>
 
-    <div class="instructions">
-      <h3>Instructions</h3>
-      <p>Answer all questions. Be concise and precise.</p>
-    </div>
-
-    <div class="content">
-      <!-- Question 1 -->
-      <div class="question-block">
-        <div class="question-header">
-          <div class="question-title">Q1 – Conceptual Understanding</div>
-          <div class="marks-badge">2 marks</div>
-        </div>
-        <div class="bloom-level">Bloom's level: Understand</div>
-        <div class="question-text">
-          Explain the difference between mobility and accessibility. Give one example where improving mobility does not necessarily improve accessibility.
-        </div>
-
-        <details class="answer">
-          <summary class="answer-label">
-            <span class="answer-left">
-              <span class="answer-badge">✓</span>
-              <span>Answer:</span>
-            </span>
-            <svg class="answer-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="answer-body">
-            Mobility refers to how easily and efficiently movement occurs, while accessibility refers to how easily destinations can be reached. For example, increasing highway speeds may improve mobility but not accessibility if destinations remain far apart or poorly connected.
-          </div>
-        </details>
-      </div>
-
-      <!-- Question 2 -->
-      <div class="question-block">
-        <div class="question-header">
-          <div class="question-title">Q2 – Transportation System Components (Part A)</div>
-          <div class="marks-badge">2 marks</div>
-        </div>
-        <div class="bloom-level">Bloom's level: Remember</div>
-        <div class="question-text">Identify the four main components of a transportation system.</div>
-
-        <details class="answer">
-          <summary class="answer-label">
-            <span class="answer-left">
-              <span class="answer-badge">✓</span>
-              <span>Answer:</span>
-            </span>
-            <svg class="answer-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="answer-body">
-            <ul>
-              <li>Users</li>
-              <li>Vehicles</li>
-              <li>Infrastructure</li>
-              <li>Control and management</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-
-      <!-- Question 3 -->
-      <div class="question-block">
-        <div class="question-header">
-          <div class="question-title">Q3 – Transportation System Components (Part B)</div>
-          <div class="marks-badge">2 marks</div>
-        </div>
-        <div class="bloom-level">Bloom's level: Apply</div>
-        <div class="question-text">
-          Classify the following elements into the appropriate transportation system component:<br/>
-          a) Traffic signals<br/>
-          b) Road users
-        </div>
-
-        <details class="answer">
-          <summary class="answer-label">
-            <span class="answer-left">
-              <span class="answer-badge">✓</span>
-              <span>Answer:</span>
-            </span>
-            <svg class="answer-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="answer-body">
-            a) Traffic signals → Control and management<br/>
-            b) Road users → Users
-          </div>
-        </details>
-      </div>
-
-      <!-- Question 4 -->
-      <div class="question-block">
-        <div class="question-header">
-          <div class="question-title">Q4 – Human Factors in Transportation</div>
-          <div class="marks-badge">2 marks</div>
-        </div>
-        <div class="bloom-level">Bloom's level: Understand</div>
-        <div class="question-text">
-          Why do human factors make transportation engineering more complex and less predictable than many other civil engineering disciplines?
-        </div>
-
-        <details class="answer">
-          <summary class="answer-label">
-            <span class="answer-left">
-              <span class="answer-badge">✓</span>
-              <span>Answer:</span>
-            </span>
-            <svg class="answer-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="answer-body">
-            Transportation engineering is more complex because system performance depends on human perception, reaction time, judgment, and compliance, which vary among individuals and situations and cannot be fully controlled.
-          </div>
-        </details>
-      </div>
-
-      <!-- Question 5 -->
-      <div class="question-block">
-        <div class="question-header">
-          <div class="question-title">Q5 – Disciplinary Scope</div>
-          <div class="marks-badge">2 marks</div>
-        </div>
-        <div class="bloom-level">Bloom's level: Understand</div>
-        <div class="question-text">
-          Differentiate between transportation engineering and traffic engineering in terms of scope and primary focus.
-        </div>
-
-        <details class="answer">
-          <summary class="answer-label">
-            <span class="answer-left">
-              <span class="answer-badge">✓</span>
-              <span>Answer:</span>
-            </span>
-            <svg class="answer-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="answer-body">
-            Transportation engineering focuses on system-wide planning, design, and integration across modes, while traffic engineering concentrates on roadway operations such as flow, control, and safety.
-          </div>
-        </details>
-      </div>
-
-      <!-- Question 6 -->
-      <div class="question-block">
-        <div class="question-header">
-          <div class="question-title">Q6 – Institutional Roles</div>
-          <div class="marks-badge">2 marks</div>
-        </div>
-        <div class="bloom-level">Bloom's level: Remember / Understand</div>
-        <div class="question-text">
-          Which Saudi governmental entity is primarily responsible for national transportation and logistics policy, and why is this role critical?
-        </div>
-
-        <details class="answer">
-          <summary class="answer-label">
-            <span class="answer-left">
-              <span class="answer-badge">✓</span>
-              <span>Answer:</span>
-            </span>
-            <svg class="answer-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="answer-body">
-            The Ministry of Transport and Logistics Services, because it provides national policy direction, strategic planning, and coordination across transportation modes and agencies.
-          </div>
-        </details>
-      </div>
-
-      <!-- Question 7 -->
-      <div class="question-block">
-        <div class="question-header">
-          <div class="question-title">Q7 – Safety and Functional Coordination</div>
-          <div class="marks-badge">2 marks</div>
-        </div>
-        <div class="bloom-level">Bloom's level: Apply</div>
-        <div class="question-text">
-          An urban arterial road experiences repeated severe crashes at the same location. Identify three different functional entities that should be involved in addressing this problem, and briefly state the role of each.
-        </div>
-
-        <details class="answer">
-          <summary class="answer-label">
-            <span class="answer-left">
-              <span class="answer-badge">✓</span>
-              <span>Answer:</span>
-            </span>
-            <svg class="answer-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="answer-body">
-            <ul>
-              <li><strong>Traffic enforcement authorities:</strong> address unsafe driving behavior and violations.</li>
-              <li><strong>Road or infrastructure authorities:</strong> implement engineering improvements such as redesign, signage, or lighting.</li>
-              <li><strong>National safety investigation bodies:</strong> analyze crash causes and issue system-level safety recommendations.</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-
-      <!-- Question 8 -->
-      <div class="question-block">
-        <div class="question-header">
-          <div class="question-title">Q8 – Application: Professional Judgment</div>
-          <div class="marks-badge">1 mark</div>
-        </div>
-        <div class="bloom-level">Bloom's level: Apply</div>
-        <div class="question-text">
-          You are a transportation engineer working on a case where a private company plans to operate a new commercial land transport service between cities. Which entity should you coordinate with first, and why?
-        </div>
-
-        <details class="answer">
-          <summary class="answer-label">
-            <span class="answer-left">
-              <span class="answer-badge">✓</span>
-              <span>Answer:</span>
-            </span>
-            <svg class="answer-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="answer-body">
-            The Transport General Authority (TGA), because it regulates commercial land transport services, including licensing, compliance, and operational requirements.
-          </div>
-        </details>
-      </div>
-    </div>
-
-    <div class="footer">
-      <p>CE341: Transportation Engineering | Quiz 1 | Total Marks: 15</p>
-      <p>Generated on February 6th, 2026</p>
-    </div>
-  </div>
+  <footer class="site-footer">
+    <p>© 2026 KFUPM CE341 - Transportation Engineering | Dr. Fahad Alqahtani | All rights reserved</p>
+  </footer>
 
   <script>
+    // Toggle all answers functionality
     const toggleAllBtn = document.getElementById('toggleAll');
-    const allAnswers = Array.from(document.querySelectorAll('details.answer'));
+    const allAnswers = Array.from(document.querySelectorAll('.answer-details'));
     let allOpen = false;
 
     function setAll(open) {
       allAnswers.forEach(d => d.open = open);
       allOpen = open;
       toggleAllBtn.setAttribute('aria-pressed', String(allOpen));
-      toggleAllBtn.textContent = allOpen ? 'Hide All Answers' : 'Show All Answers';
-      // Re-add icon (since we used textContent)
-      const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      icon.setAttribute('viewBox','0 0 24 24');
-      icon.setAttribute('fill','none');
-      icon.setAttribute('aria-hidden','true');
-      icon.innerHTML = '<path d="M6 7h12M6 12h12M6 17h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
-      icon.style.width = '18px';
-      icon.style.height = '18px';
-      icon.style.opacity = '.95';
-      icon.style.marginRight = '8px';
-      toggleAllBtn.prepend(icon);
+      updateToggleButtonText();
+    }
+
+    function updateToggleButtonText() {
+      const text = allOpen ? 'Hide All Answers' : 'Show All Answers';
+      toggleAllBtn.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 7h12M6 12h12M6 17h12"/>
+        </svg>
+        ${text}
+      `;
     }
 
     toggleAllBtn.addEventListener('click', () => setAll(!allOpen));
@@ -591,17 +667,7 @@
           allOpen = false;
         }
         toggleAllBtn.setAttribute('aria-pressed', String(opened === allAnswers.length));
-        toggleAllBtn.textContent = (opened === allAnswers.length) ? 'Hide All Answers' : 'Show All Answers';
-        const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        icon.setAttribute('viewBox','0 0 24 24');
-        icon.setAttribute('fill','none');
-        icon.setAttribute('aria-hidden','true');
-        icon.innerHTML = '<path d="M6 7h12M6 12h12M6 17h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
-        icon.style.width = '18px';
-        icon.style.height = '18px';
-        icon.style.opacity = '.95';
-        icon.style.marginRight = '8px';
-        toggleAllBtn.prepend(icon);
+        updateToggleButtonText();
       });
     });
   </script>
