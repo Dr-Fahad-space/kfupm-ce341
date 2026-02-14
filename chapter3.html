@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3 - Characteristics of Driver, Pedestrian, Vehicle & Road | CE341</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="site-nav-inner">
+            <a href="index.html" class="brand">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                CE341
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="chapter1.html" class="nav-link">Ch 1</a>
+                <a href="chapter2.html" class="nav-link">Ch 2</a>
+                <a href="chapter3.html" class="nav-link active">Ch 3</a>
+                <a href="chapter4.html" class="nav-link">Ch 4</a>
+                <a href="chapter5.html" class="nav-link">Ch 5</a>
+                <a href="chapter6.html" class="nav-link">Ch 6</a>
+                <a href="quiz.html" class="nav-link">Quiz</a>
+            </div>
+            <a href="quiz.html" class="cta-button">Take Quiz</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="chapter-container">
+            <header class="chapter-header">
+                <div class="chapter-number">Chapter 3</div>
+                <h1 class="chapter-title">Characteristics of Driver, Pedestrian, Vehicle & Road</h1>
+                <p class="chapter-subtitle">Highway Transportation System Components</p>
+            </header>
+
+            <div class="chapter-content">
+                
+                <div class="learning-objectives">
+                    <span class="box-title">Learning Objectives</span>
+                    <p class="text-body">By the end of this chapter, it should be possible to:</p>
+                    <ul>
+                        <li><strong>Remember:</strong> list the four components of the highway transportation system; define key terms (visual acuity, peripheral vision, PIEV, superelevation, side friction, SSD, PSD).</li>
+                        <li><strong>Understand:</strong> explain why driver and pedestrian limitations must be reflected in design criteria and why variability drives the use of percentiles.</li>
+                        <li><strong>Apply:</strong> compute braking distance, stopping sight distance, and minimum curve radius using standard design equations (with correct units and grade sign conventions).</li>
+                        <li><strong>Analyze:</strong> distinguish static, kinematic, and dynamic vehicle characteristics and connect each to specific roadway design elements (e.g., lane width, ramp length, curve design).</li>
+                        <li><strong>Evaluate:</strong> interpret how changes in grade, friction, superelevation, or perception-reaction time change safety margins.</li>
+                    </ul>
+                </div>
+
+                <h3 class="section-title">Chapter Introduction</h3>
+                <p class="text-body">
+                    Highway transportation systems look simple on the surface—people drive along roads in vehicles—but the system's performance and safety depend on several interacting components. This chapter organizes the highway mode of transportation into four core components: <strong>the driver</strong>, <strong>the pedestrian</strong>, <strong>the vehicle</strong>, and <strong>the road</strong>.
+                </p>
+
+                <p class="text-body">
+                    A key theme is <strong>variability</strong>. Drivers differ in perception, decision-making, and reaction. Pedestrians vary in walking speed and attention. Vehicles vary in size, weight, acceleration, and braking. Roads vary in alignment, grade, surface condition, and sight distance. Because traffic engineering is not an exact science, design commonly uses <strong>percentile-based criteria</strong> (for example, 85th or 95th percentile capabilities) to cover most users under most conditions.
+                </p>
+
+                <h3 class="section-title">3.1 Introduction: Four components of the highway system</h3>
+                <span class="bloom-level">Required Bloom level: Remember + Understand</span>
+
+                <p class="text-body">
+                    The highway transportation system consists of four interacting components:
+                </p>
+                <ul>
+                    <li><strong>Driver:</strong> perceives information (signs, vehicles, pedestrians), makes decisions, and executes control (steer, brake, accelerate).</li>
+                    <li><strong>Pedestrian:</strong> shares space at crossings and along road edges; has different speed, perception, and vulnerability than vehicle users.</li>
+                    <li><strong>Vehicle:</strong> provides mobility but imposes geometric and physical constraints (size, turning path, acceleration and braking limits).</li>
+                    <li><strong>Road:</strong> the infrastructure that must provide adequate geometry, surface condition, and sight distance for expected operating speeds.</li>
+                </ul>
+
+                <h3 class="section-title">3.2 Driver characteristics</h3>
+                <span class="bloom-level">Required Bloom level: Understand</span>
+
+                <p class="text-body">
+                    Driver skill and perceptual abilities (seeing, hearing, evaluating, and reacting) vary widely and can degrade with alcohol, fatigue, medication side effects, or time of day. For design, engineers typically select criteria aligned with a high percentile capability (often the 85th or 95th percentile).
+                </p>
+
+                <h4 class="subsection-title">3.2.1 Visual reception</h4>
+                <span class="bloom-level">Required Bloom level: Understand + Apply</span>
+
+                <p class="text-body">
+                    Vision is the primary sensory input for driving. Important eye characteristics include <strong>visual acuity</strong>, <strong>peripheral vision</strong>, <strong>color vision</strong>, <strong>glare vision and recovery</strong>, and <strong>depth perception</strong>. Visual acuity is commonly described using Snellen fractions.
+                </p>
+
+                <p class="text-body">
+                    Peripheral vision allows a driver to detect objects outside the narrow cone of clearest vision. The peripheral cone can be very wide (up to about 160°) but effectively narrows as speed increases.
+                </p>
+
+                <h4 class="subsection-title">3.2.2 Hearing reception</h4>
+                <span class="bloom-level">Required Bloom level: Understand</span>
+                <p class="text-body">
+                    Hearing is typically secondary for driving tasks, but it matters for detecting warning sounds (especially from emergency vehicles).
+                </p>
+
+                <h4 class="subsection-title">3.2.3 Perception–reaction (PIEV) process</h4>
+                <span class="bloom-level">Required Bloom level: Understand + Apply</span>
+
+                <p class="text-body">
+                    The response to a roadway stimulus can be divided into four sub-processes:
+                </p>
+                <ol>
+                    <li><strong>Perception:</strong> noticing the object/control device</li>
+                    <li><strong>Identification:</strong> recognizing what it is</li>
+                    <li><strong>Emotion (decision):</strong> choosing an action</li>
+                    <li><strong>Volition / reaction:</strong> executing the action</li>
+                </ol>
+
+                <p class="text-body">
+                    The total time is commonly called <strong>perception–reaction time</strong>. Typical values range from about <strong>1.2 to 3.0 s</strong>, and design often uses <strong>2.5 s</strong>.
+                </p>
+
+                <div class="key-vocabulary">
+                    <span class="box-title">Key Vocabulary - Driver Characteristics</span>
+                    <ul>
+                        <li><strong>Visual acuity:</strong> ability to see fine detail; commonly described using the Snellen fraction (e.g., 6/6).</li>
+                        <li><strong>Peripheral vision:</strong> ability to detect objects outside the cone of clearest vision; generally narrows as speed increases.</li>
+                        <li><strong>PIEV / perception–reaction process:</strong> Perception, Identification, Emotion, Volition—the sub-processes that determine response time.</li>
+                        <li><strong>Perception–reaction time (t):</strong> elapsed time from noticing a stimulus to completing the initial response.</li>
+                    </ul>
+                </div>
+
+                <h3 class="section-title">3.3 Pedestrian characteristics</h3>
+                <span class="bloom-level">Required Bloom level: Understand + Apply</span>
+
+                <p class="text-body">
+                    Pedestrians share many relevant characteristics with drivers (vision and hearing), but their <strong>walking behavior</strong> is additionally critical for traffic control design.
+                </p>
+
+                <p class="text-body">
+                    A commonly used walking speed from the Highway Capacity Manual is about <strong>1.22 m/s</strong>, and it is often reduced to about <strong>0.9 m/s</strong> when the proportion of elderly pedestrians exceeds approximately 20%.
+                </p>
+
+                <div class="example-box">
+                    <span class="box-title">Example: Pedestrian Clearance Time</span>
+                    <p class="text-body">
+                        For an 18 m crosswalk: <strong>t = 18 / 1.22 ≈ 14.8 s</strong> (typical) or <strong>t = 18 / 0.9 = 20.0 s</strong> (elderly).
+                    </p>
+                </div>
+
+                <h3 class="section-title">3.4 Vehicle characteristics</h3>
+                <span class="bloom-level">Required Bloom level: Analyze</span>
+
+                <p class="text-body">
+                    Vehicle characteristics are organized into: <strong>static</strong> (size and weight), <strong>kinematic</strong> (speed/acceleration/distance), and <strong>dynamic</strong> (forces).
+                </p>
+
+                <h4 class="subsection-title">3.4.1 Static characteristics: size and weight</h4>
+                <span class="bloom-level">Required Bloom level: Analyze</span>
+
+                <p class="text-body">
+                    The size of the design vehicle affects lane width, shoulder width, parking bay dimensions, and vertical curve length. Vehicle axle loads influence pavement thickness.
+                </p>
+
+                <h4 class="subsection-title">3.4.2 Kinematic characteristics: acceleration as a function of speed</h4>
+                <span class="bloom-level">Required Bloom level: Apply</span>
+
+                <p class="text-body">
+                    A common model relates acceleration to current speed: <strong>du/dt = α − βu</strong>
+                </p>
+
+                <h4 class="subsection-title">3.4.3 Dynamic characteristics: resistances, power, braking, and curve design</h4>
+                <span class="bloom-level">Required Bloom level: Apply + Evaluate</span>
+
+                <p class="text-body">
+                    Resistive forces include: air resistance, grade resistance, rolling resistance, and curve resistance.
+                </p>
+
+                <h4 class="subsection-title">3.4.4 Braking distance</h4>
+                <span class="bloom-level">Required Bloom level: Apply</span>
+
+                <p class="text-body">
+                    The braking distance formula incorporating grade effects:
+                </p>
+                <div class="example-box">
+                    <p class="text-body" style="text-align:center;font-size:1.1rem;">
+                        <strong>D<sub>b</sub> = (u₁² − u₂²) / [254 (a/g ± G)]</strong>
+                    </p>
+                    <p class="text-body">
+                        Use <strong>+</strong> for uphill, <strong>−</strong> for downhill. G is decimal grade (3% = 0.03).
+                    </p>
+                </div>
+
+                <h4 class="subsection-title">3.4.5 Minimum radius of a circular curve</h4>
+                <span class="bloom-level">Required Bloom level: Apply</span>
+
+                <p class="text-body">
+                    Curve design balances lateral acceleration using superelevation and side friction:
+                </p>
+                <div class="example-box">
+                    <p class="text-body" style="text-align:center;font-size:1.1rem;">
+                        <strong>R = u² / [127(e + f<sub>s</sub>)]</strong>
+                    </p>
+                    <p class="text-body">
+                        Where: u = speed (km/h), e = superelevation (decimal), f<sub>s</sub> = side friction factor
+                    </p>
+                </div>
+
+                <div class="example-box">
+                    <span class="box-title">Example: Minimum Curve Radius</span>
+                    <p class="text-body">
+                        For u = 80 km/h, e = 0.08, f<sub>s</sub> = 0.15:<br>
+                        <strong>R = 80² / [127(0.08 + 0.15)] = 6400 / 29.21 ≈ 219 m</strong>
+                    </p>
+                </div>
+
+                <h3 class="section-title">3.5 Road characteristics: sight distance</h3>
+                <span class="bloom-level">Required Bloom level: Understand + Apply</span>
+
+                <p class="text-body">
+                    <strong>Sight distance</strong> is the length of roadway a driver can see ahead. Two major types are: <strong>Stopping sight distance (SSD)</strong> and <strong>Passing sight distance (PSD)</strong>.
+                </p>
+
+                <h4 class="subsection-title">3.5.1 Stopping sight distance (SSD)</h4>
+                <span class="bloom-level">Required Bloom level: Apply</span>
+
+                <p class="text-body">
+                    SSD is the sum of: (1) distance traveled during perception–reaction time, and (2) braking distance.
+                </p>
+                <div class="example-box">
+                    <p class="text-body" style="text-align:center;font-size:1.1rem;">
+                        <strong>SSD = 0.278ut + (u₁² − u₂²) / [254(a/g ± G)]</strong>
+                    </p>
+                    <p class="text-body">
+                        First term: distance during perception-reaction (u in km/h, t in seconds)<br>
+                        Second term: braking distance
+                    </p>
+                </div>
+
+                <div class="example-box">
+                    <span class="box-title">Example: Stopping Sight Distance</span>
+                    <p class="text-body">
+                        For u = 90 km/h, t = 2.5 s, level grade, a/g = 0.35:<br>
+                        SSD = 0.278 × 90 × 2.5 + 90² / (254 × 0.35)<br>
+                        SSD = 62.55 + 91.11 = <strong>153.7 m (≈ 154 m)</strong>
+                    </p>
+                </div>
+
+                <h4 class="subsection-title">3.5.2 Passing sight distance (PSD)</h4>
+                <span class="bloom-level">Required Bloom level: Understand</span>
+
+                <p class="text-body">
+                    PSD is the minimum sight distance required on a two-lane, two-way highway to allow a driver to complete a passing maneuver safely.
+                </p>
+
+                <div class="practice-questions">
+                    <h3 class="section-title">Practice Problems</h3>
+
+                    <div class="problem-box">
+                        <h3>Problem 1 — Bloom's Level: Remember</h3>
+                        <p>List the four main components of the highway transportation system.</p>
+                    </div>
+
+                    <div class="problem-box">
+                        <h3>Problem 2 — Bloom's Level: Understand</h3>
+                        <p>Why are 85th or 95th percentile values commonly used in design criteria?</p>
+                    </div>
+
+                    <div class="problem-box">
+                        <h3>Problem 3 — Bloom's Level: Understand</h3>
+                        <p>Name the four sub-processes of the PIEV process.</p>
+                    </div>
+
+                    <div class="problem-box">
+                        <h3>Problem 4 — Bloom's Level: Apply</h3>
+                        <p>A 15 m crosswalk: compute clearance time at 1.22 m/s and 0.9 m/s.</p>
+                    </div>
+
+                    <div class="problem-box">
+                        <h3>Problem 5 — Bloom's Level: Apply</h3>
+                        <p>Using a/g = 0.35, decelerate from 100 km/h to 60 km/h on level grade. Find braking distance.</p>
+                    </div>
+
+                    <div class="problem-box">
+                        <h3>Problem 6 — Bloom's Level: Apply</h3>
+                        <p>Compute SSD for u = 80 km/h, t = 2.5 s, level grade, a/g = 0.35.</p>
+                    </div>
+
+                    <div class="problem-box">
+                        <h3>Problem 7 — Bloom's Level: Apply</h3>
+                        <p>For u = 70 km/h, e = 0.06, f<sub>s</sub> = 0.14, compute minimum curve radius.</p>
+                    </div>
+                </div>
+
+                <div class="practice-questions">
+                    <h3 class="section-title">Solutions</h3>
+
+                    <div class="solution-box">
+                        <h3>Solution 1 — Remember</h3>
+                        <p><strong>Answer:</strong> The driver, the pedestrian, the vehicle, and the road.</p>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>Solution 2 — Understand</h3>
+                        <p><strong>Answer:</strong> Because driver abilities vary; higher percentiles cover most users and reduce chance of exceeding human performance.</p>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>Solution 3 — Understand</h3>
+                        <p><strong>Answer:</strong> Perception, Identification, Emotion (decision), and Volition (reaction).</p>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>Solution 4 — Apply</h3>
+                        <p><strong>Answer:</strong> t = 15/1.22 ≈ 12.3 s; t = 15/0.9 = 16.7 s.</p>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>Solution 5 — Apply</h3>
+                        <p><strong>Answer:</strong> D<sub>b</sub> = (10000 − 3600)/(254 × 0.35) = 6400/88.9 ≈ <strong>72 m</strong>.</p>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>Solution 6 — Apply</h3>
+                        <p><strong>Answer:</strong> SSD = (0.278 × 80 × 2.5) + 80²/(254 × 0.35) = 55.6 + 72.0 = <strong>127.6 m</strong> (≈ 128 m).</p>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>Solution 7 — Apply</h3>
+                        <p><strong>Answer:</strong> R = 70² / [127(0.06 + 0.14)] = 4900 / 25.4 ≈ <strong>193 m</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 KFUPM CE341 - Transportation Engineering | All rights reserved</p>
+    </footer>
+</body>
+</html>

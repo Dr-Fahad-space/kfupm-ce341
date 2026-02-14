@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CE341 Quiz - Transportation Engineering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="site-nav-inner">
+            <a href="index.html" class="brand">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                CE341
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="chapter1.html" class="nav-link">Ch 1</a>
+                <a href="chapter2.html" class="nav-link">Ch 2</a>
+                <a href="chapter3.html" class="nav-link">Ch 3</a>
+                <a href="chapter4.html" class="nav-link">Ch 4</a>
+                <a href="chapter5.html" class="nav-link">Ch 5</a>
+                <a href="chapter6.html" class="nav-link">Ch 6</a>
+                <a href="quiz.html" class="nav-link active">Quiz</a>
+            </div>
+            <a href="quiz.html" class="cta-button">Take Quiz</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h1>CE341 - Transportation Engineering</h1>
+                <h2>Comprehensive Quiz (Chapters 1-3)</h2>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 24px;">
+                    <div style="flex: 1; min-width: 200px;">
+                        <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; opacity: 0.8;">Student Name</label>
+                        <input type="text" id="studentName" style="width: 100%; padding: 10px; border: none; border-radius: 4px; font-size: 14px; background-color: rgba(255,255,255,0.9);" placeholder="Enter your name">
+                    </div>
+                    <div style="flex: 1; min-width: 200px;">
+                        <label style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; opacity: 0.8;">Student ID</label>
+                        <input type="text" id="studentId" style="width: 100%; padding: 10px; border: none; border-radius: 4px; font-size: 14px; background-color: rgba(255,255,255,0.9);" placeholder="Enter your ID">
+                    </div>
+                </div>
+            </div>
+
+            <form class="quiz-form" id="quizForm">
+                
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <h3>Question 1 <span style="color:var(--muted);font-size:.85rem;">— Chapter 1</span></h3>
+                    <p>Which of the following best defines <strong>accessibility</strong> in transportation engineering?</p>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="a">
+                        <span>The speed at which vehicles can travel on a roadway</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="b">
+                        <span>The ability to reach desired destinations such as jobs, services, and markets</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="c">
+                        <span>The number of vehicles that can pass a point per hour</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="d">
+                        <span>The width of road lanes and shoulders</span>
+                    </label>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <h3>Question 2 <span style="color:var(--muted);font-size:.85rem;">— Chapter 1</span></h3>
+                    <p>A traffic signal at an intersection is an example of which transportation system component?</p>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="a">
+                        <span>User</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="b">
+                        <span>Vehicle</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="c">
+                        <span>Infrastructure</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="d">
+                        <span>Control and Management</span>
+                    </label>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <h3>Question 3 <span style="color:var(--muted);font-size:.85rem;">— Chapter 2</span></h3>
+                    <p>Which Saudi Arabian entity is responsible for regulating land, rail, and maritime transport services?</p>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="a">
+                        <span>Ministry of Transport and Logistics Services (MOT)</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="b">
+                        <span>Transport General Authority (TGA)</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="c">
+                        <span>Roads General Authority (RGA)</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="d">
+                        <span>Saudi Arabia Railways (SAR)</span>
+                    </label>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <h3>Question 4 <span style="color:var(--muted);font-size:.85rem;">— Chapter 2</span></h3>
+                    <p>What is the primary function of the National Transport Safety Center (NTSC)?</p>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="q4" value="a">
+                        <span>Traffic enforcement and issuing tickets</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q4" value="b">
+                        <span>Independent investigation of major accidents to identify root causes</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q4" value="c">
+                        <span>Regulating aviation services</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q4" value="d">
+                        <span>Operating rail services</span>
+                    </label>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <h3>Question 5 <span style="color:var(--muted);font-size:.85rem;">— Chapter 3</span></h3>
+                    <p>In the PIEV process, what does the "E" stand for?</p>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="q5" value="a">
+                        <span>Execution</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q5" value="b">
+                        <span>Emotion (decision)</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q5" value="c">
+                        <span>Evaluation</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q5" value="d">
+                        <span>Estimation</span>
+                    </label>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="quiz-question">
+                    <h3>Question 6 <span style="color:var(--muted);font-size:.85rem;">— Chapter 3</span></h3>
+                    <p>What is the typical design value for pedestrian walking speed according to the Highway Capacity Manual?</p>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="q6" value="a">
+                        <span>0.5 m/s</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q6" value="b">
+                        <span>0.9 m/s</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q6" value="c">
+                        <span>1.22 m/s</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q6" value="d">
+                        <span>2.0 m/s</span>
+                    </label>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="quiz-question">
+                    <h3>Question 7 <span style="color:var(--muted);font-size:.85rem;">— Chapter 3</span></h3>
+                    <p>For a vehicle decelerating on a downgrade, which sign should be used for the grade (G) in the braking distance formula?</p>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="q7" value="a">
+                        <span>Positive (+)</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q7" value="b">
+                        <span>Negative (−)</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q7" value="c">
+                        <span>Zero</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q7" value="d">
+                        <span>The absolute value of the grade</span>
+                    </label>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="quiz-question">
+                    <h3>Question 8 <span style="color:var(--muted);font-size:.85rem;">— Chapter 3</span></h3>
+                    <p>Calculate the minimum curve radius for a design speed of 70 km/h, superelevation e = 0.06, and side friction f<sub>s</sub> = 0.14.</p>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="q8" value="a">
+                        <span>150 m</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q8" value="b">
+                        <span>193 m</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q8" value="c">
+                        <span>245 m</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q8" value="d">
+                        <span>300 m</span>
+                    </label>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="quiz-question">
+                    <h3>Question 9 <span style="color:var(--muted);font-size:.85rem;">— Chapter 1</span></h3>
+                    <p>What is the main difference between transportation engineering and traffic engineering?</p>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="q9" value="a">
+                        <span>Transportation engineering focuses only on highways; traffic engineering covers all modes</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q9" value="b">
+                        <span>Traffic engineering is narrower, focusing on roadway operations; transportation engineering is broader, covering all modes and planning</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q9" value="c">
+                        <span>There is no difference; they are interchangeable terms</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q9" value="d">
+                        <span>Transportation engineering is only concerned with public transport</span>
+                    </label>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="quiz-question">
+                    <h3>Question 10 <span style="color:var(--muted);font-size:.85rem;">— Chapter 2</span></h3>
+                    <p>Which entity is responsible for traffic enforcement on roads in Saudi Arabia?</p>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="q10" value="a">
+                        <span>Transport General Authority (TGA)</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q10" value="b">
+                        <span>National Transport Safety Center (NTSC)</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q10" value="c">
+                        <span>Traffic (المرور) within Ministry of Interior</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q10" value="d">
+                        <span>Roads General Authority (RGA)</span>
+                    </label>
+                </div>
+
+                <div class="quiz-submit">
+                    <button type="button" onclick="calculateScore()" style="background: linear-gradient(135deg,var(--cta) 0%,#e88a6a 100%); color: white; border: none; padding: 16px 50px; font-size: 18px; border-radius: 30px; cursor: pointer; box-shadow: 0 4px 15px rgba(217,119,87,0.3); transition: all 0.2s; font-weight: 600;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(217,119,87,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 15px rgba(217,119,87,0.3)'">
+                        Submit Quiz
+                    </button>
+                </div>
+            </form>
+
+            <div id="quizResult" class="quiz-result">
+                <h2 style="color: #2e7d32; margin: 0 0 10px 0;">Quiz Submitted!</h2>
+                <p style="font-size: 24px; color: #1b5e20; margin: 10px 0; font-weight: bold;">Your Score: <span id="scoreValue">0</span>/10</p>
+                <p id="feedbackText" style="color: #388e3c; margin: 10px 0;"></p>
+                <div id="detailedResults" style="margin-top:20px;text-align:left;"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 KFUPM CE341 - Transportation Engineering | All rights reserved</p>
+    </footer>
+
+    <script>
+        function calculateScore() {
+            // Check if name and ID are filled
+            const name = document.getElementById('studentName').value;
+            const id = document.getElementById('studentId').value;
+            
+            if (!name || !id) {
+                alert('Please enter your name and student ID before submitting.');
+                return;
+            }
+
+            // Correct answers
+            const answers = {
+                q1: 'b',  // Accessibility definition
+                q2: 'd',  // Traffic signal is control/management
+                q3: 'b',  // TGA regulates land/rail/maritime
+                q4: 'b',  // NTSC does independent investigation
+                q5: 'b',  // PIEV - E is Emotion (decision)
+                q6: 'c',  // 1.22 m/s walking speed
+                q7: 'b',  // Negative for downgrade
+                q8: 'b',  // R = 70^2 / [127(0.06+0.14)] = 193m
+                q9: 'b',  // Traffic engineering narrower
+                q10: 'c'  // Traffic (المرور) does enforcement
+            };
+
+            let score = 0;
+            let resultsHTML = '<h3 style="color:var(--ink);margin-bottom:16px;">Detailed Results:</h3>';
+            
+            // Check each question
+            for (let i = 1; i <= 10; i++) {
+                const questionName = 'q' + i;
+                const selected = document.querySelector(`input[name="${questionName}"]:checked`);
+                const isCorrect = selected && selected.value === answers[questionName];
+                
+                if (isCorrect) {
+                    score++;
+                    resultsHTML += `<p style="color:#2e7d32;margin:8px 0;">✓ Question ${i}: Correct</p>`;
+                } else {
+                    resultsHTML += `<p style="color:#c62828;margin:8px 0;">✗ Question ${i}: Incorrect (Correct answer: ${answers[questionName].toUpperCase()})</p>`;
+                }
+            }
+
+            // Display result
+            document.getElementById('scoreValue').textContent = score;
+            const resultDiv = document.getElementById('quizResult');
+            const feedback = document.getElementById('feedbackText');
+            
+            // Provide feedback based on score
+            if (score === 10) {
+                feedback.textContent = 'Excellent! Perfect score! 🎉';
+            } else if (score >= 8) {
+                feedback.textContent = 'Great job! You have a strong understanding of the material. 👍';
+            } else if (score >= 6) {
+                feedback.textContent = 'Good effort! Review the chapters where you missed questions. 📚';
+            } else if (score >= 4) {
+                feedback.textContent = 'Keep studying! Review the course material and try again. 💪';
+            } else {
+                feedback.textContent = 'More practice needed. Please review Chapters 1-3 thoroughly. 📖';
+            }
+
+            document.getElementById('detailedResults').innerHTML = resultsHTML;
+            resultDiv.classList.add('show');
+            
+            // Scroll to result
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
