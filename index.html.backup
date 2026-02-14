@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CE341 - KFUPM</title>
+    <style>
+        :root {
+            --primary: #d97757;
+            --primary-dark: #c25e3d;
+            --primary-light: #e08e6e;
+            --text-dark: #1a1a1a;
+            --text-muted: #666666;
+            --text-light: #888888;
+            --bg-cream: #f7f6f2;
+            --bg-white: #ffffff;
+            --border: #e5e5e5;
+            --border-light: #f0f0f0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-hover: 0 4px 16px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-cream);
+        }
+        
+        /* Navigation */
+        nav {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--bg-cream);
+            color: var(--text-dark);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--text-muted);
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        /* Section Cards */
+        .section-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-light);
+        }
+        
+        .section-card h2 {
+            color: var(--text-dark);
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .section-card h3 {
+            color: var(--text-dark);
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem;
+            font-weight: 600;
+        }
+        
+        .section-card p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        /* Collapsible Sections */
+        .collapsible {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            background: var(--bg-white);
+        }
+        
+        .collapsible-header {
+            background: var(--bg-cream);
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background 0.2s;
+            color: var(--text-dark);
+        }
+        
+        .collapsible-header:hover {
+            background: #f5f5f0;
+        }
+        
+        .collapsible-header::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+        
+        .collapsible.active .collapsible-header::after {
+            transform: rotate(45deg);
+        }
+        
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: var(--bg-white);
+        }
+        
+        .collapsible.active .collapsible-content {
+            max-height: 1000px;
+        }
+        
+        .collapsible-inner {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        /* Example/Answer Box */
+        .example-box {
+            background: var(--bg-cream);
+            border-left: 4px solid var(--primary);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+        }
+        
+        .example-box h4 {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        /* Quiz Styles */
+        .quiz-item {
+            background: var(--bg-cream);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+        }
+        
+        .quiz-question {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .quiz-options {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+        
+        .quiz-options li {
+            padding: 0.5rem 0;
+            color: var(--text-muted);
+        }
+        
+        .answer-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        
+        .answer-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .answer-reveal {
+            display: none;
+            background: #fef3e2;
+            border: 1px solid var(--primary-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .answer-reveal.show {
+            display: block;
+        }
+        
+        .answer-reveal.correct {
+            background: #f0fdf4;
+            border-color: #22c55e;
+        }
+        
+        /* Handout Content */
+        .handout-content {
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+        
+        .handout-content h4 {
+            color: var(--primary-dark);
+            margin: 1.5rem 0 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        .handout-content ul, .handout-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .handout-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .handout-content code {
+            background: var(--bg-cream);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            color: var(--primary-dark);
+        }
+        
+        /* Instructor Card */
+        .instructor-card {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            background: var(--bg-cream);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            border: 1px solid var(--border);
+        }
+        
+        .instructor-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .instructor-info h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+        
+        .instructor-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        
+        .instructor-info .title {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--bg-white);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .instructor-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .section-card {
+                padding: 1.5rem;
+            }
+            
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">CE341</div>
+            <ul class="nav-links">
+                <li><a href="#about" class="active">About</a></li>
+                <li><a href="#handouts">Handouts</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#quizzes">Quizzes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>CE341</h1>
+        <p>[Course Title Placeholder] - An undergraduate course at KFUPM exploring fundamental concepts and practical applications in civil and environmental engineering.</p>
+    </section>
+
+    <div class="container">
+        <!-- About Section -->
+        <section id="about" class="section-card">
+            <h2>📚 About the Course</h2>
+            
+            <h3>Course Description</h3>
+            <p>[Course Description Placeholder] This course provides a comprehensive introduction to [subject area], covering theoretical foundations and practical methodologies. Students will develop critical thinking skills and gain hands-on experience through real-world applications and case studies.</p>
+            
+            <h3>Course Objectives</h3>
+            <p>By the end of this course, students will be able to:</p>
+            <ul>
+                <li>[Objective 1 Placeholder] Understand and apply core theoretical concepts</li>
+                <li>[Objective 2 Placeholder] Analyze and solve complex engineering problems</li>
+                <li>[Objective 3 Placeholder] Design and implement practical solutions</li>
+                <li>[Objective 4 Placeholder] Evaluate and interpret engineering data effectively</li>
+            </ul>
+            
+            <h3>Course Information</h3>
+            <p><strong>Credit Hours:</strong> [3-0-3] | <strong>Prerequisites:</strong> [Prerequisites Placeholder] | <strong>Semester:</strong> [Semester Placeholder]</p>
+            
+            <h3>Instructor</h3>
+            <div class="instructor-card">
+                <div class="instructor-avatar">FA</div>
+                <div class="instructor-info">
+                    <h4>Dr. Fahad Alqahtani</h4>
+                    <p class="title">Assistant Professor</p>
+                    <p>Department of Civil and Environmental Engineering</p>
+                    <p>King Fahd University of Petroleum & Minerals (KFUPM)</p>
+                    <p><strong>Office:</strong> [Building/Room Placeholder] | <strong>Email:</strong> [Email Placeholder] | <strong>Office Hours:</strong> [Days & Time Placeholder]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Handouts Section -->
+        <section id="handouts" class="section-card">
+            <h2>📖 Course Handouts</h2>
+            <p>Comprehensive lecture notes and reading materials organized by topic. Click to expand each handout.</p>
+            
+            <!-- Handout 1 -->
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <span>Handout 1: [Topic Placeholder - Introduction]</span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner handout-content">
+                        <h4>1.1 [Section Title Placeholder]</h4>
+                        <p>[Content Placeholder] This section introduces the fundamental concepts that form the foundation of our study.</p>
+                        
+                        <p><strong>Key Concept 1:</strong> [Detailed explanation of the first key concept.]</p>
+                        
+                        <p><strong>Key Concept 2:</strong> [Detailed explanation of the second key concept.]</p>
+                        
+                        <h4>1.2 [Section Title Placeholder]</h4>
+                        <p>[Content Placeholder] Building upon the previous section, we now explore more advanced topics.</p>
+                        
+                        <ul>
+                            <li><strong>[Point 1]:</strong> [Description]</li>
+                            <li><strong>[Point 2]:</strong> [Description]</li>
+                            <li><strong>[Point 3]:</strong> [Description]</li>
+                        </ul>
+                        
+                        <h4>1.3 Summary</h4>
+                        <p>[Summary Placeholder] This handout covered the essential foundations.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Handout 2 -->
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <span>Handout 2: [Topic Placeholder - Core Concepts]</span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner handout-content">
+                        <h4>2.1 [Section Title Placeholder]</h4>
+                        <p>[Content Placeholder] This handout delves deeper into core concepts.</p>
+                        
+                        <div class="example-box">
+                            <strong>Formula:</strong> <code>[Formula Placeholder]</code>
+                            <br><br>
+                            Where:
+                            <ul>
+                                <li><code>E</code> = [Variable description]</li>
+                                <li><code>m</code> = [Variable description]</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Handout 3 -->
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <span>Handout 3: [Topic Placeholder - Advanced Topics]</span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner handout-content">
+                        <h4>3.1 [Section Title Placeholder]</h4>
+                        <p>[Content Placeholder] This advanced handout covers specialized topics.</p>
+                        
+                        <div class="example-box">
+                            <h4>⚠️ Note</h4>
+                            <p>[Important note about common mistakes.]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Examples Section -->
+        <section id="examples" class="section-card">
+            <h2>💡 Worked Examples</h2>
+            <p>Interactive examples with step-by-step solutions. Click to reveal the solution.</p>
+            
+            <!-- Example 1 -->
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <span>Example 1: [Problem Title Placeholder]</span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <p><strong>Problem:</strong> [Problem statement placeholder.]</p>
+                        
+                        <div class="example-box">
+                            <h4>Given:</h4>
+                            <ul>
+                                <li>[Parameter 1]: [Value]</li>
+                                <li>[Parameter 2]: [Value]</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="answer-btn" onclick="toggleAnswer('ans1')">Show Solution</button>
+                        
+                        <div id="ans1" class="answer-reveal">
+                            <h4>Solution:</h4>
+                            <p><strong>Step 1:</strong> [First step]</p>
+                            <p><strong>Final Answer:</strong> [Answer]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Example 2 -->
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <span>Example 2: [Problem Title Placeholder]</span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <p><strong>Problem:</strong> [Problem statement placeholder.]</p>
+                        
+                        <button class="answer-btn" onclick="toggleAnswer('ans2')">Show Solution</button>
+                        
+                        <div id="ans2" class="answer-reveal">
+                            <h4>Solution:</h4>
+                            <p>[Step-by-step solution.]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quizzes Section -->
+        <section id="quizzes" class="section-card">
+            <h2>📝 Practice Quizzes</h2>
+            <p>Test your understanding with these practice questions. Click "Show Answer" to check your work.</p>
+            
+            <!-- Quiz 1 -->
+            <div class="quiz-item">
+                <div class="quiz-question">Question 1: [Question text placeholder.]</div>
+                
+                <ul class="quiz-options">
+                    <li>A) [Option A]</li>
+                    <li>B) [Option B]</li>
+                    <li>C) [Option C - Correct]</li>
+                    <li>D) [Option D]</li>
+                </ul>
+                
+                <button class="answer-btn" onclick="toggleAnswer('quiz1')">Show Answer</button>
+                
+                <div id="quiz1" class="answer-reveal correct">
+                    <strong>Correct Answer: C</strong>
+                    <p>[Explanation.]</p>
+                </div>
+            </div>
+            
+            <!-- Quiz 2 -->
+            <div class="quiz-item">
+                <div class="quiz-question">Question 2: [Question text placeholder.]</div>
+                
+                <ul class="quiz-options">
+                    <li>A) [Option A]</li>
+                    <li>B) [Option B - Correct]</li>
+                    <li>C) [Option C]</li>
+                    <li>D) [Option D]</li>
+                </ul>
+                
+                <button class="answer-btn" onclick="toggleAnswer('quiz2')">Show Answer</button>
+                
+                <div id="quiz2" class="answer-reveal correct">
+                    <strong>Correct Answer: B</strong>
+                    <p>[Explanation.]</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 CE341 - KFUPM | Dr. Fahad Alqahtani</p>
+        <p>Department of Civil and Environmental Engineering</p>
+    </footer>
+
+    <script>
+        function toggleCollapsible(element) {
+            const collapsible = element.parentElement;
+            collapsible.classList.toggle('active');
+        }
+        
+        function toggleAnswer(answerId) {
+            const answer = document.getElementById(answerId);
+            answer.classList.toggle('show');
+            const button = event.target;
+            if (answer.classList.contains('show')) {
+                button.textContent = 'Hide Answer';
+            } else {
+                button.textContent = 'Show Answer';
+            }
+        }
+        
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
