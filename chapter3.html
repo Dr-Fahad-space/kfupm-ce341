@@ -8,6 +8,100 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Toggle All Button */
+        .toggle-all-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+        .toggle-all-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        .toggle-all-btn:active {
+            transform: translateY(0);
+        }
+        .toggle-icon {
+            font-size: 1.1rem;
+        }
+
+        /* Answer Details/Summary */
+        .answer-details {
+            margin-top: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .answer-summary {
+            background: #f8f9fa;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            user-select: none;
+            list-style: none;
+        }
+        .answer-summary::-webkit-details-marker {
+            display: none;
+        }
+        .answer-summary:hover {
+            background: #e9ecef;
+            color: #5a6fd6;
+        }
+        .chevron {
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+        }
+        .answer-details[open] .chevron {
+            transform: rotate(90deg);
+        }
+        .answer-content {
+            padding: 1rem 1rem 0.5rem 1rem;
+            animation: slideDown 0.3s ease;
+            background: #f8f9fa;
+            border-radius: 0 0 8px 8px;
+            margin-top: -8px;
+            padding-top: 1.5rem;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .answer-content .text-body {
+            margin: 0;
+            color: #2d3748;
+        }
+
+        /* Question block styling */
+        .question-block {
+            margin-bottom: 1.5rem;
+        }
+        .question-block .text-body {
+            margin-bottom: 0.5rem;
+        }
+    </style>
 </head>
 <body>
     <nav class="site-nav">
@@ -261,78 +355,99 @@
                 <div class="practice-questions">
                     <h3 class="section-title">Practice Problems</h3>
 
-                    <div class="problem-box">
+                    <button class="toggle-all-btn" onclick="toggleAllAnswers()">
+                        <span class="toggle-icon">👁</span> <span class="toggle-text">Show All Answers</span>
+                    </button>
+
+                    <div class="problem-box question-block">
                         <h3>Problem 1 — Bloom's Level: Remember</h3>
                         <p>List the four main components of the highway transportation system.</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> The driver, the pedestrian, the vehicle, and the road.</p>
+                            </div>
+                        </details>
                     </div>
 
-                    <div class="problem-box">
+                    <div class="problem-box question-block">
                         <h3>Problem 2 — Bloom's Level: Understand</h3>
                         <p>Why are 85th or 95th percentile values commonly used in design criteria?</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> Because driver abilities vary; higher percentiles cover most users and reduce chance of exceeding human performance.</p>
+                            </div>
+                        </details>
                     </div>
 
-                    <div class="problem-box">
+                    <div class="problem-box question-block">
                         <h3>Problem 3 — Bloom's Level: Understand</h3>
                         <p>Name the four sub-processes of the PIEV process.</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> Perception, Identification, Emotion (decision), and Volition (reaction).</p>
+                            </div>
+                        </details>
                     </div>
 
-                    <div class="problem-box">
+                    <div class="problem-box question-block">
                         <h3>Problem 4 — Bloom's Level: Apply</h3>
                         <p>A 15 m crosswalk: compute clearance time at 1.22 m/s and 0.9 m/s.</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> t = 15/1.22 ≈ 12.3 s; t = 15/0.9 = 16.7 s.</p>
+                            </div>
+                        </details>
                     </div>
 
-                    <div class="problem-box">
+                    <div class="problem-box question-block">
                         <h3>Problem 5 — Bloom's Level: Apply</h3>
                         <p>Using a/g = 0.35, decelerate from 100 km/h to 60 km/h on level grade. Find braking distance.</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> D<sub>b</sub> = (10000 − 3600)/(254 × 0.35) = 6400/88.9 ≈ <strong>72 m</strong>.</p>
+                            </div>
+                        </details>
                     </div>
 
-                    <div class="problem-box">
+                    <div class="problem-box question-block">
                         <h3>Problem 6 — Bloom's Level: Apply</h3>
                         <p>Compute SSD for u = 80 km/h, t = 2.5 s, level grade, a/g = 0.35.</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> SSD = (0.278 × 80 × 2.5) + 80²/(254 × 0.35) = 55.6 + 72.0 = <strong>127.6 m</strong> (≈ 128 m).</p>
+                            </div>
+                        </details>
                     </div>
 
-                    <div class="problem-box">
+                    <div class="problem-box question-block">
                         <h3>Problem 7 — Bloom's Level: Apply</h3>
                         <p>For u = 70 km/h, e = 0.06, f<sub>s</sub> = 0.14, compute minimum curve radius.</p>
-                    </div>
-                </div>
-
-                <div class="practice-questions">
-                    <h3 class="section-title">Solutions</h3>
-
-                    <div class="solution-box">
-                        <h3>Solution 1 — Remember</h3>
-                        <p><strong>Answer:</strong> The driver, the pedestrian, the vehicle, and the road.</p>
-                    </div>
-
-                    <div class="solution-box">
-                        <h3>Solution 2 — Understand</h3>
-                        <p><strong>Answer:</strong> Because driver abilities vary; higher percentiles cover most users and reduce chance of exceeding human performance.</p>
-                    </div>
-
-                    <div class="solution-box">
-                        <h3>Solution 3 — Understand</h3>
-                        <p><strong>Answer:</strong> Perception, Identification, Emotion (decision), and Volition (reaction).</p>
-                    </div>
-
-                    <div class="solution-box">
-                        <h3>Solution 4 — Apply</h3>
-                        <p><strong>Answer:</strong> t = 15/1.22 ≈ 12.3 s; t = 15/0.9 = 16.7 s.</p>
-                    </div>
-
-                    <div class="solution-box">
-                        <h3>Solution 5 — Apply</h3>
-                        <p><strong>Answer:</strong> D<sub>b</sub> = (10000 − 3600)/(254 × 0.35) = 6400/88.9 ≈ <strong>72 m</strong>.</p>
-                    </div>
-
-                    <div class="solution-box">
-                        <h3>Solution 6 — Apply</h3>
-                        <p><strong>Answer:</strong> SSD = (0.278 × 80 × 2.5) + 80²/(254 × 0.35) = 55.6 + 72.0 = <strong>127.6 m</strong> (≈ 128 m).</p>
-                    </div>
-
-                    <div class="solution-box">
-                        <h3>Solution 7 — Apply</h3>
-                        <p><strong>Answer:</strong> R = 70² / [127(0.06 + 0.14)] = 4900 / 25.4 ≈ <strong>193 m</strong>.</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> R = 70² / [127(0.06 + 0.14)] = 4900 / 25.4 ≈ <strong>193 m</strong>.</p>
+                            </div>
+                        </details>
                     </div>
                 </div>
             </div>
@@ -342,5 +457,51 @@
     <footer class="site-footer">
         <p>© 2026 KFUPM CE341 - Transportation Engineering | All rights reserved</p>
     </footer>
+
+    <script>
+        // Global state to track if all answers are shown
+        let allAnswersShown = false;
+
+        // Toggle all answers
+        function toggleAllAnswers() {
+            const allDetails = document.querySelectorAll('.answer-details');
+            const toggleText = document.querySelector('.toggle-text');
+            const toggleIcon = document.querySelector('.toggle-icon');
+
+            allAnswersShown = !allAnswersShown;
+
+            allDetails.forEach(details => {
+                details.open = allAnswersShown;
+            });
+
+            if (allAnswersShown) {
+                toggleText.textContent = 'Hide All Answers';
+                toggleIcon.textContent = '🙈';
+            } else {
+                toggleText.textContent = 'Show All Answers';
+                toggleIcon.textContent = '👁';
+            }
+        }
+
+        // Sync toggle button state when individual answers are clicked
+        document.querySelectorAll('.answer-details').forEach(details => {
+            details.addEventListener('toggle', function() {
+                const allDetails = document.querySelectorAll('.answer-details');
+                const openDetails = document.querySelectorAll('.answer-details[open]');
+                const toggleText = document.querySelector('.toggle-text');
+                const toggleIcon = document.querySelector('.toggle-icon');
+
+                if (openDetails.length === allDetails.length) {
+                    allAnswersShown = true;
+                    toggleText.textContent = 'Hide All Answers';
+                    toggleIcon.textContent = '🙈';
+                } else if (openDetails.length === 0) {
+                    allAnswersShown = false;
+                    toggleText.textContent = 'Show All Answers';
+                    toggleIcon.textContent = '👁';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

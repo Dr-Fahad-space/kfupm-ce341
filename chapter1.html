@@ -8,6 +8,100 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Toggle All Button */
+        .toggle-all-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+        .toggle-all-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        .toggle-all-btn:active {
+            transform: translateY(0);
+        }
+        .toggle-icon {
+            font-size: 1.1rem;
+        }
+
+        /* Answer Details/Summary */
+        .answer-details {
+            margin-top: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .answer-summary {
+            background: #f8f9fa;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            user-select: none;
+            list-style: none;
+        }
+        .answer-summary::-webkit-details-marker {
+            display: none;
+        }
+        .answer-summary:hover {
+            background: #e9ecef;
+            color: #5a6fd6;
+        }
+        .chevron {
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+        }
+        .answer-details[open] .chevron {
+            transform: rotate(90deg);
+        }
+        .answer-content {
+            padding: 1rem 1rem 0.5rem 1rem;
+            animation: slideDown 0.3s ease;
+            background: #f8f9fa;
+            border-radius: 0 0 8px 8px;
+            margin-top: -8px;
+            padding-top: 1.5rem;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .answer-content .text-body {
+            margin: 0;
+            color: #2d3748;
+        }
+
+        /* Question block styling */
+        .question-block {
+            margin-bottom: 1.5rem;
+        }
+        .question-block .text-body {
+            margin-bottom: 0.5rem;
+        }
+    </style>
 </head>
 <body>
     <nav class="site-nav">
@@ -232,104 +326,138 @@
                         <em>Answer each question in one to two sentences. Bloom's taxonomy level is shown for self-assessment.</em>
                     </p>
 
-                    <div class="sample-problem-box">
+                    <button class="toggle-all-btn" onclick="toggleAllAnswers()">
+                        <span class="toggle-icon">👁</span> <span class="toggle-text">Show All Answers</span>
+                    </button>
+
+                    <div class="sample-problem-box question-block">
                         <div class="question-header">Q1 — Bloom's Level: Remember</div>
-                        <div class="qa-pair">
-                            <p class="text-body">
-                                <strong>Question:</strong> Define mobility and accessibility.<br>
-                                <strong>Answer:</strong> Mobility is the ability to move people and goods from one place to another, while accessibility is the ability to reach desired destinations such as jobs, services, and markets.
-                            </p>
-                        </div>
+                        <p class="text-body"><strong>Question:</strong> Define mobility and accessibility.</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> Mobility is the ability to move people and goods from one place to another, while accessibility is the ability to reach desired destinations such as jobs, services, and markets.</p>
+                            </div>
+                        </details>
                     </div>
 
-                    <div class="sample-problem-box">
+                    <div class="sample-problem-box question-block">
                         <div class="question-header">Q2 — Bloom's Level: Understand</div>
-                        <div class="qa-pair">
-                            <p class="text-body">
-                                <strong>Question:</strong> Why is a transport system with high mobility but low accessibility considered unsuccessful?<br>
-                                <strong>Answer:</strong> Because fast movement alone is not valuable if the system does not connect people and goods to the destinations they need to reach.
-                            </p>
-                        </div>
+                        <p class="text-body"><strong>Question:</strong> Why is a transport system with high mobility but low accessibility considered unsuccessful?</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> Because fast movement alone is not valuable if the system does not connect people and goods to the destinations they need to reach.</p>
+                            </div>
+                        </details>
                     </div>
 
-                    <div class="sample-problem-box">
+                    <div class="sample-problem-box question-block">
                         <div class="question-header">Q3 — Bloom's Level: Understand</div>
-                        <div class="qa-pair">
-                            <p class="text-body">
-                                <strong>Question:</strong> Give one reason transportation engineering is more "dynamic" than many other civil engineering fields.<br>
-                                <strong>Answer:</strong> Transportation system performance changes with demand, weather, incidents, and user decisions, so operating conditions are not constant.
-                            </p>
-                        </div>
+                        <p class="text-body"><strong>Question:</strong> Give one reason transportation engineering is more "dynamic" than many other civil engineering fields.</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> Transportation system performance changes with demand, weather, incidents, and user decisions, so operating conditions are not constant.</p>
+                            </div>
+                        </details>
                     </div>
 
-                    <div class="sample-problem-box">
+                    <div class="sample-problem-box question-block">
                         <div class="question-header">Q4 — Bloom's Level: Apply</div>
-                        <div class="qa-pair">
-                            <p class="text-body">
-                                <strong>Question:</strong> Classify the following as a user, vehicle, infrastructure, or control/management component: "a pedestrian crossing signal."<br>
-                                <strong>Answer:</strong> Control/management component, because it regulates movement and organizes interaction between users.
-                            </p>
-                        </div>
+                        <p class="text-body"><strong>Question:</strong> Classify the following as a user, vehicle, infrastructure, or control/management component: "a pedestrian crossing signal."</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> Control/management component, because it regulates movement and organizes interaction between users.</p>
+                            </div>
+                        </details>
                     </div>
 
-                    <div class="sample-problem-box">
+                    <div class="sample-problem-box question-block">
                         <div class="question-header">Q5 — Bloom's Level: Understand</div>
-                        <div class="qa-pair">
-                            <p class="text-body">
-                                <strong>Question:</strong> Explain briefly why human behavior is especially important in transportation engineering.<br>
-                                <strong>Answer:</strong> Because transportation system performance depends on user perception, reaction time, and decision-making, which vary and are not fully predictable.
-                            </p>
-                        </div>
+                        <p class="text-body"><strong>Question:</strong> Explain briefly why human behavior is especially important in transportation engineering.</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> Because transportation system performance depends on user perception, reaction time, and decision-making, which vary and are not fully predictable.</p>
+                            </div>
+                        </details>
                     </div>
 
-                    <div class="sample-problem-box">
+                    <div class="sample-problem-box question-block">
                         <div class="question-header">Q6 — Bloom's Level: Understand</div>
-                        <div class="qa-pair">
-                            <p class="text-body">
-                                <strong>Question:</strong> Why do vehicle characteristics matter in roadway design?<br>
-                                <strong>Answer:</strong> Differences in size, weight, acceleration, and maneuverability affect capacity, safety, and the space required for vehicle movement.
-                            </p>
-                        </div>
+                        <p class="text-body"><strong>Question:</strong> Why do vehicle characteristics matter in roadway design?</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> Differences in size, weight, acceleration, and maneuverability affect capacity, safety, and the space required for vehicle movement.</p>
+                            </div>
+                        </details>
                     </div>
 
-                    <div class="sample-problem-box">
+                    <div class="sample-problem-box question-block">
                         <div class="question-header">Q7 — Bloom's Level: Remember</div>
-                        <div class="qa-pair">
-                            <p class="text-body">
-                                <strong>Question:</strong> List five major modes of transportation.<br>
-                                <strong>Answer:</strong> Road (highway), rail, air, maritime, and public transportation.
-                            </p>
-                        </div>
+                        <p class="text-body"><strong>Question:</strong> List five major modes of transportation.</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> Road (highway), rail, air, maritime, and public transportation.</p>
+                            </div>
+                        </details>
                     </div>
 
-                    <div class="sample-problem-box">
+                    <div class="sample-problem-box question-block">
                         <div class="question-header">Q8 — Bloom's Level: Understand</div>
-                        <div class="qa-pair">
-                            <p class="text-body">
-                                <strong>Question:</strong> Explain one advantage of rail transportation compared with road transportation.<br>
-                                <strong>Answer:</strong> Rail can move high volumes of passengers or freight efficiently on fixed routes, especially for corridor-based demand.
-                            </p>
-                        </div>
+                        <p class="text-body"><strong>Question:</strong> Explain one advantage of rail transportation compared with road transportation.</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> Rail can move high volumes of passengers or freight efficiently on fixed routes, especially for corridor-based demand.</p>
+                            </div>
+                        </details>
                     </div>
 
-                    <div class="sample-problem-box">
+                    <div class="sample-problem-box question-block">
                         <div class="question-header">Q9 — Bloom's Level: Apply</div>
-                        <div class="qa-pair">
-                            <p class="text-body">
-                                <strong>Question:</strong> A project goal is to reduce conflicts at a busy intersection during peak hour. Is this more aligned with traffic engineering or transportation engineering? Explain briefly.<br>
-                                <strong>Answer:</strong> Traffic engineering, because it focuses on roadway operations such as intersections, control, and safety.
-                            </p>
-                        </div>
+                        <p class="text-body"><strong>Question:</strong> A project goal is to reduce conflicts at a busy intersection during peak hour. Is this more aligned with traffic engineering or transportation engineering? Explain briefly.</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> Traffic engineering, because it focuses on roadway operations such as intersections, control, and safety.</p>
+                            </div>
+                        </details>
                     </div>
 
-                    <div class="sample-problem-box">
+                    <div class="sample-problem-box question-block">
                         <div class="question-header">Q10 — Bloom's Level: Understand</div>
-                        <div class="qa-pair">
-                            <p class="text-body">
-                                <strong>Question:</strong> Explain how control and management devices improve transportation system performance.<br>
-                                <strong>Answer:</strong> They organize movement, reduce conflicts, and manage flow through tools like signals, signs, markings, speed limits, enforcement, and ITS.
-                            </p>
-                        </div>
+                        <p class="text-body"><strong>Question:</strong> Explain how control and management devices improve transportation system performance.</p>
+                        <details class="answer-details">
+                            <summary class="answer-summary">
+                                <span class="chevron">▶</span> Show Answer
+                            </summary>
+                            <div class="answer-content">
+                                <p class="text-body"><strong>Answer:</strong> They organize movement, reduce conflicts, and manage flow through tools like signals, signs, markings, speed limits, enforcement, and ITS.</p>
+                            </div>
+                        </details>
                     </div>
                 </div>
             </div>
@@ -339,5 +467,51 @@
     <footer class="site-footer">
         <p>© 2026 KFUPM CE341 - Transportation Engineering | All rights reserved</p>
     </footer>
+
+    <script>
+        // Global state to track if all answers are shown
+        let allAnswersShown = false;
+
+        // Toggle all answers
+        function toggleAllAnswers() {
+            const allDetails = document.querySelectorAll('.answer-details');
+            const toggleText = document.querySelector('.toggle-text');
+            const toggleIcon = document.querySelector('.toggle-icon');
+
+            allAnswersShown = !allAnswersShown;
+
+            allDetails.forEach(details => {
+                details.open = allAnswersShown;
+            });
+
+            if (allAnswersShown) {
+                toggleText.textContent = 'Hide All Answers';
+                toggleIcon.textContent = '🙈';
+            } else {
+                toggleText.textContent = 'Show All Answers';
+                toggleIcon.textContent = '👁';
+            }
+        }
+
+        // Sync toggle button state when individual answers are clicked
+        document.querySelectorAll('.answer-details').forEach(details => {
+            details.addEventListener('toggle', function() {
+                const allDetails = document.querySelectorAll('.answer-details');
+                const openDetails = document.querySelectorAll('.answer-details[open]');
+                const toggleText = document.querySelector('.toggle-text');
+                const toggleIcon = document.querySelector('.toggle-icon');
+
+                if (openDetails.length === allDetails.length) {
+                    allAnswersShown = true;
+                    toggleText.textContent = 'Hide All Answers';
+                    toggleIcon.textContent = '🙈';
+                } else if (openDetails.length === 0) {
+                    allAnswersShown = false;
+                    toggleText.textContent = 'Show All Answers';
+                    toggleIcon.textContent = '👁';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
