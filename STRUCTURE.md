@@ -25,11 +25,9 @@ ce341/
 │   └── chapter6.md
 ├── 📁 quizzes/                      # All quiz-related files
 │   ├── index.html                   # Quiz landing page (was quizzes.html)
-│   ├── quiz-comprehensive.html      # Comprehensive quiz (was quiz.html)
 │   └── quiz1-ch1-ch2.html          # Quiz 1 (was quiz1_ch1_ch2.html)
 ├── 📁 quizzes-content/              # Quiz questions in readable format
-│   ├── quiz1-ch1-ch2.md
-│   └── quiz-comprehensive.md
+│   └── quiz1-ch1-ch2.md
 └── 📁 assets/                       # CSS, images, etc.
     └── css/
         └── styles.css

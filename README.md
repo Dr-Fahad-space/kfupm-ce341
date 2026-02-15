@@ -53,12 +53,10 @@ ce341/
 │
 ├── 📁 quizzes/                      # All quiz-related files
 │   ├── index.html                  # Quiz landing page
-│   ├── quiz-comprehensive.html     # Comprehensive quiz (Ch 1-3)
 │   └── quiz1-ch1-ch2.html          # Quiz 1 (Ch 1-2)
 │
 ├── 📁 quizzes-content/              # Quiz questions in readable format
-│   ├── quiz1-ch1-ch2.md
-│   └── quiz-comprehensive.md
+│   └── quiz1-ch1-ch2.md
 │
 ├── 📁 assets/                       # CSS, images, etc.
 │   └── css/
