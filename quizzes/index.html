@@ -30,6 +30,7 @@
             overflow: hidden;
         }
 
+        /* Interactive hover effects like chapter cards */
         .quiz-card:hover {
             border-color: var(--cta);
             transform: translateY(-4px);
@@ -57,21 +58,21 @@
             background: var(--cta);
         }
 
-        /* Coming Soon Quiz Card */
+        /* Coming Soon Quiz Card - with hover effects like chapter cards */
         .quiz-card.coming-soon {
-            opacity: 0.6;
+            opacity: 0.7;
             cursor: default;
             background: var(--panel-muted);
         }
 
         .quiz-card.coming-soon:hover {
-            border-color: var(--border);
-            transform: none;
-            box-shadow: var(--shadow-sm);
+            border-color: var(--cta);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
 
         .quiz-card.coming-soon:hover .quiz-title {
-            color: var(--ink);
+            color: var(--cta);
         }
 
         /* Status Badge */
@@ -267,28 +268,76 @@
                 </span>
             </a>
 
-            <!-- Quiz 3 - Coming Soon (Placeholder) -->
+            <!-- Quiz 2 - Coming Soon -->
+            <div class="quiz-card coming-soon">
+                <span class="quiz-status soon">
+                    <span class="status-dot"></span>
+                    Coming Soon
+                </span>
+                <span class="quiz-number">Quiz 2</span>
+                <h2 class="quiz-title">Chapter 3 Only</h2>
+                <p class="quiz-chapters">Covers: Characteristics of Road Users, Vehicles, and Roads</p>
+                <p class="quiz-note">Content will be added after the quiz is administered in class</p>
+            </div>
+
+            <!-- Quiz 3 - Coming Soon -->
             <div class="quiz-card coming-soon">
                 <span class="quiz-status soon">
                     <span class="status-dot"></span>
                     Coming Soon
                 </span>
                 <span class="quiz-number">Quiz 3</span>
-                <h2 class="quiz-title">Chapters 4 & 5 Review</h2>
-                <p class="quiz-chapters">Covers: Traffic Engineering Studies, Highway Design Standards</p>
-                <p class="quiz-note">Content will be added soon</p>
+                <h2 class="quiz-title">Chapter TBD Review</h2>
+                <p class="quiz-chapters">Chapter to be determined</p>
+                <p class="quiz-note">Content will be added after the quiz is administered in class</p>
             </div>
 
-            <!-- Quiz 4 - Coming Soon (Placeholder) -->
+            <!-- Quiz 4 - Coming Soon -->
             <div class="quiz-card coming-soon">
                 <span class="quiz-status soon">
                     <span class="status-dot"></span>
                     Coming Soon
                 </span>
                 <span class="quiz-number">Quiz 4</span>
-                <h2 class="quiz-title">Chapters 6 & Final Review</h2>
-                <p class="quiz-chapters">Covers: Traffic Safety, Course Overview</p>
-                <p class="quiz-note">Content will be added soon</p>
+                <h2 class="quiz-title">Chapter TBD Review</h2>
+                <p class="quiz-chapters">Chapter to be determined</p>
+                <p class="quiz-note">Content will be added after the quiz is administered in class</p>
+            </div>
+
+            <!-- Quiz 5 - Coming Soon -->
+            <div class="quiz-card coming-soon">
+                <span class="quiz-status soon">
+                    <span class="status-dot"></span>
+                    Coming Soon
+                </span>
+                <span class="quiz-number">Quiz 5</span>
+                <h2 class="quiz-title">Chapter TBD Review</h2>
+                <p class="quiz-chapters">Chapter to be determined</p>
+                <p class="quiz-note">Content will be added after the quiz is administered in class</p>
+            </div>
+
+            <!-- Quiz 6 - Coming Soon -->
+            <div class="quiz-card coming-soon">
+                <span class="quiz-status soon">
+                    <span class="status-dot"></span>
+                    Coming Soon
+                </span>
+                <span class="quiz-number">Quiz 6</span>
+                <h2 class="quiz-title">Chapter TBD Review</h2>
+                <p class="quiz-chapters">Chapter to be determined</p>
+                <p class="quiz-note">Content will be added after the quiz is administered in class</p>
+            </div>
+
+            <!-- Quiz 7 - Coming Soon (Final Review) -->
+            <div class="quiz-card coming-soon">
+                <span class="quiz-status soon">
+                    <span class="status-dot"></span>
+                    Coming Soon
+                </span>
+                <span class="quiz-number">Quiz 7</span>
+                <h2 class="quiz-title">Final Review</h2>
+                <p class="quiz-chapters">Comprehensive review covering all course material</p>
+                <p class="quiz-note">Content will be added after the quiz is administered in class</p>
             </div>
         </div>
     </main>
