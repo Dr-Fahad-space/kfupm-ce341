@@ -1,1140 +1,890 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transportation Engineering Textbook - Chapter 3</title>
+    <title>Chapter 3 - Characteristics of the Driver, Pedestrian, Vehicle, and Road | CE341</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Georgia:ital,wght@0,400;0,700;1,400;1,700&family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <style>
-      /* Base Reset & Typography */
-      html {
-        box-sizing: border-box;
-        font-size: 16px;
-      }
-      *,
-      *:before,
-      *:after {
-        box-sizing: inherit;
-      }
-      body {
-        max-width: 880px;
-        margin: 0 auto;
-        padding: 4rem 80px;
-        font-family: 'Georgia', serif;
-        line-height: 1.6;
-        color: #333;
-        background-color: #fff;
-        position: relative;
-      }
-
-      /* Chapter Styling */
-      .chapter-header {
-        text-align: center;
-        margin-bottom: 3rem;
-        border-bottom: 2px solid #000;
-        padding-bottom: 1rem;
-      }
-      .chapter-title {
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin: 0 0 0.5rem 0;
-        color: #000;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-      .chapter-subtitle {
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        font-size: 1.5rem;
-        font-weight: 400;
-        margin: 0;
-        color: #444;
-      }
-
-      /* Section Styling */
-      .section-title {
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-top: 2.5rem;
-        margin-bottom: 1rem;
-        color: #2c3e50;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 0.3rem;
-      }
-      .subsection-title {
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        font-size: 1.25rem;
-        font-weight: 700;
-        margin-top: 2rem;
-        margin-bottom: 0.8rem;
-        color: #34495e;
-      }
-
-      /* Content Blocks */
-      .text-body {
-        margin-bottom: 1.2rem;
-        text-align: justify;
-      }
-
-      .learning-objectives,
-      .key-vocabulary {
-        background-color: #f8f9fa;
-        border-left: 4px solid #2c3e50;
-        padding: 1.5rem;
-        margin: 2rem 0;
-      }
-
-      /* Example boxes - professional green */
-      .example-box {
-        background-color: #f0f8f4;
-        border-left: 4px solid #2d6a4f;
-        padding: 1.5rem;
-        margin: 2rem 0;
-      }
-
-      /* Sample problem boxes - professional burgundy */
-      .sample-problem-box {
-        background-color: #faf5f5;
-        border-left: 4px solid #6d2932;
-        padding: 1.5rem;
-        margin: 1.5rem 0;
-      }
-
-      .box-title {
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        font-weight: 700;
-        font-size: 1.1rem;
-        margin-top: 0;
-        margin-bottom: 1rem;
-        display: block;
-        color: #2c3e50;
-      }
-
-      .bloom-level {
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        font-size: 0.9rem;
-        font-weight: bold;
-        color: #666;
-        margin-bottom: 0.5rem;
-        display: block;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
-
-      /* Lists */
-      ul,
-      ol {
-        margin-bottom: 1.5rem;
-        padding-left: 2rem;
-      }
-      li {
-        margin-bottom: 0.5rem;
-      }
-      li strong {
-        color: #2c3e50;
-      }
-
-      /* Practice Questions */
-      .practice-questions {
-        margin-top: 4rem;
-        padding-top: 2rem;
-        border-top: 3px double #ccc;
-      }
-      .question-block {
-        margin-bottom: 2rem;
-      }
-      .question-header {
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        font-weight: 700;
-        color: #555;
-        margin-bottom: 0.3rem;
-      }
-      .qa-pair {
-        margin-left: 1rem;
-      }
-
-      /* Utilities */
-      .section-divider {
-        border: 0;
-        height: 1px;
-        background: #ccc;
-        margin: 3rem 0;
-      }
-
-      b,
-      strong {
-        font-weight: 700;
-      }
-
-      i,
-      em {
-        font-style: italic;
-      }
-
-      a {
-        color: #0056b3;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-
-      /* Arabic Support */
-      span[dir='RTL'] {
-        font-family: 'Times New Roman', serif;
-      }
+        :root {
+            --c1:#1F6F54; --c2:#3D7A4C; --c3:#B38B2E;
+            --c4:#C1682D; --c5:#8E3A2B; --c6:#551427;
+        }
+        html { background-color: #f5f5f5 !important; height: 100%; overflow-x: hidden !important; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Lora', Georgia, serif; color: #141413; background-color: #f5f5f5 !important; line-height: 1.7; min-height: 100vh; height: 100%; overflow-x: hidden !important; width: 100%; }
+        .navbar { background-color: #ffffff; padding: 1.2rem 2rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.08); width: 100%; overflow-x: hidden; }
+        .nav-container { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 3rem; justify-content: space-between; }
+        .nav-left { display: flex; align-items: center; gap: 3rem; flex: 1; }
+        .logo { font-size: 1rem; font-weight: 600; color: #141413; text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 0.5rem; letter-spacing: 0.5px; }
+        .logo-icon { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: linear-gradient(135deg, #da7756 0%, #c66344 100%); border-radius: 4px; color: white; font-weight: bold; font-size: 0.9rem; }
+        .nav-tabs { display: flex; gap: 2rem; align-items: center; }
+        .nav-tabs a { color: #6b6b6b; text-decoration: none; font-size: 0.95rem; padding: 0.5rem 0; border-bottom: 2px solid transparent; transition: all 0.3s ease; cursor: pointer; white-space: nowrap; }
+        .nav-tabs a:hover { color: #141413; }
+        .nav-tabs a.active { color: #da7756; background-color: #fff5f2; padding: 0.6rem 1rem; border-radius: 4px; border-bottom: none; }
+        .practice-btn { background-color: #da7756; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 6px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; white-space: nowrap; text-decoration: none; }
+        .practice-btn:hover { background-color: #c66344; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(218,119,86,0.25); }
+        .page-wrapper { max-width: 900px; margin: 2rem auto; background-color: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); width: 90%; overflow: hidden; }
+        .chapter-header-section { padding: 3rem 2rem; text-align: center; border-bottom: 1px solid #e8e6dc; }
+        .chapter-label { font-size: 0.9rem; color: #9a9a9a; letter-spacing: 1.5px; margin-bottom: 1.5rem; font-weight: 600; }
+        .chapter-title { font-size: 2.4rem; color: #141413; margin-bottom: 1.5rem; font-weight: bold; letter-spacing: 0.5px; line-height: 1.3; }
+        .chapter-subtitle { font-size: 1rem; color: #8b8b8b; font-weight: 500; margin-bottom: 2rem; letter-spacing: 0.3px; }
+        .chapter-divider { width: 100px; height: 2px; background-color: #141413; margin: 2rem auto; }
+        .chapter-intro { font-size: 0.95rem; color: #3a3a38; line-height: 1.9; text-align: justify; }
+        .main-content { max-width: 850px; margin: 0 auto; padding: 2rem; }
+        .chapter-controls { text-align: center; margin: 2rem 0 3rem 0; }
+        .toggle-all-btn { background-color: #da7756; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 6px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+        .toggle-all-btn:hover { background-color: #c66344; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(218,119,86,0.3); }
+        .box { padding: 1.5rem; margin: 1.5rem 0; border-radius: 8px; border-left: 4px solid #da7756; background-color: #faf9f5; }
+        .learning-objectives { background-color: #f0e9e0; border-left-color: #da7756; }
+        .learning-objectives h3 { color: #da7756; margin-bottom: 1rem; font-size: 1.1rem; }
+        .learning-objectives ul { list-style: none; padding-left: 0; }
+        .learning-objectives li { padding-left: 1.5rem; margin-bottom: 0.8rem; position: relative; display: flex; align-items: flex-start; gap: 0.8rem; flex-wrap: wrap; }
+        .learning-objectives li:before { content: "✓"; position: absolute; left: 0; color: #da7756; font-weight: bold; }
+        .section-heading-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 2.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; background-color: #f0e9e0; border-left: 4px solid #da7756; border-radius: 6px; padding: 0.75rem 1.25rem; }
+        .section-heading { font-size: 1.5rem; color: #141413; font-weight: bold; margin: 0; }
+        .subsection-heading-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; background-color: #faf6f2; border-left: 3px solid #e8c4b0; border-radius: 4px; padding: 0.5rem 1rem; }
+        .subsection-heading { font-size: 1.15rem; color: #141413; margin: 0; }
+        .section-number { display: inline-block; margin-right: 0.5rem; color: #da7756; font-weight: bold; }
+        .lo-header-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .lo-header-row h3 { margin: 0; color: #da7756; font-size: 1.1rem; }
+        .bloom-chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px 6px 8px; border-radius: 999px; color: #fff; font-size: 12px; font-weight: 800; letter-spacing: .1px; box-shadow: 0 4px 10px rgba(20,32,24,.10); white-space: nowrap; flex-shrink: 0; }
+        .bloom-chip .dot { width: 10px; height: 10px; border-radius: 999px; background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 2px rgba(255,255,255,.28); }
+        .bloom-chip[data-lvl="1"] { background: var(--c1); }
+        .bloom-chip[data-lvl="2"] { background: var(--c2); }
+        .bloom-chip[data-lvl="3"] { background: var(--c3); }
+        .bloom-chip[data-lvl="4"] { background: var(--c4); }
+        .bloom-chip[data-lvl="5"] { background: var(--c5); }
+        .bloom-chip[data-lvl="6"] { background: var(--c6); }
+        .section-text { color: #3a3a38; margin-bottom: 1.5rem; line-height: 1.8; }
+        .example-box { background-color: #faf6f6; border: 1px solid #e8e6dc; border-left: 4px solid #6b2c3e; }
+        .example-box h3 { color: #6b2c3e; margin-bottom: 1rem; }
+        .toggleable-item { margin: 1.5rem 0; border: 1px solid #e8e6dc; border-radius: 6px; overflow: hidden; background-color: white; border-left: 4px solid #6b2c3e; }
+        .toggle-header { display: flex; align-items: flex-start; padding: 1.2rem; background-color: #faf6f6; user-select: none; }
+        .example-number { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 32px; min-width: 40px; margin-right: 1rem; background-color: #6b2c3e; color: white; border-radius: 6px; font-size: 0.82rem; font-weight: bold; flex-shrink: 0; margin-top: 0.1rem; }
+        .toggle-label { font-weight: 600; color: #141413; flex: 1; text-align: left; line-height: 1.6; display: flex; flex-direction: column; gap: 0.25rem; }
+        .example-question-preview { font-weight: normal; color: #3a3a38; font-size: 0.95rem; line-height: 1.6; }
+        .toggle-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 1.2rem; }
+        .toggleable-item.open .toggle-content { max-height: 4000px; padding: 0 1.2rem 1.2rem; }
+        .toggle-content-inner { padding-top: 1rem; border-top: 1px solid #e8e6dc; color: #3a3a38; line-height: 1.8; }
+        .toggle-content-inner p { margin-bottom: 0.8rem; }
+        .toggle-content-inner ul, .toggle-content-inner ol { margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.8rem; }
+        .toggle-content-inner li { margin-bottom: 0.4rem; }
+        .show-answer-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1.2rem; cursor: pointer; background: none; border: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.2px; transition: opacity 0.2s; border-top: 1px solid #e8e6dc; }
+        .show-answer-btn:hover { opacity: 0.75; }
+        .show-answer-btn .sa-icon { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 4px; color: white; font-size: 1.1rem; font-weight: bold; transition: transform 0.3s ease; flex-shrink: 0; }
+        .show-answer-btn.burgundy { color: #6b2c3e; }
+        .show-answer-btn.burgundy .sa-icon { background-color: #6b2c3e; }
+        .show-answer-btn.green { color: #3D7A4C; }
+        .show-answer-btn.green .sa-icon { background-color: #3D7A4C; }
+        .toggleable-item.open .show-answer-btn .sa-icon,
+        .question-item.open .show-answer-btn .sa-icon { transform: rotate(45deg); }
+        .toggleable-item.open .show-answer-btn .sa-text::after,
+        .question-item.open .show-answer-btn .sa-text::after { content: attr(data-hide); }
+        .sa-text::after { content: attr(data-show); }
+        .end-of-chapter { margin-top: 4rem; padding-top: 2rem; border-top: 3px solid #da7756; }
+        .end-of-chapter-title { font-size: 1.8rem; color: #141413; margin-bottom: 2rem; font-weight: bold; border-left: 4px solid #da7756; padding-left: 1rem; }
+        .question-item { margin: 2rem 0; border: 1px solid #e8e6dc; border-radius: 6px; overflow: hidden; background-color: white; }
+        .question-header { display: flex; align-items: flex-start; padding: 1.2rem; background-color: #faf9f5; user-select: none; }
+        .question-number { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; min-width: 32px; margin-right: 1rem; background-color: #788c5d; color: white; border-radius: 50%; font-size: 0.9rem; font-weight: bold; flex-shrink: 0; margin-top: 0.1rem; }
+        .question-content { flex: 1; }
+        .question-text { font-weight: 600; color: #141413; line-height: 1.6; display: block; }
+        .question-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 1.2rem; }
+        .question-item.open .question-answer { max-height: 4000px; padding: 0 1.2rem 1.2rem; }
+        .question-answer-inner { padding-top: 1rem; border-top: 1px solid #e8e6dc; color: #3a3a38; line-height: 1.8; }
+        .question-answer-inner p { margin-bottom: 0.8rem; }
+        .question-answer-inner ul, .question-answer-inner ol { margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.8rem; }
+        .question-answer-inner li { margin-bottom: 0.4rem; }
+        .answer-label { font-weight: 600; color: #788c5d; margin-bottom: 0.5rem; display: block; }
+        .question-chip-area { display: flex; align-items: flex-start; margin-left: 1rem; flex-shrink: 0; }
+        .subheading { font-size: 1.1rem; font-weight: 700; color: #141413; margin: 1.5rem 0 0.5rem 0; }
+        footer { background-color: #141413; color: #e8e6dc; text-align: center; padding: 2rem; margin-top: 4rem; }
+        .content-section { margin-bottom: 3rem; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem 0; font-size: 0.9rem; }
+        table th, table td { border: 1px solid #e8e6dc; padding: 0.5rem 0.75rem; text-align: center; }
+        table th { background-color: #f0e9e0; color: #141413; font-weight: 600; }
+        table tr:nth-child(even) td { background-color: #faf9f5; }
+        @media (max-width: 768px) {
+            .nav-tabs { gap: 1rem; font-size: 0.85rem; }
+            .chapter-header-section { padding: 2rem 1.5rem; }
+            .chapter-title { font-size: 1.8rem; }
+            .main-content { padding: 1.5rem; }
+        }
     </style>
-  </head>
-  <body>
-    <!-- CHAPTER 3 -->
-    <header class="chapter-header">
-      <h1 class="chapter-title">Chapter 3</h1>
-      <h2 class="chapter-subtitle">Characteristics of the Driver, the Pedestrian, the Vehicle and the Road</h2>
-    </header>
-
-    <div class="chapter-content">
-      <p class="text-body">
-        Highway transportation systems look simple on the surface-people drive along roads in vehicles-but the system's
-        performance and safety depend on several interacting components. This chapter organizes the highway mode of
-        transportation into four core components: <b>the driver</b>, <b>the pedestrian</b>, <b>the vehicle</b>, and <b>the road</b>.
-        A practical engineer must understand both the capabilities and the limitations of each component, because design
-        decisions (geometry, control devices, and operating policies) must be compatible with real users and real vehicles.
-      </p>
-
-      <p class="text-body">
-        A key theme is <b>variability</b>. Drivers differ in perception, decision-making, and reaction. Pedestrians vary in walking speed
-        and attention. Vehicles vary in size, weight, acceleration, and braking. Roads vary in alignment, grade, surface condition,
-        and sight distance. Because traffic engineering is not an exact science, design commonly uses <b>percentile-based criteria</b>
-        (for example, 85th or 95th percentile capabilities) to cover most users under most conditions.
-      </p>
-
-      <div class="learning-objectives">
-        <span class="box-title">Learning expectations for this chapter (Bloom's levels)</span>
-        <p class="text-body">By the end of this chapter, it should be possible to:</p>
-        <ul>
-          <li><b>Remember:</b> list the four components of the highway transportation system; define key terms (visual acuity, peripheral vision, PIEV, superelevation, side friction, SSD, PSD).</li>
-          <li><b>Understand:</b> explain why driver and pedestrian limitations must be reflected in design criteria and why variability drives the use of percentiles.</li>
-          <li><b>Apply:</b> compute braking distance, stopping sight distance, and minimum curve radius using standard design equations (with correct units and grade sign conventions).</li>
-          <li><b>Analyze:</b> distinguish static, kinematic, and dynamic vehicle characteristics and connect each to specific roadway design elements (e.g., lane width, ramp length, curve design).</li>
-          <li><b>Evaluate:</b> interpret how changes in grade, friction, superelevation, or perception-reaction time change safety margins.</li>
-        </ul>
-      </div>
-
-      <div class="key-vocabulary">
-        <span class="box-title">Key vocabulary used in this chapter</span>
-        <p class="text-body">
-          <b>PIEV / perception-reaction process:</b> Perception, Identification, Emotion, Volition (reaction)-the sub-processes that determine how long it takes a road user to respond to a stimulus.<br>
-          <b>Perception-reaction time (t):</b> the elapsed time from first noticing a stimulus to completing the initial response (e.g., brake application).<br>
-          <b>Visual acuity:</b> ability to see fine detail; commonly described using the Snellen fraction (e.g., 6/6).<br>
-          <b>Peripheral vision:</b> ability to detect objects outside the cone of clearest vision; generally narrows as speed increases.<br>
-          <b>Design vehicle:</b> a representative vehicle selected to control key geometric design dimensions (turning path, clearances, grades, etc.).<br>
-          <b>Static vehicle characteristics:</b> size and weight properties (length, width, axle loads) that influence geometry and pavement design.<br>
-          <b>Kinematic vehicle characteristics:</b> motion relationships (speed, acceleration, distance) without explicitly modeling forces.<br>
-          <b>Dynamic vehicle characteristics:</b> forces that cause/oppose motion (air, grade, rolling, and curve resistance) and the power needed to overcome them.<br>
-          <b>Braking distance (D<sub>b</sub>):</b> distance required to decelerate from an initial speed to a final speed under a specified deceleration and grade.<br>
-          <b>Superelevation (e):</b> roadway cross-slope on a curve used to help counteract lateral acceleration.<br>
-          <b>Side friction factor (f<sub>s</sub>):</b> lateral tire-pavement friction used (together with superelevation) to balance centripetal demand on a curve.<br>
-          <b>Stopping sight distance (SSD):</b> minimum distance needed for a driver to perceive an object and stop before reaching it.<br>
-          <b>Passing sight distance (PSD):</b> minimum distance needed to complete a passing maneuver on a two-lane, two-way road.
-        </p>
-      </div>
-
-      <h3 class="section-title">3.1 Introduction: Four components of the highway system</h3>
-      <span class="bloom-level">Required Bloom level for this section: Remember + Understand</span>
-
-      <div class="learning-objectives">
-        <span class="box-title">Learning Objectives for Section 3.1</span>
-        <ul>
-          <li>Explain why highway designs use percentile-based criteria rather than mean values</li>
-          <li>Identify appropriate design percentiles (85th, 95th) for different design situations</li>
-          <li>List the four components of the highway transportation system and their interactions</li>
-        </ul>
-      </div>
-
-      <div class="key-vocabulary">
-        <span class="box-title">Key Terms — Design Philosophy</span>
-        <p class="text-body">
-          <b>Design percentile:</b> The percentile of user-performance chosen as the design standard (e.g., 85th or 95th percentile).<br>
-          <b>85th percentile:</b> Accommodates 85% of the population; 15% exceed the design value.<br>
-          <b>95th percentile:</b> More conservative threshold used when consequences of exceeding design are severe.
-        </p>
-      </div>
-
-      <h4 class="subsection-title">3.1.1 Design Philosophy: Designing for a Range of Users</h4>
-      <span class="bloom-level">Required Bloom level for this subsection: Understand + Analyze</span>
-
-      <p class="text-body">
-        Highway facilities serve a remarkably diverse population. Drivers range from teenagers to elderly individuals with declining sensory abilities. 
-        Vehicles range from compact cars to 22-metre articulated trucks. Pedestrians include fit adults, mobility-impaired individuals, and wheelchair users. 
-        Designing for the "average" member would leave many users inadequately served—an average reaction time means half of all drivers react more slowly, 
-        which is dangerous when the consequence is a collision.
-      </p>
-
-      <p class="text-body">
-        For this reason, engineers use <b>percentile-based design criteria</b>. A design based on the 85th-percentile accommodates 85% of users; 
-        one based on the 95th-percentile accommodates 95%. The choice reflects engineering judgment balancing safety against cost:
-      </p>
-      <ul>
-        <li><b>85th percentile:</b> Used for operational parameters like operating speed where consequences are manageable</li>
-        <li><b>95th percentile:</b> Reserved for safety-critical parameters where non-accommodation is life-threatening (e.g., stopping sight distance)</li>
-      </ul>
-
-      <div class="example-box">
-        <span class="box-title">Design Example: Perception-Reaction Time Selection</span>
-        <p class="text-body">
-          AASHTO recommends a design PRT of <b>2.5 seconds</b> for stopping sight distance calculations. This value encompasses approximately 
-          <b>90% of drivers</b> under most conditions—a deliberate choice exceeding the 85th percentile because the consequence of insufficient 
-          reaction time is a potential crash.
-        </p>
-      </div>
-
-      <p class="text-body">
-        When stakes are higher—complex interchanges, school zones, or facilities serving predominantly elderly populations—engineers should 
-        consider using higher percentiles or supplementary safety measures. Percentile-based design is not arbitrary conservatism; it is a 
-        rational, quantitative method for managing inherent variability in human performance.
-      </p>
-
-      <h4 class="subsection-title">3.1.2 The Four Components</h4>
-      <span class="bloom-level">Required Bloom level for this subsection: Remember</span>
-
-      <p class="text-body">
-        The highway transportation system consists of four interacting components:
-      </p>
-      <ul>
-        <li><b>Driver:</b> perceives information (signs, vehicles, pedestrians), makes decisions, and executes control (steer, brake, accelerate).</li>
-        <li><b>Pedestrian:</b> shares space at crossings and along road edges; has different speed, perception, and vulnerability than vehicle users.</li>
-        <li><b>Vehicle:</b> provides mobility but imposes geometric and physical constraints (size, turning path, acceleration and braking limits).</li>
-        <li><b>Road:</b> the infrastructure that must provide adequate geometry, surface condition, and sight distance for expected operating speeds.</li>
-      </ul>
-
-      <p class="text-body">
-        Safe and efficient operation requires that design and control account for limitations in each component, especially under
-        common adverse conditions such as nighttime driving, rain, fatigue, distraction, or mixed traffic (trucks, buses, cars, and pedestrians).
-      </p>
-
-      <div class="example-box">
-        <span class="box-title">Section Synthesis</span>
-        <p class="text-body">
-          You should now be able to explain why percentile-based design criteria are used instead of averages, identify typical percentiles 
-          (85th and 95th) employed in highway design, and list the four components of the highway transportation system (driver, pedestrian, 
-          vehicle, and road) and their key interactions.
-        </p>
-      </div>
-
-      <h3 class="section-title">3.2 Driver characteristics</h3>
-      <span class="bloom-level">Required Bloom level for this section: Understand</span>
-
-      <div class="learning-objectives">
-        <span class="box-title">Learning Objectives for Section 3.2</span>
-        <ul>
-          <li>Describe the PIEV perception-reaction model and identify each subprocess</li>
-          <li>Apply the AASHTO-recommended design PRT of 2.5 s in stopping-distance calculations</li>
-          <li>Identify key visual perception limits and their implications for sign placement</li>
-          <li>Analyze how older driver characteristics affect design decisions</li>
-        </ul>
-      </div>
-
-      <div class="key-vocabulary">
-        <span class="box-title">Key Terms — Driver Characteristics</span>
-        <p class="text-body">
-          <b>PIEV model:</b> Four-stage sequence: Perception → Identification → Emotion (decision) → Volition (response).<br>
-          <b>Perception-reaction time (PRT):</b> Total elapsed time from stimulus visibility to initial physical response.<br>
-          <b>Visual acuity:</b> Ability to resolve fine details; measured by Snellen chart (e.g., 6/6 vision).<br>
-          <b>Peripheral vision:</b> Ability to detect objects outside central vision; up to 160° but narrows with speed.<br>
-          <b>Glare recovery:</b> Time for eyes to return to normal sensitivity after bright light exposure.
-        </p>
-      </div>
-
-      <p class="text-body">
-        Driver skill and perceptual abilities (seeing, hearing, evaluating, and reacting) vary widely and can degrade with alcohol,
-        fatigue, medication side effects, or time of day. For design, engineers typically select criteria aligned with a high percentile
-        capability (often the 85th or 95th percentile) to cover a broad portion of the driver population.
-      </p>
-
-      <h4 class="subsection-title">3.2.1 Visual reception</h4>
-      <span class="bloom-level">Required Bloom level for this section: Understand + Apply</span>
-
-      <p class="text-body">
-        Vision is the primary sensory input for driving. Important eye characteristics include <b>visual acuity</b>, <b>peripheral vision</b>,
-        <b>color vision</b>, <b>glare vision and recovery</b>, and <b>depth perception</b>. Visual acuity is commonly described using Snellen fractions.
-        For example, a person with 6/15 vision sees at 6 meters what a "normal" 6/6 observer can see at 15 meters.
-      </p>
-
-      <div class="example-box">
-        <span class="box-title">Example: Visual acuity and sign legibility distance (Snellen relationship)</span>
-        <p class="text-body">
-          A driver with visual acuity <b>6/10</b> can just decipher a sign at <b>6 m</b> from the sign. The equivalent "normal vision" distance is:<br>
-          <b>d(6/6) = (10/6) × 6 = 10 m</b>.<br><br>
-          Using this as the reference distance for the same sign:
-          <ul>
-            <li><b>6/4:</b> d = (6/4) × 10 = <b>15 m</b></li>
-            <li><b>6/15:</b> d = (6/15) × 10 = <b>4 m</b></li>
-          </ul>
-          The lesson for design is that reduced acuity can sharply reduce the distance available for recognition and decision-making.
-        </p>
-      </div>
-
-      <p class="text-body">
-        Peripheral vision allows a driver to detect objects outside the narrow cone of clearest vision. The peripheral cone can be
-        very wide (up to about 160°) but effectively narrows as speed increases-drivers at higher speeds "see" less to the side,
-        which supports the need for clear guidance and simplified decision points on high-speed facilities.
-      </p>
-
-      <p class="text-body">
-        Color vision supports recognition of colored control devices (signals, signs, pavement markings). Glare vision and recovery
-        become important with oncoming headlights and sudden changes from dark to bright environments. Depth perception affects
-        the ability to judge speed and distance-critical during passing maneuvers on two-lane roads.
-      </p>
-
-      <h4 class="subsection-title">3.2.2 Hearing reception</h4>
-      <span class="bloom-level">Required Bloom level for this section: Understand</span>
-
-      <p class="text-body">
-        Hearing is typically secondary for driving tasks, but it matters for detecting warning sounds (especially from emergency vehicles).
-        Mild hearing loss is often correctable, so it is usually less critical than vision in geometric design, but it remains relevant in the
-        overall human factors context.
-      </p>
-
-      <h4 class="subsection-title">3.2.3 Perception-reaction (PIEV) process</h4>
-      <span class="bloom-level">Required Bloom level for this section: Understand + Apply</span>
-
-      <p class="text-body">
-        The response to a roadway stimulus (for a driver, cyclist, or pedestrian) can be divided into four sub-processes:
-      </p>
-      <ol>
-        <li><b>Perception:</b> noticing the object/control device (e.g., a hazard, a sign, a signal).</li>
-        <li><b>Identification:</b> recognizing what it is and understanding the stimulus.</li>
-        <li><b>Emotion (decision):</b> choosing an action (brake, change lanes, pass, etc.).</li>
-        <li><b>Volition / reaction:</b> executing the action (initial control input).</li>
-      </ol>
-
-      <p class="text-body">
-        The total time from perception start to reaction completion is commonly called <b>perception-reaction time</b>. It varies substantially;
-        typical values range from about <b>1.2 to 3.0 s</b>, and design often uses <b>2.5 s</b> (a common high-percentile assumption). This time is a
-        fundamental input for <b>minimum sight distance</b>, <b>braking distance</b>, and even <b>signal timing</b> (e.g., amber interval).
-      </p>
-
-      <div class="example-box">
-        <span class="box-title">Example 3.1 — Distance Travelled During Perception-Reaction Time</span>
-        <p class="text-body">
-          A driver with a PRT of 2.5 s is travelling at 105 km/h when she observes an incident blocking the road ahead. 
-          Determine the distance the vehicle travels before the driver activates the brakes.
-          <br><br>
-          <b>Solution:</b>
-          <br>Step 1: Convert speed to m/s: u = 105 × (1000/3600) = 29.17 m/s
-          <br>Step 2: Distance during PRT: d = u × t = 29.17 × 2.5 = <b>72.9 m</b>
-          <br><br>
-          <i>Insight:</i> At highway speeds, the vehicle travels nearly 73 m before any braking force is applied. 
-          This distance alone is substantial and underscores why PRT is so critical to design.
-        </p>
-      </div>
-
-      <h4 class="subsection-title">3.2.4 Older drivers</h4>
-      <span class="bloom-level">Required Bloom level for this section: Understand</span>
-
-      <p class="text-body">
-        The proportion of older drivers (typically aged 65+) has grown dramatically. Aging systematically degrades sensory, cognitive, 
-        and physical capabilities that driving demands. Specific declining abilities include:
-      </p>
-      <ul>
-        <li><b>Reduced visual acuity:</b> Harder to read road signs, especially at night</li>
-        <li><b>Greater glare sensitivity:</b> Recovery time after headlights can exceed 6 seconds</li>
-        <li><b>Narrower visual fields:</b> Reduced ability to detect hazards in the periphery</li>
-        <li><b>Higher reaction times:</b> Increased distance required to respond to hazards</li>
-        <li><b>Reduced flexibility:</b> Impaired ability to check blind spots; slower steering/braking</li>
-      </ul>
-
-      <p class="text-body">
-        <b>Design Implications:</b> Sign letter sizes and retroreflectivity should account for reduced acuity. Work zones must have 
-        longer tapers and greater advance warning because older drivers process complex environments more slowly. Intersection complexity 
-        should be minimized where feasible. Where older drivers constitute a large share—near retirement communities or medical centres—
-        engineers should consider using decision sight distance rather than standard SSD.
-      </p>
-
-      <div class="example-box">
-        <span class="box-title">Section Synthesis</span>
-        <p class="text-body">
-          You should now be able to describe the four stages of the PIEV model; apply the 2.5 s design PRT to calculate distance traveled 
-          before braking begins; identify conditions where 2.5 s may be insufficient; and explain how visual acuity, peripheral vision, 
-          and glare recovery create constraints on sign placement and lighting design for older drivers.
-        </p>
-      </div>
-
-      <h3 class="section-title">3.3 Pedestrian characteristics</h3>
-      <span class="bloom-level">Required Bloom level for this section: Understand + Apply</span>
-
-      <div class="learning-objectives">
-        <span class="box-title">Learning Objectives for Section 3.3</span>
-        <ul>
-          <li>Identify walking speed as the controlling parameter for pedestrian clearance and signal timing</li>
-          <li>Apply design walking speeds to calculate required pedestrian clearance intervals</li>
-          <li>Select context-appropriate walking speeds for general vs. elderly-predominant areas</li>
-        </ul>
-      </div>
-
-      <div class="key-vocabulary">
-        <span class="box-title">Key Terms — Pedestrian Characteristics</span>
-        <p class="text-body">
-          <b>Pedestrian clearance interval:</b> Time provided in a signal cycle for pedestrians to safely complete crossing.<br>
-          <b>Design walking speed:</b> Conservative walking speed assumed for design: 1.22 m/s general; 0.88-1.07 m/s for elderly.<br>
-          <b>Accessible pedestrian signal (APS):</b> Device transmitting signal information in non-visual formats for visually impaired.
-        </p>
-      </div>
-
-      <p class="text-body">
-        Pedestrians share many relevant characteristics with drivers (vision and hearing), but their <b>walking behavior</b> is additionally critical
-        for traffic control design-especially pedestrian clearance intervals at signalized crossings.
-      </p>
-      <p class="text-body">
-        Observed walking speeds range from 0.9 to 2.4 m/s. The standard <b>design walking speed is 1.22 m/s</b> when elderly pedestrians 
-        (65+) are 20% or less of the population. When the elderly fraction exceeds 20%, the average observed speed drops to approximately 
-        <b>0.9 m/s</b>, and design values as low as 0.88 m/s are recommended. The MUTCD now recommends 1.07 m/s as a general design speed, 
-        reflecting a more inclusive philosophy.
-      </p>
-
-      <div class="example-box">
-        <span class="box-title">Example 3.3 — Pedestrian Clearance Interval Calculation</span>
-        <p class="text-body">
-          A signalised intersection has a crossing distance of 18.0 m. Determine the required pedestrian clearance interval for:
-          <br>(a) General population (design walking speed = 1.22 m/s)
-          <br>(b) Location near a senior care facility (design walking speed = 0.88 m/s)
-          <br><br>
-          <b>Solution:</b>
-          <br>(a) t = 18.0 / 1.22 = 14.8 s → <b>Use 15 s</b>
-          <br>(b) t = 18.0 / 0.88 = 20.5 s → <b>Use 21 s</b>
-          <br><br>
-          <i>Insight:</i> The elderly-predominant location requires 40% more clearance time—a substantial increase affecting cycle length and capacity.
-        </p>
-      </div>
-
-      <p class="text-body">
-        <b>Accessibility Considerations:</b> Accessible pedestrian signals (APS) provide audible tones, speech messages, or vibrating surfaces 
-        for visually impaired pedestrians. Kerb ramps are required at intersections for wheelchair access. These features do not typically 
-        change the clearance-interval calculation (governed by walking speed), but they affect physical intersection design and signal equipment.
-      </p>
-
-      <h3 class="section-title">3.4 Bicyclist characteristics</h3>
-      <span class="bloom-level">Required Bloom level for this section: Understand + Analyze</span>
-
-      <div class="learning-objectives">
-        <span class="box-title">Learning Objectives for Section 3.4</span>
-        <ul>
-          <li>Describe the AASHTO classification of bicyclists by skill and comfort level</li>
-          <li>Analyze which facility types are appropriate for each bicyclist class</li>
-          <li>Evaluate facility choices that accommodate less-confident riders</li>
-        </ul>
-      </div>
-
-      <div class="key-vocabulary">
-        <span class="box-title">Key Terms — Bicyclist Characteristics</span>
-        <p class="text-body">
-          <b>Class A bicyclist:</b> Experienced/advanced riders comfortable in mixed traffic.<br>
-          <b>Class B bicyclist:</b> Less experienced riders preferring neighbourhood streets and designated facilities.<br>
-          <b>Class C bicyclist:</b> Children riding on residential streets near schools and recreational facilities.
-        </p>
-      </div>
-
-      <p class="text-body">
-        Bicycles have become an important component of the urban highway mode. The human-factors principles discussed for automobile 
-        drivers—particularly perception and reaction—apply equally to bicyclists, but a critical additional factor is that the bicyclist 
-        is both the operator and the power source.
-      </p>
-
-      <p class="text-body">
-        <b>AASHTO Bicyclist Classification:</b>
-      </p>
-      <ul>
-        <li><b>Class A (Advanced):</b> Experienced riders who can operate comfortably in traffic on arterial streets. Operating speeds 
-        on level terrain can reach 32 km/h and exceed 70 km/h on steep downgrades.</li>
-        <li><b>Class B (Basic):</b> Prefer lower-stress environments such as neighbourhood streets and designated bicycle facilities 
-        (separated paths or buffered lanes). Speeds typically range from 12 to 20 km/h.</li>
-        <li><b>Class C (Children):</b> Operate primarily on residential streets near schools, parks, and stores.</li>
-      </ul>
-
-      <p class="text-body">
-        A complementary two-class system describes bicyclists as "experienced and confident" or "casual and less confident." The latter 
-        group—including the majority of potential cyclists—requires a well-designed, physically visible network of separated or low-volume 
-        facilities before they will choose cycling as a transportation mode.
-      </p>
-
-      <div class="example-box">
-        <span class="box-title">Design Implication</span>
-        <p class="text-body">
-          A network designed exclusively for Class A riders (e.g., shared lanes on busy arterials) will fail to serve the majority of 
-          potential cyclists. If the goal is to increase bicycling mode share, facilities must accommodate Class B and Class C users 
-          through separated bike lanes, off-street paths, and low-speed shared streets with traffic calming.
-        </p>
-      </div>
-
-      <h3 class="section-title">3.5 Vehicle characteristics</h3>
-      <span class="bloom-level">Required Bloom level for this section: Analyze</span>
-
-      <div class="learning-objectives">
-        <span class="box-title">Learning Objectives for Section 3.5</span>
-        <ul>
-          <li>Distinguish among static, kinematic, and dynamic vehicle characteristics</li>
-          <li>Select an appropriate AASHTO design vehicle for a given context</li>
-          <li>Compute acceleration distance using the constant-acceleration model</li>
-          <li>Calculate braking and stopping distance, incorporating grade and friction</li>
-        </ul>
-      </div>
-
-      <div class="key-vocabulary">
-        <span class="box-title">Key Terms — Vehicle Characteristics</span>
-        <p class="text-body">
-          <b>Design vehicle:</b> Selected vehicle whose characteristics control geometric design criteria.<br>
-          <b>Static characteristics:</b> Size and weight properties (length, width, axle loads).<br>
-          <b>Kinematic characteristics:</b> Motion properties (velocity, acceleration, distance) without regard to forces.<br>
-          <b>Dynamic characteristics:</b> Forces acting on a moving vehicle (air, grade, rolling, curve resistance).<br>
-          <b>Stopping sight distance (SSD):</b> Sum of perception-reaction distance and braking distance.
-        </p>
-      </div>
-
-      <p class="text-body">
-        Highway geometric design is partly based on vehicle characteristics. For engineering purposes, vehicle characteristics are often organized into:
-        <b>static</b> (size and weight), <b>kinematic</b> (speed/acceleration/distance relationships), and <b>dynamic</b> (forces causing or opposing motion).
-        In design, an engineer selects a <b>design vehicle</b> and uses its characteristics to set criteria for intersections, ramps, grades,
-        and sight-distance requirements.
-      </p>
-
-      <h4 class="subsection-title">3.5.1 Static characteristics: size and weight</h4>
-      <span class="bloom-level">Required Bloom level for this section: Analyze</span>
-
-      <p class="text-body">
-        The size of the design vehicle affects physical design elements such as lane width, shoulder width, parking bay dimensions, and even
-        vertical curve length. Vehicle axle loads influence pavement thickness and can constrain maximum grades (especially for heavy vehicles).
-      </p>
-
-      <p class="text-body">
-        AASHTO groups vehicles into broad classes (passenger cars, trucks, buses, recreational vehicles). Within each class, the engineer may
-        choose a specific design vehicle (e.g., a single-unit truck or a tractor-semitrailer) depending on facility function and expected traffic composition.
-      </p>
-
-      <p class="text-body">
-        Low-speed turning performance is primarily controlled by vehicle size. Trucks and buses typically require larger turning radii than passenger cars,
-        which directly affects intersection corner radii, channelization, and curb return geometry.
-      </p>
-
-      <h4 class="subsection-title">3.5.2 Kinematic characteristics: acceleration as a function of speed</h4>
-      <span class="bloom-level">Required Bloom level for this section: Apply</span>
-
-      <p class="text-body">
-        Constant acceleration is often unrealistic for vehicles. A common model relates acceleration to current speed:
-        <br><b>du/dt = α - βu</b>
-        <br>where <i>u</i> is speed, and α and β are constants. Under this model:
-      </p>
-
-      <div class="example-box">
-        <span class="box-title">Key equations: speed and distance under du/dt = α - βu</span>
-        <p class="text-body">
-          <b>Speed after time t:</b>
-          <br>u<sub>t</sub> = (α/β)(1 - e<sup>-βt</sup>) + u<sub>0</sub> e<sup>-βt</sup>
-          <br><br>
-          <b>Distance traveled by time t:</b>
-          <br>x(t) = (α/β)t - (α/β<sup>2</sup>)(1 - e<sup>-βt</sup>) + (u<sub>0</sub>/β)(1 - e<sup>-βt</sup>)
-          <br><br>
-          <b>Time to reach a target speed u<sub>t</sub>:</b>
-          <br>t = (1/β) ln[(α - βu<sub>0</sub>)/(α - βu<sub>t</sub>)]
-        </p>
-      </div>
-
-      <div class="example-box">
-        <span class="box-title">Example: Minimum ramp + acceleration-lane length</span>
-        <p class="text-body">
-          Suppose vehicle acceleration is modeled as <b>du/dt = 1.0 - 0.025u</b>, with <i>u</i> in m/s and the vehicle starting from rest (u<sub>0</sub> = 0).
-          If the target speed is 88.5 km/h (24.6 m/s), then β = 0.025 and α = 1.0:
-          <br><b>t = (1/0.025) ln[1 / (1 - 0.025×24.6)] ≈ 38.18 s</b>
-          <br><b>x(t) ≈ 543.2 m</b>
-          <br><br>
-          Interpretation: the combined ramp and acceleration lane should provide on the order of <b>540 m</b> to allow a vehicle to reach the allowable speed under this acceleration model.
-        </p>
-      </div>
-
-      <h4 class="subsection-title">3.5.3 Dynamic characteristics: resistances, power, braking, and curve design</h4>
-      <span class="bloom-level">Required Bloom level for this section: Apply + Evaluate</span>
-
-      <p class="text-body">
-        While a vehicle is in motion, resistive forces must be overcome by tractive effort from the engine. Common resistances include:
-        air resistance, grade resistance, rolling resistance, and (in curves) curve resistance. These resistances affect speed maintenance on grades,
-        heavy-vehicle performance, and the power required for a given operating condition.
-      </p>
-
-      <div class="example-box">
-        <span class="box-title">Key equations: resistive forces and required power</span>
-        <p class="text-body">
-          <b>Air resistance (N):</b>
-          <br>R<sub>a</sub> = 0.5 · (0.077 p C<sub>D</sub> A u<sup>2</sup>) / g
-          <br><span style="font-size:0.95rem;color:#555;">(p ≈ 1.277 kg/m³ at sea level; C<sub>D</sub> ≈ 0.4 passenger cars, 0.5-0.8 trucks; A in m²; u in km/h; g = 9.81 m/s²)</span>
-          <br><br>
-          <b>Grade resistance:</b> R<sub>g</sub> = W × G (G as a decimal, uphill positive)
-          <br><br>
-          <b>Rolling resistance (passenger cars):</b>
-          <br>R<sub>r</sub> = (C<sub>rs</sub> + 0.077 C<sub>rv</sub> u) W
-          <br><span style="font-size:0.95rem;color:#555;">(typical C<sub>rs</sub> ≈ 0.012; C<sub>rv</sub> ≈ 7×10<sup>-6</sup> s²/m²; u in km/h)</span>
-          <br><br>
-          <b>Rolling resistance (trucks):</b>
-          <br>R<sub>r</sub> = (C<sub>a</sub> + 0.278 C<sub>b</sub> u) W
-          <br><span style="font-size:0.95rem;color:#555;">(typical C<sub>a</sub> ≈ 0.02445; C<sub>b</sub> ≈ 0.00147; u in km/h)</span>
-          <br><br>
-          <b>Curve resistance:</b>
-          <br>R<sub>c</sub> = 0.5 · (0.077 u<sup>2</sup> W) / (g R)
-          <br><br>
-          <b>Power required (horsepower):</b>
-          <br>P = (0.278 R u) / 746, where R is the sum of resistances (N) and u is speed (km/h).
-        </p>
-      </div>
-
-      <h4 class="subsection-title">3.5.4 Braking distance</h4>
-      <span class="bloom-level">Required Bloom level for this section: Apply</span>
-
-      <p class="text-body">
-        Braking distance is fundamental for stopping and deceleration lane design. A widely used braking-distance equation is:
-      </p>
-
-      <div class="example-box">
-        <span class="box-title">Key equation: Braking distance with grade</span>
-        <p class="text-body">
-          D<sub>b</sub> = (u<sub>1</sub><sup>2</sup> - u<sub>2</sub><sup>2</sup>) / [254 (a/g ± G)]
-          <br><span style="font-size:0.95rem;color:#555;">
-            u<sub>1</sub>, u<sub>2</sub> in km/h; D<sub>b</sub> in meters; a is deceleration (AASHTO often uses about 3.41 m/s², so a/g ≈ 0.35); G is grade in decimal (3% = 0.03). Use <b>+</b> for uphill, <b>-</b> for downhill.
-          </span>
-        </p>
-      </div>
-
-      <div class="example-box">
-        <span class="box-title">Example: Exit ramp deceleration distance</span>
-        <p class="text-body">
-          A motorist slows from 105 km/h to 56 km/h on a 3% downgrade. Using a/g ≈ 0.35 and downhill sign (-G):
-          <br>D<sub>b</sub> = (105² - 56²) / [254 (0.35 - 0.03)] ≈ <b>97.06 m</b>.
-          <br><br>
-          Interpretation: the driver should begin braking about <b>97 m</b> before the ramp entry to reach the ramp speed under the assumed deceleration.
-        </p>
-      </div>
-
-      <h4 class="subsection-title">3.5.5 Minimum radius of a circular curve</h4>
-      <span class="bloom-level">Required Bloom level for this section: Apply</span>
-
-      <p class="text-body">
-        Curve design must ensure that lateral (centripetal) demand can be balanced by the combination of roadway superelevation and available side friction.
-        The roadway is inclined toward the curve center (superelevation) to help counteract lateral acceleration.
-      </p>
-
-      <div class="example-box">
-        <span class="box-title">Key equation: Minimum radius for speed u (u in km/h)</span>
-        <p class="text-body">
-          R = u<sup>2</sup> / [127 (e + f<sub>s</sub>)]
-          <br><span style="font-size:0.95rem;color:#555;">
-            R in meters; e is superelevation rate (decimal); f<sub>s</sub> is side friction factor. The constant 127 reflects unit conversion when g ≈ 9.81 m/s² and u is in km/h.
-          </span>
-        </p>
-      </div>
-
-      <div class="example-box">
-        <span class="box-title">Example: Minimum curve radius</span>
-        <p class="text-body">
-          For u = 80 km/h, e = 0.08, and f<sub>s</sub> = 0.15:
-          <br>R = 80² / [127(0.08 + 0.15)] ≈ <b>219 m</b> (≈ 220 m).
-          <br><br>
-          If e or f<sub>s</sub> is reduced (ice, wet pavement, superelevation limits), the required radius increases-this is why curve design is safety-sensitive.
-        </p>
-      </div>
-
-      <h3 class="section-title">3.6 Road Characteristics: Sight Distance</h3>
-      <span class="bloom-level">Required Bloom level for this section: Understand + Apply</span>
-
-      <p class="text-body">
-        <b>Sight distance</b> is the length of roadway a driver can see ahead at any given moment. Design provides minimum sight distances so that, at the design speed, a driver can perceive a hazard and complete the required maneuver without a crash. Three types are critical:
-      </p>
-      <ul>
-        <li><b>Stopping Sight Distance (SSD)</b> — for stopping in front of an obstacle</li>
-        <li><b>Decision Sight Distance (DSD)</b> — for complex maneuvers</li>
-        <li><b>Passing Sight Distance (PSD)</b> — for passing on two-lane roads</li>
-      </ul>
-
-      <div class="learning-objectives">
-        <span class="box-title">Learning Objectives for Section 3.5</span>
-        <ul>
-          <li>Define SSD, DSD, and PSD and identify when each type governs design</li>
-          <li>Compute SSD and adjust for upgrades and downgrades</li>
-          <li>Explain the purpose of DSD and evaluate when to specify it instead of SSD</li>
-          <li>Describe what PSD represents on two-lane highways</li>
-        </ul>
-      </div>
-
-      <div class="key-vocabulary">
-        <span class="box-title">Key Terms — Sight Distance</span>
-        <p class="text-body">
-          <b>Sight distance:</b> Length of roadway ahead visible to the driver.<br>
-          <b>Stopping sight distance (SSD):</b> Minimum distance to perceive, react, and stop before an object.<br>
-          <b>Decision sight distance (DSD):</b> Longer sight distance for complex/unexpected decisions.<br>
-          <b>Passing sight distance (PSD):</b> Minimum distance to safely complete a passing maneuver on two-lane roads.<br>
-          <b>Perception–reaction time (t):</b> Time from noticing hazard to brake application (design value = 2.5 s).
-        </p>
-      </div>
-
-      <h4 class="subsection-title">3.6.1 Stopping Sight Distance (SSD)</h4>
-      <span class="bloom-level">Required Bloom level for this section: Apply</span>
-
-      <p class="text-body">
-        SSD is the <b>foundation</b> — it must be provided at every point on every highway. SSD is the sum of:
-      </p>
-      <ol>
-        <li><b>Perception–reaction distance:</b> Distance traveled during the time it takes to perceive and react (0.278ut meters)</li>
-        <li><b>Braking distance:</b> Distance traveled during braking to a complete stop</li>
-      </ol>
-
-      <div class="example-box">
-        <span class="box-title">Key Equation: Stopping Sight Distance</span>
-        <p class="text-body">
-          <b>SSD = 0.278ut + (u<sub>1</sub><sup>2</sup> − u<sub>2</sub><sup>2</sup>) / [254(a/g ± G)]</b>
-          <br><br>
-          <span style="font-size:0.95rem;color:#555;">
-            Where:<br>
-            • u = initial speed (km/h)<br>
-            • t = perception–reaction time (s), design value = 2.5 s<br>
-            • u<sub>2</sub> = final speed (km/h), use 0 for full stop<br>
-            • a = deceleration (m/s<sup>2</sup>), AASHTO recommends 3.41 m/s²<br>
-            • g = 9.81 m/s², so a/g ≈ 0.35<br>
-            • G = grade (decimal, 3% = 0.03)<br>
-            <b>Use + for uphill (grade helps braking), − for downhill (grade opposes braking)</b>
-          </span>
-        </p>
-      </div>
-
-      <p class="text-body">
-        <b>Key insight:</b> On upgrades, braking distance is <i>shorter</i> (SSD is shorter). On downgrades, braking distance is <i>longer</i> (SSD is longer). Designers always check the <b>downgrade condition</b> as it governs design.
-      </p>
-
-      <div class="example-box">
-        <span class="box-title">Example 3.5 — SSD on Level Grade</span>
-        <p class="text-body">
-          For u = 90 km/h, t = 2.5 s, level grade (G = 0), and a/g ≈ 0.35:
-          <br><br>
-          SSD = 0.278(90)(2.5) + (90²)/(254×0.35)
-          <br>SSD = 62.55 + 91.11 = <b>153.7 m</b> (≈ 154 m)
-        </p>
-      </div>
-
-      <div class="example-box">
-        <span class="box-title">Example 3.6 — SSD on Downgrade (Grade Effect)</span>
-        <p class="text-body">
-          A driver traveling at 88 km/h on a <b>5% downgrade</b> sees an obstacle. Calculate SSD. Assume t = 2.5 s, a/g = 0.35.
-          <br><br>
-          <b>Solution:</b>
-          <br>SSD = 0.278 × 88 × 2.5 + 88² / [254(0.35 − 0.05)]
-          <br>SSD = 61.2 + 7744 / 76.2 = 61.2 + 101.6 = <b>162.8 m</b>
-          <br><br>
-          <i>Note: The downgrade increases braking distance by ~10.5 m compared to level grade!</i>
-        </p>
-      </div>
-
-      <h4 class="subsection-title">3.6.2 Decision Sight Distance (DSD)</h4>
-      <span class="bloom-level">Required Bloom level for this section: Understand + Analyze</span>
-
-      <p class="text-body">
-        Standard SSD assumes a <b>simple stop</b> for an <b>expected</b> obstacle. At locations where drivers must make <b>complex or unexpected decisions</b>—such as complex interchanges, lane drops, work zones, or toll plazas—the 2.5-second PRT may be insufficient. <b>Decision Sight Distance (DSD)</b> addresses this by using longer perception-reaction assumptions.
-      </p>
-
-      <p class="text-body">
-        <b>When to use DSD instead of SSD:</b>
-      </p>
-      <ul>
-        <li>Complex interchanges and ramp terminals</li>
-        <li>Lane drops and merge areas</li>
-        <li>Work zones with unusual patterns</li>
-        <li>Locations where road character changes suddenly</li>
-        <li>Areas with high information load</li>
-      </ul>
-
-      <div class="example-box">
-        <span class="box-title">DSD vs SSD Comparison</span>
-        <p class="text-body">
-          At 80 km/h:<br>
-          • SSD ≈ <b>128 m</b> (simple stop)<br>
-          • DSD (speed/path change, suburban) ≈ <b>267 m</b>
-          <br><br>
-          <i>DSD is more than double SSD for the same speed!</i>
-        </p>
-      </div>
-
-      <p class="text-body">
-        <b>Key difference:</b> SSD is for "perceive-stop"; DSD is for "perceive-evaluate-decide-maneuver." DSD accounts for the additional time needed to detect an unexpected hazard, recognize its threat, select an appropriate speed/path, and complete the maneuver.
-      </p>
-
-      <h4 class="subsection-title">3.6.3 Passing Sight Distance (PSD)</h4>
-      <span class="bloom-level">Required Bloom level for this section: Understand + Apply</span>
-
-      <p class="text-body">
-        On <b>two-lane, two-way highways</b>, drivers must be able to pass slower vehicles. PSD is the minimum sight distance that allows a driver to safely complete (or abort) a passing maneuver without colliding with an opposing vehicle.
-      </p>
-
-      <p class="text-body">
-        <b>PSD assumptions:</b>
-      </p>
-      <ul>
-        <li>Passing and opposing vehicles travel at design speed</li>
-        <li>Vehicle being passed travels ~19 km/h below design speed</li>
-        <li>Passing driver accelerates to passing speed within ~40% of total passing distance</li>
-      </ul>
-
-      <div class="example-box">
-        <span class="box-title">PSD vs SSD Comparison</span>
-        <p class="text-body">
-          At 100 km/h:<br>
-          • SSD ≈ <b>182 m</b><br>
-          • PSD ≈ <b>240 m</b>
-          <br><br>
-          PSD is larger because drivers must judge whether there's time to complete the pass before an opposing vehicle arrives.
-        </p>
-      </div>
-
-      <p class="text-body">
-        PSD governs the marking of passing and no-passing zones on two-lane highways and influences the required length of passing lanes. Only single-vehicle passes are considered for minimum design criteria.
-      </p>
-
-      <h3 class="section-title">3.7 Horizontal Curve Design</h3>
-      <span class="bloom-level">Required Bloom level for this section: Apply + Analyze</span>
-
-      <div class="learning-objectives">
-        <span class="box-title">Learning Objectives for Section 3.6</span>
-        <ul>
-          <li>Derive and apply the minimum-radius equation: R = u² / [127(e + f<sub>s</sub>)]</li>
-          <li>Identify maximum superelevation rates for different environments</li>
-          <li>Apply the side-friction factor table by design speed</li>
-          <li>Evaluate when computed superelevation exceeds practical limits</li>
-        </ul>
-      </div>
-
-      <div class="key-vocabulary">
-        <span class="box-title">Key Terms — Horizontal Curves</span>
-        <p class="text-body">
-          <b>Superelevation (e):</b> Roadway cross-slope toward curve center; helps counteract centripetal acceleration.<br>
-          <b>Side-friction factor (f<sub>s</sub>):</b> Lateral tire-pavement friction helping maintain curved path.<br>
-          <b>Minimum radius (R):</b> Smallest curve radius safely negotiable at design speed.<br>
-          <b>Centripetal acceleration:</b> Acceleration required to keep vehicle on curved path (u²/127R).
-        </p>
-      </div>
-
-      <h4 class="subsection-title">3.7.1 Fundamentals: Superelevation and Friction</h4>
-      <span class="bloom-level">Required Bloom level for this section: Understand</span>
-
-      <p class="text-body">
-        When a vehicle travels around a horizontal curve, <b>centripetal acceleration</b> must be provided by:
-      </p>
-      <ol>
-        <li><b>Superelevation (e):</b> Roadway tilts toward the curve center</li>
-        <li><b>Side friction (f<sub>s</sub>):</b> Lateral friction between tires and pavement</li>
-      </ol>
-
-      <p class="text-body">
-        These two factors work together to balance the lateral acceleration. The equilibrium of forces yields the fundamental minimum-radius equation:
-      </p>
-
-      <div class="example-box">
-        <span class="box-title">Key Equation: Minimum Radius</span>
-        <p class="text-body">
-          <b>R = u<sup>2</sup> / [127(e + f<sub>s</sub>)]</b>
-          <br><br>
-          <span style="font-size:0.95rem;color:#555;">
-            Where:<br>
-            • R = minimum radius (m)<br>
-            • u = design speed (km/h)<br>
-            • e = superelevation rate (decimal, 8% = 0.08)<br>
-            • f<sub>s</sub> = side-friction factor<br>
-            <br>
-            The constant 127 comes from unit conversion (g = 9.81 m/s²)
-          </span>
-        </p>
-      </div>
-
-      <h4 class="subsection-title">3.7.2 Design Constraints</h4>
-      <span class="bloom-level">Required Bloom level for this section: Analyze</span>
-
-      <p class="text-body">
-        Both superelevation and friction have <b>practical upper limits</b>:
-      </p>
-
-      <p class="text-body">
-        <b>Maximum Superelevation (AASHTO):</b>
-      </p>
-      <ul>
-        <li>Rural highways (no snow/ice): e<sub>max</sub> = 0.10</li>
-        <li>Areas with snow/ice: e<sub>max</sub> = 0.08 to 0.10</li>
-        <li>Urban expressways: e<sub>max</sub> = 0.08</li>
-        <li>Local urban roads: Typically not superelevated (low speeds, drainage needs)</li>
-      </ul>
-
-      <p class="text-body">
-        <b>Side-Friction Factor by Design Speed:</b>
-      </p>
-      <table style="width:100%; border-collapse:collapse; margin:1rem 0;">
-        <tr style="background:#e8f4f8;">
-          <th style="padding:8px; border:1px solid #ccc; text-align:left;">Design Speed (km/h)</th>
-          <th style="padding:8px; border:1px solid #ccc; text-align:center;">f<sub>s</sub></th>
-        </tr>
-        <tr><td style="padding:8px; border:1px solid #ccc;">50</td><td style="padding:8px; border:1px solid #ccc; text-align:center;">0.19</td></tr>
-        <tr><td style="padding:8px; border:1px solid #ccc;">60</td><td style="padding:8px; border:1px solid #ccc; text-align:center;">0.17</td></tr>
-        <tr><td style="padding:8px; border:1px solid #ccc;">70</td><td style="padding:8px; border:1px solid #ccc; text-align:center;">0.15</td></tr>
-        <tr><td style="padding:8px; border:1px solid #ccc;">80</td><td style="padding:8px; border:1px solid #ccc; text-align:center;">0.14</td></tr>
-        <tr><td style="padding:8px; border:1px solid #ccc;">90</td><td style="padding:8px; border:1px solid #ccc; text-align:center;">0.13</td></tr>
-        <tr><td style="padding:8px; border:1px solid #ccc;">100</td><td style="padding:8px; border:1px solid #ccc; text-align:center;">0.12</td></tr>
-        <tr><td style="padding:8px; border:1px solid #ccc;">110</td><td style="padding:8px; border:1px solid #ccc; text-align:center;">0.11</td></tr>
-        <tr><td style="padding:8px; border:1px solid #ccc;">120</td><td style="padding:8px; border:1px solid #ccc; text-align:center;">0.09</td></tr>
-      </table>
-
-      <p class="text-body">
-        <b>Why f<sub>s</sub> decreases with speed:</b> Drivers are less comfortable with high lateral forces at high speeds, and tire-pavement friction decreases. Using lower f<sub>s</sub> values at higher speeds ensures comfortable and safe curve negotiation.
-      </p>
-
-      <div class="example-box">
-        <span class="box-title">Example 3.8 — Minimum Radius Calculation</span>
-        <p class="text-body">
-          A highway has design speed = 100 km/h and maximum superelevation = 0.08. Find minimum radius.
-          <br><br>
-          <b>Solution:</b>
-          <br>From table: f<sub>s</sub> = 0.12 for 100 km/h
-          <br><br>
-          R = 100² / [127(0.08 + 0.12)] = 10,000 / [127 × 0.20]
-          <br>R = 10,000 / 25.4 = <b>393.7 m</b> (≈ 394 m)
-        </p>
-      </div>
-
-      <div class="example-box">
-        <span class="box-title">Example 3.9 — Required Superelevation (Constrained Radius)</span>
-        <p class="text-body">
-          Physical constraints limit curve radius to 120 m on a highway with design speed = 80 km/h. What superelevation is required? Is this feasible?
-          <br><br>
-          <b>Solution:</b>
-          <br>From table: f<sub>s</sub> = 0.14 for 80 km/h
-          <br><br>
-          e + f<sub>s</sub> = u² / (127R) = 80² / (127 × 120) = 6400 / 15,240 = 0.420
-          <br><br>
-          e = 0.420 − 0.14 = <b>0.28</b> (28%!)
-          <br><br>
-          <b>Evaluation:</b> This far exceeds AASHTO maximum (0.08–0.10). The design is NOT feasible. Options: increase radius, reduce design speed, or accept a hazardous curve with advisory signing.
-        </p>
-      </div>
-
-      <p class="text-body">
-        <b>Design judgment:</b> The minimum-radius equation is a necessary tool but not sufficient. Always verify that computed superelevation falls within practical limits. If not, reconsider the design speed or curve location.
-      </p>
-
-      <h4 class="subsection-title">3.7.3 SSD Through Horizontal Curves</h4>
-      <span class="bloom-level">Required Bloom level for this section: Apply</span>
-
-      <p class="text-body">
-        <b>Important:</b> SSD must also be checked <i>through</i> horizontal curves. A driver approaching or traveling on a curve must have adequate sight distance to perceive and stop for any obstacle. The combination of horizontal and vertical curve design requires careful coordination to ensure SSD is maintained throughout the alignment.
-      </p>
-
-      <hr class="section-divider">
-
-      <div class="practice-questions">
-        <h3 class="section-title">Practice Questions (with answers)</h3>
-
-        <div class="sample-problem-box">
-          <div class="question-header">Q1 - Bloom's Level: Remember</div>
-          <div class="qa-pair">
-            <p class="text-body">
-              <b>Question:</b> List the four main components of the highway transportation system.<br>
-              <b>Answer:</b> The driver, the pedestrian, the vehicle, and the road.
-            </p>
-          </div>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">⬚</span>
+                <span>CE341</span>
+            </a>
+            <div class="nav-tabs">
+                <a href="../index.html">Home</a>
+                <a href="../syllabus.html">Syllabus</a>
+                <a href="./" class="active">Chapters</a>
+                <a href="../quizzes/">Quizzes</a>
+            </div>
         </div>
+        <a href="../quizzes/" class="practice-btn">Practice Quizzes</a>
+    </div>
+</nav>
 
-        <div class="sample-problem-box">
-          <div class="question-header">Q2 - Bloom's Level: Understand</div>
-          <div class="qa-pair">
-            <p class="text-body">
-              <b>Question:</b> Why are 85th or 95th percentile values commonly used in design criteria for human capabilities?<br>
-              <b>Answer:</b> Because driver abilities vary widely and can change with conditions; using higher percentiles aims to cover most users and reduce the chance that design demands exceed typical human performance.
-            </p>
-          </div>
-        </div>
-
-        <div class="sample-problem-box">
-          <div class="question-header">Q3 - Bloom's Level: Understand</div>
-          <div class="qa-pair">
-            <p class="text-body">
-              <b>Question:</b> Name the four sub-processes of the PIEV (perception-reaction) process.<br>
-              <b>Answer:</b> Perception, Identification, Emotion (decision), and Volition (reaction/execution).
-            </p>
-          </div>
-        </div>
-
-        <div class="sample-problem-box">
-          <div class="question-header">Q4 - Bloom's Level: Apply</div>
-          <div class="qa-pair">
-            <p class="text-body">
-              <b>Question:</b> A crosswalk is 15 m long. Compute pedestrian clearance time using 1.22 m/s and (if elderly pedestrians are &gt;20%) 0.9 m/s.<br>
-              <b>Answer:</b> t = 15/1.22 ≈ 12.3 s; for elderly design speed t = 15/0.9 = 16.7 s.
-            </p>
-          </div>
-        </div>
-
-        <div class="sample-problem-box">
-          <div class="question-header">Q5 - Bloom's Level: Apply</div>
-          <div class="qa-pair">
-            <p class="text-body">
-              <b>Question:</b> Using a/g = 0.35 on level grade, how far does a vehicle need to decelerate from 100 km/h to 60 km/h?<br>
-              <b>Answer:</b> D<sub>b</sub> = (100² - 60²)/[254(0.35)] = (10000 - 3600)/88.9 ≈ 71.99 m (≈ 72 m).
-            </p>
-          </div>
-        </div>
-
-        <div class="sample-problem-box">
-          <div class="question-header">Q6 - Bloom's Level: Apply</div>
-          <div class="qa-pair">
-            <p class="text-body">
-              <b>Question:</b> Compute SSD for u = 80 km/h, t = 2.5 s, level grade, and a/g = 0.35.<br>
-              <b>Answer:</b> SSD = 0.278(80)(2.5) + (80²)/(254×0.35) ≈ 55.6 + 72.0 = 127.6 m (≈ 128 m).
-            </p>
-          </div>
-        </div>
-
-        <div class="sample-problem-box">
-          <div class="question-header">Q7 - Bloom's Level: Apply</div>
-          <div class="qa-pair">
-            <p class="text-body">
-              <b>Question:</b> For u = 70 km/h, e = 0.06, and f<sub>s</sub> = 0.14, compute minimum curve radius.<br>
-              <b>Answer:</b> R = 70² / [127(0.06 + 0.14)] = 4900 / [127(0.20)] = 4900/25.4 ≈ 193 m.
-            </p>
-          </div>
-        </div>
-
-        <div class="sample-problem-box">
-          <div class="question-header">Q8 - Bloom's Level: Analyze</div>
-          <div class="qa-pair">
-            <p class="text-body">
-              <b>Question:</b> Give one roadway design element primarily controlled by each vehicle characteristic class: static, kinematic, and dynamic.<br>
-              <b>Answer:</b> Static → lane width/turning path clearances; kinematic → ramp and passing-lane length (acceleration); dynamic → grade performance and braking/sight-distance requirements.
-            </p>
-          </div>
-        </div>
-
-        <div class="sample-problem-box">
-          <div class="question-header">Q9 - Bloom's Level: Evaluate</div>
-          <div class="qa-pair">
-            <p class="text-body">
-              <b>Question:</b> On a wet pavement, available side friction decreases. What happens to required minimum curve radius for the same design speed and/or superelevation?<br>
-              <b>Answer:</b> If f<sub>s</sub> decreases, (e + f<sub>s</sub>) decreases, so R = u²/[127(e + f<sub>s</sub>)] increases. The curve must be flatter (larger radius) to maintain the same speed safely.
-            </p>
-          </div>
-        </div>
-
-        <div class="sample-problem-box">
-          <div class="question-header">Q10 - Bloom's Level: Create</div>
-          <div class="qa-pair">
-            <p class="text-body">
-              <b>Question:</b> Create a short checklist for designing a high-speed horizontal curve that explicitly accounts for driver, vehicle, and road characteristics.<br>
-              <b>Answer:</b> (1) Select design speed and target operating speed; (2) choose appropriate e limits and friction assumptions (wet/icy); (3) compute minimum radius and check available right-of-way; (4) verify SSD through the curve (including grade); (5) check truck off-tracking/clearances using the design vehicle; (6) confirm signing/markings/chevrons provide early guidance considering perception-reaction; (7) confirm surface condition, drainage, and lighting support the assumed friction and visibility.
-            </p>
-          </div>
-        </div>
-      </div>
+<div class="page-wrapper">
+    <div class="chapter-header-section">
+        <div class="chapter-label">CHAPTER 3</div>
+        <h1 class="chapter-title">Characteristics of the Driver, the Pedestrian, the Vehicle, and the Road</h1>
+        <p class="chapter-subtitle">Human Factors, Vehicle Dynamics, and Sight Distance in Highway Design</p>
+        <div class="chapter-divider"></div>
+        <p class="chapter-intro">Highway design must accommodate the full range of users—not the average, but the less capable users most at risk. This chapter covers the human, vehicle, and road characteristics that directly control geometric design and traffic-control timing: how drivers perceive and react to information, the walking speeds that govern pedestrian signals, design-vehicle selection, braking and stopping distance, and the sight-distance criteria that connect all of these to road geometry.</p>
     </div>
 
-  </body>
+    <div class="main-content">
+
+        <div class="box learning-objectives">
+            <div class="lo-header-row"><h3>Chapter Learning Objectives</h3></div>
+            <ul>
+                <li>Explain why percentile-based design criteria are used instead of averages. <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Understand</span></li>
+                <li>Judge when higher-percentile criteria are warranted based on consequences and population. <span class="bloom-chip" data-lvl="5"><span class="dot"></span>Evaluate</span></li>
+                <li>Describe the four stages of the PIEV model. <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Understand</span></li>
+                <li>Apply the 2.5 s design PRT to compute distance travelled before braking. <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Apply</span></li>
+                <li>Recognise situations where the 2.5 s PRT is insufficient. <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Analyse</span></li>
+                <li>Explain how visual acuity, peripheral vision, and glare recovery affect sign placement and lighting design. <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Analyse</span></li>
+                <li>Identify walking speed as the controlling parameter for pedestrian signal timing. <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Understand</span></li>
+                <li>Apply design walking speeds to calculate pedestrian clearance intervals. <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Apply</span></li>
+                <li>Evaluate when reduced walking speeds and accessibility features are needed. <span class="bloom-chip" data-lvl="5"><span class="dot"></span>Evaluate</span></li>
+                <li>Select an appropriate AASHTO design vehicle and verify turning-path accommodation. <span class="bloom-chip" data-lvl="5"><span class="dot"></span>Evaluate</span></li>
+                <li>Compute acceleration distance using the constant-acceleration and speed-dependent models. <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Apply</span></li>
+                <li>Describe resistance forces and their practical effect on vehicle performance. <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Understand</span></li>
+                <li>Calculate braking distance and stopping sight distance, including grade effects. <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Apply</span></li>
+                <li>Define stopping sight distance and compute it for various speed and grade conditions. <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Apply</span></li>
+                <li>Analyse how grade and friction assumptions change SSD. <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Analyse</span></li>
+                <li>Recognise that decision sight distance and passing sight distance exist and when each is relevant. <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Understand</span></li>
+                <li>Apply the minimum-radius equation for horizontal curves. <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Apply</span></li>
+                <li>Evaluate practical constraints on superelevation and side friction. <span class="bloom-chip" data-lvl="5"><span class="dot"></span>Evaluate</span></li>
+            </ul>
+        </div>
+
+        <div class="chapter-controls">
+            <button class="toggle-all-btn" onclick="toggleAllAnswers()">Show All Answers</button>
+        </div>
+
+        <!-- Section 3.1 -->
+        <div class="content-section">
+            <div class="section-heading-row">
+                <h2 class="section-heading"><span class="section-number">3.1</span>Design Philosophy: Designing for a Range of Users</h2>
+                <span class="bloom-chip" data-lvl="5"><span class="dot"></span>Level: Evaluate</span>
+            </div>
+            <p class="section-text">Designing for the "average" user means roughly half the population is not accommodated. If the average reaction time is the design value, about half of all drivers react more slowly—a dangerous situation when the consequence is a collision.</p>
+            <p class="section-text">Engineers therefore use <strong>percentile-based design criteria</strong>. An <strong>85th-percentile</strong> design accommodates 85% of users and is typical for operational parameters like operating speed. A <strong>95th-percentile</strong> design accommodates 95% and is used where the consequences of exceeding the design value are severe, such as stopping sight distance. AASHTO's design PRT of 2.5 s, for example, covers approximately 90% of drivers—deliberately above the 85th percentile because the penalty for a longer reaction time is a potential crash.</p>
+            <p class="section-text">The choice of percentile is a trade-off: higher percentiles improve safety but increase cost (longer sight distances need flatter curves and more earthwork). When stakes are higher—school zones, retirement communities, complex interchanges—engineers use higher percentiles or add supplementary safety measures.</p>
+        </div>
+
+        <!-- Section 3.2 -->
+        <div class="content-section">
+            <div class="section-heading-row">
+                <h2 class="section-heading"><span class="section-number">3.2</span>Driver Human Factors</h2>
+                <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyse</span>
+            </div>
+
+            <div class="subsection-heading-row">
+                <h3 class="subsection-heading"><span class="section-number">3.2.1</span>The PIEV Model and Perception–Reaction Time</h3>
+                <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+            </div>
+            <p class="section-text">Every driver action follows a four-stage sequence called the <strong>PIEV model</strong>:</p>
+            <ul style="margin-left:1.5rem; margin-bottom:1.5rem; color:#3a3a38; line-height:1.8;">
+                <li style="margin-bottom:0.5rem;"><strong>Perception:</strong> The driver detects a stimulus (a sign, a stopped vehicle, an obstacle).</li>
+                <li style="margin-bottom:0.5rem;"><strong>Identification:</strong> The driver recognises what it is and what it means.</li>
+                <li style="margin-bottom:0.5rem;"><strong>Emotion (Decision):</strong> The driver decides what to do—brake, swerve, or continue.</li>
+                <li style="margin-bottom:0.5rem;"><strong>Volition (Response):</strong> The driver physically executes the action (e.g., presses the brake).</li>
+            </ul>
+            <p class="section-text">The total time for all four stages is the <strong>perception–reaction time (PRT)</strong>. The vehicle keeps moving at full speed throughout this interval—no braking occurs until PRT has elapsed. PRT also governs the yellow-phase duration at signalised intersections.</p>
+            <p class="section-text">AASHTO recommends a <strong>design PRT of 2.5 seconds</strong> for stopping sight distance, covering approximately 90% of drivers under normal conditions. This value may be insufficient at locations with high information loads or unexpected hazards—complex interchanges, ramp terminals, or work zones—where a longer criterion (decision sight distance) should be used.</p>
+
+            <!-- Example 3.1 -->
+            <div class="toggleable-item" id="ex3-1">
+                <div class="toggle-header">
+                    <span class="example-number">3.1</span>
+                    <span class="toggle-label"><strong>Example 3.1 — Distance Travelled During PRT</strong><span class="example-question-preview">A driver travelling at 105 km/h has a PRT of 2.5 s. How far does the vehicle travel before braking begins?</span></span>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <button class="show-answer-btn burgundy" onclick="toggleExample('ex3-1', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="toggle-content">
+                    <div class="toggle-content-inner">
+                        <p><strong>Solution:</strong></p>
+                        <p>Convert speed: \(u = 105 \times \dfrac{1000}{3600} = 29.17\) m/s</p>
+                        <p>Distance during PRT:</p>
+                        <p>\[d = u \times t = 29.17 \times 2.5 = \mathbf{72.9 \text{ m}}\]</p>
+                        <p>The vehicle covers nearly 73 m before any braking force is applied.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection-heading-row">
+                <h3 class="subsection-heading"><span class="section-number">3.2.2</span>Visual Perception and Design Implications</h3>
+                <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyse</span>
+            </div>
+            <p class="section-text"><strong>Visual acuity</strong> is the ability to see fine details—most importantly, to read sign text at speed. It is measured on the Snellen scale: 6/6 is normal vision. A driver with 6/4 acuity (sharper) can read the same sign from 1.5× farther; a driver with 6/10 acuity (weaker) must be 40% closer. The relationship: if a sign is just readable at distance <em>d</em> for a 6/6 driver, it is readable at \((6/X) \times d\) for a driver with \(6/X\) acuity. Sign letter heights are set so that drivers with below-average acuity can still read and react in time.</p>
+            <p class="section-text">Most people see clearly within only about 3°–5° of their direct line of sight, with fairly clear vision out to 10°–12°. This is why traffic signs must be placed within the driver's central field of view.</p>
+
+            <!-- Example 3.2 -->
+            <div class="toggleable-item" id="ex3-2">
+                <div class="toggle-header">
+                    <span class="example-number">3.2</span>
+                    <span class="toggle-label"><strong>Example 3.2 — Sign Legibility Distance</strong><span class="example-question-preview">A sign is sized so that a 6/6 driver can just read it at 90 m. At what distance can drivers with 6/4 and 6/10 acuity read it?</span></span>
+                    <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyse</span>
+                </div>
+                <button class="show-answer-btn burgundy" onclick="toggleExample('ex3-2', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="toggle-content">
+                    <div class="toggle-content-inner">
+                        <p><strong>Solution:</strong></p>
+                        <p><strong>6/4 acuity</strong> (sharper—resolves detail from farther):</p>
+                        <p>\[d = \frac{6}{4} \times 90 = 1.5 \times 90 = \mathbf{135 \text{ m}}\]</p>
+                        <p><strong>6/10 acuity</strong> (weaker—must be closer):</p>
+                        <p>\[d = \frac{6}{10} \times 90 = 0.6 \times 90 = \mathbf{54 \text{ m}}\]</p>
+                        <p>The weaker-eyed driver loses 36 m of reading distance. Sign designers must size letters for the less capable end of the driving population so that these drivers still have enough distance to read and respond.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="section-text"><strong>Peripheral vision</strong> covers up to 160° but with poor detail. It is most important for detecting approaching vehicles at intersections. Speed and age both narrow the effective field.</p>
+            <p class="section-text"><strong>Glare recovery</strong> is the time the eyes need to readjust after exposure to a bright light (e.g., oncoming headlights). Recovery from light to dark can exceed 6 seconds and worsens significantly after age 40. Countermeasures include higher luminaire mounting heights, glare shields, and vegetated medians.</p>
+
+            <div class="subsection-heading-row">
+                <h3 class="subsection-heading"><span class="section-number">3.2.3</span>Older Road Users</h3>
+                <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span>
+            </div>
+            <p class="section-text">Drivers aged 65+ experience reduced acuity, greater glare sensitivity, slower reaction times, narrower peripheral fields, and reduced flexibility. The practical design implications are: larger sign lettering with higher retroreflectivity, longer tapers and advance warning in work zones, simpler intersection layouts, and consideration of decision sight distance and lower pedestrian walking speeds where this population is predominant.</p>
+        </div>
+
+        <!-- Section 3.3 -->
+        <div class="content-section">
+            <div class="section-heading-row">
+                <h2 class="section-heading"><span class="section-number">3.3</span>Pedestrian Characteristics</h2>
+                <span class="bloom-chip" data-lvl="5"><span class="dot"></span>Level: Evaluate</span>
+            </div>
+            <p class="section-text">The key pedestrian characteristic for intersection design is <strong>walking speed</strong>, which controls the <strong>pedestrian clearance interval</strong>—the time provided for pedestrians to finish crossing after the WALK signal ends.</p>
+            <p class="section-text">The standard <strong>design walking speed</strong> is <strong>1.22 m/s</strong> when elderly pedestrians (65+) make up 20% or less of the crossing population. Where elderly pedestrians exceed 20%, speeds as low as <strong>0.88 m/s</strong> are used. The MUTCD recommends <strong>1.07 m/s</strong> as a general-purpose value. The engineer selects the value based on the pedestrian population at each location.</p>
+            <p class="section-text"><strong>Accessible pedestrian signals (APS)</strong> provide audible tones or vibrating surfaces for visually impaired pedestrians. <strong>Kerb ramps</strong> are required for wheelchair access. These affect physical intersection design but generally do not change the clearance calculation, which remains governed by walking speed.</p>
+
+            <!-- Example 3.3 -->
+            <div class="toggleable-item" id="ex3-3">
+                <div class="toggle-header">
+                    <span class="example-number">3.3</span>
+                    <span class="toggle-label"><strong>Example 3.3 — Pedestrian Clearance Interval</strong><span class="example-question-preview">A signalised intersection has a crossing distance of 18.0 m. Find the clearance interval for (a) a general population and (b) a location near a senior care facility.</span></span>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <button class="show-answer-btn burgundy" onclick="toggleExample('ex3-3', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="toggle-content">
+                    <div class="toggle-content-inner">
+                        <p>\[t = \frac{\text{Crossing distance}}{\text{Walking speed}}\]</p>
+                        <p><strong>(a) General population</strong> (1.22 m/s):</p>
+                        <p>\[t = \frac{18.0}{1.22} = 14.8 \text{ s} \;\longrightarrow\; \mathbf{\text{Use 15 s}}\]</p>
+                        <p><strong>(b) Elderly-predominant</strong> (0.88 m/s):</p>
+                        <p>\[t = \frac{18.0}{0.88} = 20.5 \text{ s} \;\longrightarrow\; \mathbf{\text{Use 21 s}}\]</p>
+                        <p>The elderly location requires 40% more clearance time, significantly affecting cycle length and capacity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3.4 -->
+        <div class="content-section">
+            <div class="section-heading-row">
+                <h2 class="section-heading"><span class="section-number">3.4</span>Vehicle Characteristics</h2>
+                <span class="bloom-chip" data-lvl="5"><span class="dot"></span>Level: Evaluate</span>
+            </div>
+
+            <div class="subsection-heading-row">
+                <h3 class="subsection-heading"><span class="section-number">3.4.1</span>Design Vehicle Selection</h3>
+                <span class="bloom-chip" data-lvl="5"><span class="dot"></span>Level: Evaluate</span>
+            </div>
+            <p class="section-text">Vehicle characteristics fall into three categories: <strong>static</strong> (size, weight—measured at rest), <strong>kinematic</strong> (motion: speed, acceleration, distance), and <strong>dynamic</strong> (forces acting during motion).</p>
+            <p class="section-text">AASHTO defines 19 <strong>design vehicles</strong> representing the range of vehicle sizes. The engineer selects the one that represents the critical vehicle expected to use the facility:</p>
+            <ul style="margin-left:1.5rem; margin-bottom:1.5rem; color:#3a3a38; line-height:1.8;">
+                <li style="margin-bottom:0.5rem;"><strong>Parking lots:</strong> Passenger car (P) — minimum turning radius ≈ 7.3 m</li>
+                <li style="margin-bottom:0.5rem;"><strong>Residential intersections:</strong> Single-unit truck (SU-9) — minimum turning radius ≈ 12.7 m</li>
+                <li style="margin-bottom:0.5rem;"><strong>Urban intersections with bus service:</strong> City transit bus — minimum turning radius ≈ 12.8 m</li>
+                <li style="margin-bottom:0.5rem;"><strong>Freeway ramps / arterials with heavy trucks:</strong> Interstate semitrailer (WB-20) — minimum turning radius ≈ 13.7 m</li>
+            </ul>
+            <p class="section-text">The critical check is the <strong>low-speed turning path</strong>: the intersection geometry (kerb returns, lane widths, medians) must accommodate the swept path of the chosen design vehicle at speeds of 16 km/h or less.</p>
+
+            <div class="subsection-heading-row">
+                <h3 class="subsection-heading"><span class="section-number">3.4.2</span>Acceleration</h3>
+                <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+            </div>
+            <p class="section-text"><strong>Constant acceleration</strong> from initial speed \(u_0\) with acceleration \(a\):</p>
+            <p class="section-text">\[u = u_0 + a \cdot t \qquad\qquad x = u_0 t + \tfrac{1}{2}at^2\]</p>
+            <p class="section-text">From rest: \(u = at\) and \(x = \frac{1}{2}at^2\).</p>
+            <p class="section-text">In practice, available acceleration decreases as speed increases. The <strong>speed-dependent model</strong> captures this:</p>
+            <p class="section-text">\[\frac{du}{dt} = \alpha - \beta u\]</p>
+            <p class="section-text">where \(\alpha\) (m/s²) is the maximum acceleration at zero speed and \(\beta\) (s⁻¹) is the decay rate. The time and distance to accelerate from \(u_0\) to \(u_t\):</p>
+            <p class="section-text">\[t = \frac{1}{\beta}\ln\!\left(\frac{\alpha - \beta u_0}{\alpha - \beta u_t}\right) \qquad\qquad x = \frac{\alpha}{\beta}\,t - \frac{\alpha - \beta u_0}{\beta^2}\!\left(1 - e^{-\beta t}\right)\]</p>
+
+            <!-- Example 3.4 -->
+            <div class="toggleable-item" id="ex3-4">
+                <div class="toggle-header">
+                    <span class="example-number">3.4</span>
+                    <span class="toggle-label"><strong>Example 3.4 — Acceleration Lane Length</strong><span class="example-question-preview">A vehicle's acceleration follows \(du/dt = 1.0 - 0.025u\) (m/s). Find the lane length needed to reach 88.5 km/h from rest.</span></span>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <button class="show-answer-btn burgundy" onclick="toggleExample('ex3-4', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="toggle-content">
+                    <div class="toggle-content-inner">
+                        <p>\(\alpha = 1.0\), \(\beta = 0.025\), \(u_0 = 0\), \(u_t = 88.5 \times \frac{1000}{3600} = 24.58\) m/s</p>
+                        <p><strong>Time:</strong></p>
+                        <p>\[t = \frac{1}{0.025}\ln\!\left(\frac{1.0}{1.0 - 0.025 \times 24.58}\right) = 40\ln(2.594) = 40 \times 0.953 = 38.1 \text{ s}\]</p>
+                        <p><strong>Distance:</strong></p>
+                        <p>\[x = 40(38.1) - 1600(1 - 0.3855) = 1524 - 983 = \mathbf{541 \text{ m}}\]</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection-heading-row">
+                <h3 class="subsection-heading"><span class="section-number">3.4.3</span>Resistance Forces</h3>
+                <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span>
+            </div>
+            <p class="section-text">Four forces resist vehicle motion: <strong>air resistance</strong> (proportional to speed squared—dominant at highway speeds), <strong>grade resistance</strong> (weight component along the slope—slows vehicles on upgrades, accelerates them on downgrades), <strong>rolling resistance</strong> (tyre–pavement deformation), and <strong>curve resistance</strong> (lateral forces on front wheels in curves).</p>
+            <p class="section-text">The main practical effect: heavy trucks lose speed on upgrades and gain speed on downgrades. A typical heavy truck starting at 90 km/h on a 4% upgrade will slow to about 60 km/h within 2 km, affecting capacity, level of service, and the need for climbing lanes.</p>
+
+            <div class="subsection-heading-row">
+                <h3 class="subsection-heading"><span class="section-number">3.4.4</span>Braking Distance and Stopping Sight Distance</h3>
+                <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+            </div>
+            <p class="section-text">The <strong>braking distance</strong> from speed \(u\) (km/h) on a grade \(G\):</p>
+            <p class="section-text">\[D_b = \frac{u^2}{254\!\left(\dfrac{a}{g} \pm G\right)}\]</p>
+            <p class="section-text">where \(a/g\) is the deceleration as a fraction of gravity (AASHTO recommends \(a/g = 0.35\), corresponding to 3.41 m/s²), and \(G\) is the grade as a decimal. Use <strong>+</strong> when travelling uphill (gravity assists braking), <strong>−</strong> when travelling downhill (gravity opposes braking).</p>
+            <p class="section-text"><strong>Stopping sight distance (SSD)</strong> adds the PRT distance to the braking distance:</p>
+            <p class="section-text">\[\boxed{SSD = 0.278 \cdot u \cdot t + \frac{u^2}{254\!\left(\dfrac{a}{g} \pm G\right)}}\]</p>
+            <p class="section-text">where \(u\) is in km/h and \(t\) is PRT in seconds. On level roads (\(G = 0\)): \(SSD = 0.278ut + \frac{u^2}{88.9}\).</p>
+            <p class="section-text">When decelerating to a lower speed \(u_2\) rather than stopping:</p>
+            <p class="section-text">\[D = \frac{u_1^2 - u_2^2}{254\!\left(\dfrac{a}{g} \pm G\right)}\]</p>
+
+            <!-- Example 3.5 -->
+            <div class="toggleable-item" id="ex3-5">
+                <div class="toggle-header">
+                    <span class="example-number">3.5</span>
+                    <span class="toggle-label"><strong>Example 3.5 — SSD on a Level Road</strong><span class="example-question-preview">Calculate the stopping sight distance for a design speed of 100 km/h on a level road. Use PRT = 2.5 s and \(a/g\) = 0.35.</span></span>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <button class="show-answer-btn burgundy" onclick="toggleExample('ex3-5', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="toggle-content">
+                    <div class="toggle-content-inner">
+                        <p>PRT distance: \(d_1 = 0.278 \times 100 \times 2.5 = 69.5\) m</p>
+                        <p>Braking distance: \(D_b = \dfrac{100^2}{254 \times 0.35} = \dfrac{10{,}000}{88.9} = 112.5\) m</p>
+                        <p>\[SSD = 69.5 + 112.5 = \mathbf{182.0 \text{ m}}\]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example 3.6 -->
+            <div class="toggleable-item" id="ex3-6">
+                <div class="toggle-header">
+                    <span class="example-number">3.6</span>
+                    <span class="toggle-label"><strong>Example 3.6 — Stopping Distance on a Downgrade</strong><span class="example-question-preview">A motorist at 88 km/h on a 5% downgrade sees a blocked road and stops 9 m short of the obstruction. How far was the motorist from the obstruction when first observed?</span></span>
+                    <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyse</span>
+                </div>
+                <button class="show-answer-btn burgundy" onclick="toggleExample('ex3-6', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="toggle-content">
+                    <div class="toggle-content-inner">
+                        <p>On a downgrade, gravity opposes braking → use the minus sign (\(0.35 - 0.05\)):</p>
+                        <p>\[SSD = 0.278 \times 88 \times 2.5 + \frac{88^2}{254(0.35 - 0.05)} = 61.2 + \frac{7744}{76.2} = 61.2 + 101.6 = 162.8 \text{ m}\]</p>
+                        <p>Total distance = \(162.8 + 9 = \mathbf{171.8 \text{ m}}\)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example 3.7 -->
+            <div class="toggleable-item" id="ex3-7">
+                <div class="toggle-header">
+                    <span class="example-number">3.7</span>
+                    <span class="toggle-label"><strong>Example 3.7 — Effect of Grade on Braking Distance</strong><span class="example-question-preview">A driver needs 5.64 m more to stop on a 5% downgrade than on a 3% downgrade at the same speed. Find the speed and the braking distance when travelling uphill on the 5% grade.</span></span>
+                    <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyse</span>
+                </div>
+                <button class="show-answer-btn burgundy" onclick="toggleExample('ex3-7', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="toggle-content">
+                    <div class="toggle-content-inner">
+                        <p><strong>Set up the two downhill braking distances:</strong></p>
+                        <p>\(D_{5\%} = u^2 / 76.20\) and \(D_{3\%} = u^2 / 81.28\)</p>
+                        <p><strong>Solve for speed:</strong></p>
+                        <p>\[\frac{u^2}{76.20} - \frac{u^2}{81.28} = 5.64 \;\;\longrightarrow\;\; u^2(0.01312 - 0.01230) = 5.64 \;\;\longrightarrow\;\; u = 82.9 \text{ km/h}\]</p>
+                        <p><strong>Uphill braking on 5% grade</strong> (gravity now helps → use \(0.35 + 0.05\)):</p>
+                        <p>\[D = \frac{82.9^2}{254 \times 0.40} = \frac{6872}{101.6} = \mathbf{67.6 \text{ m}}\]</p>
+                        <p>Compared to the 5% downgrade distance of \(6872/76.2 = 90.2\) m, the uphill braking distance is 25% shorter—grade has a substantial effect.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example 3.8 -->
+            <div class="toggleable-item" id="ex3-8">
+                <div class="toggle-header">
+                    <span class="example-number">3.8</span>
+                    <span class="toggle-label"><strong>Example 3.8 — Exit-Ramp Deceleration</strong><span class="example-question-preview">A motorist at 105 km/h must slow to 56 km/h on a ramp with a 3% downgrade. What braking distance is needed?</span></span>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <button class="show-answer-btn burgundy" onclick="toggleExample('ex3-8', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="toggle-content">
+                    <div class="toggle-content-inner">
+                        <p>\[D = \frac{105^2 - 56^2}{254(0.35 - 0.03)} = \frac{11{,}025 - 3136}{81.28} = \frac{7889}{81.28} = \mathbf{97.1 \text{ m}}\]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3.5 -->
+        <div class="content-section">
+            <div class="section-heading-row">
+                <h2 class="section-heading"><span class="section-number">3.5</span>Road Characteristics: Sight Distance</h2>
+                <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyse</span>
+            </div>
+
+            <div class="subsection-heading-row">
+                <h3 class="subsection-heading"><span class="section-number">3.5.1</span>Stopping Sight Distance (SSD)</h3>
+                <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+            </div>
+            <p class="section-text"><strong>Stopping sight distance</strong> is the minimum distance a driver needs to see an object, react, and stop. It must be provided at every point on every highway. The SSD equation combines PRT distance and braking distance:</p>
+            <p class="section-text">\[SSD = 0.278 \cdot u \cdot t + \frac{u^2}{254\!\left(\dfrac{a}{g} \pm G\right)}\]</p>
+            <p class="section-text">SSD requirements dictate minimum vertical-curve lengths and minimum horizontal-curve radii. On upgrades, braking distances are shorter; on downgrades, longer. The <strong>downgrade condition always produces the controlling (longest) SSD</strong> and must always be checked.</p>
+
+            <!-- Example 3.9 -->
+            <div class="toggleable-item" id="ex3-9">
+                <div class="toggle-header">
+                    <span class="example-number">3.9</span>
+                    <span class="toggle-label"><strong>Example 3.9 — SSD on Upgrade vs. Downgrade</strong><span class="example-question-preview">A highway has a design speed of 110 km/h. Compute the SSD for (a) a 4% upgrade and (b) a 4% downgrade. Use PRT = 2.5 s and \(a/g = 0.35\). Which condition governs?</span></span>
+                    <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyse</span>
+                </div>
+                <button class="show-answer-btn burgundy" onclick="toggleExample('ex3-9', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="toggle-content">
+                    <div class="toggle-content-inner">
+                        <p>PRT distance (same for both): \(d_1 = 0.278 \times 110 \times 2.5 = 76.5\) m</p>
+                        <p><strong>(a) 4% upgrade</strong> (\(0.35 + 0.04 = 0.39\)):</p>
+                        <p>\[D_b = \frac{110^2}{254 \times 0.39} = \frac{12{,}100}{99.1} = 122.1 \text{ m} \qquad SSD = 76.5 + 122.1 = \mathbf{198.6 \text{ m}}\]</p>
+                        <p><strong>(b) 4% downgrade</strong> (\(0.35 - 0.04 = 0.31\)):</p>
+                        <p>\[D_b = \frac{110^2}{254 \times 0.31} = \frac{12{,}100}{78.7} = 153.7 \text{ m} \qquad SSD = 76.5 + 153.7 = \mathbf{230.2 \text{ m}}\]</p>
+                        <p>The downgrade SSD is <strong>31.6 m longer</strong>. The downgrade governs design.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection-heading-row">
+                <h3 class="subsection-heading"><span class="section-number">3.5.2</span>Other Sight Distance Types</h3>
+                <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span>
+            </div>
+            <p class="section-text"><strong>Decision sight distance (DSD)</strong> applies where drivers face unexpected or complex decisions—interchange ramp terminals, lane drops, work zones. DSD uses longer PRT assumptions and produces values much larger than SSD. At 80 km/h, DSD can exceed 270 m compared to about 128 m for SSD.</p>
+            <p class="section-text"><strong>Passing sight distance (PSD)</strong> applies to two-lane, two-way highways where drivers must see far enough to safely complete a passing manoeuvre. At 100 km/h, PSD is approximately 240 m.</p>
+        </div>
+
+        <!-- Section 3.6 -->
+        <div class="content-section">
+            <div class="section-heading-row">
+                <h2 class="section-heading"><span class="section-number">3.6</span>Horizontal Curve Design</h2>
+                <span class="bloom-chip" data-lvl="5"><span class="dot"></span>Level: Evaluate</span>
+            </div>
+            <p class="section-text">When a vehicle travels around a horizontal curve, the required centripetal force is provided by a combination of the road's <strong>superelevation</strong> (\(e\), the transverse banking toward the curve centre) and the <strong>side-friction factor</strong> (\(f_s\), the lateral tyre–pavement friction). The minimum-radius equation is:</p>
+            <p class="section-text">\[\boxed{R = \frac{u^2}{127(e + f_s)}}\]</p>
+            <p class="section-text">where \(R\) is the minimum radius (m) and \(u\) is design speed (km/h).</p>
+            <p class="section-text"><strong>Maximum superelevation</strong> (\(e_{\max}\)): AASHTO recommends 0.10 for rural highways without snow/ice; 0.08–0.10 in snow/ice areas; 0.08 for urban expressways. Local urban roads are typically not superelevated.</p>
+            <p class="section-text"><strong>Side-friction factor</strong> decreases with speed (drivers tolerate less lateral force at high speeds, and tyre–pavement friction decreases):</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Design Speed (km/h)</th>
+                        <th>50</th><th>60</th><th>70</th><th>80</th>
+                        <th>90</th><th>100</th><th>110</th><th>120</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:left;">Side-friction factor \(f_s\)</td>
+                        <td>0.19</td><td>0.17</td><td>0.15</td><td>0.14</td>
+                        <td>0.13</td><td>0.12</td><td>0.11</td><td>0.09</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Example 3.10 -->
+            <div class="toggleable-item" id="ex3-10">
+                <div class="toggle-header">
+                    <span class="example-number">3.10</span>
+                    <span class="toggle-label"><strong>Example 3.10 — Minimum Curve Radius</strong><span class="example-question-preview">Design speed = 100 km/h, \(e_{\max}\) = 0.08. Find the minimum radius.</span></span>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <button class="show-answer-btn burgundy" onclick="toggleExample('ex3-10', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="toggle-content">
+                    <div class="toggle-content-inner">
+                        <p>From the table: \(f_s = 0.12\) at 100 km/h.</p>
+                        <p>\[R = \frac{100^2}{127(0.08 + 0.12)} = \frac{10{,}000}{25.4} = \mathbf{394 \text{ m}}\]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example 3.11 -->
+            <div class="toggleable-item" id="ex3-11">
+        <div class="toggle-header">
+            <span class="example-number">3.11</span>
+            <span class="toggle-label"><strong>Example 3.11 — Evaluating a Constrained Radius</strong><span class="example-question-preview">Radius = 120 m, Design speed = 80 km/h. Is this design feasible?</span></span>
+            <span class="bloom-chip" data-lvl="5"><span class="dot"></span>Level: Evaluate</span>
+        </div>
+        <button class="show-answer-btn burgundy" onclick="toggleExample('ex3-11', this)">
+            <span class="sa-icon">+</span>
+            <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+        </button>
+        <div class="toggle-content">
+            <div class="toggle-content-inner">
+                <p>From the table: \(f_s = 0.14\) at 80 km/h.</p>
+                <p>\[e + f_s = \frac{u^2}{127R} = \frac{6400}{15{,}240} = 0.420 \quad\longrightarrow\quad e = 0.420 - 0.14 = 0.280\]</p>
+                <p>A superelevation of 0.28 far exceeds the AASHTO maximum of 0.08–0.10. <strong>This design is not feasible.</strong> The engineer must either increase the radius, reduce the design speed, or treat the curve as a hazardous location with advisory speed signs and enhanced delineation.</p>
+                <p>This illustrates a critical principle: always check that the required superelevation falls within practical limits. The equation is necessary but not sufficient—engineering judgement is essential.</p>
+            </div>
+        </div>
+    </div>
+
+        <!-- End-of-Chapter Problems -->
+        <div class="end-of-chapter">
+            <h2 class="end-of-chapter-title">End-of-Chapter Problems</h2>
+
+            <p class="section-text" style="margin-bottom:2rem;"><em>Conceptual Questions (Problems 1–3) and Computational Problems (Problems 4–12). Bloom's taxonomy level is indicated for each problem.</em></p>
+
+            <!-- Problem 1 -->
+            <div class="question-item" id="p1">
+                <div class="question-header">
+                    <span class="question-number">1</span>
+                    <div class="question-content"><span class="question-text">A colleague argues that designing for the 50th-percentile (average) driver is sufficient because "most drivers are close to average." Explain why this reasoning is flawed and what percentile range is typically used in highway design.</span></div>
+                    <div class="question-chip-area"><span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span></div>
+                </div>
+                <button class="show-answer-btn green" onclick="toggleQuestion('p1', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="question-answer">
+                    <div class="question-answer-inner">
+                        <span class="answer-label">Solution:</span>
+                        <p>The 50th percentile means half the driving population performs worse than the design value. For reaction time, this means roughly half of all drivers would need more time to respond than the design provides, potentially leading to crashes. Highway design typically uses the 85th to 95th percentile: the 85th for operational values like operating speed, and the 95th for safety-critical parameters like stopping sight distance. The recommended PRT of 2.5 s covers about 90% of drivers. Higher percentiles are warranted when consequences are severe (crash, fatality) or when the population includes a high proportion of less capable users (elderly, impaired).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem 2 -->
+            <div class="question-item" id="p2">
+                <div class="question-header">
+                    <span class="question-number">2</span>
+                    <div class="question-content"><span class="question-text">A city is redesigning intersections near a large retirement community. List three specific design adjustments the engineer should consider and explain the human-factors basis for each.</span></div>
+                    <div class="question-chip-area"><span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyse</span></div>
+                </div>
+                <button class="show-answer-btn green" onclick="toggleQuestion('p2', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="question-answer">
+                    <div class="question-answer-inner">
+                        <span class="answer-label">Solution:</span>
+                        <ol>
+                            <li><strong>Use larger sign lettering with higher retroreflectivity.</strong> Basis: Older drivers have reduced visual acuity and reduced night vision. Larger, more reflective signs compensate and ensure readability at the required distance.</li>
+                            <li><strong>Use a lower pedestrian walking speed (0.88 m/s instead of 1.22 m/s) for signal timing.</strong> Basis: Elderly pedestrians walk more slowly. The standard speed would not provide enough clearance time for them to cross safely.</li>
+                            <li><strong>Simplify intersection layouts and consider decision sight distance instead of standard SSD.</strong> Basis: Older drivers have slower reaction times and process complex information more slowly. Simpler layouts and longer sight distances give them more time to perceive, decide, and respond.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem 3 -->
+            <div class="question-item" id="p3">
+                <div class="question-header">
+                    <span class="question-number">3</span>
+                    <div class="question-content"><span class="question-text">Explain why the downgrade condition always produces the controlling (longest) stopping sight distance, even though the PRT distance is the same for both upgrade and downgrade at the same speed.</span></div>
+                    <div class="question-chip-area"><span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyse</span></div>
+                </div>
+                <button class="show-answer-btn green" onclick="toggleQuestion('p3', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="question-answer">
+                    <div class="question-answer-inner">
+                        <span class="answer-label">Solution:</span>
+                        <p>The PRT distance (\(0.278 \times u \times t\)) depends only on speed and PRT—it is identical for upgrades and downgrades. The difference is in the braking distance: \(D_b = u^2 / [254(a/g \pm G)]\). On an upgrade, gravity assists braking, making the effective deceleration \((a/g + G)\)—larger denominator, shorter braking distance. On a downgrade, gravity opposes braking, giving \((a/g - G)\)—smaller denominator, longer braking distance. Since the braking distance is always longer on a downgrade, the total SSD is always longer. The designer must provide at least the downgrade SSD.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem 4 -->
+            <div class="question-item" id="p4">
+                <div class="question-header">
+                    <span class="question-number">4</span>
+                    <div class="question-content"><span class="question-text">A driver travelling at 90 km/h has a PRT of 2.5 s. Calculate the distance the vehicle travels before braking begins.</span></div>
+                    <div class="question-chip-area"><span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span></div>
+                </div>
+                <button class="show-answer-btn green" onclick="toggleQuestion('p4', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="question-answer">
+                    <div class="question-answer-inner">
+                        <span class="answer-label">Solution:</span>
+                        <p>\(u = 90 \times \dfrac{1000}{3600} = 25.0\) m/s</p>
+                        <p>\[d = 25.0 \times 2.5 = \mathbf{62.5 \text{ m}}\]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem 5 -->
+            <div class="question-item" id="p5">
+                <div class="question-header">
+                    <span class="question-number">5</span>
+                    <div class="question-content"><span class="question-text">Calculate the SSD for a design speed of 80 km/h on a level road. Use PRT = 2.5 s and \(a/g = 0.35\).</span></div>
+                    <div class="question-chip-area"><span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span></div>
+                </div>
+                <button class="show-answer-btn green" onclick="toggleQuestion('p5', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="question-answer">
+                    <div class="question-answer-inner">
+                        <span class="answer-label">Solution:</span>
+                        <p>PRT distance: \(d_1 = 0.278 \times 80 \times 2.5 = 55.6\) m</p>
+                        <p>Braking distance: \(D_b = \dfrac{80^2}{254 \times 0.35} = \dfrac{6400}{88.9} = 72.0\) m</p>
+                        <p>\[SSD = 55.6 + 72.0 = \mathbf{127.6 \text{ m}}\]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem 6 -->
+            <div class="question-item" id="p6">
+                <div class="question-header">
+                    <span class="question-number">6</span>
+                    <div class="question-content"><span class="question-text">A motorist is travelling at 100 km/h on a 6% downgrade. Calculate the SSD. Then recalculate for a 6% upgrade at the same speed. What is the difference, and what does it tell you about the importance of grade?</span></div>
+                    <div class="question-chip-area"><span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyse</span></div>
+                </div>
+                <button class="show-answer-btn green" onclick="toggleQuestion('p6', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="question-answer">
+                    <div class="question-answer-inner">
+                        <span class="answer-label">Solution:</span>
+                        <p>PRT distance (both): \(d_1 = 0.278 \times 100 \times 2.5 = 69.5\) m</p>
+                        <p><strong>6% downgrade</strong> (\(0.35 - 0.06 = 0.29\)):</p>
+                        <p>\(D_b = 10{,}000 / (254 \times 0.29) = 135.8\) m → \(SSD = 69.5 + 135.8 = \mathbf{205.3 \text{ m}}\)</p>
+                        <p><strong>6% upgrade</strong> (\(0.35 + 0.06 = 0.41\)):</p>
+                        <p>\(D_b = 10{,}000 / (254 \times 0.41) = 96.0\) m → \(SSD = 69.5 + 96.0 = \mathbf{165.5 \text{ m}}\)</p>
+                        <p><strong>Difference:</strong> 39.8 m (downgrade SSD is ~24% longer). At steep grades, grade effects are substantial and the downgrade governs design.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem 7 -->
+            <div class="question-item" id="p7">
+                <div class="question-header">
+                    <span class="question-number">7</span>
+                    <div class="question-content"><span class="question-text">A signalised intersection has a crossing distance of 24.0 m. It is adjacent to a rehabilitation hospital, and approximately 35% of pedestrians are elderly or mobility-impaired. Determine the required pedestrian clearance interval and justify your choice of walking speed.</span></div>
+                    <div class="question-chip-area"><span class="bloom-chip" data-lvl="5"><span class="dot"></span>Level: Evaluate</span></div>
+                </div>
+                <button class="show-answer-btn green" onclick="toggleQuestion('p7', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="question-answer">
+                    <div class="question-answer-inner">
+                        <span class="answer-label">Solution:</span>
+                        <p>With 35% elderly/impaired pedestrians—well above the 20% threshold—the lower design walking speed of 0.88 m/s must be used.</p>
+                        <p>\[t = \frac{24.0}{0.88} = 27.3 \text{ s} \;\longrightarrow\; \mathbf{\text{Use 28 s}}\]</p>
+                        <p>Using the standard 1.22 m/s would give only \(24.0/1.22 = 19.7\) s ≈ 20 s, leaving a substantial portion of the crossing population unable to complete the crossing safely.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem 8 -->
+            <div class="question-item" id="p8">
+                <div class="question-header">
+                    <span class="question-number">8</span>
+                    <div class="question-content"><span class="question-text">A vehicle's acceleration is described by \(du/dt = 1.2 - 0.030u\) (m/s units). Calculate the distance required to accelerate from rest to 72 km/h.</span></div>
+                    <div class="question-chip-area"><span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span></div>
+                </div>
+                <button class="show-answer-btn green" onclick="toggleQuestion('p8', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="question-answer">
+                    <div class="question-answer-inner">
+                        <span class="answer-label">Solution:</span>
+                        <p>\(\alpha = 1.2\), \(\beta = 0.030\), \(u_0 = 0\), \(u_t = 72 \times \frac{1000}{3600} = 20.0\) m/s</p>
+                        <p><strong>Time:</strong></p>
+                        <p>\[t = \frac{1}{0.030}\ln\!\left(\frac{1.2}{1.2 - 0.030 \times 20.0}\right) = 33.33\ln\!\left(\frac{1.2}{0.6}\right) = 33.33 \times 0.6931 = 23.1 \text{ s}\]</p>
+                        <p><strong>Distance:</strong></p>
+                        <p>\[x = \frac{1.2}{0.030}(23.1) - \frac{1.2}{0.0009}(1 - e^{-0.693}) = 40(23.1) - 1333.3(1 - 0.500)\]</p>
+                        <p>\[x = 924.0 - 666.7 = \mathbf{257 \text{ m}}\]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem 9 -->
+            <div class="question-item" id="p9">
+                <div class="question-header">
+                    <span class="question-number">9</span>
+                    <div class="question-content"><span class="question-text">Determine the minimum radius for a horizontal curve on a highway with a design speed of 90 km/h and \(e_{\max} = 0.08\).</span></div>
+                    <div class="question-chip-area"><span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span></div>
+                </div>
+                <button class="show-answer-btn green" onclick="toggleQuestion('p9', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="question-answer">
+                    <div class="question-answer-inner">
+                        <span class="answer-label">Solution:</span>
+                        <p>\(f_s = 0.13\) at 90 km/h (from table).</p>
+                        <p>\[R = \frac{90^2}{127(0.08 + 0.13)} = \frac{8100}{26.67} = \mathbf{303.7 \text{ m}}\]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem 10 -->
+            <div class="question-item" id="p10">
+                <div class="question-header">
+                    <span class="question-number">10</span>
+                    <div class="question-content"><span class="question-text">A two-lane rural highway (design speed 70 km/h) passes through a mountainous area with heavy snowfall. At one location, the curve radius is limited to 80 m. Evaluate whether this curve is feasible and recommend what the engineer should do.</span></div>
+                    <div class="question-chip-area"><span class="bloom-chip" data-lvl="5"><span class="dot"></span>Level: Evaluate</span></div>
+                </div>
+                <button class="show-answer-btn green" onclick="toggleQuestion('p10', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="question-answer">
+                    <div class="question-answer-inner">
+                        <span class="answer-label">Solution:</span>
+                        <p>\(f_s = 0.15\) at 70 km/h. Heavy snowfall → use \(e_{\max} = 0.08\).</p>
+                        <p>Required superelevation:</p>
+                        <p>\[e + f_s = \frac{70^2}{127 \times 80} = \frac{4900}{10{,}160} = 0.482 \quad\longrightarrow\quad e = 0.482 - 0.15 = 0.332\]</p>
+                        <p>A superelevation of 0.33 is more than four times the 0.08 maximum. <strong>Not feasible at 70 km/h.</strong></p>
+                        <p>Minimum feasible radius at this speed: \(R_{\min} = 4900 / [127 \times 0.23] = 167.7\) m — but only 80 m is available.</p>
+                        <p>Maximum safe speed at \(R = 80\) m:</p>
+                        <p>\[u = \sqrt{127 \times 80 \times (0.08 + 0.15)} = \sqrt{2336.8} = 48.3 \text{ km/h}\]</p>
+                        <p><strong>Recommendation:</strong> Post an advisory speed of 45–50 km/h with advance warning signs, and add safety treatments (chevrons, reflective markers, rumble strips, maximum superelevation). Alternatively, realign the road to increase the radius if the budget permits.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem 11 -->
+            <div class="question-item" id="p11">
+                <div class="question-header">
+                    <span class="question-number">11</span>
+                    <div class="question-content"><span class="question-text">A motorist at 95 km/h on an expressway approaches an exit ramp with a maximum speed of 50 km/h. The ramp has a 4% upgrade. At what distance before the ramp entrance must the driver begin braking?</span></div>
+                    <div class="question-chip-area"><span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyse</span></div>
+                </div>
+                <button class="show-answer-btn green" onclick="toggleQuestion('p11', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="question-answer">
+                    <div class="question-answer-inner">
+                        <span class="answer-label">Solution:</span>
+                        <p>Decelerate from \(u_1 = 95\) to \(u_2 = 50\) km/h on a 4% upgrade (gravity assists → use \(+\)):</p>
+                        <p>\[D = \frac{95^2 - 50^2}{254(0.35 + 0.04)} = \frac{9025 - 2500}{99.06} = \frac{6525}{99.06} = \mathbf{65.9 \text{ m}}\]</p>
+                        <p>If the ramp were on a 4% downgrade instead: \(D = 6525 / [254 \times 0.31] = 82.9\) m — about 26% longer, showing how grade affects braking.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem 12 -->
+            <div class="question-item" id="p12">
+                <div class="question-header">
+                    <span class="question-number">12</span>
+                    <div class="question-content"><span class="question-text">You are reviewing a design for a new urban arterial. The design uses a PRT of 2.5 s for all SSD calculations, including a section through a complex interchange with lane drops and merging traffic. A colleague says the standard PRT is adequate because "AASHTO recommends 2.5 s." Do you agree? Explain.</span></div>
+                    <div class="question-chip-area"><span class="bloom-chip" data-lvl="5"><span class="dot"></span>Level: Evaluate</span></div>
+                </div>
+                <button class="show-answer-btn green" onclick="toggleQuestion('p12', this)">
+                    <span class="sa-icon">+</span>
+                    <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                </button>
+                <div class="question-answer">
+                    <div class="question-answer-inner">
+                        <span class="answer-label">Solution:</span>
+                        <p>No. The 2.5 s PRT is the standard for stopping sight distance, which assumes an expected stimulus (a straightforward "stop for an obstacle" scenario). At a complex interchange with lane drops and merging traffic, stimuli are unexpected and the information load is high. PRT can increase by 35% or more in such conditions.</p>
+                        <p>AASHTO provides <strong>decision sight distance (DSD)</strong> for these situations, with longer PRT assumptions. At 80 km/h, DSD for a speed/path change is about 267 m—more than double the SSD of ~128 m.</p>
+                        <p>Using 2.5 s throughout would underestimate the required sight distance at the interchange and create a safety hazard. The engineer should apply DSD at the interchange section and transition to SSD where conditions are straightforward. SSD is the minimum for every road; DSD should be provided wherever drivers face unexpected or complex decisions.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Dr. Fahad Alqahtani | KFUPM CE341 - Transportation Engineering</p>
+</footer>
+
+<script>
+    let allOpen = false;
+
+    function toggleAllAnswers() {
+        const button = document.querySelector('.toggle-all-btn');
+        allOpen = !allOpen;
+
+        document.querySelectorAll('.question-item').forEach(item => {
+            if (allOpen) { item.classList.add('open'); }
+            else { item.classList.remove('open'); }
+        });
+
+        document.querySelectorAll('.toggleable-item').forEach(item => {
+            if (allOpen) { item.classList.add('open'); }
+            else { item.classList.remove('open'); }
+        });
+
+        button.textContent = allOpen ? 'Hide All Answers' : 'Show All Answers';
+    }
+
+    function toggleQuestion(id, btn) {
+        const item = document.getElementById(id);
+        item.classList.toggle('open');
+    }
+
+    function toggleExample(id, btn) {
+        const item = document.getElementById(id);
+        item.classList.toggle('open');
+    }
+</script>
+</body>
 </html>

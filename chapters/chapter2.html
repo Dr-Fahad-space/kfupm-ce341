@@ -6,528 +6,1181 @@
     <title>Chapter 2 - Transportation Agencies in Saudi Arabia | CE341</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        /* Toggle All Button */
-        .toggle-all-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        /* Bloom's taxonomy chip colors */
+        :root {
+            --c1:#1F6F54; /* Remember */
+            --c2:#3D7A4C; /* Understand */
+            --c3:#B38B2E; /* Apply */
+            --c4:#C1682D; /* Analyze */
+            --c5:#8E3A2B; /* Evaluate */
+            --c6:#551427; /* Create */
+        }
+
+        html {
+            background-color: #f5f5f5 !important;
+            height: 100%;
+            overflow-x: hidden !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', Georgia, serif;
+            color: #141413;
+            background-color: #f5f5f5 !important;
+            line-height: 1.7;
+            min-height: 100vh;
+            height: 100%;
+            overflow-x: hidden !important;
+            width: 100%;
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            padding: 1.2rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            justify-content: space-between;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex: 1;
+        }
+
+        .logo {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #141413;
+            text-decoration: none;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #da7756 0%, #c66344 100%);
+            border-radius: 4px;
             color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-tabs a {
+            color: #6b6b6b;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
             cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .nav-tabs a:hover {
+            color: #141413;
+        }
+
+        .nav-tabs a.active {
+            color: #da7756;
+            background-color: #fff5f2;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            border-bottom: none;
+        }
+
+        .practice-btn {
+            background-color: #da7756;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
             font-size: 0.95rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+            white-space: nowrap;
+            text-decoration: none;
         }
-        .toggle-all-btn:hover {
+
+        .practice-btn:hover {
+            background-color: #c66344;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 4px 12px rgba(218, 119, 86, 0.25);
         }
-        .toggle-all-btn:active {
-            transform: translateY(0);
+
+        .page-wrapper {
+            max-width: 900px;
+            margin: 2rem auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            width: 90%;
+            overflow: hidden;
         }
-        .toggle-icon {
+
+        .chapter-header-section {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid #e8e6dc;
+        }
+
+        .chapter-label {
+            font-size: 0.9rem;
+            color: #9a9a9a;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .chapter-title {
+            font-size: 2.4rem;
+            color: #141413;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+
+        .chapter-subtitle {
+            font-size: 1rem;
+            color: #8b8b8b;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            letter-spacing: 0.3px;
+        }
+
+        .chapter-divider {
+            width: 100px;
+            height: 2px;
+            background-color: #141413;
+            margin: 2rem auto;
+        }
+
+        .chapter-intro {
+            font-size: 0.95rem;
+            color: #3a3a38;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .main-content {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .chapter-controls {
+            text-align: center;
+            margin: 2rem 0 3rem 0;
+        }
+
+        .toggle-all-btn {
+            background-color: #da7756;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-all-btn:hover {
+            background-color: #c66344;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(218, 119, 86, 0.3);
+        }
+
+        .box {
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #da7756;
+            background-color: #faf9f5;
+        }
+
+        /* Learning objectives box */
+        .learning-objectives {
+            background-color: #f0e9e0;
+            border-left-color: #da7756;
+            position: relative;
+        }
+
+        .learning-objectives h3 {
+            color: #da7756;
+            margin-bottom: 1rem;
             font-size: 1.1rem;
         }
 
-        /* Answer Details/Summary */
-        .answer-details {
-            margin-top: 1rem;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .answer-summary {
-            background: #f8f9fa;
-            padding: 10px 16px;
-            cursor: pointer;
-            font-weight: 500;
-            color: #667eea;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            user-select: none;
+        .learning-objectives ul {
             list-style: none;
-        }
-        .answer-summary::-webkit-details-marker {
-            display: none;
-        }
-        .answer-summary:hover {
-            background: #e9ecef;
-            color: #5a6fd6;
-        }
-        .chevron {
-            transition: transform 0.3s ease;
-            font-size: 0.8rem;
-        }
-        .answer-details[open] .chevron {
-            transform: rotate(90deg);
-        }
-        .answer-content {
-            padding: 1rem 1rem 0.5rem 1rem;
-            animation: slideDown 0.3s ease;
-            background: #f8f9fa;
-            border-radius: 0 0 8px 8px;
-            margin-top: -8px;
-            padding-top: 1.5rem;
-        }
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .answer-content .text-body {
-            margin: 0;
-            color: #2d3748;
+            padding-left: 0;
         }
 
-        /* Question block styling */
-        .question-block {
-            margin-bottom: 1.5rem;
+        .learning-objectives li {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
         }
-        .question-block .text-body {
+
+        .learning-objectives li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #da7756;
+            font-weight: bold;
+        }
+
+        /* Section heading row */
+        .section-heading-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+            background-color: #f0e9e0;
+            border-left: 4px solid #da7756;
+            border-radius: 6px;
+            padding: 0.75rem 1.25rem;
+        }
+
+        .section-heading {
+            font-size: 1.5rem;
+            color: #141413;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* Subsection heading row */
+        .subsection-heading-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+            background-color: #faf6f2;
+            border-left: 3px solid #e8c4b0;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+        }
+
+        .subsection-heading {
+            font-size: 1.15rem;
+            color: #141413;
+            margin: 0;
+        }
+
+        .section-number {
+            display: inline-block;
+            margin-right: 0.5rem;
+            color: #da7756;
+            font-weight: bold;
+        }
+
+        /* Learning objectives header row */
+        .lo-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .lo-header-row h3 {
+            margin: 0;
+            color: #da7756;
+            font-size: 1.1rem;
+        }
+
+        /* ---- Bloom's Taxonomy Chip ---- */
+        .bloom-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px 6px 8px;
+            border-radius: 999px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .1px;
+            box-shadow: 0 4px 10px rgba(20,32,24,.10);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .bloom-chip .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.55);
+            box-shadow: inset 0 0 0 2px rgba(255,255,255,.28);
+        }
+        .bloom-chip[data-lvl="1"] { background: var(--c1); }
+        .bloom-chip[data-lvl="2"] { background: var(--c2); }
+        .bloom-chip[data-lvl="3"] { background: var(--c3); }
+        .bloom-chip[data-lvl="4"] { background: var(--c4); }
+        .bloom-chip[data-lvl="5"] { background: var(--c5); }
+        .bloom-chip[data-lvl="6"] { background: var(--c6); }
+
+        .section-text {
+            color: #3a3a38;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .example-box {
+            background-color: #faf6f6;
+            border: 1px solid #e8e6dc;
+            border-left: 4px solid #6b2c3e;
+        }
+
+        .example-box h3 {
+            color: #6b2c3e;
+            margin-bottom: 1rem;
+        }
+
+        .example-box ul {
+            margin-left: 1.5rem;
+            color: #3a3a38;
+        }
+
+        .example-box li {
             margin-bottom: 0.5rem;
+        }
+
+        /* ---- Toggleable example items ---- */
+        .toggleable-item {
+            margin: 1.5rem 0;
+            border: 1px solid #e8e6dc;
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: white;
+            border-left: 4px solid #6b2c3e;
+        }
+
+        .toggle-header {
+            display: flex;
+            align-items: flex-start;
+            padding: 1.2rem;
+            background-color: #faf6f6;
+            user-select: none;
+        }
+
+        .example-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            margin-right: 1rem;
+            background-color: #6b2c3e;
+            color: white;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .toggle-label {
+            font-weight: 600;
+            color: #141413;
+            flex: 1;
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        .toggle-header .bloom-chip {
+            margin-left: auto;
+        }
+
+        .toggle-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.2rem;
+        }
+
+        .toggleable-item.open .toggle-content {
+            max-height: 2000px;
+            padding: 0 1.2rem 1.2rem;
+        }
+
+        .toggle-content-inner {
+            padding-top: 1rem;
+            border-top: 1px solid #e8e6dc;
+            color: #3a3a38;
+            line-height: 1.8;
+        }
+
+        .toggle-content-inner p {
+            margin-bottom: 0.8rem;
+        }
+
+        .toggle-content-inner ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .toggle-content-inner li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Show/Hide answer trigger */
+        .show-answer-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1.2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            transition: opacity 0.2s;
+            border-top: 1px solid #e8e6dc;
+        }
+
+        .show-answer-btn:hover {
+            opacity: 0.75;
+        }
+
+        .show-answer-btn .sa-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .show-answer-btn.burgundy { color: #6b2c3e; }
+        .show-answer-btn.burgundy .sa-icon { background-color: #6b2c3e; }
+
+        .show-answer-btn.green { color: #3D7A4C; }
+        .show-answer-btn.green .sa-icon { background-color: #3D7A4C; }
+
+        .toggleable-item.open .show-answer-btn .sa-icon,
+        .question-item.open .show-answer-btn .sa-icon {
+            transform: rotate(45deg);
+        }
+
+        .toggleable-item.open .show-answer-btn .sa-text::after,
+        .question-item.open .show-answer-btn .sa-text::after {
+            content: attr(data-hide);
+        }
+
+        .sa-text { }
+        .sa-text::after { content: attr(data-show); }
+
+        /* ---- End of Chapter Questions ---- */
+        .end-of-chapter {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 3px solid #da7756;
+        }
+
+        .end-of-chapter-title {
+            font-size: 1.8rem;
+            color: #141413;
+            margin-bottom: 2rem;
+            font-weight: bold;
+            border-left: 4px solid #da7756;
+            padding-left: 1rem;
+        }
+
+        .question-item {
+            margin: 2rem 0;
+            border: 1px solid #e8e6dc;
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        .question-header {
+            display: flex;
+            align-items: flex-start;
+            padding: 1.2rem;
+            background-color: #faf9f5;
+            user-select: none;
+        }
+
+        .question-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            margin-right: 1rem;
+            background-color: #788c5d;
+            color: white;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .question-content {
+            flex: 1;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #141413;
+            margin-bottom: 0.3rem;
+            line-height: 1.6;
+        }
+
+        .question-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.2rem;
+        }
+
+        .question-item.open .question-answer {
+            max-height: 2000px;
+            padding: 0 1.2rem 1.2rem;
+        }
+
+        .question-answer-inner {
+            padding-top: 1rem;
+            border-top: 1px solid #e8e6dc;
+            color: #3a3a38;
+            line-height: 1.8;
+        }
+
+        .question-answer-inner p {
+            margin-bottom: 0.8rem;
+        }
+
+        .question-answer-inner ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .question-answer-inner li {
+            margin-bottom: 0.5rem;
+        }
+
+        .answer-label {
+            font-weight: 600;
+            color: #788c5d;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .question-chip-area {
+            display: flex;
+            align-items: flex-start;
+            margin-left: 1rem;
+            flex-shrink: 0;
+        }
+
+        footer {
+            background-color: #141413;
+            color: #e8e6dc;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-tabs {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .chapter-header-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .chapter-title {
+                font-size: 1.8rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Extra styles for chapter 2 box variants */
+        .key-vocabulary {
+            background-color: #f5f8f2;
+            border-left-color: #788c5d;
+        }
+        .key-vocabulary h3 {
+            color: #788c5d;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .info-box {
+            background-color: #f0f7ff;
+            border-left-color: #0066cc;
+        }
+        .info-box h3 {
+            color: #004499;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
         }
     </style>
 </head>
 <body>
-    <nav class="site-nav">
-        <div class="site-nav-inner">
-            <a href="../index.html" class="brand">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                    <path d="M2 17l10 5 10-5"/>
-                    <path d="M2 12l10 5 10-5"/>
-                </svg>
-                CE341
-            </a>
-            <div class="nav-links">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="../syllabus.html" class="nav-link">Syllabus</a>
-                <a href="./" class="nav-link active">Chapters</a>
-                <a href="../quizzes/" class="nav-link">Quizzes</a>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon">⬚</span>
+                    <span>CE341</span>
+                </a>
+                <div class="nav-tabs">
+                    <a href="../index.html">Home</a>
+                    <a href="../syllabus.html">Syllabus</a>
+                    <a href="./" class="active">Chapters</a>
+                    <a href="../quizzes/">Quizzes</a>
+                </div>
             </div>
-            <a href="../quizzes/" class="cta-button">Practice Quizzes</a>
+            <a href="../quizzes/" class="practice-btn">Practice Quizzes</a>
         </div>
     </nav>
 
-    <main>
-        <div class="chapter-container">
-            <header class="chapter-header">
-                <div class="chapter-number">Chapter 2</div>
-                <h1 class="chapter-title">Transportation Agencies in Saudi Arabia</h1>
-                <p class="chapter-subtitle">Understanding the System by Function</p>
-            </header>
+    <div class="page-wrapper">
+        <div class="chapter-header-section">
+            <div class="chapter-label">CHAPTER 2</div>
+            <h1 class="chapter-title">Transportation Agencies in Saudi Arabia</h1>
+            <p class="chapter-subtitle">Understanding the System by Function</p>
+            <div class="chapter-divider"></div>
+            <p class="chapter-intro">Transportation engineering is not only about designing roads, railways, airports, and ports. It is also about understanding the public system that plans these networks, sets the rules for using them, funds and delivers projects, enforces safe behavior, and learns from failures. This chapter explains that system in Saudi Arabia in a practical way: by focusing on the <strong>functions</strong> that any transport system must perform, and then identifying the entities that carry those functions. When you think in terms of functions, the system becomes easier to understand because each agency has a purpose, a set of decisions it controls, and a clear role in the life cycle of transport projects and operations.</p>
+        </div>
 
-            <div class="chapter-content">
-                <div class="quiz-info-box" style="background: #f0f7ff; border-left: 4px solid #0066cc; padding: 1rem 1.5rem; margin-bottom: 1.5rem; border-radius: 0 8px 8px 0;">
-                    <p class="text-body" style="margin: 0; color: #004499;">
-                        <strong>📋 Quiz 1 covers Chapters 1 & 2</strong>
-                    </p>
+        <div class="main-content">
+
+            <div class="box info-box">
+                <h3>Quiz 1 covers Chapters 1 &amp; 2</h3>
+            </div>
+
+            <p class="section-text">
+                A transport system needs multiple functions because transport is high-risk, technically complex, and affects the whole economy. One entity cannot do everything well without creating overload or conflicts of interest. For example, the organization that delivers infrastructure should not be the same organization that independently investigates major accidents, and the organization that enforces traffic laws is not the same organization that regulates transport services. In addition, each mode—roads, public transport, aviation, maritime, rail—has distinct technical standards and operational risks. For these reasons, Saudi Arabia uses specialized entities, each responsible for a specific function.
+            </p>
+
+            <div class="box learning-objectives">
+                <div class="lo-header-row">
+                    <h3>Learning Objectives</h3>
                 </div>
+                <p style="color:#3a3a38; margin-bottom:0.8rem;">By the end of this chapter, it should be possible to:</p>
+                <ul>
+                    <li>Remember: name key entities and identify their main function. <span class="bloom-chip" data-lvl="1"><span class="dot"></span>Remember</span></li>
+                    <li>Understand: explain the purpose of each function (policy, regulation, infrastructure responsibility, standards, investigation, enforcement, integration). <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Understand</span></li>
+                    <li>Apply: for a short scenario, identify which entities should be involved and what each contributes. <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Apply</span></li>
+                </ul>
+            </div>
 
-                <p class="text-body">
-                    Transportation engineering is not only about designing roads, railways, airports, and ports. It is also about understanding the public system that plans these networks, sets the rules for using them, funds and delivers projects, enforces safe behavior, and learns from failures. This chapter explains that system in Saudi Arabia in a practical way: by focusing on the <strong>functions</strong> that any transport system must perform, and then identifying the entities that carry those functions. When you think in terms of functions, the system becomes easier to understand because each agency has a purpose, a set of decisions it controls, and a clear role in the life cycle of transport projects and operations.
+            <div class="box key-vocabulary">
+                <h3>Key Vocabulary</h3>
+                <p class="section-text">
+                    <strong>Policy / strategy:</strong> national direction and priorities (what the country wants the transport system to achieve).<br>
+                    <strong>Regulation:</strong> rule-setting and oversight for a sector (who is allowed to operate, requirements, licensing, compliance).<br>
+                    <strong>Infrastructure responsibility:</strong> long-term care of networks and terminals (planning programs, maintenance, upgrades, performance).<br>
+                    <strong>Technical standards:</strong> design and operating requirements that create consistent, predictable outcomes.<br>
+                    <strong>Safety oversight:</strong> audits, inspections, compliance monitoring, and safety performance management.<br>
+                    <strong>Independent safety investigation:</strong> root-cause analysis of major accidents to produce recommendations and system learning (not enforcement).<br>
+                    <strong>Enforcement:</strong> applying laws and penalties to influence user behavior (drivers, vehicle owners, and road users).<br>
+                    <strong>Integration:</strong> making multiple modes and entities work together as one system (especially in major cities and peak seasons).
                 </p>
-                <p class="text-body">
-                    A transport system needs multiple functions because transport is high-risk, technically complex, and affects the whole economy. One entity cannot do everything well without creating overload or conflicts of interest. For example, the organization that delivers infrastructure should not be the same organization that independently investigates major accidents, and the organization that enforces traffic laws is not the same organization that regulates transport services. In addition, each mode—roads, public transport, aviation, maritime, rail—has distinct technical standards and operational risks. For these reasons, Saudi Arabia uses specialized entities, each responsible for a specific function.
-                </p>
+            </div>
 
-                <div class="learning-objectives">
-                    <span class="box-title">Learning expectations for this chapter (Bloom's levels)</span>
-                    <p class="text-body">By the end of this chapter, it should be possible to:</p>
-                    <ul>
-                        <li><strong>Remember:</strong> name key entities and identify their main function.</li>
-                        <li><strong>Understand:</strong> explain the purpose of each function (policy, regulation, infrastructure responsibility, standards, investigation, enforcement, integration).</li>
-                        <li><strong>Apply:</strong> for a short scenario, identify which entities should be involved and what each contributes.</li>
-                    </ul>
+            <div class="chapter-controls">
+                <button class="toggle-all-btn" onclick="toggleAllAnswers()">Show All Answers</button>
+            </div>
+
+            <!-- Section 1 -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">1)</span>National policy, strategy, and system leadership</h2>
+                    <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span>
                 </div>
-
-                <div class="key-vocabulary">
-                    <span class="box-title">Key vocabulary used in this chapter</span>
-                    <p class="text-body">
-                        <strong>Policy / strategy:</strong> national direction and priorities (what the country wants the transport system to achieve).<br>
-                        <strong>Regulation:</strong> rule-setting and oversight for a sector (who is allowed to operate, requirements, licensing, compliance).<br>
-                        <strong>Infrastructure responsibility:</strong> long-term care of networks and terminals (planning programs, maintenance, upgrades, performance).<br>
-                        <strong>Technical standards:</strong> design and operating requirements that create consistent, predictable outcomes.<br>
-                        <strong>Safety oversight:</strong> audits, inspections, compliance monitoring, and safety performance management.<br>
-                        <strong>Independent safety investigation:</strong> root-cause analysis of major accidents to produce recommendations and system learning (not enforcement).<br>
-                        <strong>Enforcement:</strong> applying laws and penalties to influence user behavior (drivers, vehicle owners, and road users).<br>
-                        <strong>Integration:</strong> making multiple modes and entities work together as one system (especially in major cities and peak seasons).
-                    </p>
-                </div>
-
-                <hr class="section-divider">
-
-                <h3 class="section-title">1) National policy, strategy, and system leadership</h3>
-                <span class="bloom-level">Required Bloom level for this section: Understand</span>
-
-                <p class="text-body">
+                <p class="section-text">
                     Every country needs a central function that sets national direction: long-term transport priorities, network integration, logistics objectives, and cross-sector coordination. This function ensures that transport aligns with national development goals and that different modes work together rather than compete, duplicate, or leave gaps.
                 </p>
-                <p class="text-body">
+                <p class="section-text">
                     In Saudi Arabia, this leadership role sits with the
                     <strong>Ministry of Transport and Logistics Services (<span lang="AR-SA" dir="RTL">وزارة النقل والخدمات اللوجستية</span>)</strong>.<br>
                     Website: <a href="https://mot.gov.sa/en/home" target="_blank">https://mot.gov.sa/en/home</a>
                 </p>
-                <p class="text-body">
+                <p class="section-text">
                     The ministry's role is not to manage every project detail directly; it steers the overall system by defining priorities, coordinating national programs, and driving integration across modes so the transport and logistics sector advances as a coherent whole.
                 </p>
-
-                <p class="text-body"><strong>What this function does (typical responsibilities):</strong></p>
-                <ul>
+                <p class="section-text"><strong>What this function does (typical responsibilities):</strong></p>
+                <ul style="color:#3a3a38; margin-left:1.5rem; margin-bottom:1.5rem;">
                     <li>Sets sector direction and high-level priorities.</li>
                     <li>Coordinates cross-mode programs (roads, logistics, aviation, rail, ports) so they align.</li>
                     <li>Enables system-level integration and strategic transformation.</li>
                 </ul>
-
-                <p class="text-body"><strong>What this function does not do:</strong></p>
-                <ul>
+                <p class="section-text"><strong>What this function does not do:</strong></p>
+                <ul style="color:#3a3a38; margin-left:1.5rem; margin-bottom:1.5rem;">
                     <li>It is not the day-to-day regulator of individual service providers.</li>
                     <li>It is not traffic enforcement.</li>
                     <li>It is not independent accident investigation.</li>
                     <li>It is not the detailed designer for every road or intersection.</li>
                 </ul>
-                <div class="example-box">
-                    <span class="box-title">Example</span>
-                    <p class="text-body">
+                <div class="box example-box">
+                    <h3>Example</h3>
+                    <p class="section-text">
                         A national goal to improve network quality or logistics performance is set at this level, but the delivery of projects and services is carried by specialized entities in each mode.
                     </p>
                 </div>
+            </div>
 
-                <h3 class="section-title">2) Regulation and market governance</h3>
-                <span class="bloom-level">Required Bloom level for this section: Understand → Apply</span>
-
-                <p class="text-body">
+            <!-- Section 2 -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">2)</span>Regulation and market governance</h2>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <p class="section-text">
                     A transport system needs rules. Regulation is the function that controls who is allowed to provide transport services, what requirements those services must meet, and how users and operators are protected. Regulation prevents disorder in the market: unlicensed operators, unsafe services, and inconsistent service quality. For engineers, regulation matters because it creates the boundaries within which design and operations must work.
                 </p>
 
-                <h4 class="subsection-title">2.1 Transport General Authority (TGA) — land, rail, and maritime regulation</h4>
-                <p class="text-body">
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">2.1</span>Transport General Authority (TGA) — land, rail, and maritime regulation</h3>
+                </div>
+                <p class="section-text">
                     <strong><span lang="AR-SA" dir="RTL">الهيئة العامة للنقل</span></strong><br>
                     Website: <a href="https://www.tga.gov.sa/en" target="_blank">https://www.tga.gov.sa/en</a>
                 </p>
-                <p class="text-body">
+                <p class="section-text">
                     The <strong>Transport General Authority (TGA)</strong> is the regulator for <strong>land transport, rail transport, and maritime transport</strong> as service sectors. This includes licensing and oversight of service providers and setting regulatory frameworks that shape how services operate and how quality and safety are maintained.
                 </p>
-                <p class="text-body"><strong>What TGA does:</strong></p>
-                <ul>
+                <p class="section-text"><strong>What TGA does:</strong></p>
+                <ul style="color:#3a3a38; margin-left:1.5rem; margin-bottom:1.5rem;">
                     <li>Licenses regulated transport activities in land/rail/maritime sectors.</li>
                     <li>Sets compliance requirements and monitors service quality/safety for regulated activities.</li>
                     <li>Issues regulatory frameworks that affect how transport services are provided.</li>
                 </ul>
-                <p class="text-body"><strong>What TGA does not do:</strong></p>
-                <ul>
+                <p class="section-text"><strong>What TGA does not do:</strong></p>
+                <ul style="color:#3a3a38; margin-left:1.5rem; margin-bottom:1.5rem;">
                     <li>It is not traffic enforcement on streets.</li>
                     <li>It is not the owner/operator of the national road network.</li>
                     <li>It is not the independent investigator of major accidents.</li>
                 </ul>
-                <div class="example-box">
-                    <span class="box-title">Example</span>
-                    <p class="text-body">
+                <div class="box example-box">
+                    <h3>Example</h3>
+                    <p class="section-text">
                         If a company wants to legally operate a regulated transport service, the permission-to-operate and requirements function belongs to the regulator, even though vehicles physically operate on roads managed by other entities.
                     </p>
                 </div>
 
-                <h4 class="subsection-title">2.2 General Authority of Civil Aviation (GACA) — aviation regulation</h4>
-                <p class="text-body">
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">2.2</span>General Authority of Civil Aviation (GACA) — aviation regulation</h3>
+                </div>
+                <p class="section-text">
                     <strong><span lang="AR-SA" dir="RTL">الهيئة العامة للطيران المدني</span></strong><br>
                     Website: <a href="https://gaca.gov.sa/en" target="_blank">https://gaca.gov.sa/en</a>
                 </p>
-                <p class="text-body">
+                <p class="section-text">
                     The <strong>General Authority of Civil Aviation (GACA)</strong> regulates the aviation sector. Aviation is treated as a separate regulatory domain because it is highly technical and safety-critical and requires deep expertise and alignment with international aviation standards and practices.
                 </p>
-                <p class="text-body"><strong>What GACA does:</strong></p>
-                <ul>
+                <p class="section-text"><strong>What GACA does:</strong></p>
+                <ul style="color:#3a3a38; margin-left:1.5rem; margin-bottom:1.5rem;">
                     <li>Provides aviation regulations and oversight.</li>
                     <li>Manages licensing and regulatory requirements for aviation activities.</li>
                     <li>Ensures compliance with aviation safety and operational requirements.</li>
                 </ul>
-                <p class="text-body"><strong>What GACA does not do:</strong></p>
-                <ul>
+                <p class="section-text"><strong>What GACA does not do:</strong></p>
+                <ul style="color:#3a3a38; margin-left:1.5rem; margin-bottom:1.5rem;">
                     <li>It does not regulate land/rail/maritime services (that is handled in the land/rail/maritime regulatory domain).</li>
                     <li>It does not enforce road traffic laws.</li>
                 </ul>
-                <div class="example-box">
-                    <span class="box-title">Example</span>
-                    <p class="text-body">
+                <div class="box example-box">
+                    <h3>Example</h3>
+                    <p class="section-text">
                         If an airline or airport activity requires authorization, the rules and approvals are handled under aviation regulation rather than under land transport regulation.
                     </p>
                 </div>
+            </div>
 
-                <h3 class="section-title">3) Infrastructure governance and long-term infrastructure responsibility (by mode)</h3>
-                <span class="bloom-level">Required Bloom level for this section: Understand → Apply</span>
-
-                <p class="text-body">
+            <!-- Section 3 -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">3)</span>Infrastructure governance and long-term infrastructure responsibility (by mode)</h2>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <p class="section-text">
                     A transport system also needs organizations that take responsibility for infrastructure: networks and terminals that must be planned, developed, maintained, and improved. This function is about assets and long-term performance: condition, capacity, resilience, and reliability. This is where capital programs and maintenance programs live.
                 </p>
 
-                <h4 class="subsection-title">3.1 Roads — Roads General Authority (RGA)</h4>
-                <p class="text-body">
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">3.1</span>Roads — Roads General Authority (RGA)</h3>
+                </div>
+                <p class="section-text">
                     <strong><span lang="AR-SA" dir="RTL">الهيئة العامة للطرق</span></strong><br>
                     Website: <a href="https://www.rga.gov.sa/content/externalportal/en/home.html" target="_blank">https://www.rga.gov.sa</a>
                 </p>
-                <p class="text-body">
+                <p class="section-text">
                     In the road sector, the <strong>Roads General Authority (RGA)</strong> has a sector-level role that supports a unified road system, including consistent practices and performance expectations across the road sector.
                 </p>
-                <p class="text-body"><strong>What RGA does (road sector role):</strong></p>
-                <ul>
+                <p class="section-text"><strong>What RGA does (road sector role):</strong></p>
+                <ul style="color:#3a3a38; margin-left:1.5rem; margin-bottom:1.5rem;">
                     <li>Supports road-sector governance and unified approaches across the road system.</li>
                     <li>Promotes consistent practices and performance expectations for road infrastructure.</li>
                 </ul>
-                <p class="text-body"><strong>What RGA does not do:</strong></p>
-                <ul>
+                <p class="section-text"><strong>What RGA does not do:</strong></p>
+                <ul style="color:#3a3a38; margin-left:1.5rem; margin-bottom:1.5rem;">
                     <li>It is not traffic enforcement.</li>
                     <li>It is not independent accident investigation.</li>
                     <li>It is not the operator of public transport services.</li>
                 </ul>
 
-                <h4 class="subsection-title">3.2 Ports — Saudi Ports Authority (MAWANI)</h4>
-                <p class="text-body">
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">3.2</span>Ports — Saudi Ports Authority (MAWANI)</h3>
+                </div>
+                <p class="section-text">
                     <strong><span lang="AR-SA" dir="RTL">الهيئة العامة للموانئ (موانئ)</span></strong><br>
                     Website: <a href="https://mawani.gov.sa/" target="_blank">https://mawani.gov.sa</a>
                 </p>
-                <p class="text-body">
+                <p class="section-text">
                     Ports are complex systems where infrastructure, safety, capacity, and logistics performance must work together. <strong>MAWANI</strong> leads the development and management of ports within its scope, focusing on port performance and long-term port capability.
                 </p>
-                <p class="text-body"><strong>What MAWANI does:</strong></p>
-                <ul>
+                <p class="section-text"><strong>What MAWANI does:</strong></p>
+                <ul style="color:#3a3a38; margin-left:1.5rem; margin-bottom:1.5rem;">
                     <li>Develops and manages port infrastructure and port facilities within its scope.</li>
                     <li>Improves port capacity, efficiency, and overall port performance.</li>
                     <li>Acts as a key "owner/client" function for port development programs.</li>
                 </ul>
 
-                <h4 class="subsection-title">3.3 Rail — Saudi Arabia Railways (SAR)</h4>
-                <p class="text-body">
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">3.3</span>Rail — Saudi Arabia Railways (SAR)</h3>
+                </div>
+                <p class="section-text">
                     <strong><span lang="AR-SA" dir="RTL">الخطوط الحديدية السعودية</span></strong><br>
                     Website: <a href="https://sar.com.sa/" target="_blank">https://sar.com.sa</a>
                 </p>
-                <p class="text-body">
+                <p class="section-text">
                     Rail requires integrated management because track, rolling stock, signaling, operations, and maintenance must function as one coherent system. <strong>Saudi Arabia Railways (SAR)</strong> is central to intercity rail infrastructure and operations.
                 </p>
-                <p class="text-body"><strong>What SAR does:</strong></p>
-                <ul>
+                <p class="section-text"><strong>What SAR does:</strong></p>
+                <ul style="color:#3a3a38; margin-left:1.5rem; margin-bottom:1.5rem;">
                     <li>Operates passenger and freight rail services and manages key rail assets within its network.</li>
                     <li>Plans, maintains, and improves rail infrastructure and supporting facilities as part of rail system performance.</li>
                 </ul>
 
-                <h4 class="subsection-title">3.4 Airports — MATARAT Holding ecosystem</h4>
-                <p class="text-body">
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">3.4</span>Airports — MATARAT Holding ecosystem</h3>
+                </div>
+                <p class="section-text">
                     <strong><span lang="AR-SA" dir="RTL">شركة مطارات القابضة</span></strong><br>
                     Website: <a href="https://matarat.com.sa/en-us/Pages/default.aspx" target="_blank">https://matarat.com.sa</a>
                 </p>
-                <p class="text-body">
+                <p class="section-text">
                     Airport infrastructure and operational management is carried through the aviation ecosystem, including airport operating companies and the transformation platform led by <strong>MATARAT Holding</strong>.
                 </p>
+            </div>
 
-                <h3 class="section-title">4) Technical standards and consistent engineering practice</h3>
-                <span class="bloom-level">Required Bloom level for this section: Understand → Apply</span>
-
-                <p class="text-body">
+            <!-- Section 4 -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">4)</span>Technical standards and consistent engineering practice</h2>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <p class="section-text">
                     A transport system needs technical requirements that translate safety and performance expectations into consistent engineering decisions. Technical standards exist because designs must be consistent across projects to produce predictable outcomes and reduce avoidable risk.
                 </p>
-                <p class="text-body">
+                <p class="section-text">
                     In Saudi Arabia, technical requirements are especially visible in the road sector through road-sector frameworks and unified practices supported by the <strong>Roads General Authority</strong>. Regulators also embed technical compliance requirements into licensing and oversight processes, particularly in highly technical domains such as aviation.
                 </p>
+            </div>
 
-                <h3 class="section-title">5) Safety oversight versus independent safety investigation</h3>
-                <span class="bloom-level">Required Bloom level for this section: Understand → Apply</span>
-
-                <p class="text-body">Safety is addressed through more than one function.</p>
-                <p class="text-body">
+            <!-- Section 5 -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">5)</span>Safety oversight versus independent safety investigation</h2>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <p class="section-text">Safety is addressed through more than one function.</p>
+                <p class="section-text">
                     <strong>Safety oversight</strong> exists inside regulators and infrastructure owners. It includes safety requirements, audits, inspections, compliance monitoring, and safety performance management. Oversight is continuous and preventive.
                 </p>
-                <p class="text-body">
+                <p class="section-text">
                     <strong>Independent safety investigation</strong> exists to learn from major incidents and produce recommendations based on technical findings. This function focuses on system learning rather than penalties.
                 </p>
-                <p class="text-body">
+                <p class="section-text">
                     In Saudi Arabia, independent investigation is carried out by the <strong>National Transport Safety Center (NTSC) — <span lang="AR-SA" dir="RTL">المركز الوطني لسلامة النقل</span></strong>.<br>
                     Website: <a href="https://ntsc.gov.sa/en" target="_blank">https://ntsc.gov.sa/en</a>
                 </p>
+            </div>
 
-                <h3 class="section-title">6) Traffic enforcement and user-side compliance</h3>
-                <span class="bloom-level">Required Bloom level for this section: Remember → Understand → Apply</span>
-
-                <p class="text-body">
+            <!-- Section 6 -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">6)</span>Traffic enforcement and user-side compliance</h2>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <p class="section-text">
                     Transport safety also depends on day-to-day user compliance. This function enforces traffic laws, manages traffic procedures, and applies penalties to influence behavior.
                 </p>
-                <p class="text-body">
+                <p class="section-text">
                     In Saudi Arabia, this function is carried by <strong>Traffic (<span lang="AR-SA" dir="RTL">المرور</span>)</strong> within the <strong>Ministry of Interior (<span lang="AR-SA" dir="RTL">وزارة الداخلية</span>)</strong>.<br>
                     Website: <a href="https://www.moi.gov.sa/wps/portal/Home/sectors/publicsecurity/traffic" target="_blank">https://www.moi.gov.sa</a>
                 </p>
+            </div>
 
-                <h3 class="section-title">7) Local and regional transport integration (cities and special zones)</h3>
-                <span class="bloom-level">Required Bloom level for this section: Understand → Apply</span>
-
-                <p class="text-body">
+            <!-- Section 7 -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">7)</span>Local and regional transport integration (cities and special zones)</h2>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <p class="section-text">
                     Large urban areas and special zones require a function that integrates modes locally: network integration, operational coordination, public transport planning integration, and management of peak demands.
                 </p>
 
-                <h4 class="subsection-title">7.1 Riyadh — Royal Commission for Riyadh City (RCRC)</h4>
-                <p class="text-body">
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">7.1</span>Riyadh — Royal Commission for Riyadh City (RCRC)</h3>
+                </div>
+                <p class="section-text">
                     <strong><span lang="AR-SA" dir="RTL">الهيئة الملكية لمدينة الرياض</span></strong><br>
                     Website: <a href="https://www.rcrc.gov.sa/en" target="_blank">https://www.rcrc.gov.sa/en</a>
                 </p>
 
-                <h4 class="subsection-title">7.2 Makkah and Holy Sites</h4>
-                <p class="text-body">
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">7.2</span>Makkah and Holy Sites</h3>
+                </div>
+                <p class="section-text">
                     <strong><span lang="AR-SA" dir="RTL">الهيئة الملكية لمدينة مكة المكرمة والمشاعر المقدسة</span></strong><br>
                     Website: <a href="https://www.rcmc.gov.sa/en-us/" target="_blank">https://www.rcmc.gov.sa</a>
                 </p>
+            </div>
 
-                <div class="practice-questions">
-                    <h3 class="section-title">Sample Questions and Answers (for practice)</h3>
-                    <p class="text-body">
-                        <em>Answer each question in one to two sentences. Bloom's taxonomy level is shown for self-assessment.</em>
-                    </p>
+            <!-- Practice Questions -->
+            <div class="end-of-chapter">
+                <h2 class="end-of-chapter-title">Practice Questions</h2>
 
-                    <button class="toggle-all-btn" onclick="toggleAllAnswers()">
-                        <span class="toggle-icon">👁</span> <span class="toggle-text">Show All Answers</span>
+                <div class="question-item" id="q1">
+                    <div class="question-header">
+                        <span class="question-number">1</span>
+                        <div class="question-content">
+                            <span class="question-text">Why is a function-based approach useful for understanding how transportation agencies are organized in Saudi Arabia?</span>
+                        </div>
+                        <div class="question-chip-area">
+                            <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span>
+                        </div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('q1', this)">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Answer" data-hide="Hide Answer"></span>
                     </button>
-
-                    <div class="sample-problem-box question-block">
-                        <div class="question-header">Q1 — Bloom's Level: Understand</div>
-                        <p class="text-body"><strong>Question:</strong> Why is a function-based approach useful for understanding how transportation agencies are organized in Saudi Arabia?</p>
-                        <details class="answer-details">
-                            <summary class="answer-summary">
-                                <span class="chevron">▶</span> Show Answer
-                            </summary>
-                            <div class="answer-content">
-                                <p class="text-body"><strong>Answer:</strong> Because focusing on functions clarifies what needs to be done first and helps identify the correct responsible entity without confusion.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="sample-problem-box question-block">
-                        <div class="question-header">Q2 — Bloom's Level: Understand</div>
-                        <p class="text-body"><strong>Question:</strong> Why are transportation responsibilities divided among multiple entities rather than handled by a single organization?</p>
-                        <details class="answer-details">
-                            <summary class="answer-summary">
-                                <span class="chevron">▶</span> Show Answer
-                            </summary>
-                            <div class="answer-content">
-                                <p class="text-body"><strong>Answer:</strong> Because transportation is complex and high-risk; dividing responsibilities reduces conflicts of interest and allows specialization.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="sample-problem-box question-block">
-                        <div class="question-header">Q3 — Bloom's Level: Remember</div>
-                        <p class="text-body"><strong>Question:</strong> Which entity provides national leadership, policy direction, and coordination for the transport and logistics sector in Saudi Arabia?</p>
-                        <details class="answer-details">
-                            <summary class="answer-summary">
-                                <span class="chevron">▶</span> Show Answer
-                            </summary>
-                            <div class="answer-content">
-                                <p class="text-body"><strong>Answer:</strong> The Ministry of Transport and Logistics Services (<span lang="AR-SA" dir="RTL">وزارة النقل والخدمات اللوجستية</span>).</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="sample-problem-box question-block">
-                        <div class="question-header">Q4 — Bloom's Level: Understand</div>
-                        <p class="text-body"><strong>Question:</strong> In one sentence, explain what regulation means in the context of transportation systems.</p>
-                        <details class="answer-details">
-                            <summary class="answer-summary">
-                                <span class="chevron">▶</span> Show Answer
-                            </summary>
-                            <div class="answer-content">
-                                <p class="text-body"><strong>Answer:</strong> Regulation is the function of setting and enforcing rules that determine who may provide transport services and under what conditions.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="sample-problem-box question-block">
-                        <div class="question-header">Q5 — Bloom's Level: Apply</div>
-                        <p class="text-body"><strong>Question:</strong> A company wants to legally operate a new commercial land transport service. Which entity should it deal with, and why?</p>
-                        <details class="answer-details">
-                            <summary class="answer-summary">
-                                <span class="chevron">▶</span> Show Answer
-                            </summary>
-                            <div class="answer-content">
-                                <p class="text-body"><strong>Answer:</strong> The Transport General Authority (<span lang="AR-SA" dir="RTL">الهيئة العامة للنقل</span>), because it regulates land transport services and operator requirements.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="sample-problem-box question-block">
-                        <div class="question-header">Q6 — Bloom's Level: Apply</div>
-                        <p class="text-body"><strong>Question:</strong> A serious transport accident occurs and the goal is to determine root causes and issue safety recommendations, not penalties. Which entity is responsible?</p>
-                        <details class="answer-details">
-                            <summary class="answer-summary">
-                                <span class="chevron">▶</span> Show Answer
-                            </summary>
-                            <div class="answer-content">
-                                <p class="text-body"><strong>Answer:</strong> The National Transport Safety Center (<span lang="AR-SA" dir="RTL">المركز الوطني لسلامة النقل</span>).</p>
-                            </div>
-                        </details>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Answer:</span>
+                            <p>Because focusing on functions clarifies what needs to be done first and helps identify the correct responsible entity without confusion.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </main>
 
-    <footer class="site-footer">
-        <p>© 2026 KFUPM CE341 - Transportation Engineering | Dr. Fahad Alqahtani</p>
+                <div class="question-item" id="q2">
+                    <div class="question-header">
+                        <span class="question-number">2</span>
+                        <div class="question-content">
+                            <span class="question-text">Why are transportation responsibilities divided among multiple entities rather than handled by a single organization?</span>
+                        </div>
+                        <div class="question-chip-area">
+                            <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span>
+                        </div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('q2', this)">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Answer" data-hide="Hide Answer"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Answer:</span>
+                            <p>Because transportation is complex and high-risk; dividing responsibilities reduces conflicts of interest and allows specialization.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-item" id="q3">
+                    <div class="question-header">
+                        <span class="question-number">3</span>
+                        <div class="question-content">
+                            <span class="question-text">Which entity provides national leadership, policy direction, and coordination for the transport and logistics sector in Saudi Arabia?</span>
+                        </div>
+                        <div class="question-chip-area">
+                            <span class="bloom-chip" data-lvl="1"><span class="dot"></span>Level: Remember</span>
+                        </div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('q3', this)">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Answer" data-hide="Hide Answer"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Answer:</span>
+                            <p>The Ministry of Transport and Logistics Services (<span lang="AR-SA" dir="RTL">وزارة النقل والخدمات اللوجستية</span>).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-item" id="q4">
+                    <div class="question-header">
+                        <span class="question-number">4</span>
+                        <div class="question-content">
+                            <span class="question-text">In one sentence, explain what regulation means in the context of transportation systems.</span>
+                        </div>
+                        <div class="question-chip-area">
+                            <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span>
+                        </div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('q4', this)">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Answer" data-hide="Hide Answer"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Answer:</span>
+                            <p>Regulation is the function of setting and enforcing rules that determine who may provide transport services and under what conditions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-item" id="q5">
+                    <div class="question-header">
+                        <span class="question-number">5</span>
+                        <div class="question-content">
+                            <span class="question-text">A company wants to legally operate a new commercial land transport service. Which entity should it deal with, and why?</span>
+                        </div>
+                        <div class="question-chip-area">
+                            <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                        </div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('q5', this)">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Answer" data-hide="Hide Answer"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Answer:</span>
+                            <p>The Transport General Authority (<span lang="AR-SA" dir="RTL">الهيئة العامة للنقل</span>), because it regulates land transport services and operator requirements.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-item" id="q6">
+                    <div class="question-header">
+                        <span class="question-number">6</span>
+                        <div class="question-content">
+                            <span class="question-text">A serious transport accident occurs and the goal is to determine root causes and issue safety recommendations, not penalties. Which entity is responsible?</span>
+                        </div>
+                        <div class="question-chip-area">
+                            <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                        </div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('q6', this)">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Answer" data-hide="Hide Answer"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Answer:</span>
+                            <p>The National Transport Safety Center (<span lang="AR-SA" dir="RTL">المركز الوطني لسلامة النقل</span>).</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /end-of-chapter -->
+
+        </div><!-- /main-content -->
+    </div><!-- /page-wrapper -->
+
+    <footer>
+        <p>&copy; 2026 Dr. Fahad Alqahtani | KFUPM CE341 - Transportation Engineering</p>
     </footer>
 
     <script>
-        // Global state to track if all answers are shown
-        let allAnswersShown = false;
+        let allOpen = false;
 
-        // Toggle all answers
         function toggleAllAnswers() {
-            const allDetails = document.querySelectorAll('.answer-details');
-            const toggleText = document.querySelector('.toggle-text');
-            const toggleIcon = document.querySelector('.toggle-icon');
+            const button = document.querySelector('.toggle-all-btn');
+            allOpen = !allOpen;
 
-            allAnswersShown = !allAnswersShown;
-
-            allDetails.forEach(details => {
-                details.open = allAnswersShown;
+            document.querySelectorAll('.question-item').forEach(item => {
+                if (allOpen) { item.classList.add('open'); }
+                else { item.classList.remove('open'); }
             });
 
-            if (allAnswersShown) {
-                toggleText.textContent = 'Hide All Answers';
-                toggleIcon.textContent = '🙈';
-            } else {
-                toggleText.textContent = 'Show All Answers';
-                toggleIcon.textContent = '👁';
-            }
+            document.querySelectorAll('.toggleable-item').forEach(item => {
+                if (allOpen) { item.classList.add('open'); }
+                else { item.classList.remove('open'); }
+            });
+
+            button.textContent = allOpen ? 'Hide All Answers' : 'Show All Answers';
         }
 
-        // Sync toggle button state when individual answers are clicked
-        document.querySelectorAll('.answer-details').forEach(details => {
-            details.addEventListener('toggle', function() {
-                const allDetails = document.querySelectorAll('.answer-details');
-                const openDetails = document.querySelectorAll('.answer-details[open]');
-                const toggleText = document.querySelector('.toggle-text');
-                const toggleIcon = document.querySelector('.toggle-icon');
+        function toggleQuestion(id, btn) {
+            const item = document.getElementById(id);
+            item.classList.toggle('open');
+        }
 
-                if (openDetails.length === allDetails.length) {
-                    allAnswersShown = true;
-                    toggleText.textContent = 'Hide All Answers';
-                    toggleIcon.textContent = '🙈';
-                } else if (openDetails.length === 0) {
-                    allAnswersShown = false;
-                    toggleText.textContent = 'Show All Answers';
-                    toggleIcon.textContent = '👁';
-                }
-            });
-        });
+        function toggleExample(id, btn) {
+            const item = document.getElementById(id);
+            item.classList.toggle('open');
+        }
     </script>
 </body>
 </html>

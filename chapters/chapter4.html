@@ -3,124 +3,1510 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 4 - Traffic Engineering Studies | CE341</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Chapter 4: Vertical Alignment and Vertical Curves — CE341</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+    MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] } };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+        :root {
+            --c1:#1F6F54;
+            --c2:#3D7A4C;
+            --c3:#B38B2E;
+            --c4:#C1682D;
+            --c5:#8E3A2B;
+            --c6:#551427;
+        }
+        html { background-color: #f5f5f5 !important; height: 100%; overflow-x: hidden !important; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Lora', Georgia, serif; color: #141413; background-color: #f5f5f5 !important; line-height: 1.7; min-height: 100vh; height: 100%; overflow-x: hidden !important; width: 100%; }
+        .navbar { background-color: #ffffff; padding: 1.2rem 2rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.08); width: 100%; overflow-x: hidden; }
+        .nav-container { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 3rem; justify-content: space-between; }
+        .nav-left { display: flex; align-items: center; gap: 3rem; flex: 1; }
+        .logo { font-size: 1rem; font-weight: 600; color: #141413; text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 0.5rem; letter-spacing: 0.5px; }
+        .logo-icon { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: linear-gradient(135deg, #da7756 0%, #c66344 100%); border-radius: 4px; color: white; font-weight: bold; font-size: 0.9rem; }
+        .nav-tabs { display: flex; gap: 2rem; align-items: center; }
+        .nav-tabs a { color: #6b6b6b; text-decoration: none; font-size: 0.95rem; padding: 0.5rem 0; border-bottom: 2px solid transparent; transition: all 0.3s ease; cursor: pointer; white-space: nowrap; }
+        .nav-tabs a:hover { color: #141413; }
+        .nav-tabs a.active { color: #da7756; background-color: #fff5f2; padding: 0.6rem 1rem; border-radius: 4px; border-bottom: none; }
+        .practice-btn { background-color: #da7756; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 6px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; white-space: nowrap; text-decoration: none; }
+        .practice-btn:hover { background-color: #c66344; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(218,119,86,0.25); }
+        .page-wrapper { max-width: 900px; margin: 2rem auto; background-color: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); width: 90%; overflow: hidden; }
+        .chapter-header-section { padding: 3rem 2rem; text-align: center; border-bottom: 1px solid #e8e6dc; }
+        .chapter-label { font-size: 0.9rem; color: #9a9a9a; letter-spacing: 1.5px; margin-bottom: 1.5rem; font-weight: 600; }
+        .chapter-title { font-size: 2.4rem; color: #141413; margin-bottom: 1.5rem; font-weight: bold; letter-spacing: 0.5px; line-height: 1.3; }
+        .chapter-subtitle { font-size: 1rem; color: #8b8b8b; font-weight: 500; margin-bottom: 2rem; letter-spacing: 0.3px; }
+        .chapter-divider { width: 100px; height: 2px; background-color: #141413; margin: 2rem auto; }
+        .chapter-intro { font-size: 0.95rem; color: #3a3a38; line-height: 1.9; text-align: justify; }
+        .main-content { max-width: 850px; margin: 0 auto; padding: 2rem; }
+        .chapter-controls { text-align: center; margin: 2rem 0 3rem 0; }
+        .toggle-all-btn { background-color: #da7756; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 6px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+        .toggle-all-btn:hover { background-color: #c66344; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(218,119,86,0.3); }
+        .box { padding: 1.5rem; margin: 1.5rem 0; border-radius: 8px; border-left: 4px solid #da7756; background-color: #faf9f5; }
+        .learning-objectives { background-color: #f0e9e0; border-left-color: #da7756; position: relative; }
+        .learning-objectives h3 { color: #da7756; margin-bottom: 1rem; font-size: 1.1rem; }
+        .learning-objectives ul { list-style: none; padding-left: 0; }
+        .learning-objectives li { padding-left: 1.5rem; margin-bottom: 1rem; position: relative; display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+        .learning-objectives li:before { content: "✓"; position: absolute; left: 0; color: #da7756; font-weight: bold; }
+        .section-heading-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 2.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; background-color: #f0e9e0; border-left: 4px solid #da7756; border-radius: 6px; padding: 0.75rem 1.25rem; }
+        .section-heading { font-size: 1.5rem; color: #141413; font-weight: bold; margin: 0; }
+        .subsection-heading-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; background-color: #faf6f2; border-left: 3px solid #e8c4b0; border-radius: 4px; padding: 0.5rem 1rem; }
+        .subsection-heading { font-size: 1.15rem; color: #141413; margin: 0; }
+        .section-number { display: inline-block; margin-right: 0.5rem; color: #da7756; font-weight: bold; }
+        .lo-header-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .lo-header-row h3 { margin: 0; color: #da7756; font-size: 1.1rem; }
+        .bloom-chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px 6px 8px; border-radius: 999px; color: #fff; font-size: 12px; font-weight: 800; letter-spacing: .1px; box-shadow: 0 4px 10px rgba(20,32,24,.10); white-space: nowrap; flex-shrink: 0; }
+        .bloom-chip .dot { width: 10px; height: 10px; border-radius: 999px; background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 2px rgba(255,255,255,.28); }
+        .bloom-chip[data-lvl="1"] { background: var(--c1); }
+        .bloom-chip[data-lvl="2"] { background: var(--c2); }
+        .bloom-chip[data-lvl="3"] { background: var(--c3); }
+        .bloom-chip[data-lvl="4"] { background: var(--c4); }
+        .bloom-chip[data-lvl="5"] { background: var(--c5); }
+        .bloom-chip[data-lvl="6"] { background: var(--c6); }
+        .section-text { color: #3a3a38; margin-bottom: 1.5rem; line-height: 1.8; }
+        .toggleable-item { margin: 1.5rem 0; border: 1px solid #e8e6dc; border-radius: 6px; overflow: hidden; background-color: white; border-left: 4px solid #6b2c3e; }
+        .toggle-header { display: flex; align-items: flex-start; padding: 1.2rem; background-color: #faf6f6; user-select: none; }
+        .example-number { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; min-width: 32px; margin-right: 1rem; background-color: #6b2c3e; color: white; border-radius: 50%; font-size: 0.9rem; font-weight: bold; flex-shrink: 0; margin-top: 0.1rem; }
+        .toggle-label { font-weight: 600; color: #141413; flex: 1; text-align: left; line-height: 1.6; display: flex; flex-direction: column; gap: 0.25rem; }
+        .example-question-preview { font-weight: normal; color: #3a3a38; font-size: 0.95rem; line-height: 1.6; }
+        .toggle-header .bloom-chip { margin-left: auto; }
+        .toggle-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 1.2rem; }
+        .toggleable-item.open .toggle-content { max-height: 9000px; padding: 0 1.2rem 1.2rem; }
+        .toggle-content-inner { padding-top: 1rem; border-top: 1px solid #e8e6dc; color: #3a3a38; line-height: 1.8; }
+        .toggle-content-inner p { margin-bottom: 0.8rem; }
+        .toggle-content-inner ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+        .toggle-content-inner li { margin-bottom: 0.5rem; }
+        .show-answer-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1.2rem; cursor: pointer; background: none; border: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.2px; transition: opacity 0.2s; border-top: 1px solid #e8e6dc; }
+        .show-answer-btn:hover { opacity: 0.75; }
+        .show-answer-btn .sa-icon { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 4px; color: white; font-size: 1.1rem; font-weight: bold; transition: transform 0.3s ease; flex-shrink: 0; }
+        .show-answer-btn.burgundy { color: #6b2c3e; }
+        .show-answer-btn.burgundy .sa-icon { background-color: #6b2c3e; }
+        .show-answer-btn.green { color: #3D7A4C; }
+        .show-answer-btn.green .sa-icon { background-color: #3D7A4C; }
+        .toggleable-item.open .show-answer-btn .sa-icon, .question-item.open .show-answer-btn .sa-icon { transform: rotate(45deg); }
+        .toggleable-item.open .show-answer-btn .sa-text::after, .question-item.open .show-answer-btn .sa-text::after { content: attr(data-hide); }
+        .sa-text::after { content: attr(data-show); }
+        .end-of-chapter { margin-top: 4rem; padding-top: 2rem; border-top: 3px solid #da7756; }
+        .end-of-chapter-title { font-size: 1.8rem; color: #141413; margin-bottom: 2rem; font-weight: bold; border-left: 4px solid #da7756; padding-left: 1rem; }
+        .question-item { margin: 2rem 0; border: 1px solid #e8e6dc; border-radius: 6px; overflow: hidden; background-color: white; }
+        .question-header { display: flex; align-items: flex-start; padding: 1.2rem; background-color: #faf9f5; user-select: none; }
+        .question-number { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; min-width: 32px; margin-right: 1rem; background-color: #788c5d; color: white; border-radius: 50%; font-size: 0.9rem; font-weight: bold; flex-shrink: 0; margin-top: 0.1rem; }
+        .question-content { flex: 1; }
+        .question-text { font-weight: 600; color: #141413; margin-bottom: 0.3rem; line-height: 1.6; }
+        .question-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 1.2rem; }
+        .question-item.open .question-answer { max-height: 9000px; padding: 0 1.2rem 1.2rem; }
+        .question-answer-inner { padding-top: 1rem; border-top: 1px solid #e8e6dc; color: #3a3a38; line-height: 1.8; }
+        .question-answer-inner p { margin-bottom: 0.8rem; }
+        .question-answer-inner ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+        .question-answer-inner li { margin-bottom: 0.5rem; }
+        .answer-label { font-weight: 600; color: #788c5d; margin-bottom: 0.5rem; display: block; }
+        .question-chip-area { display: flex; align-items: flex-start; margin-left: 1rem; flex-shrink: 0; }
+        footer { background-color: #141413; color: #e8e6dc; text-align: center; padding: 2rem; margin-top: 4rem; }
+        .content-section { margin-bottom: 3rem; }
+        /* Table styles */
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem 0; font-size: 0.88rem; }
+        table th, table td { border: 1px solid #e8e6dc; padding: 0.45rem 0.6rem; text-align: center; }
+        table th { background-color: #f0e9e0; color: #141413; font-weight: 600; }
+        table td:first-child, table th:first-child { text-align: left; }
+        table tr:nth-child(even) td { background-color: #faf9f5; }
+        .table-caption { font-weight: 600; color: #141413; margin-bottom: 0.3rem; font-size: 0.95rem; }
+        .table-source { font-size: 0.8rem; color: #8b8b8b; margin-bottom: 1rem; font-style: italic; }
+        .table-note { font-size: 0.85rem; color: #5a5a58; margin-top: 0.3rem; margin-bottom: 1rem; }
+        @media (max-width: 768px) {
+            .nav-tabs { gap: 1rem; font-size: 0.85rem; }
+            .chapter-header-section { padding: 2rem 1.5rem; }
+            .chapter-title { font-size: 1.8rem; }
+            .main-content { padding: 1.5rem; }
+        }
+    </style>
 </head>
 <body>
-    <nav class="site-nav">
-        <div class="site-nav-inner">
-            <a href="../index.html" class="brand">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                    <path d="M2 17l10 5 10-5"/>
-                    <path d="M2 12l10 5 10-5"/>
-                </svg>
-                CE341
-            </a>
-            <div class="nav-links">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="../syllabus.html" class="nav-link">Syllabus</a>
-                <a href="./" class="nav-link active">Chapters</a>
-                <a href="../quizzes/" class="nav-link">Quizzes</a>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon">C</span>
+                    <span>CE341</span>
+                </a>
+                <div class="nav-tabs">
+                    <a href="../index.html">Home</a>
+                    <a href="../syllabus.html">Syllabus</a>
+                    <a href="./" class="active">Chapters</a>
+                    <a href="../quizzes/">Quizzes</a>
+                </div>
             </div>
-            <a href="../quizzes/" class="cta-button">Practice Quizzes</a>
+            <a href="../quizzes/" class="practice-btn">Practice Quizzes</a>
         </div>
     </nav>
 
-    <main>
-        <div class="chapter-container">
-            <header class="chapter-header">
-                <div class="chapter-number">Chapter 4</div>
-                <h1 class="chapter-title">Traffic Engineering Studies</h1>
-                <p class="chapter-subtitle">Speed, Volume, and Traffic Flow Analysis</p>
-            </header>
+    <div class="page-wrapper">
+        <div class="chapter-header-section">
+            <div class="chapter-label">CHAPTER 4</div>
+            <h1 class="chapter-title">Geometric Design — Vertical Alignment and Vertical Curves</h1>
+            <p class="chapter-subtitle">Tangent Grades, Parabolic Curves, Sight Distance, and Drainage</p>
+            <div class="chapter-divider"></div>
+            <p class="chapter-intro">The vertical alignment of a highway defines the elevation of the roadway centerline along its length. It consists of tangent grades connected by parabolic vertical curves. Vertical alignment governs driver safety (sight distance), surface drainage, and vehicle operating efficiency on grades. Because the vertical profile requires massive earthwork, it is essentially permanent — design errors are extremely costly to correct. This chapter covers tangent grade design, equal-tangent parabolic vertical curves, stopping sight distance criteria for crest and sag curves, drainage checks, and the complete design workflow. All values follow the AASHTO <em>A Policy on Geometric Design of Highways and Streets, 6th Edition</em> and all computations use SI units.</p>
+        </div>
 
-            <div class="chapter-content">
-                <div class="learning-objectives">
-                    <span class="box-title">Learning Objectives</span>
-                    <p class="text-body">By the end of this chapter, it should be possible to:</p>
+        <div class="main-content">
+
+            <!-- Overall Learning Objectives -->
+            <div class="box learning-objectives">
+                <div class="lo-header-row">
+                    <h3>Chapter Learning Objectives</h3>
+                    <span class="bloom-chip" data-lvl="6"><span class="dot"></span>Level: Create</span>
+                </div>
+                <ul>
+                    <li>Select the correct sight-distance model inputs for crest and sag curve design.</li>
+                    <li>Identify the controlling design speed for a given facility.</li>
+                    <li>Choose tangent grades satisfying maximum-grade and minimum-grade constraints.</li>
+                    <li>Compute the algebraic difference \(A\) and classify the curve as crest or sag.</li>
+                    <li>Set up the parabolic equation and compute K-values.</li>
+                    <li>Compute BVC/EVC positions, elevations, and full elevation tables.</li>
+                    <li>Determine minimum crest and sag curve lengths from sight distance criteria.</li>
+                    <li>Evaluate drainage conditions on sag curves and recommend mitigation measures.</li>
+                    <li>Execute a complete vertical-alignment design from inputs through verification.</li>
+                </ul>
+            </div>
+
+            <div class="chapter-controls">
+                <button class="toggle-all-btn" onclick="toggleAllAnswers()">Show All Answers</button>
+            </div>
+
+            <!-- ===================== SECTION 4.0 ===================== -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">4.0</span>Design Inputs</h2>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <div class="box learning-objectives">
+                    <div class="lo-header-row">
+                        <h3>Learning Objectives</h3>
+                    </div>
                     <ul>
-                        <li><strong>Remember:</strong> define traffic volume, density, speed, and headway.</li>
-                        <li><strong>Understand:</strong> explain the relationship between volume, speed, and density (fundamental diagram).</li>
-                        <li><strong>Apply:</strong> conduct speed studies and volume counts using appropriate methods.</li>
-                        <li><strong>Analyze:</strong> interpret traffic data and identify operational issues.</li>
+                        <li>Select the correct sight-distance model inputs for crest and sag curve design.</li>
+                        <li>Identify the controlling design speed for a given facility.</li>
+                    </ul>
+                </div>
+                <p class="section-text">Vertical curve design depends on parameters established in earlier chapters. The <strong>design speed</strong> is the maximum safe speed for which the highway is designed under wet-pavement conditions; it determines the required stopping sight distance, which in turn controls the minimum lengths of vertical curves.</p>
+                <p class="section-text">For <strong>crest curves</strong>, the sight-distance model uses the <strong>driver eye height</strong> \(h_1 = 1.08\) m and the <strong>object height</strong> \(h_2 = 0.60\) m. The driver's line of sight to the object must clear the crest over a distance at least equal to the stopping sight distance.</p>
+                <p class="section-text">For <strong>sag curves</strong>, nighttime visibility is limited to the distance illuminated by headlights. The <strong>headlight height</strong> is \(H = 0.60\) m and the <strong>upward beam divergence angle</strong> is \(\beta = 1°\).</p>
+                <p class="section-text">These are fixed AASHTO design constants used throughout this chapter.</p>
+            </div>
+
+            <!-- ===================== SECTION 4.1 ===================== -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">4.1</span>Controlling Criteria for Vertical Alignment</h2>
+                    <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyze</span>
+                </div>
+                <div class="box learning-objectives">
+                    <div class="lo-header-row">
+                        <h3>Learning Objectives</h3>
+                    </div>
+                    <ul>
+                        <li>Explain the three criteria governing vertical alignment.</li>
+                        <li>Determine which criterion controls for a given roadway context.</li>
+                    </ul>
+                </div>
+                <p class="section-text">Three criteria govern vertical alignment design:</p>
+                <p class="section-text"><strong>Sight distance</strong> is the primary safety criterion. On crest curves the convex profile limits how far ahead a driver can see; the curve must be long enough for the driver to see an obstacle and stop. On sag curves, nighttime headlight reach is the limiting factor.</p>
+                <p class="section-text"><strong>Drainage</strong> applies particularly to sag curves on curbed roadways. If the longitudinal grade near the low point is too flat, water ponds on the pavement, creating hydroplaning risk. The drainage criterion imposes a <em>maximum</em> curve length, whereas sight distance imposes a <em>minimum</em>.</p>
+                <p class="section-text"><strong>Constructability and terrain</strong> constrain tangent grade selection. Steep grades slow heavy vehicles and increase operating costs; flat grades through hilly terrain require expensive earthwork.</p>
+                <p class="section-text">On most segments, stopping sight distance controls crest curves and headlight sight distance controls sag curves. On curbed urban facilities, drainage may govern. In mountainous terrain, maximum grade may be the binding constraint.</p>
+            </div>
+
+            <!-- ===================== SECTION 4.2 ===================== -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">4.2</span>Notation, Stationing, and the Profile View</h2>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <div class="box learning-objectives">
+                    <div class="lo-header-row">
+                        <h3>Learning Objectives</h3>
+                    </div>
+                    <ul>
+                        <li>Identify BVC, PVI, and EVC on a profile view.</li>
+                        <li>Compute curve control point positions from given data using stationing.</li>
+                    </ul>
+                </div>
+                <p class="section-text">The <strong>profile view</strong> plots horizontal distance on the horizontal axis and elevation on the vertical axis, with vertical exaggeration of 5–10×. In SI practice, <strong>stations</strong> are measured in 100 m increments: a point 5200 m from the origin is written as Sta. 52+00 (52 full stations plus 00 m). The "+" sign in station notation is a separator, not an arithmetic operator. This notation provides a compact, unambiguous way to locate every feature on the alignment.</p>
+                <p class="section-text">Three control points define each <strong>equal-tangent vertical curve</strong>:</p>
+                <ul style="margin-left:1.5rem; margin-bottom:1rem; color:#3a3a38; line-height:1.8;">
+                    <li><strong>BVC</strong> (Beginning of Vertical Curve): where the curve begins.</li>
+                    <li><strong>PVI</strong> (Point of Vertical Intersection): where extensions of the two tangent grades would intersect. It lies at the horizontal midpoint of the curve.</li>
+                    <li><strong>EVC</strong> (End of Vertical Curve): where the curve ends.</li>
+                </ul>
+                <p class="section-text">The <strong>curve length</strong> \(L\) is the horizontal distance from BVC to EVC, in metres. Because the PVI is at the midpoint:</p>
+                \[\text{Sta.}_{\text{BVC}} = \text{Sta.}_{\text{PVI}} - \frac{L}{2}\]
+                \[\text{Sta.}_{\text{EVC}} = \text{Sta.}_{\text{PVI}} + \frac{L}{2}\]
+                <p class="section-text" style="margin-top:1rem;"><strong>Sign convention:</strong> a positive grade rises left to right; a negative grade falls. For example, \(G = +3.0\%\) means the road rises 3.0 m per 100 m of horizontal distance.</p>
+            </div>
+
+            <!-- ===================== SECTION 4.3 ===================== -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">4.3</span>Tangent Grades and the Algebraic Difference</h2>
+                    <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyze</span>
+                </div>
+                <div class="box learning-objectives">
+                    <div class="lo-header-row">
+                        <h3>Learning Objectives</h3>
+                    </div>
+                    <ul>
+                        <li>Choose tangent grades satisfying maximum-grade and minimum-grade constraints.</li>
+                        <li>Compute the algebraic difference \(A\) and classify the curve as crest or sag.</li>
                     </ul>
                 </div>
 
-                <div class="key-vocabulary">
-                    <span class="box-title">Key vocabulary</span>
-                    <p class="text-body">
-                        <strong>Traffic Volume:</strong> number of vehicles passing a point during a time interval.<br>
-                        <strong>Density (k):</strong> number of vehicles per unit length of roadway.<br>
-                        <strong>Speed (u):</strong> distance traveled per unit time.<br>
-                        <strong>Headway:</strong> time between successive vehicles passing a point.<br>
-                        <strong>Spacing:</strong> distance between successive vehicles.<br>
-                        <strong>Flow (q):</strong> equivalent to volume, vehicles per hour.
-                    </p>
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">4.3.1</span>Percent Grade</h3>
                 </div>
+                <p class="section-text">The <strong>percent grade</strong> \(G\) is defined as the vertical rise (or fall) per 100 m of horizontal distance:</p>
+                \[G = \frac{\Delta\text{Elevation}}{\Delta\text{Horizontal Distance}} \times 100\]
 
-                <h3 class="section-title">4.1 Introduction</h3>
-                <p class="text-body">
-                    Traffic engineering studies provide the data needed for design, operation, and management of transportation facilities. This chapter covers the fundamental traffic stream parameters and methods for collecting and analyzing traffic data.
-                </p>
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">4.3.2</span>Maximum Grades</h3>
+                </div>
+                <p class="section-text">Maximum grades depend on the facility classification, design speed, and terrain. Tables 4.1 through 4.6 present AASHTO-recommended values in SI units. Table 4.7 presents minimum design speeds for selected facilities.</p>
 
-                <h3 class="section-title">4.2 Speed Studies</h3>
-                <span class="bloom-level">Required Bloom level: Apply</span>
-                <p class="text-body">
-                    Speed studies measure how fast vehicles are traveling. Types include spot speed studies (at a point) and travel time studies (over a section). Key statistics include average speed, 85th percentile speed, and pace.
-                </p>
+                <p class="table-caption">Table 4.1 — Maximum Grades (%) for Rural and Urban Freeways</p>
+                <p class="table-source">Source: AASHTO, A Policy on Geometric Design of Highways and Streets, 6th Edition</p>
+                <table>
+                    <thead>
+                        <tr><th>Type of Terrain</th><th>80 km/h</th><th>90 km/h</th><th>100 km/h</th><th>110 km/h</th><th>120 km/h</th><th>130 km/h</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Level</td><td>4</td><td>4</td><td>3</td><td>3</td><td>3</td><td>3</td></tr>
+                        <tr><td>Rolling</td><td>5</td><td>5</td><td>4</td><td>4</td><td>4</td><td>4</td></tr>
+                        <tr><td>Mountainous</td><td>6</td><td>6</td><td>6</td><td>5</td><td>—</td><td>—</td></tr>
+                    </tbody>
+                </table>
+                <p class="table-note">Note: Grades 1% steeper may be provided in urban areas with right-of-way constraints or in mountainous terrain.</p>
 
-                <h3 class="section-title">4.3 Volume Studies</h3>
-                <span class="bloom-level">Required Bloom level: Apply</span>
-                <p class="text-body">
-                    Volume studies count the number of vehicles at a location. Methods include manual counts, pneumatic tubes, inductive loops, and video detection. Volume varies by time of day, day of week, and season.
-                </p>
+                <p class="table-caption">Table 4.2 — Maximum Grades (%) for Urban Arterials</p>
+                <p class="table-source">Source: AASHTO, A Policy on Geometric Design of Highways and Streets, 6th Edition</p>
+                <table>
+                    <thead>
+                        <tr><th>Type of Terrain</th><th>50 km/h</th><th>60 km/h</th><th>70 km/h</th><th>80 km/h</th><th>90 km/h</th><th>100 km/h</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Level</td><td>8</td><td>7</td><td>6</td><td>6</td><td>5</td><td>5</td></tr>
+                        <tr><td>Rolling</td><td>9</td><td>8</td><td>7</td><td>7</td><td>6</td><td>6</td></tr>
+                        <tr><td>Mountainous</td><td>11</td><td>10</td><td>9</td><td>9</td><td>8</td><td>8</td></tr>
+                    </tbody>
+                </table>
 
-                <h3 class="section-title">4.4 Fundamental Traffic Flow Theory</h3>
-                <span class="bloom-level">Required Bloom level: Understand + Analyze</span>
-                <p class="text-body">
-                    The fundamental relationship q = k × u relates flow (q), density (k), and speed (u). The fundamental diagram shows how these variables interact, revealing capacity and congested conditions.
-                </p>
+                <p class="table-caption">Table 4.3 — Maximum Grades (%) for Urban Collectors</p>
+                <p class="table-source">Source: AASHTO, A Policy on Geometric Design of Highways and Streets, 6th Edition</p>
+                <table>
+                    <thead>
+                        <tr><th>Type of Terrain</th><th>30 km/h</th><th>40 km/h</th><th>50 km/h</th><th>60 km/h</th><th>70 km/h</th><th>80 km/h</th><th>90 km/h</th><th>100 km/h</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Level</td><td>9</td><td>9</td><td>9</td><td>9</td><td>8</td><td>7</td><td>7</td><td>6</td></tr>
+                        <tr><td>Rolling</td><td>12</td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>8</td><td>7</td></tr>
+                        <tr><td>Mountainous</td><td>14</td><td>13</td><td>12</td><td>12</td><td>11</td><td>10</td><td>10</td><td>9</td></tr>
+                    </tbody>
+                </table>
+                <p class="table-note">Note: Short lengths of grade (less than 150 m), one-way downgrades, and low-volume urban collectors may be up to 2% steeper.</p>
 
-                <div class="practice-questions">
-                    <h3 class="section-title">Sample Questions</h3>
-                    
-                    <div class="sample-problem-box">
-                        <div class="question-header">Q1 — Bloom's Level: Remember</div>
-                        <div class="qa-pair">
-                            <p class="text-body">
-                                <strong>Question:</strong> Define traffic density.<br>
-                                <strong>Answer:</strong> The number of vehicles occupying a unit length of roadway, typically expressed in vehicles per kilometer or vehicles per mile.
-                            </p>
+                <p class="table-caption">Table 4.4 — Maximum Grades (%) for Rural Collectors</p>
+                <p class="table-source">Source: AASHTO, A Policy on Geometric Design of Highways and Streets, 6th Edition</p>
+                <table>
+                    <thead>
+                        <tr><th>Type of Terrain</th><th>30 km/h</th><th>40 km/h</th><th>50 km/h</th><th>60 km/h</th><th>70 km/h</th><th>80 km/h</th><th>90 km/h</th><th>100 km/h</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Level</td><td>7</td><td>7</td><td>7</td><td>7</td><td>7</td><td>6</td><td>6</td><td>5</td></tr>
+                        <tr><td>Rolling</td><td>10</td><td>10</td><td>9</td><td>8</td><td>8</td><td>7</td><td>7</td><td>6</td></tr>
+                        <tr><td>Mountainous</td><td>12</td><td>11</td><td>10</td><td>10</td><td>10</td><td>9</td><td>9</td><td>8</td></tr>
+                    </tbody>
+                </table>
+                <p class="table-note">Note: Short lengths of grade (less than 150 m), one-way downgrades, and low-volume rural collectors may be up to 2% steeper.</p>
+
+                <p class="table-caption">Table 4.5 — Maximum Grades (%) for Recreational Roads</p>
+                <p class="table-source">Source: AASHTO, A Policy on Geometric Design of Highways and Streets, 6th Edition</p>
+                <table>
+                    <thead>
+                        <tr><th>Type of Terrain</th><th>20 km/h</th><th>30 km/h</th><th>40 km/h</th><th>50 km/h</th><th>60 km/h</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Level</td><td>8</td><td>8</td><td>7</td><td>7</td><td>7</td></tr>
+                        <tr><td>Rolling</td><td>12</td><td>11</td><td>10</td><td>10</td><td>9</td></tr>
+                        <tr><td>Mountainous</td><td>18</td><td>16</td><td>15</td><td>14</td><td>12</td></tr>
+                    </tbody>
+                </table>
+
+                <p class="table-caption">Table 4.6 — Maximum Grades (%) for Local Rural Roads</p>
+                <p class="table-source">Source: AASHTO, A Policy on Geometric Design of Highways and Streets, 6th Edition</p>
+                <table>
+                    <thead>
+                        <tr><th>Type of Terrain</th><th>20 km/h</th><th>30 km/h</th><th>40 km/h</th><th>50 km/h</th><th>60 km/h</th><th>70 km/h</th><th>80 km/h</th><th>90 km/h</th><th>100 km/h</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Level</td><td>9</td><td>8</td><td>7</td><td>7</td><td>7</td><td>7</td><td>6</td><td>6</td><td>5</td></tr>
+                        <tr><td>Rolling</td><td>12</td><td>11</td><td>11</td><td>10</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td></tr>
+                        <tr><td>Mountainous</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>10</td><td>10</td><td>—</td></tr>
+                    </tbody>
+                </table>
+
+                <p class="table-caption">Table 4.7 — Minimum Design Speeds (km/h) for Selected Facilities</p>
+                <p class="table-source">Source: AASHTO, A Policy on Geometric Design of Highways and Streets, 6th Edition</p>
+                <p style="font-weight:600; color:#141413; margin-bottom:0.4rem;">(a) Freeways</p>
+                <table>
+                    <thead>
+                        <tr><th>Facility Type</th><th>Minimum Design Speed</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Freeway</td><td>80 km/h</td></tr>
+                    </tbody>
+                </table>
+                <p style="font-weight:600; color:#141413; margin-bottom:0.4rem;">(b) Rural Collectors — by design volume (veh/day)</p>
+                <table>
+                    <thead>
+                        <tr><th>Type of Terrain</th><th>0–400</th><th>400–2000</th><th>Over 2000</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Level</td><td>60</td><td>80</td><td>100</td></tr>
+                        <tr><td>Rolling</td><td>50</td><td>60</td><td>80</td></tr>
+                        <tr><td>Mountainous</td><td>30</td><td>50</td><td>60</td></tr>
+                    </tbody>
+                </table>
+                <p style="font-weight:600; color:#141413; margin-bottom:0.4rem;">(c) Local Rural Roads — by design volume (veh/day)</p>
+                <table>
+                    <thead>
+                        <tr><th>Type of Terrain</th><th>&lt; 50</th><th>50–250</th><th>250–400</th><th>400–1500</th><th>1500–2000</th><th>2000+</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Level</td><td>50</td><td>50</td><td>60</td><td>80</td><td>80</td><td>80</td></tr>
+                        <tr><td>Rolling</td><td>30</td><td>50</td><td>50</td><td>60</td><td>60</td><td>60</td></tr>
+                        <tr><td>Mountainous</td><td>30</td><td>30</td><td>30</td><td>50</td><td>50</td><td>50</td></tr>
+                    </tbody>
+                </table>
+                <p style="font-weight:600; color:#141413; margin-bottom:0.4rem;">(d) Resource Recovery and Local Service Roads — by number of lanes</p>
+                <table>
+                    <thead>
+                        <tr><th>Type of Terrain</th><th>Single Lane</th><th>Two Lanes</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Level</td><td>50</td><td>60</td></tr>
+                        <tr><td>Rolling</td><td>30</td><td>50</td></tr>
+                        <tr><td>Mountainous</td><td>15</td><td>30</td></tr>
+                    </tbody>
+                </table>
+                <p class="table-note">Note: Where practical, higher design speeds than those shown should be considered.</p>
+
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">4.3.3</span>Minimum Grades</h3>
+                </div>
+                <p class="section-text">On uncurbed pavements with adequate cross slope, a zero-percent grade is acceptable. On <strong>curbed roadways</strong>, a minimum of <strong>0.5%</strong> is required to move water longitudinally to inlets; <strong>0.3%</strong> may suffice on high-type pavements with firm, crowned subgrade.</p>
+
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">4.3.4</span>Algebraic Difference in Grades</h3>
+                </div>
+                <p class="section-text">The <strong>algebraic difference in grades</strong> \(A\) quantifies the total slope change the curve must accommodate:</p>
+                \[A = |G_1 - G_2|\]
+                <p class="section-text">where \(G_1\) is the initial grade and \(G_2\) is the final grade, both in percent with their signs. A curve is classified as a <strong>crest</strong> when \(G_1 > G_2\) (convex upward, coefficient \(a &lt; 0\)) and as a <strong>sag</strong> when \(G_1 &lt; G_2\) (concave upward, \(a > 0\)).</p>
+
+                <!-- Example 4.1 -->
+                <div class="toggleable-item" id="ex4-1">
+                    <div class="toggle-header">
+                        <span class="example-number">4.1</span>
+                        <span class="toggle-label"><strong>Example 4.1 — Compute algebraic difference and classify curve type</strong><span class="example-question-preview">A new two-lane highway transitions from an ascending grade of \(G_1 = +3.0\%\) to a descending grade of \(G_2 = -4.0\%\). An engineer needs to determine the grade change and curve type to begin the design.</span></span>
+                        <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                    </div>
+                    <button class="show-answer-btn burgundy" onclick="toggleExample('ex4-1')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="toggle-content">
+                        <div class="toggle-content-inner">
+                            <p><strong>Solution:</strong> The algebraic difference in grades is computed as:</p>
+                            \[A = |G_1 - G_2| = |3.0 - (-4.0)| = 7.0\%\]
+                            <p>Because the initial grade (\(+3.0\%\)) is algebraically greater than the final grade (\(-4.0\%\)), the road crests over a high point. This is therefore a <strong>crest</strong> curve.</p>
                         </div>
                     </div>
-
-                    <div class="sample-problem-box">
-                        <div class="question-header">Q2 — Bloom's Level: Apply</div>
-                        <div class="qa-pair">
-                            <p class="text-body">
-                                <strong>Question:</strong> If the volume is 1200 veh/h and the average speed is 60 km/h, what is the density?<br>
-                                <strong>Answer:</strong> k = q/u = 1200/60 = <strong>20 veh/km</strong>
-                            </p>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="example-box" style="margin-top:3rem;">
-                    <span class="box-title">Content Status</span>
-                    <p class="text-body">
-                        This chapter is being developed. Check back soon for complete coverage of traffic engineering studies including detailed methods, statistical analysis, and worked examples.
-                    </p>
+                <!-- Example 4.2 -->
+                <div class="toggleable-item" id="ex4-2">
+                    <div class="toggle-header">
+                        <span class="example-number">4.2</span>
+                        <span class="toggle-label"><strong>Example 4.2 — Classify a valley-bottom curve and compute A</strong><span class="example-question-preview">A roadway in a valley bottom approaches a bridge crossing. The approach grade is \(G_1 = -2.5\%\) and the departure grade is \(G_2 = +1.0\%\). Classify the curve and compute \(A\).</span></span>
+                        <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                    </div>
+                    <button class="show-answer-btn burgundy" onclick="toggleExample('ex4-2')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="toggle-content">
+                        <div class="toggle-content-inner">
+                            <p><strong>Solution:</strong> The algebraic difference is:</p>
+                            \[A = |(-2.5) - (1.0)| = 3.5\%\]
+                            <p>Here the initial grade (\(-2.5\%\)) is algebraically less than the final grade (\(+1.0\%\)), meaning the road dips to a low point and then rises. This is a <strong>sag</strong> curve.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
 
-    <footer class="site-footer">
-        <p>© 2026 Dr. Fahad Alqahtani | KFUPM CE341 - Transportation Engineering</p>
+            <!-- ===================== SECTION 4.4 ===================== -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">4.4</span>The Parabolic Vertical Curve Equation</h2>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <div class="box learning-objectives">
+                    <div class="lo-header-row">
+                        <h3>Learning Objectives</h3>
+                    </div>
+                    <ul>
+                        <li>State the parabolic equation and explain the physical meaning of each coefficient.</li>
+                        <li>Compute the K-value and rate of grade change.</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">4.4.1</span>The Equation and Its Coefficients</h3>
+                </div>
+                <p class="section-text">Highway vertical curves use a second-degree parabola because it produces a <strong>constant rate of change of slope</strong>, ensuring a smooth transition. The equation, referenced to the BVC, is:</p>
+                \[y = ax^2 + bx + c\]
+                <p class="section-text">where \(y\) is the elevation (m) at horizontal distance \(x\) (m) from the BVC. The three coefficients have direct physical meanings:</p>
+                <p class="section-text"><strong>\(c\) = Elevation of the BVC (m).</strong> At \(x = 0\), the equation returns \(y = c\), so this coefficient is simply the starting elevation of the curve.</p>
+                <p class="section-text"><strong>\(b = G_1 / 100\)</strong>, the initial tangent grade expressed as a decimal slope in m/m. At \(x = 0\), the slope of the curve \(dy/dx = b\), which must equal the incoming tangent grade.</p>
+                <p class="section-text"><strong>\(a = (G_2 - G_1) / (200L)\)</strong>, where \(G_1\) and \(G_2\) are in percent and \(L\) is the curve length in metres. This coefficient controls the curvature of the parabola. When \(a &lt; 0\) the parabola opens downward and the curve is a <strong>crest</strong>; when \(a > 0\) the parabola opens upward and the curve is a <strong>sag</strong>.</p>
+                <p class="section-text">The slope at any point \(x\) along the curve is given by the first derivative:</p>
+                \[\frac{dy}{dx} = 2ax + b\]
+
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">4.4.2</span>The K-Value</h3>
+                </div>
+                <p class="section-text">The <strong>K-value</strong> is the horizontal distance in metres required for a 1% change in grade:</p>
+                \[K = \frac{L}{A}\]
+                <p class="section-text">A larger \(K\) means a flatter, more gradual curve. For any design criterion, the minimum curve length can be expressed as \(L_{\min} = K \times A\).</p>
+
+                <!-- Example 4.3 -->
+                <div class="toggleable-item" id="ex4-3">
+                    <div class="toggle-header">
+                        <span class="example-number">4.3</span>
+                        <span class="toggle-label"><strong>Example 4.3 — Set up the parabolic equation for a crest curve</strong><span class="example-question-preview">A 400 m vertical curve is proposed to connect \(G_1 = +2.0\%\) and \(G_2 = -3.0\%\) on a rural highway. The BVC elevation is 250.00 m. The engineer needs to set up the parabolic equation for computing elevations along the curve.</span></span>
+                        <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                    </div>
+                    <button class="show-answer-btn burgundy" onclick="toggleExample('ex4-3')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="toggle-content">
+                        <div class="toggle-content-inner">
+                            <p><strong>Solution:</strong> First, compute the algebraic difference in grades:</p>
+                            \[A = |2.0 - (-3.0)| = 5.0\%\]
+                            <p>Since \(G_1 > G_2\), this is a <strong>crest</strong> curve. Next, determine the three coefficients of the parabolic equation:</p>
+                            <p>The curvature coefficient \(a\) is:</p>
+                            \[a = \frac{G_2 - G_1}{200L} = \frac{-3.0 - 2.0}{200 \times 400} = \frac{-5.0}{80{,}000} = -0.0000625\]
+                            <p>The value of \(a\) is negative, which confirms this is a crest curve. The initial slope coefficient \(b\) is:</p>
+                            \[b = \frac{G_1}{100} = \frac{2.0}{100} = 0.02 \text{ m/m}\]
+                            <p>The elevation coefficient \(c\) equals the BVC elevation:</p>
+                            \[c = 250.00 \text{ m}\]
+                            <p>The K-value for this curve is:</p>
+                            \[K = \frac{L}{A} = \frac{400}{5.0} = 80.0 \text{ m/\%}\]
+                            <p>Therefore, the elevation at any distance \(x\) (in metres) from the BVC can be found using:</p>
+                            \[y = -0.0000625\,x^2 + 0.02\,x + 250.00\]
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== SECTION 4.5 ===================== -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">4.5</span>Curve Layout and Elevation Computation</h2>
+                    <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyze</span>
+                </div>
+                <div class="box learning-objectives">
+                    <div class="lo-header-row">
+                        <h3>Learning Objectives</h3>
+                    </div>
+                    <ul>
+                        <li>Compute BVC and EVC positions and elevations from PVI data.</li>
+                        <li>Compute the elevation at any point along the curve using two distinct methods.</li>
+                        <li>Verify results through geometric closure.</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">4.5.1</span>BVC and EVC Elevations</h3>
+                </div>
+                <p class="section-text">Given the PVI position, PVI elevation, grades \(G_1\) and \(G_2\), and curve length \(L\), the BVC and EVC elevations are found by projecting the tangent grades backward and forward from the PVI:</p>
+                \[\text{Elev}_{\text{BVC}} = \text{Elev}_{\text{PVI}} - G_1 \times \frac{L/2}{100}\]
+                \[\text{Elev}_{\text{EVC}} = \text{Elev}_{\text{PVI}} + G_2 \times \frac{L/2}{100}\]
+                <p class="section-text">The EVC elevation should always be verified independently from the parabolic equation evaluated at \(x = L\) to confirm geometric closure.</p>
+
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">4.5.2</span>Method 1: Parabolic Equation (Direct Computation)</h3>
+                </div>
+                <p class="section-text">Using the coefficients defined in Section 4.4, the elevation at any distance \(x\) from BVC is computed directly:</p>
+                \[y = ax^2 + bx + c\]
+                <p class="section-text">where \(a = (G_2 - G_1)/(200L)\), \(b = G_1/100\), and \(c = \text{Elev}_{\text{BVC}}\). This method gives the curve elevation in a single calculation with no sign-convention decision needed — the sign of \(a\) automatically produces the correct crest or sag shape.</p>
+
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">4.5.3</span>Method 2: Tangent-Plus-Offset (Two-Step Computation)</h3>
+                </div>
+                <p class="section-text">This method separates the calculation into a straight-line projection along the initial tangent grade and a parabolic correction (offset):</p>
+                <p class="section-text"><strong>Step 1 — Compute the tangent elevation</strong> at distance \(x\) from BVC:</p>
+                \[\text{Tangent Elev} = \text{Elev}_{\text{BVC}} + G_1 \times \frac{x}{100}\]
+                <p class="section-text"><strong>Step 2 — Compute the offset</strong> \(Y\), which is the vertical distance between the tangent line and the curve:</p>
+                \[Y = \frac{A}{200L} \times x^2\]
+                <p class="section-text"><strong>Step 3 — Apply the offset using the correct sign convention:</strong></p>
+                <ul style="margin-left:1.5rem; margin-bottom:1rem; color:#3a3a38; line-height:1.8;">
+                    <li>For <strong>crest</strong> curves (curve lies below the tangent): \(\text{Curve Elev} = \text{Tangent Elev} - Y\)</li>
+                    <li>For <strong>sag</strong> curves (curve lies above the tangent): \(\text{Curve Elev} = \text{Tangent Elev} + Y\)</li>
+                </ul>
+                <p class="section-text">Both methods produce identical results. Method 1 is compact and requires no sign-convention decision. Method 2 is especially convenient for tabular work because it separates the tangent grade contribution from the curvature correction, making it easy to check intermediate calculations.</p>
+
+                <!-- Example 4.4 -->
+                <div class="toggleable-item" id="ex4-4">
+                    <div class="toggle-header">
+                        <span class="example-number">4.4</span>
+                        <span class="toggle-label"><strong>Example 4.4 — Complete sag curve layout with elevation table at 100 m intervals</strong><span class="example-question-preview">A 600 m sag curve is being designed for a highway segment that dips through a creek valley. The PVI is at Sta. 52+00 with elevation 250.00 m. The incoming grade is \(G_1 = -3.0\%\) and the departing grade is \(G_2 = +1.5\%\). Compute the curve layout and elevations at 100 m intervals.</span></span>
+                        <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyze</span>
+                    </div>
+                    <button class="show-answer-btn burgundy" onclick="toggleExample('ex4-4')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="toggle-content">
+                        <div class="toggle-content-inner">
+                            <p><strong>Classify the curve and compute \(A\):</strong> Since \(G_1 = -3.0\%\) is less than \(G_2 = +1.5\%\), this is a <strong>sag</strong> curve. The algebraic difference in grades is:</p>
+                            \[A = |(-3.0) - 1.5| = 4.5\%\]
+                            <p><strong>Determine BVC and EVC positions:</strong> Half the curve length is \(L/2 = 600/2 = 300\) m, which equals 3 stations. Therefore:</p>
+                            <ul>
+                                <li><strong>BVC</strong> is located 300 m before the PVI: Sta. 52+00 minus 300 m = <strong>Sta. 49+00</strong></li>
+                                <li><strong>EVC</strong> is located 300 m after the PVI: Sta. 52+00 plus 300 m = <strong>Sta. 55+00</strong></li>
+                            </ul>
+                            <p><strong>Compute BVC and EVC elevations:</strong> The BVC elevation is found by projecting the initial grade backward from the PVI. Since the road falls at 3.0% approaching the PVI, the BVC (which is 300 m earlier along the road) must be higher:</p>
+                            \[\text{Elev}_{\text{BVC}} = 250.00 - (-3.0) \times \frac{300}{100} = 250.00 + 9.00 = 259.00 \text{ m}\]
+                            <p>The EVC elevation is found by projecting the final grade forward from the PVI:</p>
+                            \[\text{Elev}_{\text{EVC}} = 250.00 + (+1.5) \times \frac{300}{100} = 250.00 + 4.50 = 254.50 \text{ m}\]
+                            <p><strong>Set up the parabolic equation coefficients:</strong></p>
+                            \[a = \frac{G_2 - G_1}{200L} = \frac{1.5 - (-3.0)}{200 \times 600} = \frac{4.5}{120{,}000} = 0.0000375\]
+                            \[b = \frac{G_1}{100} = \frac{-3.0}{100} = -0.03 \text{ m/m}\]
+                            \[c = 259.00 \text{ m}\]
+                            <p>Since \(a > 0\), this confirms the sag classification.</p>
+                            <p><strong>Demonstrate both methods at Sta. 51+00</strong> (\(x = 200\) m):</p>
+                            <p>Using <strong>Method 1</strong> (parabolic equation):</p>
+                            \[y = 0.0000375 \times (200)^2 + (-0.03)(200) + 259.00 = 1.50 - 6.00 + 259.00 = 254.50 \text{ m}\]
+                            <p>Using <strong>Method 2</strong> (tangent-plus-offset):</p>
+                            \[\text{Tangent Elev} = 259.00 + (-3.0) \times \frac{200}{100} = 259.00 - 6.00 = 253.00 \text{ m}\]
+                            \[Y = \frac{4.5}{200 \times 600} \times (200)^2 = 0.0000375 \times 40{,}000 = 1.50 \text{ m}\]
+                            <p>Because this is a sag curve, the offset is added: \(\text{Curve Elev} = 253.00 + 1.50 = 254.50\) m. Both methods give the same answer of <strong>254.50 m</strong>. ✓</p>
+                            <p><strong>Complete elevation table</strong> (using Method 2; offset coefficient = \(A/(200L) = 0.0000375\); offset is <strong>added</strong> for sag):</p>
+                            <table>
+                                <thead>
+                                    <tr><th>Station</th><th>x (m)</th><th>Tangent Elev (m)</th><th>Offset Y (m)</th><th>Curve Elev (m)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Sta. 49+00 (BVC)</td><td>0</td><td>259.00</td><td>0.00</td><td><strong>259.00</strong></td></tr>
+                                    <tr><td>Sta. 50+00</td><td>100</td><td>256.00</td><td>0.38</td><td><strong>256.38</strong></td></tr>
+                                    <tr><td>Sta. 51+00</td><td>200</td><td>253.00</td><td>1.50</td><td><strong>254.50</strong></td></tr>
+                                    <tr><td>Sta. 52+00 (PVI)</td><td>300</td><td>250.00</td><td>3.38</td><td><strong>253.38</strong></td></tr>
+                                    <tr><td>Sta. 53+00</td><td>400</td><td>247.00</td><td>6.00</td><td><strong>253.00</strong></td></tr>
+                                    <tr><td>Sta. 54+00</td><td>500</td><td>244.00</td><td>9.38</td><td><strong>253.38</strong></td></tr>
+                                    <tr><td>Sta. 55+00 (EVC)</td><td>600</td><td>241.00</td><td>13.50</td><td><strong>254.50</strong></td></tr>
+                                </tbody>
+                            </table>
+                            <p><strong>Verification at the EVC:</strong> Substituting \(x = L = 600\) m into the parabolic equation:</p>
+                            \[y(600) = 0.0000375 \times (600)^2 + (-0.03)(600) + 259.00 = 13.50 - 18.00 + 259.00 = 254.50 \text{ m}\]
+                            <p>This matches the EVC elevation computed from the tangent grade projection, confirming <strong>geometric closure</strong>. ✓</p>
+                            <p><strong>Shape check:</strong> The curve elevations decrease from the BVC (259.00 m) to a minimum near Sta. 53+00 (253.00 m), then increase to the EVC (254.50 m). This concave-upward profile is consistent with a sag curve. ✓</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== SECTION 4.6 ===================== -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">4.6</span>Stopping Sight Distance</h2>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <div class="box learning-objectives">
+                    <div class="lo-header-row">
+                        <h3>Learning Objectives</h3>
+                    </div>
+                    <ul>
+                        <li>Compute the stopping sight distance for a given design speed from the governing equation.</li>
+                        <li>State the assumptions embedded in the standard SSD values.</li>
+                    </ul>
+                </div>
+                <p class="section-text"><strong>Stopping sight distance (SSD)</strong> is the total distance a driver needs to perceive an obstacle ahead, react, and brake to a complete stop. It consists of two components: the <strong>perception-reaction distance</strong> (distance traveled during the driver's reaction time) and the <strong>braking distance</strong> (distance to decelerate from the design speed to zero). The general equation is:</p>
+                \[SSD = 0.278 \, V \, t_r \;+\; \frac{V^2}{254 \left(\dfrac{a}{g} \pm G\right)}\]
+                <p class="section-text">where \(V\) is the design speed in km/h, \(t_r\) is the perception-reaction time in seconds, \(a\) is the deceleration rate in m/s², \(g = 9.81\) m/s² is gravitational acceleration, and \(G\) is the longitudinal grade expressed as a decimal (positive for uphill, negative for downhill). The factor 0.278 converts km/h to m/s.</p>
+                <p class="section-text"><strong>Standard assumptions:</strong> AASHTO specifies a perception-reaction time of \(t_r = 2.5\) s (approximately the 90th percentile of observed driver response times) and a deceleration rate of \(a = 3.4\) m/s² (a comfortable rate achievable on wet pavement by most vehicles).</p>
+                <p class="section-text"><strong>Grade assumption for vertical curve design:</strong> For computing minimum vertical curve lengths, the SSD equation is evaluated on a <strong>level road</strong> (\(G = 0\)). This is standard practice because on a vertical curve the grade changes continuously along the curve, and the relationship between available sight distance and required braking distance is self-compensating. AASHTO therefore uses level-road SSD for all vertical curve designs.</p>
+
+                <!-- Example 4.5 -->
+                <div class="toggleable-item" id="ex4-5">
+                    <div class="toggle-header">
+                        <span class="example-number">4.5</span>
+                        <span class="toggle-label"><strong>Example 4.5 — Compute SSD for a design speed of 100 km/h</strong><span class="example-question-preview">A highway engineer is designing a crest vertical curve for a facility with a design speed of 100 km/h. Compute the required stopping sight distance.</span></span>
+                        <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                    </div>
+                    <button class="show-answer-btn burgundy" onclick="toggleExample('ex4-5')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="toggle-content">
+                        <div class="toggle-content-inner">
+                            <p>A highway engineer is designing a crest vertical curve for a facility with a design speed of 100 km/h. Compute the required stopping sight distance.</p>
+                            <p><strong>Solution:</strong> Applying the SSD equation with \(G = 0\), \(t_r = 2.5\) s, \(a = 3.4\) m/s², and \(g = 9.81\) m/s²:</p>
+                            \[SSD = 0.278 \times 100 \times 2.5 \;+\; \frac{100^2}{254 \times \dfrac{3.4}{9.81}}\]
+                            <p>The first term is the perception-reaction distance:</p>
+                            \[d_r = 0.278 \times 100 \times 2.5 = 69.5 \text{ m}\]
+                            <p>The second term is the braking distance. The friction factor is \(a/g = 3.4/9.81 = 0.347\):</p>
+                            \[d_b = \frac{10{,}000}{254 \times 0.347} = \frac{10{,}000}{88.1} = 113.5 \text{ m}\]
+                            <p>Therefore:</p>
+                            \[SSD = 69.5 + 113.5 = 183.0 \text{ m}\]
+                            <p>Rounding up for design gives <strong>SSD = 185 m</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example 4.6 -->
+                <div class="toggleable-item" id="ex4-6">
+                    <div class="toggle-header">
+                        <span class="example-number">4.6</span>
+                        <span class="toggle-label">Example 4.6 — Compute SSD for a design speed of 80 km/h</span>
+                        <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                    </div>
+                    <button class="show-answer-btn burgundy" onclick="toggleExample('ex4-6')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="toggle-content">
+                        <div class="toggle-content-inner">
+                            <p>Compute the SSD for a design speed of 80 km/h.</p>
+                            <p><strong>Solution:</strong> Using the same equation with \(V = 80\) km/h and \(G = 0\):</p>
+                            <p>The perception-reaction distance is:</p>
+                            \[d_r = 0.278 \times 80 \times 2.5 = 55.6 \text{ m}\]
+                            <p>The braking distance is:</p>
+                            \[d_b = \frac{80^2}{254 \times 0.347} = \frac{6{,}400}{88.1} = 72.6 \text{ m}\]
+                            <p>Therefore:</p>
+                            \[SSD = 55.6 + 72.6 = 128.2 \text{ m}\]
+                            <p>Rounding up for design gives <strong>SSD = 130 m</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== SECTION 4.7 ===================== -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">4.7</span>Crest Vertical Curve Design</h2>
+                    <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyze</span>
+                </div>
+                <div class="box learning-objectives">
+                    <div class="lo-header-row">
+                        <h3>Learning Objectives</h3>
+                    </div>
+                    <ul>
+                        <li>Compute the minimum crest curve length from the governing equation.</li>
+                        <li>Verify the \(SSD &lt; L\) assumption and check the absolute minimum length.</li>
+                    </ul>
+                </div>
+                <p class="section-text">The minimum length of a crest vertical curve ensures that the driver's line of sight — from eye height \(h_1\) to object height \(h_2\) — clears the crest over a distance equal to the stopping sight distance. Two cases arise depending on the relative magnitudes of SSD and \(L\).</p>
+                <p class="section-text"><strong>Case 1 — When \(SSD &lt; L\) (the standard design case):</strong></p>
+                <p class="section-text">Assuming a driver eye height of 1.08 m and an object height of 0.60 m (AASHTO values for a driver seeing the taillights of a vehicle ahead), the minimum curve length is:</p>
+                \[L_{\min} = \frac{A \times SSD^2}{658}\]
+                <p class="section-text">where \(A\) is in percent, \(SSD\) is in metres, and \(L_{\min}\) is in metres. The constant 658 comes from the geometric relationship \(200(\sqrt{h_1} + \sqrt{h_2})^2 = 200(\sqrt{1.08} + \sqrt{0.60})^2\).</p>
+                <p class="section-text"><strong>Case 2 — When \(SSD > L\):</strong></p>
+                \[L_{\min} = 2 \times SSD - \frac{658}{A}\]
+                <p class="section-text">In practice, Case 1 is used initially. If the resulting \(L_{\min}\) turns out to be less than SSD, Case 2 applies. However, when Case 1 is applied and \(SSD\) actually exceeds \(L\), the Case 1 formula <strong>overestimates</strong> the required length, producing a conservative (longer than necessary) result. For this reason, many designers simply apply Case 1 and accept the safe-side result.</p>
+                <p class="section-text"><strong>Absolute minimum curve length:</strong> Regardless of the SSD calculation, no vertical curve should be shorter than:</p>
+                \[L_{\min,abs} = 0.6 \, V\]
+                <p class="section-text">where \(V\) is the design speed in km/h and \(L\) is in metres. This prevents impractically short curves that would be uncomfortable and difficult to construct. The designer always uses the <strong>larger</strong> of the SSD-based and absolute minimum lengths.</p>
+
+                <!-- Example 4.7 -->
+                <div class="toggleable-item" id="ex4-7">
+                    <div class="toggle-header">
+                        <span class="example-number">4.7</span>
+                        <span class="toggle-label">Example 4.7 — Minimum crest curve length at 100 km/h</span>
+                        <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyze</span>
+                    </div>
+                    <button class="show-answer-btn burgundy" onclick="toggleExample('ex4-7')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="toggle-content">
+                        <div class="toggle-content-inner">
+                            <p>A highway with a design speed of 100 km/h transitions from \(G_1 = +2.5\%\) to \(G_2 = -1.5\%\). An engineer needs to determine the minimum crest curve length to satisfy stopping sight distance.</p>
+                            <p><strong>Solution:</strong> The first step is to compute the algebraic difference in grades:</p>
+                            \[A = |2.5 - (-1.5)| = 4.0\%\]
+                            <p>From Example 4.5, the stopping sight distance for 100 km/h is <strong>SSD = 185 m</strong>. Applying the crest curve minimum-length equation (assuming \(SSD &lt; L\)):</p>
+                            \[L_{\min} = \frac{A \times SSD^2}{658} = \frac{4.0 \times 185^2}{658} = \frac{4.0 \times 34{,}225}{658} = \frac{136{,}900}{658} = 208.1 \text{ m}\]
+                            <p>Rounding up, the minimum curve length based on sight distance is <strong>209 m</strong>. The absolute minimum length is \(0.6 \times 100 = 60\) m, which does not govern. Therefore, the design requires \(L \geq 209\) m.</p>
+                            <p><strong>Assumption check:</strong> With \(L = 209\) m and \(SSD = 185\) m, we confirm that \(L > SSD\), so the <strong>Case 1 assumption (\(SSD &lt; L\)) is valid</strong>. ✓</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example 4.8 -->
+                <div class="toggleable-item" id="ex4-8">
+                    <div class="toggle-header">
+                        <span class="example-number">4.8</span>
+                        <span class="toggle-label">Example 4.8 — Complete crest curve design with elevation table at 80 km/h</span>
+                        <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyze</span>
+                    </div>
+                    <button class="show-answer-btn burgundy" onclick="toggleExample('ex4-8')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="toggle-content">
+                        <div class="toggle-content-inner">
+                            <p>A crest vertical curve on an 80 km/h rural highway connects \(G_1 = +3.0\%\) with \(G_2 = -2.0\%\). The PVI is at Sta. 30+00 with elevation 120.00 m. Produce the complete curve layout and elevation table.</p>
+                            <p><strong>Step 1 — Compute \(A\) and SSD:</strong></p>
+                            \[A = |3.0 - (-2.0)| = 5.0\%\]
+                            <p>From Example 4.6, <strong>SSD = 130 m</strong> for 80 km/h.</p>
+                            <p><strong>Step 2 — Compute the minimum crest curve length:</strong></p>
+                            \[L_{\min} = \frac{5.0 \times 130^2}{658} = \frac{5.0 \times 16{,}900}{658} = \frac{84{,}500}{658} = 128.4 \text{ m}\]
+                            <p>Rounding up gives \(L_{\min} = 129\) m. The absolute minimum is \(0.6 \times 80 = 48\) m. Select <strong>\(L = 130\) m</strong> for a round value that exceeds both minimums. The assumption check confirms that \(L = 130 \geq SSD = 130\), so Case 1 applies. ✓</p>
+                            <p><strong>Step 3 — Determine BVC and EVC positions:</strong> Half the curve length is \(L/2 = 65\) m.</p>
+                            <ul>
+                                <li><strong>BVC:</strong> Sta. 30+00 minus 65 m = <strong>Sta. 29+35</strong></li>
+                                <li><strong>EVC:</strong> Sta. 30+00 plus 65 m = <strong>Sta. 30+65</strong></li>
+                            </ul>
+                            <p><strong>Step 4 — Compute BVC and EVC elevations:</strong> The BVC is 65 m before the PVI along the incoming grade of \(+3.0\%\). Moving backward, the elevation decreases by \(3.0 \times 65/100 = 1.95\) m:</p>
+                            \[\text{Elev}_{\text{BVC}} = 120.00 - 3.0 \times \frac{65}{100} = 120.00 - 1.95 = 118.05 \text{ m}\]
+                            <p>The EVC is 65 m after the PVI along the departing grade of \(-2.0\%\). Moving forward, the elevation falls by \(2.0 \times 65/100 = 1.30\) m:</p>
+                            \[\text{Elev}_{\text{EVC}} = 120.00 + (-2.0) \times \frac{65}{100} = 120.00 - 1.30 = 118.70 \text{ m}\]
+                            <p><strong>Step 5 — Set up coefficients and compute elevations:</strong></p>
+                            \[a = \frac{-2.0 - 3.0}{200 \times 130} = \frac{-5.0}{26{,}000} = -0.0001923\]
+                            \[b = \frac{3.0}{100} = 0.03 \text{ m/m} \qquad;\qquad c = 118.05 \text{ m}\]
+                            <p>Using Method 2 (tangent-plus-offset), the offset coefficient is \(A/(200L) = 5.0/(200 \times 130) = 0.0001923\). Because this is a crest curve, the offset is <strong>subtracted</strong> from the tangent elevation at every station.</p>
+                            <table>
+                                <thead>
+                                    <tr><th>Station</th><th>x (m)</th><th>Tangent Elev (m)</th><th>Offset Y (m)</th><th>Curve Elev (m)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Sta. 29+35 (BVC)</td><td>0</td><td>118.05</td><td>0.00</td><td><strong>118.05</strong></td></tr>
+                                    <tr><td>Sta. 29+60</td><td>25</td><td>118.80</td><td>0.12</td><td><strong>118.68</strong></td></tr>
+                                    <tr><td>Sta. 29+85</td><td>50</td><td>119.55</td><td>0.48</td><td><strong>119.07</strong></td></tr>
+                                    <tr><td>Sta. 30+10</td><td>75</td><td>120.30</td><td>1.08</td><td><strong>119.22</strong></td></tr>
+                                    <tr><td>Sta. 30+35</td><td>100</td><td>121.05</td><td>1.92</td><td><strong>119.13</strong></td></tr>
+                                    <tr><td>Sta. 30+65 (EVC)</td><td>130</td><td>121.95</td><td>3.25</td><td><strong>118.70</strong></td></tr>
+                                </tbody>
+                            </table>
+                            <p><strong>Step 6 — Verification at the EVC:</strong> Evaluating the parabolic equation at \(x = L = 130\) m:</p>
+                            \[y(130) = -0.0001923 \times (130)^2 + 0.03 \times (130) + 118.05 = -3.25 + 3.90 + 118.05 = 118.70 \text{ m}\]
+                            <p>This matches the EVC elevation computed from the tangent grade, confirming the calculations are correct. ✓</p>
+                            <p><strong>Shape check:</strong> The curve elevations rise from the BVC to a maximum near Sta. 30+10 (119.22 m) and then fall to the EVC (118.70 m). This convex shape is consistent with a crest curve. ✓</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== SECTION 4.8 ===================== -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">4.8</span>Sag Vertical Curve Design</h2>
+                    <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyze</span>
+                </div>
+                <div class="box learning-objectives">
+                    <div class="lo-header-row">
+                        <h3>Learning Objectives</h3>
+                    </div>
+                    <ul>
+                        <li>Explain why headlight sight distance controls sag curve design at night.</li>
+                        <li>Compute the minimum sag curve length and identify the governing criterion among headlight, comfort, and appearance.</li>
+                    </ul>
+                </div>
+                <p class="section-text">On sag vertical curves, daytime sight distance is generally unrestricted because the driver looks downward along the concave surface. At night, however, the road ahead is visible only where illuminated by headlights. The sag curve must be long enough that the illuminated distance — determined by the headlight height of 0.60 m and the upward beam angle of 1° — is at least equal to the stopping sight distance.</p>
+                <p class="section-text"><strong>Case 1 — When \(SSD &lt; L\) (standard design case):</strong></p>
+                <p class="section-text">Assuming a headlight height of 0.60 m and a beam divergence angle of 1° (AASHTO values), the minimum sag curve length is:</p>
+                \[L_{\min} = \frac{A \times SSD^2}{120 + 3.5 \times SSD}\]
+                <p class="section-text">where \(A\) is in percent, \(SSD\) is in metres, and \(L_{\min}\) is in metres. The constants come from the geometric relationship \(200(H + SSD \times \tan\beta)\) evaluated with \(H = 0.60\) m and \(\tan 1° \approx 0.01746\).</p>
+                <p class="section-text"><strong>Case 2 — When \(SSD > L\):</strong></p>
+                \[L_{\min} = 2 \times SSD - \frac{120 + 3.5 \times SSD}{A}\]
+                <p class="section-text">As with crest curves, the Case 1 assumption (\(SSD &lt; L\)) is <strong>conservative</strong>: if it turns out that \(SSD > L\), the Case 1 formula overestimates the required length, producing a result that is longer than strictly necessary. This means the error is always on the safe side.</p>
+                <p class="section-text">The same <strong>absolute minimum</strong> applies to sag curves: \(L_{\min,abs} = 0.6V\).</p>
+                <p class="section-text"><strong>Additional sag curve criteria:</strong> Two supplementary checks apply to sag curves:</p>
+                <p class="section-text">The <strong>comfort criterion</strong> limits the centripetal acceleration experienced by drivers at the bottom of the sag to approximately 0.3 m/s²:</p>
+                \[L_{\min} = \frac{A \times V^2}{395}\]
+                <p class="section-text">where \(V\) is in km/h. This typically produces a length 50–75% of the headlight-based value and therefore rarely governs.</p>
+                <p class="section-text">The <strong>appearance criterion</strong> prevents the sag from looking like an abrupt dip to the driver:</p>
+                \[L_{\min} = 30 \times A\]
+                <p class="section-text">This corresponds to a \(K\)-value of 30 m/% and is applicable on high-type highways where visual aesthetics are important. The designer evaluates all three criteria and selects the one that produces the <strong>longest</strong> minimum length, since that is the most restrictive requirement.</p>
+
+                <!-- Example 4.9 -->
+                <div class="toggleable-item" id="ex4-9">
+                    <div class="toggle-header">
+                        <span class="example-number">4.9</span>
+                        <span class="toggle-label">Example 4.9 — Governing minimum sag curve length at 90 km/h</span>
+                        <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyze</span>
+                    </div>
+                    <button class="show-answer-btn burgundy" onclick="toggleExample('ex4-9')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="toggle-content">
+                        <div class="toggle-content-inner">
+                            <p>A sag vertical curve on a 90 km/h highway connects a downgrade of \(G_1 = -4.0\%\) to an upgrade of \(G_2 = +2.0\%\) through a low-lying area. The engineer must determine the governing minimum curve length.</p>
+                            <p><strong>Compute \(A\):</strong></p>
+                            \[A = |(-4.0) - (2.0)| = 6.0\%\]
+                            <p><strong>Compute SSD for 90 km/h</strong> (using the SSD equation with \(G = 0\)):</p>
+                            \[d_r = 0.278 \times 90 \times 2.5 = 62.6 \text{ m}\]
+                            \[d_b = \frac{90^2}{254 \times 0.347} = \frac{8{,}100}{88.1} = 91.9 \text{ m}\]
+                            \[SSD = 62.6 + 91.9 = 154.5 \text{ m}\]
+                            <p>Rounding up for design gives <strong>SSD = 160 m</strong>.</p>
+                            <p><strong>Headlight criterion:</strong></p>
+                            \[L_{\min} = \frac{6.0 \times 160^2}{120 + 3.5 \times 160} = \frac{6.0 \times 25{,}600}{120 + 560} = \frac{153{,}600}{680} = 225.9 \text{ m}\]
+                            <p>Rounding up gives <strong>226 m</strong>.</p>
+                            <p><strong>Comfort criterion:</strong></p>
+                            \[L_{\min} = \frac{6.0 \times 90^2}{395} = \frac{6.0 \times 8{,}100}{395} = \frac{48{,}600}{395} = 123.0 \text{ m}\]
+                            <p><strong>Appearance criterion:</strong></p>
+                            \[L_{\min} = 30 \times 6.0 = 180 \text{ m}\]
+                            <p><strong>Absolute minimum:</strong> \(0.6 \times 90 = 54\) m.</p>
+                            <p>Comparing all four values, the <strong>headlight criterion governs at 226 m</strong> because it produces the longest required length. The designer should select \(L \geq 226\) m. Checking the assumption: \(L = 226 > SSD = 160\), so the Case 1 assumption is valid. ✓</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example 4.10 -->
+                <div class="toggleable-item" id="ex4-10">
+                    <div class="toggle-header">
+                        <span class="example-number">4.10</span>
+                        <span class="toggle-label">Example 4.10 — Complete sag curve design with elevation table (\(L = 230\) m)</span>
+                        <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyze</span>
+                    </div>
+                    <button class="show-answer-btn burgundy" onclick="toggleExample('ex4-10')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="toggle-content">
+                        <div class="toggle-content-inner">
+                            <p>Using the data from Example 4.9, the engineer selects \(L = 230\) m and places the PVI at Sta. 65+00, elevation 180.00 m. Produce the complete sag curve design with an elevation table and closure check.</p>
+                            <p><strong>Determine BVC and EVC positions:</strong> Half the curve length is \(L/2 = 115\) m.</p>
+                            <ul>
+                                <li><strong>BVC:</strong> Sta. 65+00 minus 115 m = <strong>Sta. 63+85</strong></li>
+                                <li><strong>EVC:</strong> Sta. 65+00 plus 115 m = <strong>Sta. 66+15</strong></li>
+                            </ul>
+                            <p><strong>Compute BVC and EVC elevations:</strong> The BVC is 115 m before the PVI along the incoming grade of \(-4.0\%\). Since the road falls at 4.0% approaching the PVI, the BVC (which is 115 m earlier) is higher:</p>
+                            \[\text{Elev}_{\text{BVC}} = 180.00 - (-4.0) \times \frac{115}{100} = 180.00 + 4.60 = 184.60 \text{ m}\]
+                            <p>The EVC is 115 m after the PVI along the departing grade of \(+2.0\%\):</p>
+                            \[\text{Elev}_{\text{EVC}} = 180.00 + (+2.0) \times \frac{115}{100} = 180.00 + 2.30 = 182.30 \text{ m}\]
+                            <p><strong>Set up coefficients:</strong></p>
+                            \[a = \frac{2.0 - (-4.0)}{200 \times 230} = \frac{6.0}{46{,}000} = 0.0001304\]
+                            \[b = \frac{-4.0}{100} = -0.04 \text{ m/m} \qquad;\qquad c = 184.60 \text{ m}\]
+                            <p>Since \(a > 0\), this confirms a sag curve. The offset coefficient is \(A/(200L) = 0.0001304\), and because this is a sag curve the offset is <strong>added</strong> to the tangent elevation.</p>
+                            <p><strong>Elevation table:</strong></p>
+                            <table>
+                                <thead>
+                                    <tr><th>Station</th><th>x (m)</th><th>Tangent Elev (m)</th><th>Offset Y (m)</th><th>Curve Elev (m)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Sta. 63+85 (BVC)</td><td>0</td><td>184.60</td><td>0.00</td><td><strong>184.60</strong></td></tr>
+                                    <tr><td>Sta. 64+35</td><td>50</td><td>182.60</td><td>0.33</td><td><strong>182.93</strong></td></tr>
+                                    <tr><td>Sta. 64+85</td><td>100</td><td>180.60</td><td>1.30</td><td><strong>181.90</strong></td></tr>
+                                    <tr><td>Sta. 65+35</td><td>150</td><td>178.60</td><td>2.93</td><td><strong>181.53</strong></td></tr>
+                                    <tr><td>Sta. 65+85</td><td>200</td><td>176.60</td><td>5.22</td><td><strong>181.82</strong></td></tr>
+                                    <tr><td>Sta. 66+15 (EVC)</td><td>230</td><td>175.40</td><td>6.90</td><td><strong>182.30</strong></td></tr>
+                                </tbody>
+                            </table>
+                            <p><strong>Verification at the EVC:</strong> Evaluating the parabolic equation at \(x = 230\) m:</p>
+                            \[y(230) = 0.0001304 \times (230)^2 + (-0.04)(230) + 184.60 = 6.90 - 9.20 + 184.60 = 182.30 \text{ m}\]
+                            <p>This matches the EVC elevation from the tangent grade projection, confirming geometric closure. ✓</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== SECTION 4.9 ===================== -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">4.9</span>Drainage Checks for Sag Curves</h2>
+                    <span class="bloom-chip" data-lvl="5"><span class="dot"></span>Level: Evaluate</span>
+                </div>
+                <div class="box learning-objectives">
+                    <div class="lo-header-row">
+                        <h3>Learning Objectives</h3>
+                    </div>
+                    <ul>
+                        <li>Explain why drainage is a critical concern near the low point of a sag curve.</li>
+                        <li>Evaluate ponding risk by computing the grade achieved within a specified distance of the low point.</li>
+                        <li>Recommend whether to adjust the design or enhance drainage provisions.</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">4.9.1</span>Why Drainage Matters on Sag Curves</h3>
+                </div>
+                <p class="section-text">All the design criteria discussed so far — headlight sight distance, comfort, and appearance — impose a <strong>minimum</strong> curve length. The drainage criterion is unique because it imposes a <strong>maximum</strong> allowable curve length (or equivalently, a maximum \(K\)-value). This creates a potential conflict: if the required minimum length for sight distance exceeds the maximum length for drainage, the designer must satisfy the safety requirement and then address drainage through infrastructure measures.</p>
+                <p class="section-text">The concern arises because every sag curve has a low point where the instantaneous grade is zero. Near this low point, the longitudinal grade is extremely flat, which means surface water has very little gravitational force pushing it toward the drainage inlets. If this flat zone extends over a long distance — as it does on very gradual (high-\(K\)) sag curves — water accumulates on the pavement rather than flowing to the inlets. This standing water, called <strong>ponding</strong>, creates serious problems: it increases the risk of hydroplaning, accelerates pavement deterioration, and reduces visibility from splash and spray during rain.</p>
+                <p class="section-text">The problem is especially severe on <strong>curbed roadways</strong>, because curbs prevent water from draining off the pavement laterally. On uncurbed roadways with adequate cross slope, water can drain off the pavement edges even when the longitudinal grade is flat, so the drainage concern is less critical.</p>
+
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">4.9.2</span>The Drainage Check</h3>
+                </div>
+                <p class="section-text">The standard drainage check requires that a minimum longitudinal grade of <strong>0.3%</strong> be achieved within <strong>15 m</strong> of the curve's low point. Because the grade at any distance \(d\) from the low point equals \(d/K\) percent, the maximum \(K\)-value that satisfies this requirement is:</p>
+                \[K_{\text{drainage,max}} = \frac{15}{0.3} \approx 51 \text{ m/\%}\]
+                <p class="section-text">When the design \(K\) exceeds 51, enhanced drainage measures are required near the low point. These may include closer inlet spacing, steeper cross slopes to direct water laterally, wider gutters to increase flow capacity, or strategic placement of inlets directly at the computed low point.</p>
+                <p class="section-text">It is important to understand that exceeding \(K = 51\) does not automatically disqualify a design. Rather, it flags a condition requiring special attention. If the sight-distance criterion demands a \(K\) greater than 51, safety takes precedence and the engineer addresses drainage through infrastructure rather than by shortening the curve.</p>
+
+                <!-- Example 4.11 -->
+                <div class="toggleable-item" id="ex4-11">
+                    <div class="toggle-header">
+                        <span class="example-number">4.11</span>
+                        <span class="toggle-label">Example 4.11 — Drainage check for a curbed sag curve</span>
+                        <span class="bloom-chip" data-lvl="5"><span class="dot"></span>Level: Evaluate</span>
+                    </div>
+                    <button class="show-answer-btn burgundy" onclick="toggleExample('ex4-11')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="toggle-content">
+                        <div class="toggle-content-inner">
+                            <p>A curbed sag curve with \(A = 4.0\%\) and \(L = 240\) m serves a 90 km/h urban arterial. The drainage engineer needs to know whether special inlet provisions are required near the low point.</p>
+                            <p><strong>Solution:</strong> The first step is to compute the design \(K\)-value for this curve:</p>
+                            \[K = \frac{L}{A} = \frac{240}{4.0} = 60 \text{ m/\%}\]
+                            <p>Since \(K = 60\) exceeds the drainage maximum of 51 m/%, the drainage criterion is <strong>not satisfied</strong> automatically. To quantify the shortfall, compute the longitudinal grade that develops 15 m from the low point:</p>
+                            \[\text{Grade at 15 m} = \frac{15}{K} = \frac{15}{60} = 0.25\%\]
+                            <p>This is below the required 0.30%, confirming that water will not drain efficiently near the low point. The engineer has two options:</p>
+                            <ul>
+                                <li><strong>Option 1:</strong> Shorten the curve to \(L = K_{\max} \times A = 51 \times 4.0 = 204\) m — but this would violate the headlight minimum of 226 m from Example 4.9. Therefore this option is <strong>not feasible</strong>.</li>
+                                <li><strong>Option 2 (correct approach):</strong> Maintain the longer curve for safety and address drainage by placing <strong>enhanced inlets within 10–15 m of the low point</strong> on both sides. Safety always takes priority over drainage convenience.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== SECTION 4.10 ===================== -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">4.10</span>Complete Design Workflow</h2>
+                    <span class="bloom-chip" data-lvl="6"><span class="dot"></span>Level: Create</span>
+                </div>
+                <div class="box learning-objectives">
+                    <div class="lo-header-row">
+                        <h3>Learning Objectives</h3>
+                    </div>
+                    <ul>
+                        <li>Execute a complete vertical-alignment design from inputs through verification.</li>
+                        <li>Produce a design set with rationale, computations, elevation table, and all checks.</li>
+                    </ul>
+                </div>
+                <p class="section-text">The complete workflow integrates all preceding sections into a systematic procedure:</p>
+                <ol style="margin-left:1.5rem; margin-bottom:1.5rem; color:#3a3a38; line-height:2.0;">
+                    <li><strong>Establish inputs:</strong> Determine the design speed, facility type, and terrain. Identify \(G_1\) and \(G_2\); verify against maximum and minimum grade limits (Tables 4.1–4.7).</li>
+                    <li><strong>Compute \(A\) and classify</strong> the curve as crest or sag.</li>
+                    <li><strong>Compute SSD</strong> using \(SSD = 0.278\,V\,t_r + V^2/[254(a/g)]\) with the AASHTO assumptions, and round up.</li>
+                    <li><strong>Compute \(L_{\min}\)</strong> from the appropriate governing equation: \(L_{\min} = A \times SSD^2 / 658\) for crest curves, or \(L_{\min} = A \times SSD^2 / (120 + 3.5 \times SSD)\) for sag curves (also check comfort and appearance for sag). Compare against the absolute minimum \(0.6V\).</li>
+                    <li><strong>Verify the \(SSD &lt; L\) assumption.</strong> If \(L_{\min} &lt; SSD\), switch to Case 2.</li>
+                    <li><strong>Select \(L \geq L_{\min}\)</strong>, rounded to a convenient value.</li>
+                    <li><strong>Compute the layout</strong> — BVC and EVC positions and elevations, parabolic coefficients. Verify the EVC elevation using the parabolic equation.</li>
+                    <li><strong>Compute the elevation table</strong> at desired intervals using Method 1 or Method 2.</li>
+                    <li><strong>For sag curves:</strong> Check whether \(K \leq 51\); if not, specify enhanced drainage.</li>
+                </ol>
+
+                <!-- Example 4.12 -->
+                <div class="toggleable-item" id="ex4-12">
+                    <div class="toggle-header">
+                        <span class="example-number">4.12</span>
+                        <span class="toggle-label">Example 4.12 — Complete crest curve design for a 110 km/h rural arterial</span>
+                        <span class="bloom-chip" data-lvl="6"><span class="dot"></span>Level: Create</span>
+                    </div>
+                    <button class="show-answer-btn burgundy" onclick="toggleExample('ex4-12')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="toggle-content">
+                        <div class="toggle-content-inner">
+                            <p>A two-lane rural arterial in rolling terrain has a design speed of 110 km/h. A crest vertical curve connects \(G_1 = +4.0\%\) and \(G_2 = -2.5\%\). The PVI is at Sta. 85+00 with elevation 305.00 m. Produce a complete design.</p>
+                            <p><strong>Step 1 — Inputs and grade check:</strong> The design speed is 110 km/h. From Table 4.1, the maximum grade for freeways in rolling terrain at 110 km/h is 4%. The incoming grade of \(|G_1| = 4.0\%\) is at the limit, and the departing grade of \(|G_2| = 2.5\%\) is well within it. Both grades are acceptable. ✓</p>
+                            <p><strong>Step 2 — Compute \(A\) and classify:</strong></p>
+                            \[A = |4.0 - (-2.5)| = 6.5\%\]
+                            <p>Since \(G_1 = +4.0\%\) is algebraically greater than \(G_2 = -2.5\%\), the road rises then falls, making this a <strong>crest</strong> curve.</p>
+                            <p><strong>Step 3 — Compute SSD for 110 km/h:</strong></p>
+                            \[d_r = 0.278 \times 110 \times 2.5 = 76.5 \text{ m}\]
+                            \[d_b = \frac{110^2}{254 \times 0.347} = \frac{12{,}100}{88.1} = 137.3 \text{ m}\]
+                            \[SSD = 76.5 + 137.3 = 213.8 \text{ m}\]
+                            <p>Rounding up for design gives <strong>SSD = 220 m</strong>.</p>
+                            <p><strong>Step 4 — Compute the minimum crest curve length:</strong></p>
+                            \[L_{\min} = \frac{A \times SSD^2}{658} = \frac{6.5 \times 220^2}{658} = \frac{6.5 \times 48{,}400}{658} = \frac{314{,}600}{658} = 478.1 \text{ m}\]
+                            <p>The absolute minimum is \(0.6 \times 110 = 66\) m, which does not govern. The sight-distance criterion requires \(L_{\min} = 479\) m (rounded up).</p>
+                            <p><strong>Step 5 — Verify the assumption:</strong> Since \(L_{\min} = 479\) m is much greater than \(SSD = 220\) m, the Case 1 assumption (\(SSD &lt; L\)) is confirmed. ✓</p>
+                            <p><strong>Step 6 — Select the design curve length:</strong> Choose <strong>\(L = 490\) m</strong>, which exceeds the minimum and is a convenient round value for construction layout.</p>
+                            <p><strong>Step 7 — Compute the curve layout:</strong> Half the curve length is \(L/2 = 245\) m.</p>
+                            <ul>
+                                <li><strong>BVC:</strong> Sta. 85+00 minus 245 m = <strong>Sta. 82+55</strong></li>
+                                <li><strong>EVC:</strong> Sta. 85+00 plus 245 m = <strong>Sta. 87+45</strong></li>
+                            </ul>
+                            <p>The BVC elevation is found by projecting the initial grade backward from the PVI. Since the road rises at 4.0% approaching the PVI, moving backward 245 m means going to a lower elevation:</p>
+                            \[\text{Elev}_{\text{BVC}} = 305.00 - 4.0 \times \frac{245}{100} = 305.00 - 9.80 = 295.20 \text{ m}\]
+                            <p>The EVC elevation is found by projecting the departing grade forward from the PVI. The road falls at 2.5% leaving the PVI:</p>
+                            \[\text{Elev}_{\text{EVC}} = 305.00 + (-2.5) \times \frac{245}{100} = 305.00 - 6.125 = 298.875 \text{ m}\]
+                            <p>The parabolic coefficients are:</p>
+                            \[a = \frac{-2.5 - 4.0}{200 \times 490} = \frac{-6.5}{98{,}000} = -0.00006633\]
+                            \[b = \frac{4.0}{100} = 0.04 \text{ m/m} \qquad;\qquad c = 295.20 \text{ m}\]
+                            <p><strong>Verification at the EVC:</strong> Evaluating the parabolic equation at \(x = 490\) m:</p>
+                            \[y(490) = -0.00006633 \times (490)^2 + 0.04 \times (490) + 295.20\]
+                            \[= -0.00006633 \times 240{,}100 + 19.60 + 295.20 = -15.93 + 19.60 + 295.20 = 298.87 \text{ m}\]
+                            <p>This matches the EVC elevation (298.875 rounds to 298.88 m), confirming geometric closure. ✓</p>
+                            <p><strong>Step 8 — Elevation table:</strong> Using Method 2 (tangent-plus-offset). The offset coefficient is \(A/(200L) = 6.5/(200 \times 490) = 0.00006633\). Because this is a crest curve, the offset is <strong>subtracted</strong> from the tangent elevation at every station.</p>
+                            <table>
+                                <thead>
+                                    <tr><th>Station</th><th>x (m)</th><th>Tangent Elev (m)</th><th>Offset Y (m)</th><th>Curve Elev (m)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Sta. 82+55 (BVC)</td><td>0</td><td>295.20</td><td>0.00</td><td><strong>295.20</strong></td></tr>
+                                    <tr><td>Sta. 83+55</td><td>100</td><td>299.20</td><td>0.66</td><td><strong>298.54</strong></td></tr>
+                                    <tr><td>Sta. 84+55</td><td>200</td><td>303.20</td><td>2.65</td><td><strong>300.55</strong></td></tr>
+                                    <tr><td>Sta. 85+55</td><td>300</td><td>307.20</td><td>5.97</td><td><strong>301.23</strong></td></tr>
+                                    <tr><td>Sta. 86+55</td><td>400</td><td>311.20</td><td>10.61</td><td><strong>300.59</strong></td></tr>
+                                    <tr><td>Sta. 87+45 (EVC)</td><td>490</td><td>314.80</td><td>15.93</td><td><strong>298.87</strong></td></tr>
+                                </tbody>
+                            </table>
+                            <p><strong>Shape check:</strong> The curve elevations rise from the BVC (295.20 m) to a maximum near Sta. 85+55 (301.23 m), then decrease to the EVC (298.87 m). This convex profile is consistent with a crest curve. ✓</p>
+                            <p><strong>Step 9 — Summary of verification checks:</strong></p>
+                            <table>
+                                <thead>
+                                    <tr><th>Check</th><th>Result</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>\(L = 490\) m \(\geq L_{\min} = 479\) m</td><td>✓ Satisfied</td></tr>
+                                    <tr><td>\(SSD &lt; L\): 220 m &lt; 490 m</td><td>✓ Assumption valid</td></tr>
+                                    <tr><td>EVC elevation verified by parabolic equation</td><td>✓ Confirmed</td></tr>
+                                    <tr><td>Crest curve shape confirmed by elevation pattern</td><td>✓ Consistent</td></tr>
+                                </tbody>
+                            </table>
+                            <p>The design is complete.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== END-OF-CHAPTER PROBLEMS ===================== -->
+            <div class="end-of-chapter">
+                <h2 class="end-of-chapter-title">End-of-Chapter Problems</h2>
+
+                <!-- Problem 1 -->
+                <div class="question-item" id="p1">
+                    <div class="question-header">
+                        <span class="question-number">1</span>
+                        <div class="question-content">
+                            <span class="question-text">A transportation engineering student is reviewing a set of proposed vertical curve designs and needs to classify each one. For each of the following grade combinations, compute the algebraic difference in grades \(A\) and explain whether the resulting curve is a crest or a sag.<br>
+                            (a) \(G_1 = +5.0\%\), \(G_2 = +1.0\%\)<br>
+                            (b) \(G_1 = -3.0\%\), \(G_2 = +2.0\%\)<br>
+                            (c) \(G_1 = +1.5\%\), \(G_2 = +4.0\%\)<br>
+                            (d) \(G_1 = -1.0\%\), \(G_2 = -4.5\%\)</span>
+                        </div>
+                        <div class="question-chip-area">
+                            <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span>
+                        </div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('p1')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Solution:</span>
+                            <p><strong>(a)</strong> \(A = |5.0 - 1.0| = 4.0\%\). Both grades are positive, but the road is becoming less steep as it progresses — the grade drops from \(+5.0\%\) to \(+1.0\%\). Since \(G_1 > G_2\) algebraically, the profile is convex (it bends over a high point). This is a <strong>crest</strong> curve.</p>
+                            <p><strong>(b)</strong> \(A = |(-3.0) - (2.0)| = 5.0\%\). The road transitions from a downhill grade (\(-3.0\%\)) to an uphill grade (\(+2.0\%\)). Since \(G_1 &lt; G_2\), the profile is concave (it dips to a low point and then rises). This is a <strong>sag</strong> curve.</p>
+                            <p><strong>(c)</strong> \(A = |1.5 - 4.0| = 2.5\%\). Both grades are positive, but the road is becoming steeper uphill — the grade increases from \(+1.5\%\) to \(+4.0\%\). Since \(G_1 &lt; G_2\), the profile is concave. This is a <strong>sag</strong> curve.</p>
+                            <p><strong>(d)</strong> \(A = |(-1.0) - (-4.5)| = 3.5\%\). Both grades are negative (downhill), but the road is becoming steeper downhill — going from \(-1.0\%\) to \(-4.5\%\). Algebraically, \(-1.0 > -4.5\), so \(G_1 > G_2\). The profile is convex (it bends over a high point before the descent steepens). This is a <strong>crest</strong> curve.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Problem 2 -->
+                <div class="question-item" id="p2">
+                    <div class="question-header">
+                        <span class="question-number">2</span>
+                        <div class="question-content">
+                            <span class="question-text">A designer proposes a sag vertical curve on a curbed urban arterial with \(K = 65\) m/% and a design speed of 80 km/h. Evaluate whether this design satisfies the headlight sight distance requirement and the drainage requirement. Explain both answers with supporting calculations.</span>
+                        </div>
+                        <div class="question-chip-area">
+                            <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span>
+                        </div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('p2')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Solution:</span>
+                            <p><strong>Headlight sight distance check:</strong> The SSD for 80 km/h (from Example 4.6) is <strong>SSD = 130 m</strong>. Compute the minimum \(K\)-value required for headlight sight distance:</p>
+                            \[K_{\text{req}} = \frac{SSD^2}{120 + 3.5 \times SSD} = \frac{130^2}{120 + 3.5 \times 130} = \frac{16{,}900}{575} = 29.4 \text{ m/\%}\]
+                            <p>Since the proposed \(K = 65\) m/% is much greater than the required \(K = 29.4\) m/%, the sag curve provides far more than adequate headlight sight distance. <strong>Headlight sight distance is satisfied.</strong> ✓</p>
+                            <p><strong>Drainage check:</strong> The drainage maximum is \(K = 51\) m/%. Since the proposed \(K = 65\) exceeds this threshold, the grade near the low point will be very flat:</p>
+                            \[\text{Grade at 15 m} = \frac{15}{65} = 0.23\%\]
+                            <p>This is less than the required 0.30%, meaning water will not drain efficiently near the low point. <strong>The drainage criterion is not satisfied.</strong> The designer must either shorten the curve to bring \(K\) below 51 (while ensuring the headlight minimum is still met) or provide enhanced drainage inlets near the low point.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Problem 3 -->
+                <div class="question-item" id="p3">
+                    <div class="question-header">
+                        <span class="question-number">3</span>
+                        <div class="question-content">
+                            <span class="question-text">A new alignment includes a 500 m equal-tangent vertical curve that connects \(G_1 = -2.0\%\) and \(G_2 = +3.0\%\) through a depressed corridor. The PVI is at Sta. 40+00 with elevation 200.00 m.<br>
+                            (a) Compute the BVC and EVC positions and elevations.<br>
+                            (b) State the coefficients \(a\), \(b\), and \(c\) of the parabolic equation and explain what each represents.<br>
+                            (c) Compute the curve elevation at Sta. 39+00 and explain the computation.</span>
+                        </div>
+                        <div class="question-chip-area">
+                            <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                        </div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('p3')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Solution:</span>
+                            <p>The algebraic difference is \(A = |(-2.0) - 3.0| = 5.0\%\). Since \(G_1 &lt; G_2\), this is a <strong>sag</strong> curve.</p>
+                            <p><strong>(a) BVC and EVC positions and elevations:</strong> Half the curve length is \(L/2 = 250\) m.</p>
+                            <ul>
+                                <li><strong>BVC:</strong> Sta. 40+00 minus 250 m = <strong>Sta. 37+50</strong></li>
+                                <li><strong>EVC:</strong> Sta. 40+00 plus 250 m = <strong>Sta. 42+50</strong></li>
+                            </ul>
+                            \[\text{Elev}_{\text{BVC}} = 200.00 - (-2.0) \times \frac{250}{100} = 200.00 + 5.00 = 205.00 \text{ m}\]
+                            \[\text{Elev}_{\text{EVC}} = 200.00 + (+3.0) \times \frac{250}{100} = 200.00 + 7.50 = 207.50 \text{ m}\]
+                            <p><strong>(b) Parabolic equation coefficients:</strong></p>
+                            \[a = \frac{G_2 - G_1}{200L} = \frac{3.0 - (-2.0)}{200 \times 500} = \frac{5.0}{100{,}000} = 0.00005\]
+                            <p>This coefficient is positive, consistent with a sag curve (parabola opens upward).</p>
+                            \[b = \frac{G_1}{100} = \frac{-2.0}{100} = -0.02 \text{ m/m}\]
+                            <p>This represents the slope of the curve at the BVC, equal to the incoming tangent grade in m/m.</p>
+                            \[c = \text{Elev}_{\text{BVC}} = 205.00 \text{ m}\]
+                            <p>This is simply the starting elevation of the curve.</p>
+                            <p><strong>(c) Curve elevation at Sta. 39+00:</strong> The distance from BVC (Sta. 37+50) to Sta. 39+00 is \(x = 3{,}900 - 3{,}750 = 150\) m.</p>
+                            \[y = 0.00005 \times (150)^2 + (-0.02)(150) + 205.00 = 1.125 - 3.00 + 205.00 = 203.13 \text{ m}\]
+                            <p>The curve elevation at Sta. 39+00 is <strong>203.13 m</strong>. This elevation is below the BVC elevation (205.00 m), which is expected because the sag curve initially descends toward the low point before rising again.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Problem 4 -->
+                <div class="question-item" id="p4">
+                    <div class="question-header">
+                        <span class="question-number">4</span>
+                        <div class="question-content">
+                            <span class="question-text">An engineer is designing a crest curve for a 90 km/h highway. The alignment transitions from \(G_1 = +3.5\%\) to \(G_2 = -2.5\%\). The PVI is at Sta. 55+00, elevation 340.00 m.<br>
+                            (a) Determine the minimum crest curve length using the SSD equation.<br>
+                            (b) Select \(L = 240\) m and compute the layout and elevations at 60 m intervals from BVC to EVC.<br>
+                            (c) Verify the EVC elevation with the parabolic equation.</span>
+                        </div>
+                        <div class="question-chip-area">
+                            <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                        </div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('p4')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Solution:</span>
+                            <p>\(A = |3.5 - (-2.5)| = 6.0\%\). Since \(G_1 > G_2\), this is a <strong>crest</strong> curve.</p>
+                            <p><strong>SSD for 90 km/h:</strong></p>
+                            \[d_r = 0.278 \times 90 \times 2.5 = 62.6 \text{ m} \qquad d_b = \frac{8{,}100}{88.1} = 91.9 \text{ m} \qquad SSD = 154.5 \text{ m} \Rightarrow 160 \text{ m}\]
+                            <p><strong>(a) Minimum crest curve length:</strong></p>
+                            \[L_{\min} = \frac{6.0 \times 160^2}{658} = \frac{153{,}600}{658} = 233.4 \text{ m} \Rightarrow 234 \text{ m (rounded up)}\]
+                            <p>Absolute minimum: \(0.6 \times 90 = 54\) m (does not govern). Selecting \(L = 240\) m provides a comfortable margin. Assumption check: \(L = 240 > SSD = 160\). ✓</p>
+                            <p><strong>(b) Layout and elevation table with \(L = 240\) m</strong> (\(L/2 = 120\) m):</p>
+                            <ul>
+                                <li><strong>BVC:</strong> Sta. 55+00 minus 120 m = <strong>Sta. 53+80</strong></li>
+                                <li><strong>EVC:</strong> Sta. 55+00 plus 120 m = <strong>Sta. 56+20</strong></li>
+                            </ul>
+                            \[\text{Elev}_{\text{BVC}} = 340.00 - 3.5 \times \frac{120}{100} = 335.80 \text{ m}\]
+                            \[\text{Elev}_{\text{EVC}} = 340.00 + (-2.5) \times \frac{120}{100} = 337.00 \text{ m}\]
+                            <p>Offset coefficient: \(6.0/(200 \times 240) = 0.000125\). Crest curve — offset is <strong>subtracted</strong>.</p>
+                            <table>
+                                <thead>
+                                    <tr><th>Station</th><th>x (m)</th><th>Tangent Elev (m)</th><th>Offset Y (m)</th><th>Curve Elev (m)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Sta. 53+80 (BVC)</td><td>0</td><td>335.80</td><td>0.00</td><td><strong>335.80</strong></td></tr>
+                                    <tr><td>Sta. 54+40</td><td>60</td><td>337.90</td><td>0.45</td><td><strong>337.45</strong></td></tr>
+                                    <tr><td>Sta. 55+00 (PVI)</td><td>120</td><td>340.00</td><td>1.80</td><td><strong>338.20</strong></td></tr>
+                                    <tr><td>Sta. 55+60</td><td>180</td><td>342.10</td><td>4.05</td><td><strong>338.05</strong></td></tr>
+                                    <tr><td>Sta. 56+20 (EVC)</td><td>240</td><td>344.20</td><td>7.20</td><td><strong>337.00</strong></td></tr>
+                                </tbody>
+                            </table>
+                            <p><strong>(c) Verification at EVC</strong> (\(a = -0.000125\), \(b = 0.035\), \(c = 335.80\)):</p>
+                            \[y(240) = -0.000125 \times (240)^2 + 0.035 \times (240) + 335.80 = -7.20 + 8.40 + 335.80 = 337.00 \text{ m}\]
+                            <p>This matches the EVC elevation from the tangent grade projection, confirming closure. ✓</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Problem 5 -->
+                <div class="question-item" id="p5">
+                    <div class="question-header">
+                        <span class="question-number">5</span>
+                        <div class="question-content">
+                            <span class="question-text">A sag vertical curve on a curbed 80 km/h roadway connects \(G_1 = -3.0\%\) and \(G_2 = +1.0\%\). The PVI is at Sta. 72+00, elevation 150.00 m.<br>
+                            (a) Compute the minimum curve length for the headlight, comfort, and appearance criteria. Which governs?<br>
+                            (b) Using the governing length (round up to nearest 10 m), compute the layout and elevations at 50 m intervals.<br>
+                            (c) Verify the EVC elevation using the parabolic equation.<br>
+                            (d) Check whether the drainage criterion (\(K \leq 51\) m/%) is satisfied.</span>
+                        </div>
+                        <div class="question-chip-area">
+                            <span class="bloom-chip" data-lvl="4"><span class="dot"></span>Level: Analyze</span>
+                        </div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('p5')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Solution:</span>
+                            <p>\(A = |(-3.0) - 1.0| = 4.0\%\). Since \(G_1 &lt; G_2\), this is a <strong>sag</strong> curve. SSD for 80 km/h = <strong>130 m</strong> (from Example 4.6).</p>
+                            <p><strong>(a) Three sag curve criteria:</strong></p>
+                            <p><strong>Headlight criterion:</strong></p>
+                            \[L_{\min} = \frac{4.0 \times 130^2}{120 + 3.5 \times 130} = \frac{67{,}600}{575} = 117.6 \text{ m} \Rightarrow 118 \text{ m}\]
+                            <p><strong>Comfort criterion:</strong></p>
+                            \[L_{\min} = \frac{4.0 \times 80^2}{395} = \frac{25{,}600}{395} = 64.8 \text{ m}\]
+                            <p><strong>Appearance criterion:</strong></p>
+                            \[L_{\min} = 30 \times 4.0 = 120 \text{ m}\]
+                            <p>Absolute minimum: \(0.6 \times 80 = 48\) m. The <strong>appearance criterion governs at 120 m</strong>. Select \(L = 120\) m.</p>
+                            <p><strong>(b) Layout and elevations</strong> (\(L/2 = 60\) m):</p>
+                            <ul>
+                                <li><strong>BVC:</strong> Sta. 72+00 minus 60 m = <strong>Sta. 71+40</strong></li>
+                                <li><strong>EVC:</strong> Sta. 72+00 plus 60 m = <strong>Sta. 72+60</strong></li>
+                            </ul>
+                            \[\text{Elev}_{\text{BVC}} = 150.00 - (-3.0) \times \frac{60}{100} = 150.00 + 1.80 = 151.80 \text{ m}\]
+                            \[\text{Elev}_{\text{EVC}} = 150.00 + (+1.0) \times \frac{60}{100} = 150.00 + 0.60 = 150.60 \text{ m}\]
+                            <p>Offset coefficient: \(4.0/(200 \times 120) = 0.0001667\). Sag curve — offset is <strong>added</strong>.</p>
+                            <table>
+                                <thead>
+                                    <tr><th>Station</th><th>x (m)</th><th>Tangent Elev (m)</th><th>Offset Y (m)</th><th>Curve Elev (m)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Sta. 71+40 (BVC)</td><td>0</td><td>151.80</td><td>0.00</td><td><strong>151.80</strong></td></tr>
+                                    <tr><td>Sta. 71+90</td><td>50</td><td>150.30</td><td>0.42</td><td><strong>150.72</strong></td></tr>
+                                    <tr><td>Sta. 72+40</td><td>100</td><td>148.80</td><td>1.67</td><td><strong>150.47</strong></td></tr>
+                                    <tr><td>Sta. 72+60 (EVC)</td><td>120</td><td>148.20</td><td>2.40</td><td><strong>150.60</strong></td></tr>
+                                </tbody>
+                            </table>
+                            <p><strong>(c) Verification at EVC</strong> (\(a = 0.0001667\), \(b = -0.03\), \(c = 151.80\)):</p>
+                            \[y(120) = 0.0001667 \times (120)^2 + (-0.03)(120) + 151.80 = 2.40 - 3.60 + 151.80 = 150.60 \text{ m}\]
+                            <p>Confirms geometric closure. ✓</p>
+                            <p><strong>(d) Drainage check:</strong></p>
+                            \[K = \frac{L}{A} = \frac{120}{4.0} = 30 \text{ m/\%}\]
+                            <p>Since \(K = 30 \leq 51\), the drainage criterion is satisfied. The grade at 15 m from the low point is \(15/30 = 0.50\% > 0.30\%\). <strong>No special drainage measures needed.</strong> ✓</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Problem 6 -->
+                <div class="question-item" id="p6">
+                    <div class="question-header">
+                        <span class="question-number">6</span>
+                        <div class="question-content">
+                            <span class="question-text">An existing sag curve on a curbed urban arterial has \(G_1 = -2.0\%\), \(G_2 = +2.0\%\), and \(L = 280\) m. The road carries traffic at a design speed of 70 km/h.<br>
+                            (a) Does this curve provide adequate headlight sight distance for 70 km/h?<br>
+                            (b) Evaluate the drainage condition near the low point. If the criterion is not met, recommend a specific mitigation measure and justify your choice quantitatively.</span>
+                        </div>
+                        <div class="question-chip-area">
+                            <span class="bloom-chip" data-lvl="5"><span class="dot"></span>Level: Evaluate</span>
+                        </div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('p6')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Solution:</span>
+                            <p>\(A = |(-2.0) - 2.0| = 4.0\%\).</p>
+                            <p><strong>(a) Headlight sight distance:</strong> SSD for 70 km/h:</p>
+                            \[d_r = 0.278 \times 70 \times 2.5 = 48.7 \text{ m} \qquad d_b = \frac{4{,}900}{88.1} = 55.6 \text{ m} \qquad SSD = 104.3 \text{ m} \Rightarrow 105 \text{ m}\]
+                            <p>Minimum curve length required:</p>
+                            \[L_{\min} = \frac{4.0 \times 105^2}{120 + 3.5 \times 105} = \frac{44{,}100}{487.5} = 90.5 \text{ m} \Rightarrow 91 \text{ m}\]
+                            <p>The existing curve length of 280 m far exceeds 91 m. <strong>Headlight sight distance is more than adequate.</strong> ✓</p>
+                            <p><strong>(b) Drainage evaluation:</strong></p>
+                            \[K = \frac{L}{A} = \frac{280}{4.0} = 70 \text{ m/\%}\]
+                            <p>Since \(K = 70 > 51\), the grade at 15 m from the low point is \(15/70 = 0.21\%\), well below the required 0.30%. <strong>The drainage criterion is not satisfied.</strong></p>
+                            <p><strong>Recommendation:</strong> Reduce the curve length to \(L = 200\) m, giving \(K = 200/4.0 = 50\) m/% (just below the drainage threshold of 51). The headlight minimum of 91 m is still comfortably satisfied (\(200 \gg 91\)), and the grade at 15 m from the low point would be \(15/50 = 0.30\%\), exactly meeting the drainage standard. If the 280 m length must be retained for ride quality, install enhanced drainage inlets spaced within 10–15 m of the computed low point on both sides.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Problem 7 -->
+                <div class="question-item" id="p7">
+                    <div class="question-header">
+                        <span class="question-number">7</span>
+                        <div class="question-content">
+                            <span class="question-text">A rural arterial in rolling terrain must connect a \(+3.5\%\) grade to a \(-3.0\%\) grade. The design speed is 100 km/h and the PVI is at Sta. 120+00, elevation 425.00 m. Produce a complete design including grade verification, minimum length calculation, layout, elevation table at 50 m intervals, and all verification checks.</span>
+                        </div>
+                        <div class="question-chip-area">
+                            <span class="bloom-chip" data-lvl="6"><span class="dot"></span>Level: Create</span>
+                        </div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('p7')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Solution:</span>
+                            <p><strong>Step 1 — Grade check:</strong> From Table 4.4, the maximum grade for rural collectors in rolling terrain at 100 km/h is 6%. Both \(|G_1| = 3.5\%\) and \(|G_2| = 3.0\%\) are well within the allowable range. ✓</p>
+                            <p><strong>Step 2 — Compute \(A\) and classify:</strong></p>
+                            \[A = |3.5 - (-3.0)| = 6.5\%\]
+                            <p>Since \(G_1 = +3.5\% > G_2 = -3.0\%\), this is a <strong>crest</strong> curve.</p>
+                            <p><strong>Step 3 — SSD for 100 km/h:</strong> From Example 4.5, <strong>SSD = 185 m</strong>.</p>
+                            <p><strong>Step 4 — Minimum crest curve length:</strong></p>
+                            \[L_{\min} = \frac{6.5 \times 185^2}{658} = \frac{6.5 \times 34{,}225}{658} = \frac{222{,}463}{658} = 338.1 \text{ m}\]
+                            <p>Select <strong>\(L = 340\) m</strong>. Absolute minimum: \(0.6 \times 100 = 60\) m (does not govern).</p>
+                            <p><strong>Step 5 — Verify assumption:</strong> \(L = 340 \gg SSD = 185\). Case 1 valid. ✓</p>
+                            <p><strong>Step 6 — Curve layout</strong> (\(L/2 = 170\) m):</p>
+                            <ul>
+                                <li><strong>BVC:</strong> Sta. 120+00 minus 170 m = <strong>Sta. 118+30</strong></li>
+                                <li><strong>EVC:</strong> Sta. 120+00 plus 170 m = <strong>Sta. 121+70</strong></li>
+                            </ul>
+                            \[\text{Elev}_{\text{BVC}} = 425.00 - 3.5 \times \frac{170}{100} = 425.00 - 5.95 = 419.05 \text{ m}\]
+                            \[\text{Elev}_{\text{EVC}} = 425.00 + (-3.0) \times \frac{170}{100} = 425.00 - 5.10 = 419.90 \text{ m}\]
+                            <p><strong>Step 7 — Parabolic coefficients:</strong></p>
+                            \[a = \frac{-3.0 - 3.5}{200 \times 340} = \frac{-6.5}{68{,}000} = -0.00009559\]
+                            \[b = 0.035 \text{ m/m} \qquad c = 419.05 \text{ m}\]
+                            <p>Offset coefficient: \(6.5/(200 \times 340) = 0.00009559\). Crest curve — offset is <strong>subtracted</strong>.</p>
+                            <p><strong>Step 8 — Elevation table at 50 m intervals:</strong></p>
+                            <table>
+                                <thead>
+                                    <tr><th>Station</th><th>x (m)</th><th>Tangent Elev (m)</th><th>Offset Y (m)</th><th>Curve Elev (m)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Sta. 118+30 (BVC)</td><td>0</td><td>419.05</td><td>0.00</td><td><strong>419.05</strong></td></tr>
+                                    <tr><td>Sta. 118+80</td><td>50</td><td>420.80</td><td>0.24</td><td><strong>420.56</strong></td></tr>
+                                    <tr><td>Sta. 119+30</td><td>100</td><td>422.55</td><td>0.96</td><td><strong>421.59</strong></td></tr>
+                                    <tr><td>Sta. 119+80</td><td>150</td><td>424.30</td><td>2.15</td><td><strong>422.15</strong></td></tr>
+                                    <tr><td>Sta. 120+30</td><td>200</td><td>426.05</td><td>3.82</td><td><strong>422.23</strong></td></tr>
+                                    <tr><td>Sta. 120+80</td><td>250</td><td>427.80</td><td>5.97</td><td><strong>421.83</strong></td></tr>
+                                    <tr><td>Sta. 121+30</td><td>300</td><td>429.55</td><td>8.60</td><td><strong>420.95</strong></td></tr>
+                                    <tr><td>Sta. 121+70 (EVC)</td><td>340</td><td>430.95</td><td>11.05</td><td><strong>419.90</strong></td></tr>
+                                </tbody>
+                            </table>
+                            <p><strong>Step 9 — Verification at EVC:</strong></p>
+                            \[y(340) = -0.00009559 \times (340)^2 + 0.035 \times (340) + 419.05 = -11.05 + 11.90 + 419.05 = 419.90 \text{ m}\]
+                            <p>Confirms geometric closure. ✓</p>
+                            <p><strong>Step 10 — Final verification:</strong> Design \(K = 340/6.5 = 52.3\) m/%, which exceeds the required \(K = 185^2/658 = 52.0\) m/%. Curve length of 340 m satisfies the minimum of 339 m. All checks confirmed. <strong>The design is complete.</strong> ✓</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Problem 8 -->
+                <div class="question-item" id="p8">
+                    <div class="question-header">
+                        <span class="question-number">8</span>
+                        <div class="question-content">
+                            <span class="question-text">A new urban collector road in rolling terrain has a design speed of 80 km/h. A sag curve must connect \(G_1 = -5.0\%\) and \(G_2 = +2.0\%\). The PVI is at Sta. 96+00, elevation 112.00 m. The road has curbs and gutters. Produce a complete design including grade verification, governing criterion determination, layout, elevation table at 40 m intervals, and drainage assessment.</span>
+                        </div>
+                        <div class="question-chip-area">
+                            <span class="bloom-chip" data-lvl="6"><span class="dot"></span>Level: Create</span>
+                        </div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('p8')">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Solution" data-hide="Hide Solution"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Solution:</span>
+                            <p><strong>Step 1 — Grade check:</strong> From Table 4.3, the maximum grade for urban collectors in rolling terrain at 80 km/h is <strong>8%</strong>. Both \(|G_1| = 5.0\%\) and \(|G_2| = 2.0\%\) are well within this limit. Both grades exceed the 0.5% minimum for curbed roadways. ✓</p>
+                            <p><strong>Step 2 — Compute \(A\) and classify:</strong></p>
+                            \[A = |(-5.0) - 2.0| = 7.0\%\]
+                            <p>Since \(G_1 &lt; G_2\), this is a <strong>sag</strong> curve.</p>
+                            <p><strong>Step 3 — SSD for 80 km/h:</strong> From Example 4.6, <strong>SSD = 130 m</strong>.</p>
+                            <p><strong>Step 4 — Evaluate all sag criteria:</strong></p>
+                            <p><strong>Headlight criterion:</strong></p>
+                            \[L_{\min} = \frac{7.0 \times 130^2}{120 + 3.5 \times 130} = \frac{118{,}300}{575} = 205.7 \text{ m} \Rightarrow 206 \text{ m}\]
+                            <p><strong>Comfort criterion:</strong></p>
+                            \[L_{\min} = \frac{7.0 \times 80^2}{395} = \frac{44{,}800}{395} = 113.4 \text{ m}\]
+                            <p><strong>Appearance criterion:</strong></p>
+                            \[L_{\min} = 30 \times 7.0 = 210 \text{ m}\]
+                            <p>Absolute minimum: \(0.6 \times 80 = 48\) m. The <strong>appearance criterion governs at 210 m</strong> (narrowly exceeding headlight criterion at 206 m). Select <strong>\(L = 210\) m</strong>.</p>
+                            <p><strong>Step 5 — Verify assumption:</strong> \(L = 210 > SSD = 130\). ✓</p>
+                            <p><strong>Step 6 — Curve layout</strong> (\(L/2 = 105\) m):</p>
+                            <ul>
+                                <li><strong>BVC:</strong> Sta. 96+00 minus 105 m = <strong>Sta. 94+95</strong></li>
+                                <li><strong>EVC:</strong> Sta. 96+00 plus 105 m = <strong>Sta. 97+05</strong></li>
+                            </ul>
+                            \[\text{Elev}_{\text{BVC}} = 112.00 - (-5.0) \times \frac{105}{100} = 112.00 + 5.25 = 117.25 \text{ m}\]
+                            \[\text{Elev}_{\text{EVC}} = 112.00 + (+2.0) \times \frac{105}{100} = 112.00 + 2.10 = 114.10 \text{ m}\]
+                            <p><strong>Step 7 — Parabolic coefficients:</strong></p>
+                            \[a = \frac{2.0 - (-5.0)}{200 \times 210} = \frac{7.0}{42{,}000} = 0.0001667\]
+                            \[b = \frac{-5.0}{100} = -0.05 \text{ m/m} \qquad c = 117.25 \text{ m}\]
+                            <p>Offset coefficient: \(7.0/(200 \times 210) = 0.0001667\). Sag curve — offset is <strong>added</strong>.</p>
+                            <p><strong>Step 8 — Elevation table at 40 m intervals:</strong></p>
+                            <table>
+                                <thead>
+                                    <tr><th>Station</th><th>x (m)</th><th>Tangent Elev (m)</th><th>Offset Y (m)</th><th>Curve Elev (m)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Sta. 94+95 (BVC)</td><td>0</td><td>117.25</td><td>0.00</td><td><strong>117.25</strong></td></tr>
+                                    <tr><td>Sta. 95+35</td><td>40</td><td>115.25</td><td>0.27</td><td><strong>115.52</strong></td></tr>
+                                    <tr><td>Sta. 95+75</td><td>80</td><td>113.25</td><td>1.07</td><td><strong>114.32</strong></td></tr>
+                                    <tr><td>Sta. 96+15</td><td>120</td><td>111.25</td><td>2.40</td><td><strong>113.65</strong></td></tr>
+                                    <tr><td>Sta. 96+55</td><td>160</td><td>109.25</td><td>4.27</td><td><strong>113.52</strong></td></tr>
+                                    <tr><td>Sta. 96+95</td><td>200</td><td>107.25</td><td>6.67</td><td><strong>113.92</strong></td></tr>
+                                    <tr><td>Sta. 97+05 (EVC)</td><td>210</td><td>106.75</td><td>7.35</td><td><strong>114.10</strong></td></tr>
+                                </tbody>
+                            </table>
+                            <p><strong>Step 9 — Verification at EVC:</strong></p>
+                            \[y(210) = 0.0001667 \times (210)^2 + (-0.05)(210) + 117.25 = 7.35 - 10.50 + 117.25 = 114.10 \text{ m}\]
+                            <p>Confirms geometric closure. ✓</p>
+                            <p><strong>Step 10 — Drainage assessment:</strong></p>
+                            \[K = \frac{L}{A} = \frac{210}{7.0} = 30 \text{ m/\%}\]
+                            <p>Since \(K = 30 \leq 51\), the drainage criterion is satisfied. The grade at 15 m from the low point is \(15/30 = 0.50\% > 0.30\%\). <strong>No special drainage measures are needed.</strong> ✓</p>
+                            <p><strong>Final verification summary:</strong></p>
+                            <table>
+                                <thead>
+                                    <tr><th>Check</th><th>Result</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Grades within AASHTO limits (Table 4.3)</td><td>✓ Both within 8%</td></tr>
+                                    <tr><td>\(L = 210\) m \(\geq L_{\min} = 210\) m (appearance governs)</td><td>✓ Satisfied</td></tr>
+                                    <tr><td>\(SSD &lt; L\): 130 m &lt; 210 m</td><td>✓ Assumption valid</td></tr>
+                                    <tr><td>EVC elevation verified by parabolic equation</td><td>✓ 114.10 m confirmed</td></tr>
+                                    <tr><td>Drainage: \(K = 30 \leq 51\)</td><td>✓ No special measures needed</td></tr>
+                                </tbody>
+                            </table>
+                            <p>The design is complete. ✓</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /end-of-chapter -->
+
+        </div><!-- /main-content -->
+    </div><!-- /page-wrapper -->
+
+    <footer>
+        <p>&copy; 2025 CE341 Transportation Engineering — KFUPM. All rights reserved.</p>
     </footer>
+
+    <script>
+        let allOpen = false;
+        function toggleAllAnswers() {
+            const button = document.querySelector('.toggle-all-btn');
+            allOpen = !allOpen;
+            document.querySelectorAll('.question-item').forEach(item => {
+                if (allOpen) item.classList.add('open'); else item.classList.remove('open');
+            });
+            document.querySelectorAll('.toggleable-item').forEach(item => {
+                if (allOpen) item.classList.add('open'); else item.classList.remove('open');
+            });
+            button.textContent = allOpen ? 'Hide All Answers' : 'Show All Answers';
+        }
+        function toggleQuestion(id) { document.getElementById(id).classList.toggle('open'); }
+        function toggleExample(id) { document.getElementById(id).classList.toggle('open'); }
+    </script>
 </body>
 </html>

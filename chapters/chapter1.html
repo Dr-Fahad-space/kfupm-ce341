@@ -6,501 +6,518 @@
     <title>Chapter 1 - Introduction to Transportation Engineering | CE341</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        /* Toggle All Button */
-        .toggle-all-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        :root {
+            --c1:#1F6F54;
+            --c2:#3D7A4C;
+            --c3:#B38B2E;
+            --c4:#C1682D;
+            --c5:#8E3A2B;
+            --c6:#551427;
         }
-        .toggle-all-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
-        .toggle-all-btn:active {
-            transform: translateY(0);
-        }
-        .toggle-icon {
-            font-size: 1.1rem;
-        }
-
-        /* Answer Details/Summary */
-        .answer-details {
-            margin-top: 1rem;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .answer-summary {
-            background: #f8f9fa;
-            padding: 10px 16px;
-            cursor: pointer;
-            font-weight: 500;
-            color: #667eea;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            user-select: none;
-            list-style: none;
-        }
-        .answer-summary::-webkit-details-marker {
-            display: none;
-        }
-        .answer-summary:hover {
-            background: #e9ecef;
-            color: #5a6fd6;
-        }
-        .chevron {
-            transition: transform 0.3s ease;
-            font-size: 0.8rem;
-        }
-        .answer-details[open] .chevron {
-            transform: rotate(90deg);
-        }
-        .answer-content {
-            padding: 1rem 1rem 0.5rem 1rem;
-            animation: slideDown 0.3s ease;
-            background: #f8f9fa;
-            border-radius: 0 0 8px 8px;
-            margin-top: -8px;
-            padding-top: 1.5rem;
-        }
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .answer-content .text-body {
-            margin: 0;
-            color: #2d3748;
-        }
-
-        /* Question block styling */
-        .question-block {
-            margin-bottom: 1.5rem;
-        }
-        .question-block .text-body {
-            margin-bottom: 0.5rem;
+        html { background-color: #f5f5f5 !important; height: 100%; overflow-x: hidden !important; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Lora', Georgia, serif; color: #141413; background-color: #f5f5f5 !important; line-height: 1.7; min-height: 100vh; height: 100%; overflow-x: hidden !important; width: 100%; }
+        .navbar { background-color: #ffffff; padding: 1.2rem 2rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.08); width: 100%; overflow-x: hidden; }
+        .nav-container { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 3rem; justify-content: space-between; }
+        .nav-left { display: flex; align-items: center; gap: 3rem; flex: 1; }
+        .logo { font-size: 1rem; font-weight: 600; color: #141413; text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 0.5rem; letter-spacing: 0.5px; }
+        .logo-icon { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: linear-gradient(135deg, #da7756 0%, #c66344 100%); border-radius: 4px; color: white; font-weight: bold; font-size: 0.9rem; }
+        .nav-tabs { display: flex; gap: 2rem; align-items: center; }
+        .nav-tabs a { color: #6b6b6b; text-decoration: none; font-size: 0.95rem; padding: 0.5rem 0; border-bottom: 2px solid transparent; transition: all 0.3s ease; cursor: pointer; white-space: nowrap; }
+        .nav-tabs a:hover { color: #141413; }
+        .nav-tabs a.active { color: #da7756; background-color: #fff5f2; padding: 0.6rem 1rem; border-radius: 4px; border-bottom: none; }
+        .practice-btn { background-color: #da7756; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 6px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; white-space: nowrap; text-decoration: none; }
+        .practice-btn:hover { background-color: #c66344; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(218,119,86,0.25); }
+        .page-wrapper { max-width: 900px; margin: 2rem auto; background-color: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); width: 90%; overflow: hidden; }
+        .chapter-header-section { padding: 3rem 2rem; text-align: center; border-bottom: 1px solid #e8e6dc; }
+        .chapter-label { font-size: 0.9rem; color: #9a9a9a; letter-spacing: 1.5px; margin-bottom: 1.5rem; font-weight: 600; }
+        .chapter-title { font-size: 2.4rem; color: #141413; margin-bottom: 1.5rem; font-weight: bold; letter-spacing: 0.5px; line-height: 1.3; }
+        .chapter-subtitle { font-size: 1rem; color: #8b8b8b; font-weight: 500; margin-bottom: 2rem; letter-spacing: 0.3px; }
+        .chapter-divider { width: 100px; height: 2px; background-color: #141413; margin: 2rem auto; }
+        .chapter-intro { font-size: 0.95rem; color: #3a3a38; line-height: 1.9; text-align: justify; }
+        .main-content { max-width: 850px; margin: 0 auto; padding: 2rem; }
+        .chapter-controls { text-align: center; margin: 2rem 0 3rem 0; }
+        .toggle-all-btn { background-color: #da7756; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 6px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+        .toggle-all-btn:hover { background-color: #c66344; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(218,119,86,0.3); }
+        .box { padding: 1.5rem; margin: 1.5rem 0; border-radius: 8px; border-left: 4px solid #da7756; background-color: #faf9f5; }
+        .learning-objectives { background-color: #f0e9e0; border-left-color: #da7756; position: relative; }
+        .learning-objectives h3 { color: #da7756; margin-bottom: 1rem; font-size: 1.1rem; }
+        .learning-objectives ul { list-style: none; padding-left: 0; }
+        .learning-objectives li { padding-left: 1.5rem; margin-bottom: 1rem; position: relative; display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+        .learning-objectives li:before { content: "✓"; position: absolute; left: 0; color: #da7756; font-weight: bold; }
+        .key-vocabulary { background-color: #f5f8f2; border-left-color: #788c5d; }
+        .key-vocabulary h3 { color: #788c5d; margin-bottom: 1rem; font-size: 1.1rem; }
+        .section-heading-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 2.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; background-color: #f0e9e0; border-left: 4px solid #da7756; border-radius: 6px; padding: 0.75rem 1.25rem; }
+        .section-heading { font-size: 1.5rem; color: #141413; font-weight: bold; margin: 0; }
+        .subsection-heading-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; background-color: #faf6f2; border-left: 3px solid #e8c4b0; border-radius: 4px; padding: 0.5rem 1rem; }
+        .subsection-heading { font-size: 1.15rem; color: #141413; margin: 0; }
+        .section-number { display: inline-block; margin-right: 0.5rem; color: #da7756; font-weight: bold; }
+        .lo-header-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .lo-header-row h3 { margin: 0; color: #da7756; font-size: 1.1rem; }
+        .bloom-chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px 6px 8px; border-radius: 999px; color: #fff; font-size: 12px; font-weight: 800; letter-spacing: .1px; box-shadow: 0 4px 10px rgba(20,32,24,.10); white-space: nowrap; flex-shrink: 0; }
+        .bloom-chip .dot { width: 10px; height: 10px; border-radius: 999px; background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 2px rgba(255,255,255,.28); }
+        .bloom-chip[data-lvl="1"] { background: var(--c1); }
+        .bloom-chip[data-lvl="2"] { background: var(--c2); }
+        .bloom-chip[data-lvl="3"] { background: var(--c3); }
+        .bloom-chip[data-lvl="4"] { background: var(--c4); }
+        .bloom-chip[data-lvl="5"] { background: var(--c5); }
+        .bloom-chip[data-lvl="6"] { background: var(--c6); }
+        .section-text { color: #3a3a38; margin-bottom: 1.5rem; line-height: 1.8; }
+        .example-box { background-color: #faf6f6; border: 1px solid #e8e6dc; border-left: 4px solid #6b2c3e; }
+        .example-box h3 { color: #6b2c3e; margin-bottom: 1rem; }
+        .show-answer-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1.2rem; cursor: pointer; background: none; border: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.2px; transition: opacity 0.2s; border-top: 1px solid #e8e6dc; }
+        .show-answer-btn:hover { opacity: 0.75; }
+        .show-answer-btn .sa-icon { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 4px; color: white; font-size: 1.1rem; font-weight: bold; transition: transform 0.3s ease; flex-shrink: 0; }
+        .show-answer-btn.green { color: #3D7A4C; }
+        .show-answer-btn.green .sa-icon { background-color: #3D7A4C; }
+        .question-item.open .show-answer-btn .sa-icon { transform: rotate(45deg); }
+        .question-item.open .show-answer-btn .sa-text::after { content: attr(data-hide); }
+        .sa-text::after { content: attr(data-show); }
+        .end-of-chapter { margin-top: 4rem; padding-top: 2rem; border-top: 3px solid #da7756; }
+        .end-of-chapter-title { font-size: 1.8rem; color: #141413; margin-bottom: 2rem; font-weight: bold; border-left: 4px solid #da7756; padding-left: 1rem; }
+        .question-item { margin: 2rem 0; border: 1px solid #e8e6dc; border-radius: 6px; overflow: hidden; background-color: white; }
+        .question-header { display: flex; align-items: flex-start; padding: 1.2rem; background-color: #faf9f5; user-select: none; }
+        .question-number { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; min-width: 32px; margin-right: 1rem; background-color: #788c5d; color: white; border-radius: 50%; font-size: 0.9rem; font-weight: bold; flex-shrink: 0; margin-top: 0.1rem; }
+        .question-content { flex: 1; }
+        .question-text { font-weight: 600; color: #141413; margin-bottom: 0.3rem; line-height: 1.6; display: block; }
+        .question-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 1.2rem; }
+        .question-item.open .question-answer { max-height: 2000px; padding: 0 1.2rem 1.2rem; }
+        .question-answer-inner { padding-top: 1rem; border-top: 1px solid #e8e6dc; color: #3a3a38; line-height: 1.8; }
+        .question-answer-inner p { margin-bottom: 0.8rem; }
+        .question-answer-inner ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+        .question-answer-inner li { margin-bottom: 0.5rem; }
+        .answer-label { font-weight: 600; color: #788c5d; margin-bottom: 0.5rem; display: block; }
+        .question-chip-area { display: flex; align-items: flex-start; margin-left: 1rem; flex-shrink: 0; }
+        footer { background-color: #141413; color: #e8e6dc; text-align: center; padding: 2rem; margin-top: 4rem; }
+        .content-section { margin-bottom: 3rem; }
+        @media (max-width: 768px) {
+            .nav-tabs { gap: 1rem; font-size: 0.85rem; }
+            .chapter-header-section { padding: 2rem 1.5rem; }
+            .chapter-title { font-size: 1.8rem; }
+            .main-content { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <nav class="site-nav">
-        <div class="site-nav-inner">
-            <a href="../index.html" class="brand">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                    <path d="M2 17l10 5 10-5"/>
-                    <path d="M2 12l10 5 10-5"/>
-                </svg>
-                CE341
-            </a>
-            <div class="nav-links">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="../syllabus.html" class="nav-link">Syllabus</a>
-                <a href="./" class="nav-link active">Chapters</a>
-                <a href="../quizzes/" class="nav-link">Quizzes</a>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon">⬚</span>
+                    <span>CE341</span>
+                </a>
+                <div class="nav-tabs">
+                    <a href="../index.html">Home</a>
+                    <a href="../syllabus.html">Syllabus</a>
+                    <a href="./" class="active">Chapters</a>
+                    <a href="../quizzes/">Quizzes</a>
+                </div>
             </div>
-            <a href="../quizzes/" class="cta-button">Practice Quizzes</a>
+            <a href="../quizzes/" class="practice-btn">Practice Quizzes</a>
         </div>
     </nav>
 
-    <main>
-        <div class="chapter-container">
-            <header class="chapter-header">
-                <div class="chapter-number">Chapter 1</div>
-                <h1 class="chapter-title">Introduction to Transportation Engineering</h1>
-                <p class="chapter-subtitle">Foundations of Transportation Systems and Engineering Processes</p>
-            </header>
+    <div class="page-wrapper">
+        <div class="chapter-header-section">
+            <div class="chapter-label">CHAPTER 1</div>
+            <h1 class="chapter-title">Introduction to Transportation Engineering</h1>
+            <p class="chapter-subtitle">Foundations of Transportation Systems and Engineering Processes</p>
+            <div class="chapter-divider"></div>
+            <p class="chapter-intro">Transportation engineering is a branch of civil engineering focused on the planning, design, operation, and maintenance of systems that move people and goods safely, efficiently, and sustainably. These systems include roads and highways, railways, airports, ports, and public transportation systems, along with the vehicles and users that operate within them.</p>
+        </div>
 
-            <div class="chapter-content">
-                <p class="text-body">
-                    Transportation engineering is a branch of civil engineering focused on the planning, design, operation, and maintenance of systems that move people and goods safely, efficiently, and sustainably. These systems include roads and highways, railways, airports, ports, and public transportation systems, along with the vehicles and users that operate within them.
-                </p>
-                <p class="text-body">
-                    At its core, transportation engineering is about <strong>mobility</strong>—the ability to move from one place to another—and <strong>accessibility</strong>—the ability to reach desired destinations such as homes, workplaces, schools, hospitals, and markets. A system with high mobility but poor accessibility (for example, a fast highway that does not connect to key destinations) is not successful; strong systems balance both.
-                </p>
-                <p class="text-body">
-                    Transportation engineering differs from many other civil engineering areas because it deals heavily with human behavior and real-time interactions between users, vehicles, and infrastructure. Transportation systems are dynamic: performance changes with demand, weather, incidents, and human decisions.
-                </p>
+        <div class="main-content">
 
-                <div class="learning-objectives">
-                    <span class="box-title">Learning expectations for this chapter (Bloom's levels)</span>
-                    <p class="text-body">By the end of this chapter, it should be possible to:</p>
-                    <ul>
-                        <li><strong>Remember:</strong> define key terms (mobility, accessibility, mode, transportation engineering, traffic engineering) and list system components and modes.</li>
-                        <li><strong>Understand:</strong> explain why transportation engineering matters and how system components interact.</li>
-                        <li><strong>Apply:</strong> classify a real situation into the correct system component (users/vehicles/infrastructure/control) and identify whether a task is planning, design, operation, or maintenance/improvement.</li>
-                    </ul>
+            <div class="box learning-objectives">
+                <div class="lo-header-row">
+                    <h3>Learning Objectives</h3>
                 </div>
-
-                <div class="key-vocabulary">
-                    <span class="box-title">Key vocabulary used in this chapter</span>
-                    <p class="text-body">
-                        <strong>Mobility:</strong> ability to move people and goods from one place to another.<br>
-                        <strong>Accessibility:</strong> ability to reach desired destinations (jobs, services, markets).<br>
-                        <strong>Mode of transportation:</strong> the type of system used to move people or goods (road, rail, air, maritime, public transport).<br>
-                        <strong>Multimodal transportation system:</strong> a system that connects and coordinates two or more modes (for example, bus-to-rail connections).<br>
-                        <strong>Transportation system:</strong> organized combination of components that work together to enable movement.<br>
-                        <strong>Traffic engineering:</strong> sub-discipline focused on roadway movement (flow, intersections, signals, safety).<br>
-                        <strong>Intelligent Transportation Systems (ITS):</strong> technologies using sensors, communications, and computing to monitor and manage transportation in real time.
-                    </p>
-                </div>
-
-                <h3 class="section-title">1.1 What is Transportation Engineering?</h3>
-                <span class="bloom-level">Required Bloom level for this section: Understand</span>
-                <p class="text-body">
-                    Transportation engineering focuses on moving people and goods safely, efficiently, and sustainably through planning, design, operation, and maintenance of transportation systems. These systems include roadways, railways, airports, ports, and public transportation networks.
-                </p>
-                <p class="text-body">
-                    A central idea is the balance between mobility and accessibility. Mobility alone is not enough; a fast facility that does not connect to useful destinations does not serve the system purpose. Accessibility ensures the network connects people and goods to the places that matter.
-                </p>
-                <p class="text-body">
-                    Transportation engineering also requires strong attention to human factors. Unlike many civil systems that behave predictably under physical laws alone, transportation performance depends on user decisions and interactions, which vary by time and situation.
-                </p>
-
-                <h3 class="section-title">1.2 Why Transportation Engineering Matters</h3>
-                <span class="bloom-level">Required Bloom level for this section: Understand</span>
-                <p class="text-body">
-                    Transportation systems are essential to economic development, public safety, and quality of life. Nearly every economic activity depends on reliable transportation, and poor systems increase travel time, fuel consumption, crashes, and environmental impacts.
-                </p>
-                <p class="text-body">
-                    Transportation engineering directly affects society through:
-                </p>
+                <p style="color:#3a3a38; margin-bottom:0.8rem;">By the end of this chapter, it should be possible to:</p>
                 <ul>
-                    <li><strong>Safety:</strong> traffic crashes are a major cause of death and injury.</li>
-                    <li><strong>Equity:</strong> access to transportation affects who can reach jobs and services.</li>
-                    <li><strong>Sustainability:</strong> transportation is a major contributor to energy use and emissions.</li>
-                    <li><strong>Urban form:</strong> cities grow and develop around transportation networks.</li>
+                    <li>Remember: define key terms (mobility, accessibility, mode, transportation engineering, traffic engineering) and list system components and modes. <span class="bloom-chip" data-lvl="1"><span class="dot"></span>Remember</span></li>
+                    <li>Understand: explain why transportation engineering matters and how system components interact. <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Understand</span></li>
+                    <li>Apply: classify a real situation into the correct system component (users/vehicles/infrastructure/control) and identify whether a task is planning, design, operation, or maintenance/improvement. <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Apply</span></li>
                 </ul>
-                <p class="text-body">
-                    Because transportation facilities are used daily by large populations, design and operational decisions create long-lasting impacts.
-                </p>
+            </div>
 
-                <h3 class="section-title">1.3 What is a Transportation System?</h3>
-                <span class="bloom-level">Required Bloom level for this section: Remember → Understand → Apply</span>
-                <p class="text-body">
-                    A transportation system is an organized combination of components that work together to enable movement. The components can be grouped into four categories: users, vehicles, infrastructure, and control/management.
+            <div class="box key-vocabulary">
+                <h3>Key Vocabulary</h3>
+                <p class="section-text">
+                    <strong>Mobility:</strong> ability to move people and goods from one place to another.<br>
+                    <strong>Accessibility:</strong> ability to reach desired destinations (jobs, services, markets).<br>
+                    <strong>Mode of transportation:</strong> the type of system used to move people or goods (road, rail, air, maritime, public transport).<br>
+                    <strong>Multimodal transportation system:</strong> a system that connects and coordinates two or more modes (for example, bus-to-rail connections).<br>
+                    <strong>Transportation system:</strong> organized combination of components that work together to enable movement.<br>
+                    <strong>Traffic engineering:</strong> sub-discipline focused on roadway movement (flow, intersections, signals, safety).<br>
+                    <strong>Intelligent Transportation Systems (ITS):</strong> technologies using sensors, communications, and computing to monitor and manage transportation in real time.
                 </p>
+            </div>
 
-                <h4 class="subsection-title">1.3.1 Users</h4>
-                <span class="bloom-level">Required Bloom level for this subsection: Understand</span>
-                <p class="text-body">
-                    Users include drivers, passengers, pedestrians, and cyclists. Human behavior is central because reaction time, perception, judgment, and decision-making directly influence performance and safety.
-                </p>
-                <div class="example-box">
-                    <span class="box-title">Example: User behavior and safety</span>
-                    <p class="text-body">
-                        A driver approaching an intersection must perceive a yellow signal, decide whether to stop or proceed, and execute that decision. If the signal timing does not account for realistic perception-reaction time, the driver may be forced into an unsafe choice, increasing crash risk.
-                    </p>
+            <div class="chapter-controls">
+                <button class="toggle-all-btn" onclick="toggleAllAnswers()">Show All Answers</button>
+            </div>
+
+            <!-- Section 1.1 -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">1.1</span>What is Transportation Engineering?</h2>
+                    <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span>
                 </div>
+                <p class="section-text">Transportation engineering focuses on moving people and goods safely, efficiently, and sustainably through planning, design, operation, and maintenance of transportation systems. These systems include roadways, railways, airports, ports, and public transportation networks.</p>
+                <p class="section-text">A central idea is the balance between mobility and accessibility. Mobility alone is not enough; a fast facility that does not connect to useful destinations does not serve the system purpose. Accessibility ensures the network connects people and goods to the places that matter.</p>
+                <p class="section-text">Transportation engineering also requires strong attention to human factors. Unlike many civil systems that behave predictably under physical laws alone, transportation performance depends on user decisions and interactions, which vary by time and situation.</p>
+            </div>
 
-                <h4 class="subsection-title">1.3.2 Vehicles</h4>
-                <span class="bloom-level">Required Bloom level for this subsection: Understand</span>
-                <p class="text-body">
-                    Vehicles include cars, trucks, buses, trains, and aircraft. They differ in size/weight, speed/acceleration, maneuverability, and operating characteristics, and these differences strongly affect design, capacity, and safety.
-                </p>
-                <div class="example-box">
-                    <span class="box-title">Example: Vehicle characteristics and design</span>
-                    <p class="text-body">
-                        A large truck requires wider turning radii and longer stopping distances than a passenger car. Intersection design must accommodate the largest vehicles expected to use the facility, or restrictions must be clearly posted and enforced.
-                    </p>
+            <!-- Section 1.2 -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">1.2</span>Why Transportation Engineering Matters</h2>
+                    <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span>
                 </div>
-
-                <h4 class="subsection-title">1.3.3 Infrastructure</h4>
-                <span class="bloom-level">Required Bloom level for this subsection: Remember → Understand</span>
-                <p class="text-body">
-                    Infrastructure includes roads and highways, intersections and interchanges, bridges and tunnels, rail tracks, airports, and ports. Engineers design infrastructure to accommodate expected demand while meeting safety and performance standards.
-                </p>
-
-                <h4 class="subsection-title">1.3.4 Control and Management</h4>
-                <span class="bloom-level">Required Bloom level for this subsection: Understand → Apply</span>
-                <p class="text-body">
-                    Control and management include devices and policies that regulate and organize movement: traffic signals, signs, pavement markings, speed limits, enforcement, and Intelligent Transportation Systems (ITS). ITS uses sensors, communications, and computing to support monitoring and management of transportation systems in real time. These tools reduce conflicts and support orderly operation.
-                </p>
-                <div class="example-box">
-                    <span class="box-title">Example: Control devices improving safety</span>
-                    <p class="text-body">
-                        At a busy intersection, a traffic signal organizes conflicting movements by assigning right-of-way in sequence. Without the signal, drivers would need to negotiate right-of-way individually, increasing delay and crash risk significantly.
-                    </p>
-                </div>
-
-                <h3 class="section-title">1.4 Modes of Transportation</h3>
-                <span class="bloom-level">Required Bloom level for this section: Remember → Understand</span>
-                <p class="text-body">
-                    A mode of transportation is the type of system used to move people or goods. Major modes include:
-                </p>
-                <ul>
-                    <li><strong>Highway (Road) transportation:</strong> flexible and widely used; includes private vehicles, buses, and trucks.</li>
-                    <li><strong>Rail transportation:</strong> efficient for high-capacity passenger or freight movement over fixed routes.</li>
-                    <li><strong>Air transportation:</strong> fastest for long-distance passenger and high-value freight movement.</li>
-                    <li><strong>Maritime transportation:</strong> essential for international trade and bulk goods.</li>
-                    <li><strong>Public transportation:</strong> buses, metros, and light rail designed to move large numbers efficiently.</li>
+                <p class="section-text">Transportation systems are essential to economic development, public safety, and quality of life. Nearly every economic activity depends on reliable transportation, and poor systems increase travel time, fuel consumption, crashes, and environmental impacts.</p>
+                <p class="section-text">Transportation engineering directly affects society through:</p>
+                <ul style="margin-left:1.5rem; margin-bottom:1.5rem; color:#3a3a38; line-height:1.8;">
+                    <li style="margin-bottom:0.5rem;"><strong>Safety:</strong> traffic crashes are a major cause of death and injury.</li>
+                    <li style="margin-bottom:0.5rem;"><strong>Equity:</strong> access to transportation affects who can reach jobs and services.</li>
+                    <li style="margin-bottom:0.5rem;"><strong>Sustainability:</strong> transportation is a major contributor to energy use and emissions.</li>
+                    <li style="margin-bottom:0.5rem;"><strong>Urban form:</strong> cities grow and develop around transportation networks.</li>
                 </ul>
-                <p class="text-body">
-                    Each mode has advantages and limitations. Transportation engineering often involves selecting an appropriate mode or integrating modes into a multimodal transportation system.
-                </p>
-                <div class="example-box">
-                    <span class="box-title">Example: Multimodal integration</span>
-                    <p class="text-body">
-                        A commuter may drive to a park-and-ride facility, take a metro to the city center, and walk to their workplace. The success of this trip depends on coordination between road access, parking availability, metro frequency, and pedestrian infrastructure—illustrating the importance of multimodal planning.
-                    </p>
+                <p class="section-text">Because transportation facilities are used daily by large populations, design and operational decisions create long-lasting impacts.</p>
+            </div>
+
+            <!-- Section 1.3 -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">1.3</span>What is a Transportation System?</h2>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <p class="section-text">A transportation system is an organized combination of components that work together to enable movement. The components can be grouped into four categories: users, vehicles, infrastructure, and control/management.</p>
+
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">1.3.1</span>Users</h3>
+                    <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span>
+                </div>
+                <p class="section-text">Users include drivers, passengers, pedestrians, and cyclists. Human behavior is central because reaction time, perception, judgment, and decision-making directly influence performance and safety.</p>
+                <div class="box example-box">
+                    <h3>Example: User behavior and safety</h3>
+                    <p class="section-text">A driver approaching an intersection must perceive a yellow signal, decide whether to stop or proceed, and execute that decision. If the signal timing does not account for realistic perception-reaction time, the driver may be forced into an unsafe choice, increasing crash risk.</p>
                 </div>
 
-                <h3 class="section-title">1.5 Transportation Engineering vs. Traffic Engineering</h3>
-                <span class="bloom-level">Required Bloom level for this section: Understand → Apply</span>
-                <p class="text-body">
-                    Although the terms are sometimes used interchangeably, they differ:
-                </p>
-                <ul>
-                    <li><strong>Transportation engineering</strong> is broad: planning, design, operation, and policy across all modes.</li>
-                    <li><strong>Traffic engineering</strong> is narrower: movement of vehicles and pedestrians on roadways, including traffic flow, intersections, signals, and safety.</li>
-                </ul>
-                <p class="text-body">
-                    A highway corridor study, intersection signal timing, or crash pattern analysis is typically traffic engineering; a citywide public transport plan, corridor investment evaluation, or multimodal network design is transportation engineering.
-                </p>
-
-                <h3 class="section-title">1.6 The Transportation Engineering Process</h3>
-                <span class="bloom-level">Required Bloom level for this section: Remember → Understand → Apply</span>
-                <p class="text-body">
-                    Transportation engineers typically work through four major stages:
-                </p>
-                <ol>
-                    <li><strong>Planning:</strong> identify needs, forecast demand, evaluate alternatives.</li>
-                    <li><strong>Design:</strong> apply standards to create geometric layouts, cross-sections, and operational plans.</li>
-                    <li><strong>Operation:</strong> manage traffic flow using control devices, policies, and real-time systems.</li>
-                    <li><strong>Maintenance and improvement:</strong> preserve performance and upgrade systems as conditions change.</li>
-                </ol>
-                <p class="text-body">
-                    This process is continuous rather than strictly linear; operational feedback can lead to redesign or policy changes.
-                </p>
-                <div class="example-box">
-                    <span class="box-title">Example: Iterative process</span>
-                    <p class="text-body">
-                        After opening a new highway, traffic data may reveal unexpected congestion at a specific interchange. This operational feedback triggers a design review, leading to geometric modifications or ramp metering—demonstrating how the process cycles between operation, evaluation, and improvement.
-                    </p>
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">1.3.2</span>Vehicles</h3>
+                    <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span>
+                </div>
+                <p class="section-text">Vehicles include cars, trucks, buses, trains, and aircraft. They differ in size/weight, speed/acceleration, maneuverability, and operating characteristics, and these differences strongly affect design, capacity, and safety.</p>
+                <div class="box example-box">
+                    <h3>Example: Vehicle characteristics and design</h3>
+                    <p class="section-text">A large truck requires wider turning radii and longer stopping distances than a passenger car. Intersection design must accommodate the largest vehicles expected to use the facility, or restrictions must be clearly posted and enforced.</p>
                 </div>
 
-                <h3 class="section-title">1.7 The Transportation Engineering Profession</h3>
-                <span class="bloom-level">Required Bloom level for this section: Understand</span>
-                <p class="text-body">
-                    Transportation engineers work in government agencies, consulting firms, construction companies, research institutions, and planning organizations. They use design manuals (e.g., AASHTO), data analysis, software tools, and professional judgment to make decisions affecting safety and mobility.
-                </p>
-                <p class="text-body">
-                    Ethics and responsibility are especially important because design errors or poor decisions can directly result in injuries, fatalities, or major economic losses.
-                </p>
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">1.3.3</span>Infrastructure</h3>
+                    <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span>
+                </div>
+                <p class="section-text">Infrastructure includes roads and highways, intersections and interchanges, bridges and tunnels, rail tracks, airports, and ports. Engineers design infrastructure to accommodate expected demand while meeting safety and performance standards.</p>
 
-                <div class="practice-questions">
-                    <h3 class="section-title">Sample Questions and Answers (for practice)</h3>
-                    <p class="text-body">
-                        <em>Answer each question in one to two sentences. Bloom's taxonomy level is shown for self-assessment.</em>
-                    </p>
-
-                    <button class="toggle-all-btn" onclick="toggleAllAnswers()">
-                        <span class="toggle-icon">👁</span> <span class="toggle-text">Show All Answers</span>
-                    </button>
-
-                    <div class="sample-problem-box question-block">
-                        <div class="question-header">Q1 — Bloom's Level: Remember</div>
-                        <p class="text-body"><strong>Question:</strong> Define mobility and accessibility.</p>
-                        <details class="answer-details">
-                            <summary class="answer-summary">
-                                <span class="chevron">▶</span> Show Answer
-                            </summary>
-                            <div class="answer-content">
-                                <p class="text-body"><strong>Answer:</strong> Mobility is the ability to move people and goods from one place to another, while accessibility is the ability to reach desired destinations such as jobs, services, and markets.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="sample-problem-box question-block">
-                        <div class="question-header">Q2 — Bloom's Level: Understand</div>
-                        <p class="text-body"><strong>Question:</strong> Why is a transport system with high mobility but low accessibility considered unsuccessful?</p>
-                        <details class="answer-details">
-                            <summary class="answer-summary">
-                                <span class="chevron">▶</span> Show Answer
-                            </summary>
-                            <div class="answer-content">
-                                <p class="text-body"><strong>Answer:</strong> Because fast movement alone is not valuable if the system does not connect people and goods to the destinations they need to reach.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="sample-problem-box question-block">
-                        <div class="question-header">Q3 — Bloom's Level: Understand</div>
-                        <p class="text-body"><strong>Question:</strong> Give one reason transportation engineering is more "dynamic" than many other civil engineering fields.</p>
-                        <details class="answer-details">
-                            <summary class="answer-summary">
-                                <span class="chevron">▶</span> Show Answer
-                            </summary>
-                            <div class="answer-content">
-                                <p class="text-body"><strong>Answer:</strong> Transportation system performance changes with demand, weather, incidents, and user decisions, so operating conditions are not constant.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="sample-problem-box question-block">
-                        <div class="question-header">Q4 — Bloom's Level: Apply</div>
-                        <p class="text-body"><strong>Question:</strong> Classify the following as a user, vehicle, infrastructure, or control/management component: "a pedestrian crossing signal."</p>
-                        <details class="answer-details">
-                            <summary class="answer-summary">
-                                <span class="chevron">▶</span> Show Answer
-                            </summary>
-                            <div class="answer-content">
-                                <p class="text-body"><strong>Answer:</strong> Control/management component, because it regulates movement and organizes interaction between users.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="sample-problem-box question-block">
-                        <div class="question-header">Q5 — Bloom's Level: Understand</div>
-                        <p class="text-body"><strong>Question:</strong> Explain briefly why human behavior is especially important in transportation engineering.</p>
-                        <details class="answer-details">
-                            <summary class="answer-summary">
-                                <span class="chevron">▶</span> Show Answer
-                            </summary>
-                            <div class="answer-content">
-                                <p class="text-body"><strong>Answer:</strong> Because transportation system performance depends on user perception, reaction time, and decision-making, which vary and are not fully predictable.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="sample-problem-box question-block">
-                        <div class="question-header">Q6 — Bloom's Level: Understand</div>
-                        <p class="text-body"><strong>Question:</strong> Why do vehicle characteristics matter in roadway design?</p>
-                        <details class="answer-details">
-                            <summary class="answer-summary">
-                                <span class="chevron">▶</span> Show Answer
-                            </summary>
-                            <div class="answer-content">
-                                <p class="text-body"><strong>Answer:</strong> Differences in size, weight, acceleration, and maneuverability affect capacity, safety, and the space required for vehicle movement.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="sample-problem-box question-block">
-                        <div class="question-header">Q7 — Bloom's Level: Remember</div>
-                        <p class="text-body"><strong>Question:</strong> List five major modes of transportation.</p>
-                        <details class="answer-details">
-                            <summary class="answer-summary">
-                                <span class="chevron">▶</span> Show Answer
-                            </summary>
-                            <div class="answer-content">
-                                <p class="text-body"><strong>Answer:</strong> Road (highway), rail, air, maritime, and public transportation.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="sample-problem-box question-block">
-                        <div class="question-header">Q8 — Bloom's Level: Understand</div>
-                        <p class="text-body"><strong>Question:</strong> Explain one advantage of rail transportation compared with road transportation.</p>
-                        <details class="answer-details">
-                            <summary class="answer-summary">
-                                <span class="chevron">▶</span> Show Answer
-                            </summary>
-                            <div class="answer-content">
-                                <p class="text-body"><strong>Answer:</strong> Rail can move high volumes of passengers or freight efficiently on fixed routes, especially for corridor-based demand.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="sample-problem-box question-block">
-                        <div class="question-header">Q9 — Bloom's Level: Apply</div>
-                        <p class="text-body"><strong>Question:</strong> A project goal is to reduce conflicts at a busy intersection during peak hour. Is this more aligned with traffic engineering or transportation engineering? Explain briefly.</p>
-                        <details class="answer-details">
-                            <summary class="answer-summary">
-                                <span class="chevron">▶</span> Show Answer
-                            </summary>
-                            <div class="answer-content">
-                                <p class="text-body"><strong>Answer:</strong> Traffic engineering, because it focuses on roadway operations such as intersections, control, and safety.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="sample-problem-box question-block">
-                        <div class="question-header">Q10 — Bloom's Level: Understand</div>
-                        <p class="text-body"><strong>Question:</strong> Explain how control and management devices improve transportation system performance.</p>
-                        <details class="answer-details">
-                            <summary class="answer-summary">
-                                <span class="chevron">▶</span> Show Answer
-                            </summary>
-                            <div class="answer-content">
-                                <p class="text-body"><strong>Answer:</strong> They organize movement, reduce conflicts, and manage flow through tools like signals, signs, markings, speed limits, enforcement, and ITS.</p>
-                            </div>
-                        </details>
-                    </div>
+                <div class="subsection-heading-row">
+                    <h3 class="subsection-heading"><span class="section-number">1.3.4</span>Control and Management</h3>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <p class="section-text">Control and management include devices and policies that regulate and organize movement: traffic signals, signs, pavement markings, speed limits, enforcement, and Intelligent Transportation Systems (ITS). ITS uses sensors, communications, and computing to support monitoring and management of transportation systems in real time. These tools reduce conflicts and support orderly operation.</p>
+                <div class="box example-box">
+                    <h3>Example: Control devices improving safety</h3>
+                    <p class="section-text">At a busy intersection, a traffic signal organizes conflicting movements by assigning right-of-way in sequence. Without the signal, drivers would need to negotiate right-of-way individually, increasing delay and crash risk significantly.</p>
                 </div>
             </div>
-        </div>
-    </main>
 
-    <footer class="site-footer">
-        <p>© 2026 Dr. Fahad Alqahtani | KFUPM CE341 - Transportation Engineering</p>
+            <!-- Section 1.4 -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">1.4</span>Modes of Transportation</h2>
+                    <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span>
+                </div>
+                <p class="section-text">A mode of transportation is the type of system used to move people or goods. Major modes include:</p>
+                <ul style="margin-left:1.5rem; margin-bottom:1.5rem; color:#3a3a38; line-height:1.8;">
+                    <li style="margin-bottom:0.5rem;"><strong>Highway (Road) transportation:</strong> flexible and widely used; includes private vehicles, buses, and trucks.</li>
+                    <li style="margin-bottom:0.5rem;"><strong>Rail transportation:</strong> efficient for high-capacity passenger or freight movement over fixed routes.</li>
+                    <li style="margin-bottom:0.5rem;"><strong>Air transportation:</strong> fastest for long-distance passenger and high-value freight movement.</li>
+                    <li style="margin-bottom:0.5rem;"><strong>Maritime transportation:</strong> essential for international trade and bulk goods.</li>
+                    <li style="margin-bottom:0.5rem;"><strong>Public transportation:</strong> buses, metros, and light rail designed to move large numbers efficiently.</li>
+                </ul>
+                <p class="section-text">Each mode has advantages and limitations. Transportation engineering often involves selecting an appropriate mode or integrating modes into a multimodal transportation system.</p>
+                <div class="box example-box">
+                    <h3>Example: Multimodal integration</h3>
+                    <p class="section-text">A commuter may drive to a park-and-ride facility, take a metro to the city center, and walk to their workplace. The success of this trip depends on coordination between road access, parking availability, metro frequency, and pedestrian infrastructure—illustrating the importance of multimodal planning.</p>
+                </div>
+            </div>
+
+            <!-- Section 1.5 -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">1.5</span>Transportation Engineering vs. Traffic Engineering</h2>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <p class="section-text">Although the terms are sometimes used interchangeably, they differ:</p>
+                <ul style="margin-left:1.5rem; margin-bottom:1.5rem; color:#3a3a38; line-height:1.8;">
+                    <li style="margin-bottom:0.5rem;"><strong>Transportation engineering</strong> is broad: planning, design, operation, and policy across all modes.</li>
+                    <li style="margin-bottom:0.5rem;"><strong>Traffic engineering</strong> is narrower: movement of vehicles and pedestrians on roadways, including traffic flow, intersections, signals, and safety.</li>
+                </ul>
+                <p class="section-text">A highway corridor study, intersection signal timing, or crash pattern analysis is typically traffic engineering; a citywide public transport plan, corridor investment evaluation, or multimodal network design is transportation engineering.</p>
+            </div>
+
+            <!-- Section 1.6 -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">1.6</span>The Transportation Engineering Process</h2>
+                    <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
+                </div>
+                <p class="section-text">Transportation engineers typically work through four major stages:</p>
+                <ol style="margin-left:1.5rem; margin-bottom:1.5rem; color:#3a3a38; line-height:1.8;">
+                    <li style="margin-bottom:0.5rem;"><strong>Planning:</strong> identify needs, forecast demand, evaluate alternatives.</li>
+                    <li style="margin-bottom:0.5rem;"><strong>Design:</strong> apply standards to create geometric layouts, cross-sections, and operational plans.</li>
+                    <li style="margin-bottom:0.5rem;"><strong>Operation:</strong> manage traffic flow using control devices, policies, and real-time systems.</li>
+                    <li style="margin-bottom:0.5rem;"><strong>Maintenance and improvement:</strong> preserve performance and upgrade systems as conditions change.</li>
+                </ol>
+                <p class="section-text">This process is continuous rather than strictly linear; operational feedback can lead to redesign or policy changes.</p>
+                <div class="box example-box">
+                    <h3>Example: Iterative process</h3>
+                    <p class="section-text">After opening a new highway, traffic data may reveal unexpected congestion at a specific interchange. This operational feedback triggers a design review, leading to geometric modifications or ramp metering—demonstrating how the process cycles between operation, evaluation, and improvement.</p>
+                </div>
+            </div>
+
+            <!-- Section 1.7 -->
+            <div class="content-section">
+                <div class="section-heading-row">
+                    <h2 class="section-heading"><span class="section-number">1.7</span>The Transportation Engineering Profession</h2>
+                    <span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span>
+                </div>
+                <p class="section-text">Transportation engineers work in government agencies, consulting firms, construction companies, research institutions, and planning organizations. They use design manuals (e.g., AASHTO), data analysis, software tools, and professional judgment to make decisions affecting safety and mobility.</p>
+                <p class="section-text">Ethics and responsibility are especially important because design errors or poor decisions can directly result in injuries, fatalities, or major economic losses.</p>
+            </div>
+
+            <!-- Practice Questions -->
+            <div class="end-of-chapter">
+                <h2 class="end-of-chapter-title">Practice Questions</h2>
+
+                <div class="question-item" id="q1">
+                    <div class="question-header">
+                        <span class="question-number">1</span>
+                        <div class="question-content"><span class="question-text">Define mobility and accessibility.</span></div>
+                        <div class="question-chip-area"><span class="bloom-chip" data-lvl="1"><span class="dot"></span>Level: Remember</span></div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('q1', this)">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Answer" data-hide="Hide Answer"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Answer:</span>
+                            <p>Mobility is the ability to move people and goods from one place to another, while accessibility is the ability to reach desired destinations such as jobs, services, and markets.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-item" id="q2">
+                    <div class="question-header">
+                        <span class="question-number">2</span>
+                        <div class="question-content"><span class="question-text">Why is a transport system with high mobility but low accessibility considered unsuccessful?</span></div>
+                        <div class="question-chip-area"><span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span></div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('q2', this)">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Answer" data-hide="Hide Answer"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Answer:</span>
+                            <p>Because fast movement alone is not valuable if the system does not connect people and goods to the destinations they need to reach.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-item" id="q3">
+                    <div class="question-header">
+                        <span class="question-number">3</span>
+                        <div class="question-content"><span class="question-text">Give one reason transportation engineering is more "dynamic" than many other civil engineering fields.</span></div>
+                        <div class="question-chip-area"><span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span></div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('q3', this)">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Answer" data-hide="Hide Answer"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Answer:</span>
+                            <p>Transportation system performance changes with demand, weather, incidents, and user decisions, so operating conditions are not constant.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-item" id="q4">
+                    <div class="question-header">
+                        <span class="question-number">4</span>
+                        <div class="question-content"><span class="question-text">Classify the following as a user, vehicle, infrastructure, or control/management component: "a pedestrian crossing signal."</span></div>
+                        <div class="question-chip-area"><span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span></div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('q4', this)">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Answer" data-hide="Hide Answer"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Answer:</span>
+                            <p>Control/management component, because it regulates movement and organizes interaction between users.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-item" id="q5">
+                    <div class="question-header">
+                        <span class="question-number">5</span>
+                        <div class="question-content"><span class="question-text">Explain briefly why human behavior is especially important in transportation engineering.</span></div>
+                        <div class="question-chip-area"><span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span></div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('q5', this)">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Answer" data-hide="Hide Answer"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Answer:</span>
+                            <p>Because transportation system performance depends on user perception, reaction time, and decision-making, which vary and are not fully predictable.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-item" id="q6">
+                    <div class="question-header">
+                        <span class="question-number">6</span>
+                        <div class="question-content"><span class="question-text">Why do vehicle characteristics matter in roadway design?</span></div>
+                        <div class="question-chip-area"><span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span></div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('q6', this)">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Answer" data-hide="Hide Answer"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Answer:</span>
+                            <p>Differences in size, weight, acceleration, and maneuverability affect capacity, safety, and the space required for vehicle movement.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-item" id="q7">
+                    <div class="question-header">
+                        <span class="question-number">7</span>
+                        <div class="question-content"><span class="question-text">List five major modes of transportation.</span></div>
+                        <div class="question-chip-area"><span class="bloom-chip" data-lvl="1"><span class="dot"></span>Level: Remember</span></div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('q7', this)">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Answer" data-hide="Hide Answer"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Answer:</span>
+                            <p>Road (highway), rail, air, maritime, and public transportation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-item" id="q8">
+                    <div class="question-header">
+                        <span class="question-number">8</span>
+                        <div class="question-content"><span class="question-text">Explain one advantage of rail transportation compared with road transportation.</span></div>
+                        <div class="question-chip-area"><span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span></div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('q8', this)">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Answer" data-hide="Hide Answer"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Answer:</span>
+                            <p>Rail can move high volumes of passengers or freight efficiently on fixed routes, especially for corridor-based demand.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-item" id="q9">
+                    <div class="question-header">
+                        <span class="question-number">9</span>
+                        <div class="question-content"><span class="question-text">A project goal is to reduce conflicts at a busy intersection during peak hour. Is this more aligned with traffic engineering or transportation engineering? Explain briefly.</span></div>
+                        <div class="question-chip-area"><span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span></div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('q9', this)">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Answer" data-hide="Hide Answer"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Answer:</span>
+                            <p>Traffic engineering, because it focuses on roadway operations such as intersections, control, and safety.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-item" id="q10">
+                    <div class="question-header">
+                        <span class="question-number">10</span>
+                        <div class="question-content"><span class="question-text">Explain how control and management devices improve transportation system performance.</span></div>
+                        <div class="question-chip-area"><span class="bloom-chip" data-lvl="2"><span class="dot"></span>Level: Understand</span></div>
+                    </div>
+                    <button class="show-answer-btn green" onclick="toggleQuestion('q10', this)">
+                        <span class="sa-icon">+</span>
+                        <span class="sa-text" data-show="Show Answer" data-hide="Hide Answer"></span>
+                    </button>
+                    <div class="question-answer">
+                        <div class="question-answer-inner">
+                            <span class="answer-label">Answer:</span>
+                            <p>They organize movement, reduce conflicts, and manage flow through tools like signals, signs, markings, speed limits, enforcement, and ITS.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Dr. Fahad Alqahtani | KFUPM CE341 - Transportation Engineering</p>
     </footer>
 
     <script>
-        // Global state to track if all answers are shown
-        let allAnswersShown = false;
+        let allOpen = false;
 
-        // Toggle all answers
         function toggleAllAnswers() {
-            const allDetails = document.querySelectorAll('.answer-details');
-            const toggleText = document.querySelector('.toggle-text');
-            const toggleIcon = document.querySelector('.toggle-icon');
+            const button = document.querySelector('.toggle-all-btn');
+            allOpen = !allOpen;
 
-            allAnswersShown = !allAnswersShown;
-
-            allDetails.forEach(details => {
-                details.open = allAnswersShown;
+            document.querySelectorAll('.question-item').forEach(item => {
+                if (allOpen) { item.classList.add('open'); }
+                else { item.classList.remove('open'); }
             });
 
-            if (allAnswersShown) {
-                toggleText.textContent = 'Hide All Answers';
-                toggleIcon.textContent = '🙈';
-            } else {
-                toggleText.textContent = 'Show All Answers';
-                toggleIcon.textContent = '👁';
-            }
+            document.querySelectorAll('.toggleable-item').forEach(item => {
+                if (allOpen) { item.classList.add('open'); }
+                else { item.classList.remove('open'); }
+            });
+
+            button.textContent = allOpen ? 'Hide All Answers' : 'Show All Answers';
         }
 
-        // Sync toggle button state when individual answers are clicked
-        document.querySelectorAll('.answer-details').forEach(details => {
-            details.addEventListener('toggle', function() {
-                const allDetails = document.querySelectorAll('.answer-details');
-                const openDetails = document.querySelectorAll('.answer-details[open]');
-                const toggleText = document.querySelector('.toggle-text');
-                const toggleIcon = document.querySelector('.toggle-icon');
+        function toggleQuestion(id, btn) {
+            const item = document.getElementById(id);
+            item.classList.toggle('open');
+        }
 
-                if (openDetails.length === allDetails.length) {
-                    allAnswersShown = true;
-                    toggleText.textContent = 'Hide All Answers';
-                    toggleIcon.textContent = '🙈';
-                } else if (openDetails.length === 0) {
-                    allAnswersShown = false;
-                    toggleText.textContent = 'Show All Answers';
-                    toggleIcon.textContent = '👁';
-                }
-            });
-        });
+        function toggleExample(id, btn) {
+            const item = document.getElementById(id);
+            item.classList.toggle('open');
+        }
     </script>
 </body>
 </html>
