@@ -7,7 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css">
     <style>
+        /* Chapter-specific content styles */
         /* Bloom's taxonomy chip colors */
         :root {
             --c1:#1F6F54; /* Remember */
@@ -39,107 +41,6 @@
             height: 100%;
             overflow-x: hidden !important;
             width: 100%;
-        }
-
-        .navbar {
-            background-color: #ffffff;
-            padding: 1.2rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            width: 100%;
-            overflow-x: hidden;
-        }
-
-        .nav-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            justify-content: space-between;
-        }
-
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            flex: 1;
-        }
-
-        .logo {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #141413;
-            text-decoration: none;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            letter-spacing: 0.5px;
-        }
-
-        .logo-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, #da7756 0%, #c66344 100%);
-            border-radius: 4px;
-            color: white;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .nav-tabs {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-tabs a {
-            color: #6b6b6b;
-            text-decoration: none;
-            font-size: 0.95rem;
-            padding: 0.5rem 0;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .nav-tabs a:hover {
-            color: #141413;
-        }
-
-        .nav-tabs a.active {
-            color: #da7756;
-            background-color: #fff5f2;
-            padding: 0.6rem 1rem;
-            border-radius: 4px;
-            border-bottom: none;
-        }
-
-        .practice-btn {
-            background-color: #da7756;
-            color: white;
-            border: none;
-            padding: 0.7rem 1.5rem;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            text-decoration: none;
-        }
-
-        .practice-btn:hover {
-            background-color: #c66344;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(218, 119, 86, 0.25);
         }
 
         .page-wrapper {
@@ -636,6 +537,15 @@
             padding: 2rem;
             margin-top: 4rem;
         }
+        .chapter-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e8e6dc; }
+        .chapter-nav a { display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
+        .chapter-nav .prev-chapter { background-color: #f0e9e0; color: #141413; }
+        .chapter-nav .prev-chapter:hover { background-color: #e5ddd0; transform: translateX(-3px); }
+        .chapter-nav .next-chapter { background-color: #da7756; color: white; }
+        .chapter-nav .next-chapter:hover { background-color: #c66344; transform: translateX(3px); }
+        .chapter-nav .disabled { background-color: #e8e6dc; color: #9a9a9a; pointer-events: none; }
+        .chapter-nav .chapter-label { font-size: 0.75rem; opacity: 0.8; margin-bottom: 0; }
+        .chapter-nav .chapter-title-nav { font-size: 0.9rem; }
 
         .content-section {
             margin-bottom: 3rem;
@@ -682,21 +592,23 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-left">
-                <a href="../index.html" class="logo">
-                    <span class="logo-icon">⬚</span>
-                    <span>CE341</span>
-                </a>
-                <div class="nav-tabs">
-                    <a href="../index.html">Home</a>
-                    <a href="../syllabus.html">Syllabus</a>
-                    <a href="./" class="active">Chapters</a>
-                    <a href="../quizzes/">Quizzes</a>
-                </div>
+    <nav class="site-nav">
+        <div class="site-nav-inner">
+            <a href="../index.html" class="brand">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                CE341
+            </a>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../syllabus.html" class="nav-link">Syllabus</a>
+                <a href="./" class="nav-link active">Chapters</a>
+                <a href="../quizzes/" class="nav-link">Quizzes</a>
             </div>
-            <a href="../quizzes/" class="practice-btn">Practice Quizzes</a>
+            <a href="../quizzes/" class="cta-button">Practice Quizzes</a>
         </div>
     </nav>
 
@@ -1144,6 +1056,18 @@
                 </div>
 
             </div><!-- /end-of-chapter -->
+
+            <!-- Chapter Navigation -->
+            <div class="chapter-nav">
+                <a href="chapter1.html" class="prev-chapter">
+                    <span>←</span>
+                    <span>Previous: Chapter 1</span>
+                </a>
+                <a href="chapter3.html" class="next-chapter">
+                    <span>Next: Chapter 3</span>
+                    <span>→</span>
+                </a>
+            </div>
 
         </div><!-- /main-content -->
     </div><!-- /page-wrapper -->
