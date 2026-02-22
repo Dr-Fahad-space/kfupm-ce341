@@ -336,19 +336,14 @@
                 <h3 class="subsection-heading"><span class="section-number">3.4.2</span>Acceleration</h3>
                 <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
             </div>
-            <p class="section-text"><strong>Constant acceleration</strong> from initial speed \(u_0\) with acceleration \(a\):</p>
-            <p class="section-text">\[u = u_0 + a \cdot t \qquad\qquad x = u_0 t + \tfrac{1}{2}at^2\]</p>
-            <p class="section-text">From rest: \(u = at\) and \(x = \frac{1}{2}at^2\).</p>
-            <p class="section-text">In practice, available acceleration decreases as speed increases. The <strong>speed-dependent model</strong> captures this:</p>
-            <p class="section-text">\[\frac{du}{dt} = \alpha - \beta u\]</p>
-            <p class="section-text">where \(\alpha\) (m/s²) is the maximum acceleration at zero speed and \(\beta\) (s⁻¹) is the decay rate. The time and distance to accelerate from \(u_0\) to \(u_t\):</p>
-            <p class="section-text">\[t = \frac{1}{\beta}\ln\!\left(\frac{\alpha - \beta u_0}{\alpha - \beta u_t}\right) \qquad\qquad x = \frac{\alpha}{\beta}\,t - \frac{\alpha - \beta u_0}{\beta^2}\!\left(1 - e^{-\beta t}\right)\]</p>
+            <p class="section-text">In theory, we often assume <strong>constant acceleration</strong>, but in reality, vehicle acceleration is <strong>not linear</strong>—it is highest at low speeds and <strong>decreases as speed increases</strong>. This happens because the engine's power output stays relatively constant while air resistance grows with speed, leaving less force available for acceleration. Understanding this speed-dependent behavior is essential for designing acceleration lanes, merge zones, and other facilities where vehicles need to gain speed.</p>
+            <p class="section-text">The example that follows applies this concept to a real-world design problem: determining how long an acceleration lane needs to be for a vehicle to reach highway speed from rest. The solution walks through the key relationship between acceleration and speed, showing why simple linear assumptions can lead to underestimated lane lengths.</p>
 
             <!-- Example 3.4 -->
             <div class="toggleable-item" id="ex3-4">
                 <div class="toggle-header">
                     <span class="example-number">3.4</span>
-                    <span class="toggle-label"><strong>Example 3.4 — Acceleration Lane Length</strong><span class="example-question-preview">A vehicle's acceleration follows \(du/dt = 1.0 - 0.025u\) (m/s). Find the lane length needed to reach 88.5 km/h from rest.</span></span>
+                    <span class="toggle-label"><strong>Example 3.4 — Acceleration Lane Length</strong><span class="example-question-preview">A vehicle's acceleration follows the relationship \(du/dt = 1.0 - 0.025u\) (m/s²), where \(u\) is speed in m/s. Find the lane length needed to reach 88.5 km/h from rest.</span></span>
                     <span class="bloom-chip" data-lvl="3"><span class="dot"></span>Level: Apply</span>
                 </div>
                 <button class="show-answer-btn burgundy" onclick="toggleExample('ex3-4', this)">
@@ -357,11 +352,27 @@
                 </button>
                 <div class="toggle-content">
                     <div class="toggle-content-inner">
-                        <p>\(\alpha = 1.0\), \(\beta = 0.025\), \(u_0 = 0\), \(u_t = 88.5 \times \frac{1000}{3600} = 24.58\) m/s</p>
-                        <p><strong>Time:</strong></p>
-                        <p>\[t = \frac{1}{0.025}\ln\!\left(\frac{1.0}{1.0 - 0.025 \times 24.58}\right) = 40\ln(2.594) = 40 \times 0.953 = 38.1 \text{ s}\]</p>
-                        <p><strong>Distance:</strong></p>
-                        <p>\[x = 40(38.1) - 1600(1 - 0.3855) = 1524 - 983 = \mathbf{541 \text{ m}}\]</p>
+                        <p><strong>Understanding the Problem:</strong></p>
+                        <p>The equation \(du/dt = 1.0 - 0.025u\) tells us how fast the vehicle's speed changes at any moment. The term <strong>1.0</strong> is the maximum acceleration at zero speed (m/s²), and <strong>0.025</strong> is the decay rate that reduces acceleration as speed increases. When speed is zero, acceleration is 1.0 m/s²; as speed rises, the term \(0.025u\) subtracts from this, eventually bringing acceleration close to zero at high speeds.</p>
+                        <p>We need to find how long and how far it takes to reach 88.5 km/h (convert to m/s: \(88.5 \times \frac{1000}{3600} = 24.58\) m/s).</p>
+                        
+                        <p><strong>Step 1: Convert target speed to m/s</strong></p>
+                        <p>\[u_t = 88.5 \text{ km/h} \times \frac{1000}{3600} = 24.58 \text{ m/s}\]</p>
+                        
+                        <p><strong>Step 2: Find the time required</strong></p>
+                        <p>Using the integrated form of the acceleration equation:</p>
+                        <p>\[t = \frac{1}{\beta}\ln\!\left(\frac{\alpha - \beta u_0}{\alpha - \beta u_t}\right)\]</p>
+                        <p>where \(\alpha = 1.0\) m/s², \(\beta = 0.025\) s⁻¹, \(u_0 = 0\) (starts from rest):</p>
+                        <p>\[t = \frac{1}{0.025}\ln\!\left(\frac{1.0 - 0.025 \times 0}{1.0 - 0.025 \times 24.58}\right) = 40\ln\!\left(\frac{1.0}{1.0 - 0.6145}\right) = 40\ln(2.594)\]</p>
+                        <p>\[t = 40 \times 0.953 = \mathbf{38.1 \text{ s}}\]</p>
+                        
+                        <p><strong>Step 3: Find the distance travelled</strong></p>
+                        <p>Using the distance equation:</p>
+                        <p>\[x = \frac{\alpha}{\beta}\,t - \frac{\alpha - \beta u_0}{\beta^2}\!\left(1 - e^{-\beta t}\right)\]</p>
+                        <p>\[x = \frac{1.0}{0.025}(38.1) - \frac{1.0 - 0}{0.025^2}\!\left(1 - e^{-0.025 \times 38.1}\right) = 40(38.1) - 1600(1 - e^{-0.953})\]</p>
+                        <p>\[x = 1524 - 1600(1 - 0.3855) = 1524 - 1600(0.6145) = 1524 - 983 = \mathbf{541 \text{ m}}\]</p>
+                        
+                        <p><strong>Answer:</strong> The acceleration lane must be approximately <strong>541 metres</strong> long—significantly longer than intuition based on constant acceleration would suggest.</p>
                     </div>
                 </div>
             </div>
