@@ -21,12 +21,7 @@
             padding: 20px;
             background: #fff;
         }
-        .site-nav {
-            display: none !important;
-        }
-        .site-footer {
-            display: none !important;
-        }
+        .site-nav, .site-footer { display: none !important; }
         h1 {
             text-align: center;
             font-size: 24px;
@@ -48,30 +43,24 @@
             color: #1565c0;
             border-bottom: 2px solid #1976d2;
             padding-bottom: 8px;
-            margin: 35px 0 15px 0;
+            margin: 30px 0 15px 0;
         }
         h3 {
             font-size: 15px;
             font-weight: 600;
             color: #0d47a1;
-            margin: 25px 0 12px 0;
+            margin: 20px 0 10px 0;
         }
-        .no-formulas {
-            background: #e3f2fd;
-            padding: 12px 18px;
-            border-left: 4px solid #1976d2;
-            margin: 12px 0;
-            border-radius: 0 6px 6px 0;
-        }
+        p { margin: 8px 0; }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 15px 0;
+            margin: 12px 0;
             font-size: 13px;
         }
         th, td {
             border: 1px solid #ddd;
-            padding: 10px 12px;
+            padding: 8px 10px;
             text-align: center;
         }
         th {
@@ -79,52 +68,14 @@
             color: white;
             font-weight: 600;
         }
-        tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-        .formula {
-            background: #fffde7;
-            padding: 15px 20px;
-            margin: 15px 0;
-            border-radius: 6px;
-            border-left: 4px solid #fbc02d;
-        }
-        .formula p {
-            margin: 8px 0;
-        }
-        .formula-desc {
-            font-size: 12px;
-            color: #666;
-            font-style: italic;
-        }
-        .key-terms {
-            background: #f3e5f5;
-            padding: 12px 18px;
-            border-left: 4px solid #7b1fa2;
-            margin: 12px 0;
-            border-radius: 0 6px 6px 0;
-        }
-        .key-terms ul {
-            margin-left: 20px;
-            margin-top: 8px;
-        }
-        .key-terms li {
-            margin: 5px 0;
-        }
-        .constants-box {
-            background: #e8f5e9;
-            padding: 15px 18px;
-            border-left: 4px solid #43a047;
-            margin: 15px 0;
-            border-radius: 0 6px 6px 0;
-        }
+        tr:nth-child(even) { background: #f8f9fa; }
         .note {
             font-size: 12px;
             color: #888;
             font-style: italic;
-            margin-top: 40px;
+            margin-top: 30px;
             text-align: center;
-            padding-top: 20px;
+            padding-top: 15px;
             border-top: 1px solid #e0e0e0;
         }
         .back-link {
@@ -133,9 +84,6 @@
             color: #1976d2;
             text-decoration: none;
             font-weight: 500;
-        }
-        .back-link:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
@@ -147,343 +95,164 @@
 <p class="subtitle">Formula Sheet for Chapters 1-4 Exam</p>
 
 <h2 id="chapter1">Chapter 1: Introduction to Transportation Engineering</h2>
-<div class="no-formulas">
-    <p><strong>No formulas required for this chapter.</strong></p>
-</div>
-<div class="key-terms">
-    <p><strong>Key Concepts:</strong></p>
-    <ul>
-        <li><strong>Mobility:</strong> ability to move people and goods from one place to another</li>
-        <li><strong>Accessibility:</strong> ability to reach desired destinations (jobs, services, markets)</li>
-        <li><strong>Transportation system components:</strong> Users, Vehicles, Infrastructure, Control/Management</li>
-    </ul>
-</div>
+<p><em>No formulas required for this chapter.</em></p>
 
 <h2 id="chapter2">Chapter 2: Transportation Agencies in Saudi Arabia</h2>
-<div class="no-formulas">
-    <p><strong>No formulas required for this chapter.</strong></p>
-</div>
-<table>
-    <tr>
-        <th>Entity</th>
-        <th>Function</th>
-    </tr>
-    <tr>
-        <td>Ministry of Transport & Logistics Services</td>
-        <td>National policy/strategy</td>
-    </tr>
-    <tr>
-        <td>Transport General Authority (TGA)</td>
-        <td>Land/rail/maritime regulation</td>
-    </tr>
-    <tr>
-        <td>General Authority of Civil Aviation (GACA)</td>
-        <td>Aviation regulation</td>
-    </tr>
-    <tr>
-        <td>Roads General Authority (RGA)</td>
-        <td>Road infrastructure</td>
-    </tr>
-    <tr>
-        <td>Saudi Ports Authority (MAWANI)</td>
-        <td>Ports</td>
-    </tr>
-    <tr>
-        <td>Saudi Arabia Railways (SAR)</td>
-        <td>Rail</td>
-    </tr>
-    <tr>
-        <td>National Transport Safety Center (NTSC)</td>
-        <td>Independent safety investigation</td>
-    </tr>
-    <tr>
-        <td>Traffic (Ministry of Interior)</td>
-        <td>Traffic enforcement</td>
-    </tr>
-</table>
+<p><em>No formulas required for this chapter.</em></p>
 
 <h2 id="chapter3">Chapter 3: Characteristics of Road Users, Vehicles, and Roads</h2>
 
-<h3>3.1 Perception-Reaction Time (PRT)</h3>
-<div class="formula">
-    <p><strong>Distance during PRT:</strong></p>
-    $$d = u \times t$$
-    <p class="formula-desc">Where: \(d\) = distance (m), \(u\) = speed (m/s), \(t\) = PRT (2.5 s design value)</p>
-</div>
-<div class="formula">
-    <p><strong>Speed conversion:</strong></p>
-    $$u = V \times \frac{1000}{3600} = V \times 0.278$$
-    <p class="formula-desc">Where \(V\) = speed in km/h</p>
-</div>
+<h3>Speed Conversion</h3>
+$$u = V \times \frac{1000}{3600} = V \times 0.278$$
 
-<h3>3.2 Visual Acuity</h3>
-<div class="formula">
-    $$\frac{d_1}{d_2} = \frac{6/X_1}{6/X_2}$$
-    <p class="formula-desc">If sign readable at distance \(d\) for 6/6 acuity: 6/4 acuity → \(d \times 1.5\); 6/10 acuity → \(d \times 0.6\)</p>
-</div>
+<h3>Distance during PRT</h3>
+$$d = u \times t$$
 
-<h3>3.3 Pedestrian Walking Speed</h3>
-<div class="formula">
-    <p><strong>Pedestrian clearance time:</strong></p>
-    $$t = \frac{\text{Crossing distance}}{\text{Walking speed}}$$
-</div>
-<table>
-    <tr>
-        <th>Population</th>
-        <th>Design Walking Speed</th>
-    </tr>
-    <tr>
-        <td>General (≤20% elderly)</td>
-        <td>1.22 m/s</td>
-    </tr>
-    <tr>
-        <td>Elderly-predominant (>20%)</td>
-        <td>0.88 m/s</td>
-    </tr>
-</table>
+<h3>Visual Acuity</h3>
+$$\frac{d_1}{d_2} = \frac{6/X_1}{6/X_2}$$
 
-<h3>3.4 Vehicle Braking Distance</h3>
-<div class="formula">
-    <p><strong>Braking distance:</strong></p>
-    $$D_b = \frac{u^2}{254\left(\frac{a}{g} \pm G\right)}$$
-    <p class="formula-desc">Where: \(u\) = speed (km/h), \(a/g = 0.35\) (AASHTO), \(G\) = grade (decimal)<br>
-    Use <strong>+</strong> for uphill (gravity assists braking), <strong>−</strong> for downhill (gravity opposes braking)</p>
-</div>
+<h3>Pedestrian Clearance Time</h3>
+$$t = \frac{\text{Crossing distance}}{\text{Walking speed}}$$
 
-<h3>3.5 Stopping Sight Distance (SSD)</h3>
-<div class="formula">
-    $$\text{SSD} = 0.278 \cdot u \cdot t + \frac{u^2}{254\left(\frac{a}{g} \pm G\right)}$$
-    <p class="formula-desc">Where: \(u\) = speed (km/h), \(t\) = PRT (2.5 s), \(a/g = 0.35\), \(G\) = grade</p>
-</div>
-<div class="formula">
-    <p><strong>On level roads (G = 0):</strong></p>
-    $$\text{SSD} = 0.278ut + \frac{u^2}{88.9}$$
-</div>
+<h3>Braking Distance</h3>
+$$D_b = \frac{u^2}{254\left(\frac{a}{g} \pm G\right)}$$
 
-<h3>3.6 Deceleration to Lower Speed</h3>
-<div class="formula">
-    $$D = \frac{u_1^2 - u_2^2}{254\left(\frac{a}{g} \pm G\right)}$$
-    <p class="formula-desc">Where: \(u_1\) = initial speed, \(u_2\) = final speed (km/h)</p>
-</div>
+<h3>Stopping Sight Distance (SSD)</h3>
+$$\text{SSD} = 0.278 \cdot u \cdot t + \frac{u^2}{254\left(\frac{a}{g} \pm G\right)}$$
 
-<h3>3.7 Horizontal Curve - Minimum Radius</h3>
-<div class="formula">
-    $$R = \frac{u^2}{127(e + f_s)}$$
-    <p class="formula-desc">Where: \(u\) = speed (km/h), \(e\) = superelevation (max 0.10 rural), \(f_s\) = side-friction factor</p>
-</div>
+<p>On level roads (G = 0):</p>
+$$\text{SSD} = 0.278ut + \frac{u^2}{88.9}$$
+
+<h3>Deceleration to Lower Speed</h3>
+$$D = \frac{u_1^2 - u_2^2}{254\left(\frac{a}{g} \pm G\right)}$$
+
+<h3>Horizontal Curve - Minimum Radius</h3>
+$$R = \frac{u^2}{127(e + f_s)}$$
 
 <h2 id="chapter4">Chapter 4: Geometric Design — Vertical Alignment</h2>
 
-<h3>4.1 Stationing</h3>
-<div class="formula">
-    $$\text{Sta.}_{\text{BVC}} = \text{Sta.}_{\text{PVI}} - \frac{L}{2}$$
-    $$\text{Sta.}_{\text{EVC}} = \text{Sta.}_{\text{PVI}} + \frac{L}{2}$$
-</div>
+<h3>Stationing</h3>
+$$\text{Sta.}_{\text{BVC}} = \text{Sta.}_{\text{PVI}} - \frac{L}{2}$$
+$$\text{Sta.}_{\text{EVC}} = \text{Sta.}_{\text{PVI}} + \frac{L}{2}$$
 
-<h3>4.2 Percent Grade</h3>
-<div class="formula">
-    $$G = \frac{\Delta\text{Elevation}}{\Delta\text{Horizontal Distance}} \times 100$$
-</div>
+<h3>Percent Grade</h3>
+$$G = \frac{\Delta\text{Elevation}}{\Delta\text{Horizontal Distance}} \times 100$$
 
-<h3>4.3 Algebraic Difference in Grades</h3>
-<div class="formula">
-    $$A = |G_1 - G_2|$$
-    <p class="formula-desc">Crest curve: \(G_1 > G_2\) | Sag curve: \(G_1 < G_2\)</p>
-</div>
+<h3>Algebraic Difference in Grades</h3>
+$$A = |G_1 - G_2|$$
 
-<h3>4.4 Parabolic Vertical Curve Equation</h3>
-<div class="formula">
-    <p><strong>General form:</strong></p>
-    $$y = ax^2 + bx + c$$
-    <p class="formula-desc">\(c\) = Elevation at BVC (m)<br>
-    \(b = G_1/100\) = initial tangent grade (m/m)<br>
-    \(a = \dfrac{G_2 - G_1}{200L}\) = curvature coefficient<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;• \(a < 0\): crest curve (opens downward)<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;• \(a > 0\): sag curve (opens upward)</p>
-</div>
-<div class="formula">
-    <p><strong>Slope at any point:</strong></p>
-    $$\frac{dy}{dx} = 2ax + b$$
-</div>
+<h3>Parabolic Vertical Curve Equation</h3>
+$$y = ax^2 + bx + c$$
 
-<h3>4.5 K-Value</h3>
-<div class="formula">
-    $$K = \frac{L}{A}$$
-    <p class="formula-desc">\(K\) = horizontal distance (m) required for 1% change in grade</p>
-</div>
+<p>where:</p>
+<ul>
+    <li>a = (G₂ - G₁) / (200L)</li>
+    <li>b = G₁ / 100</li>
+    <li>c = Elev at BVC</li>
+</ul>
 
-<h3>4.6 BVC and EVC Elevations</h3>
-<div class="formula">
-    $$\text{Elev}_{\text{BVC}} = \text{Elev}_{\text{PVI}} - G_1 \times \frac{L/2}{100}$$
-    $$\text{Elev}_{\text{EVC}} = \text{Elev}_{\text{PVI}} + G_2 \times \frac{L/2}{100}$$
-</div>
+<p>Crest: a < 0 | Sag: a > 0</p>
 
-<h3>4.7 Elevation at Any Point</h3>
-<div class="formula">
-    <p><strong>Method 1: Direct Parabolic Equation</strong></p>
-    $$y = ax^2 + bx + c$$
-</div>
-<div class="formula">
-    <p><strong>Method 2: Tangent-Plus-Offset</strong></p>
-    <p>Step 1 - Tangent elevation:</p>
-    $$\text{Tangent Elev} = \text{Elev}_{\text{BVC}} + G_1 \times \frac{x}{100}$$
-    <p>Step 2 - Parabolic offset:</p>
-    $$Y = \frac{A}{200L} \times x^2$$
-    <p>Step 3 - Apply offset:</p>
-    $$\text{Curve Elev} = \text{Tangent Elev} \mp Y$$
-    <p class="formula-desc">Use <strong>−</strong> for crest (curve below tangent), <strong>+</strong> for sag (curve above tangent)</p>
-</div>
+<h3>Slope at Any Point</h3>
+$$\frac{dy}{dx} = 2ax + b$$
+
+<h3>K-Value</h3>
+$$K = \frac{L}{A}$$
+
+<h3>BVC and EVC Elevations</h3>
+$$\text{Elev}_{\text{BVC}} = \text{Elev}_{\text{PVI}} - G_1 \times \frac{L/2}{100}$$
+$$\text{Elev}_{\text{EVC}} = \text{Elev}_{\text{PVI}} + G_2 \times \frac{L/2}{100}$$
+
+<h3>Elevation at Any Point (Tangent-Plus-Offset Method)</h3>
+<p>Step 1 - Tangent elevation:</p>
+$$\text{Tangent Elev} = \text{Elev}_{\text{BVC}} + G_1 \times \frac{x}{100}$$
+
+<p>Step 2 - Offset:</p>
+$$Y = \frac{A}{200L} \times x^2$$
+
+<p>Step 3 - Apply offset:</p>
+<ul>
+    <li>Crest: Curve Elev = Tangent Elev − Y</li>
+    <li>Sag: Curve Elev = Tangent Elev + Y</li>
+</ul>
 
 <h2>Reference Tables</h2>
 
-<h3>Maximum Grades (%) - Rural Freeways</h3>
+<h3>Maximum Grades (%) - Rural and Urban Freeways</h3>
 <table>
-    <tr>
-        <th>Terrain</th>
-        <th>80 km/h</th>
-        <th>90 km/h</th>
-        <th>100 km/h</th>
-        <th>110 km/h</th>
-        <th>120 km/h</th>
-        <th>130 km/h</th>
-    </tr>
-    <tr>
-        <td>Level</td>
-        <td>4</td>
-        <td>4</td>
-        <td>3</td>
-        <td>3</td>
-        <td>3</td>
-        <td>3</td>
-    </tr>
-    <tr>
-        <td>Rolling</td>
-        <td>5</td>
-        <td>5</td>
-        <td>4</td>
-        <td>4</td>
-        <td>4</td>
-        <td>4</td>
-    </tr>
-    <tr>
-        <td>Mountainous</td>
-        <td>6</td>
-        <td>6</td>
-        <td>5</td>
-        <td>—</td>
-        <td>—</td>
-        <td>—</td>
-    </tr>
+    <tr><th>Terrain</th><th>80</th><th>90</th><th>100</th><th>110</th><th>120</th><th>130</th></tr>
+    <tr><td>Level</td><td>4</td><td>4</td><td>3</td><td>3</td><td>3</td><td>3</td></tr>
+    <tr><td>Rolling</td><td>5</td><td>5</td><td>4</td><td>4</td><td>4</td><td>4</td></tr>
+    <tr><td>Mountainous</td><td>6</td><td>6</td><td>5</td><td>—</td><td>—</td><td>—</td></tr>
 </table>
 
 <h3>Maximum Grades (%) - Urban Arterials</h3>
 <table>
-    <tr>
-        <th>Terrain</th>
-        <th>50 km/h</th>
-        <th>60 km/h</th>
-        <th>70 km/h</th>
-        <th>80 km/h</th>
-        <th>90 km/h</th>
-        <th>100 km/h</th>
-    </tr>
-    <tr>
-        <td>Level</td>
-        <td>8</td>
-        <td>7</td>
-        <td>6</td>
-        <td>6</td>
-        <td>5</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td>Rolling</td>
-        <td>9</td>
-        <td>8</td>
-        <td>7</td>
-        <td>7</td>
-        <td>6</td>
-        <td>6</td>
-    </tr>
-    <tr>
-        <td>Mountainous</td>
-        <td>11</td>
-        <td>10</td>
-        <td>9</td>
-        <td>9</td>
-        <td>8</td>
-        <td>8</td>
-    </tr>
+    <tr><th>Terrain</th><th>50</th><th>60</th><th>70</th><th>80</th><th>90</th><th>100</th></tr>
+    <tr><td>Level</td><td>8</td><td>7</td><td>6</td><td>6</td><td>5</td><td>5</td></tr>
+    <tr><td>Rolling</td><td>9</td><td>8</td><td>7</td><td>7</td><td>6</td><td>6</td></tr>
+    <tr><td>Mountainous</td><td>11</td><td>10</td><td>9</td><td>9</td><td>8</td><td>8</td></tr>
 </table>
 
-<div class="constants-box">
-    <h3>Design Constants</h3>
-    <table>
-        <tr>
-            <th>Parameter</th>
-            <th>Value</th>
-        </tr>
-        <tr>
-            <td>Driver eye height (\(h_1\))</td>
-            <td>1.08 m</td>
-        </tr>
-        <tr>
-            <td>Object height (\(h_2\))</td>
-            <td>0.60 m</td>
-        </tr>
-        <tr>
-            <td>Headlight height (\(H\))</td>
-            <td>0.60 m</td>
-        </tr>
-        <tr>
-            <td>Beam divergence angle (\(\beta\))</td>
-            <td>1°</td>
-        </tr>
-        <tr>
-            <td>Design PRT</td>
-            <td>2.5 s</td>
-        </tr>
-        <tr>
-            <td>Deceleration (\(a/g\))</td>
-            <td>0.35 (3.41 m/s²)</td>
-        </tr>
-        <tr>
-            <td>Max superelevation (\(e_{\max}\))</td>
-            <td>0.10 rural, 0.08 snow/ice</td>
-        </tr>
-        <tr>
-            <td>Design walking speed (general)</td>
-            <td>1.22 m/s</td>
-        </tr>
-        <tr>
-            <td>Design walking speed (elderly)</td>
-            <td>0.88 m/s</td>
-        </tr>
-    </table>
-</div>
+<h3>Maximum Grades (%) - Urban Collectors</h3>
+<table>
+    <tr><th>Terrain</th><th>30</th><th>40</th><th>50</th><th>60</th><th>70</th><th>80</th><th>90</th><th>100</th></tr>
+    <tr><td>Level</td><td>9</td><td>9</td><td>9</td><td>9</td><td>8</td><td>7</td><td>6</td><td>6</td></tr>
+    <tr><td>Rolling</td><td>12</td><td>12</td><td>11</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td></tr>
+    <tr><td>Mountainous</td><td>14</td><td>13</td><td>12</td><td>12</td><td>11</td><td>10</td><td>10</td><td>9</td></tr>
+</table>
+
+<h3>Maximum Grades (%) - Rural Collectors</h3>
+<table>
+    <tr><th>Terrain</th><th>30</th><th>40</th><th>50</th><th>60</th><th>70</th><th>80</th><th>90</th><th>100</th></tr>
+    <tr><td>Level</td><td>7</td><td>7</td><td>7</td><td>7</td><td>7</td><td>6</td><td>5</td><td>5</td></tr>
+    <tr><td>Rolling</td><td>10</td><td>10</td><td>9</td><td>8</td><td>8</td><td>7</td><td>7</td><td>6</td></tr>
+    <tr><td>Mountainous</td><td>12</td><td>11</td><td>10</td><td>10</td><td>10</td><td>9</td><td>9</td><td>8</td></tr>
+</table>
+
+<h3>Maximum Grades (%) - Local Rural Roads</h3>
+<table>
+    <tr><th>Terrain</th><th>20</th><th>30</th><th>40</th><th>50</th><th>60</th><th>70</th><th>80</th><th>90</th><th>100</th></tr>
+    <tr><td>Level</td><td>9</td><td>8</td><td>7</td><td>7</td><td>7</td><td>7</td><td>6</td><td>6</td><td>5</td></tr>
+    <tr><td>Rolling</td><td>12</td><td>11</td><td>11</td><td>10</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td></tr>
+    <tr><td>Mountainous</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>10</td><td>10</td><td>—</td></tr>
+</table>
+
+<h3>Side-Friction Factor (fₛ)</h3>
+<table>
+    <tr><th>Speed (km/h)</th><th>50</th><th>60</th><th>70</th><th>80</th><th>90</th><th>100</th><th>110</th><th>120</th></tr>
+    <tr><td>fₛ</td><td>0.19</td><td>0.17</td><td>0.15</td><td>0.14</td><td>0.13</td><td>0.12</td><td>0.11</td><td>0.09</td></tr>
+</table>
+
+<h3>Design Constants</h3>
+<table>
+    <tr><th>Parameter</th><th>Value</th></tr>
+    <tr><td>Driver eye height (h₁)</td><td>1.08 m</td></tr>
+    <tr><td>Object height (h₂)</td><td>0.60 m</td></tr>
+    <tr><td>Headlight height (H)</td><td>0.60 m</td></tr>
+    <tr><td>Beam divergence angle (β)</td><td>1°</td></tr>
+    <tr><td>Design PRT</td><td>2.5 s</td></tr>
+    <tr><td>Deceleration (a/g)</td><td>0.35</td></tr>
+    <tr><td>Max superelevation (e<sub>max</sub>) - rural</td><td>0.10</td></tr>
+    <tr><td>Max superelevation (e<sub>max</sub>) - snow/ice</td><td>0.08</td></tr>
+    <tr><td>Design walking speed (general)</td><td>1.22 m/s</td></tr>
+    <tr><td>Design walking speed (elderly)</td><td>0.88 m/s</td></tr>
+</table>
 
 <h3>Design Vehicle Minimum Turning Radii</h3>
 <table>
-    <tr>
-        <th>Vehicle Type</th>
-        <th>Min. Turning Radius</th>
-    </tr>
-    <tr>
-        <td>Passenger car (P)</td>
-        <td>≈ 7.3 m</td>
-    </tr>
-    <tr>
-        <td>Single-unit truck (SU-9)</td>
-        <td>≈ 12.7 m</td>
-    </tr>
-    <tr>
-        <td>City transit bus</td>
-        <td>≈ 12.8 m</td>
-    </tr>
-    <tr>
-        <td>Interstate semitrailer (WB-20)</td>
-        <td>≈ 13.7 m</td>
-    </tr>
+    <tr><th>Vehicle Type</th><th>Min. Turning Radius</th></tr>
+    <tr><td>Passenger car (P)</td><td>≈ 7.3 m</td></tr>
+    <tr><td>Single-unit truck (SU-9)</td><td>≈ 12.7 m</td></tr>
+    <tr><td>City transit bus</td><td>≈ 12.8 m</td></tr>
+    <tr><td>Interstate semitrailer (WB-20)</td><td>≈ 13.7 m</td></tr>
+</table>
+
+<h3>Pedestrian Design Walking Speed</h3>
+<table>
+    <tr><th>Population</th><th>Walking Speed</th></tr>
+    <tr><td>General (≤20% elderly)</td><td>1.22 m/s</td></tr>
+    <tr><td>Elderly-predominant (>20%)</td><td>0.88 m/s</td></tr>
 </table>
 
 <p class="note">Source: Based on AASHTO and dr-fahad-space.github.io/kfupm-ce341</p>
