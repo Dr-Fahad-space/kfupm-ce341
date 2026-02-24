@@ -55,6 +55,13 @@
             margin: 25px 0 12px 0;
             font-family: 'Inter', sans-serif;
         }
+        h4 {
+            font-size: 12pt;
+            font-weight: 600;
+            color: #333;
+            margin: 20px 0 10px 0;
+            font-family: 'Inter', sans-serif;
+        }
         p { margin: 6px 0; }
         ul { margin: 5px 0; }
         li { margin: 3px 0; }
@@ -232,6 +239,31 @@ $$Y = \frac{A}{200L} \times x^2$$
     <li>Crest: Curve Elev = Tangent Elev − Y</li>
     <li>Sag: Curve Elev = Tangent Elev + Y</li>
 </ul>
+
+<h3>Minimum Vertical Curve Length from SSD</h3>
+
+<h4>Case I: Crest Vertical Curves (SSD based on driver eye height and object height)</h4>
+<div class="formula-equation">
+$$L_{\min} = \frac{A \cdot \text{SSD}^2}{200(\sqrt{h_1} + \sqrt{h_2})^2} \quad \text{for } L > \text{SSD}$$
+</div>
+<div class="formula-equation">
+$$L_{\min} = 2\cdot\text{SSD} - \frac{200(\sqrt{h_1} + \sqrt{h_2})^2}{A} \quad \text{for } L < \text{SSD}$$
+</div>
+<p class="formula-units">Units: L in meters (m), SSD in meters (m), h₁ = 1.08 m (eye height), h₂ = 0.60 m (object height), A in percent (%)</p>
+
+<h4>Case II: Sag Vertical Curves (SSD based on headlight height and beam angle)</h4>
+<div class="formula-equation">
+$$L_{\min} = \frac{A \cdot \text{SSD}^2}{200(H + \tan\beta \cdot \text{SSD})^2} \quad \text{for } L > \text{SSD}$$
+</div>
+<div class="formula-equation">
+$$L_{\min} = 2\cdot\text{SSD} - \frac{200(H + \tan\beta \cdot \text{SSD})^2}{A} \quad \text{for } L < \text{SSD}$$
+</div>
+<p class="formula-units">Units: L in meters (m), SSD in meters (m), H = 0.60 m (headlight height), β = 1° (beam angle), A in percent (%)</p>
+
+<p>For Case II when L &gt; SSD (simplified):</p>
+<div class="formula-equation">
+$$L_{\min} \approx \frac{A \cdot \text{SSD}^2}{122 + 0.035\cdot\text{SSD}}$$
+</div>
 
 <h2>Reference Tables</h2>
 
