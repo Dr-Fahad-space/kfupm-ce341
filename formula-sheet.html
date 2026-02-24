@@ -92,78 +92,81 @@
 <a href="index.html" class="back-link">← Back to Home</a>
 
 <h1>CE341 Transportation Engineering</h1>
-<p class="subtitle">Formula Sheet for Chapters 1-4 Exam</p>
-
-<h2 id="chapter1">Chapter 1: Introduction to Transportation Engineering</h2>
-<p><em>No formulas required for this chapter.</em></p>
-
-<h2 id="chapter2">Chapter 2: Transportation Agencies in Saudi Arabia</h2>
-<p><em>No formulas required for this chapter.</em></p>
+<p class="subtitle">Formula Sheet for Chapters 3-4 Exam</p>
 
 <h2 id="chapter3">Chapter 3: Characteristics of Road Users, Vehicles, and Roads</h2>
 
-<h3>Speed Conversion</h3>
-$$u = V \times \frac{1000}{3600} = V \times 0.278$$
-
 <h3>Distance during PRT</h3>
+<p><em>Units: d in meters (m), u in meters per second (m/s), t in seconds (s)</em></p>
 $$d = u \times t$$
 
 <h3>Visual Acuity</h3>
+<p><em>Units: distances in meters (m)</em></p>
 $$\frac{d_1}{d_2} = \frac{6/X_1}{6/X_2}$$
 
 <h3>Pedestrian Clearance Time</h3>
+<p><em>Units: t in seconds (s), distance in meters (m), speed in meters per second (m/s)</em></p>
 $$t = \frac{\text{Crossing distance}}{\text{Walking speed}}$$
 
 <h3>Braking Distance</h3>
+<p><em>Units: D in meters (m), u in kilometers per hour (km/h), G as decimal (e.g., 0.06 for 6%)</em></p>
 $$D_b = \frac{u^2}{254\left(\frac{a}{g} \pm G\right)}$$
 
 <h3>Stopping Sight Distance (SSD)</h3>
+<p><em>Units: SSD in meters (m), u in kilometers per hour (km/h), t in seconds (s), G as decimal</em></p>
 $$\text{SSD} = 0.278 \cdot u \cdot t + \frac{u^2}{254\left(\frac{a}{g} \pm G\right)}$$
 
-<p>On level roads (G = 0):</p>
-$$\text{SSD} = 0.278ut + \frac{u^2}{88.9}$$
-
 <h3>Deceleration to Lower Speed</h3>
+<p><em>Units: D in meters (m), u₁, u₂ in kilometers per hour (km/h), G as decimal</em></p>
 $$D = \frac{u_1^2 - u_2^2}{254\left(\frac{a}{g} \pm G\right)}$$
 
 <h3>Horizontal Curve - Minimum Radius</h3>
+<p><em>Units: R in meters (m), u in kilometers per hour (km/h), e and fₛ as decimals</em></p>
 $$R = \frac{u^2}{127(e + f_s)}$$
 
 <h2 id="chapter4">Chapter 4: Geometric Design — Vertical Alignment</h2>
 
 <h3>Stationing</h3>
+<p><em>Units: Stations in meters (m), L in meters (m)</em></p>
 $$\text{Sta.}_{\text{BVC}} = \text{Sta.}_{\text{PVI}} - \frac{L}{2}$$
 $$\text{Sta.}_{\text{EVC}} = \text{Sta.}_{\text{PVI}} + \frac{L}{2}$$
 
 <h3>Percent Grade</h3>
+<p><em>Units: G in percent (%), elevation and distance in same units</em></p>
 $$G = \frac{\Delta\text{Elevation}}{\Delta\text{Horizontal Distance}} \times 100$$
 
 <h3>Algebraic Difference in Grades</h3>
+<p><em>Units: A and G in percent (%)</em></p>
 $$A = |G_1 - G_2|$$
 
 <h3>Parabolic Vertical Curve Equation</h3>
+<p><em>Units: y and x in meters (m), G in percent (%), L in meters (m)</em></p>
 $$y = ax^2 + bx + c$$
 
 <p>where:</p>
 <ul>
     <li>a = (G₂ - G₁) / (200L)</li>
     <li>b = G₁ / 100</li>
-    <li>c = Elev at BVC</li>
+    <li>c = Elev at BVC (m)</li>
 </ul>
 
 <p>Crest: a < 0 | Sag: a > 0</p>
 
 <h3>Slope at Any Point</h3>
+<p><em>Units: dy/dx in m/m (decimal), x in meters (m)</em></p>
 $$\frac{dy}{dx} = 2ax + b$$
 
 <h3>K-Value</h3>
+<p><em>Units: K in meters per percent (m/%), L in meters (m), A in percent (%)</em></p>
 $$K = \frac{L}{A}$$
 
 <h3>BVC and EVC Elevations</h3>
+<p><em>Units: Elev in meters (m), G in percent (%), L in meters (m)</em></p>
 $$\text{Elev}_{\text{BVC}} = \text{Elev}_{\text{PVI}} - G_1 \times \frac{L/2}{100}$$
 $$\text{Elev}_{\text{EVC}} = \text{Elev}_{\text{PVI}} + G_2 \times \frac{L/2}{100}$$
 
 <h3>Elevation at Any Point (Tangent-Plus-Offset Method)</h3>
+<p><em>Units: Elev in meters (m), x and L in meters (m), G and A in percent (%)</em></p>
 <p>Step 1 - Tangent elevation:</p>
 $$\text{Tangent Elev} = \text{Elev}_{\text{BVC}} + G_1 \times \frac{x}{100}$$
 
@@ -180,47 +183,47 @@ $$Y = \frac{A}{200L} \times x^2$$
 
 <h3>Maximum Grades (%) - Rural and Urban Freeways</h3>
 <table>
-    <tr><th>Terrain</th><th>80</th><th>90</th><th>100</th><th>110</th><th>120</th><th>130</th></tr>
-    <tr><td>Level</td><td>4</td><td>4</td><td>3</td><td>3</td><td>3</td><td>3</td></tr>
-    <tr><td>Rolling</td><td>5</td><td>5</td><td>4</td><td>4</td><td>4</td><td>4</td></tr>
-    <tr><td>Mountainous</td><td>6</td><td>6</td><td>5</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><th>Terrain</th><th>Design Speed (km/h)</th><th>80</th><th>90</th><th>100</th><th>110</th><th>120</th><th>130</th></tr>
+    <tr><td>Level</td><td></td><td>4</td><td>4</td><td>3</td><td>3</td><td>3</td><td>3</td></tr>
+    <tr><td>Rolling</td><td></td><td>5</td><td>5</td><td>4</td><td>4</td><td>4</td><td>4</td></tr>
+    <tr><td>Mountainous</td><td></td><td>6</td><td>6</td><td>5</td><td>—</td><td>—</td><td>—</td></tr>
 </table>
 
 <h3>Maximum Grades (%) - Urban Arterials</h3>
 <table>
-    <tr><th>Terrain</th><th>50</th><th>60</th><th>70</th><th>80</th><th>90</th><th>100</th></tr>
-    <tr><td>Level</td><td>8</td><td>7</td><td>6</td><td>6</td><td>5</td><td>5</td></tr>
-    <tr><td>Rolling</td><td>9</td><td>8</td><td>7</td><td>7</td><td>6</td><td>6</td></tr>
-    <tr><td>Mountainous</td><td>11</td><td>10</td><td>9</td><td>9</td><td>8</td><td>8</td></tr>
+    <tr><th>Terrain</th><th>Design Speed (km/h)</th><th>50</th><th>60</th><th>70</th><th>80</th><th>90</th><th>100</th></tr>
+    <tr><td>Level</td><td></td><td>8</td><td>7</td><td>6</td><td>6</td><td>5</td><td>5</td></tr>
+    <tr><td>Rolling</td><td></td><td>9</td><td>8</td><td>7</td><td>7</td><td>6</td><td>6</td></tr>
+    <tr><td>Mountainous</td><td></td><td>11</td><td>10</td><td>9</td><td>9</td><td>8</td><td>8</td></tr>
 </table>
 
 <h3>Maximum Grades (%) - Urban Collectors</h3>
 <table>
-    <tr><th>Terrain</th><th>30</th><th>40</th><th>50</th><th>60</th><th>70</th><th>80</th><th>90</th><th>100</th></tr>
-    <tr><td>Level</td><td>9</td><td>9</td><td>9</td><td>9</td><td>8</td><td>7</td><td>6</td><td>6</td></tr>
-    <tr><td>Rolling</td><td>12</td><td>12</td><td>11</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td></tr>
-    <tr><td>Mountainous</td><td>14</td><td>13</td><td>12</td><td>12</td><td>11</td><td>10</td><td>10</td><td>9</td></tr>
+    <tr><th>Terrain</th><th>Design Speed (km/h)</th><th>30</th><th>40</th><th>50</th><th>60</th><th>70</th><th>80</th><th>90</th><th>100</th></tr>
+    <tr><td>Level</td><td></td><td>9</td><td>9</td><td>9</td><td>9</td><td>8</td><td>7</td><td>6</td><td>6</td></tr>
+    <tr><td>Rolling</td><td></td><td>12</td><td>12</td><td>11</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td></tr>
+    <tr><td>Mountainous</td><td></td><td>14</td><td>13</td><td>12</td><td>12</td><td>11</td><td>10</td><td>10</td><td>9</td></tr>
 </table>
 
 <h3>Maximum Grades (%) - Rural Collectors</h3>
 <table>
-    <tr><th>Terrain</th><th>30</th><th>40</th><th>50</th><th>60</th><th>70</th><th>80</th><th>90</th><th>100</th></tr>
-    <tr><td>Level</td><td>7</td><td>7</td><td>7</td><td>7</td><td>7</td><td>6</td><td>5</td><td>5</td></tr>
-    <tr><td>Rolling</td><td>10</td><td>10</td><td>9</td><td>8</td><td>8</td><td>7</td><td>7</td><td>6</td></tr>
-    <tr><td>Mountainous</td><td>12</td><td>11</td><td>10</td><td>10</td><td>10</td><td>9</td><td>9</td><td>8</td></tr>
+    <tr><th>Terrain</th><th>Design Speed (km/h)</th><th>30</th><th>40</th><th>50</th><th>60</th><th>70</th><th>80</th><th>90</th><th>100</th></tr>
+    <tr><td>Level</td><td></td><td>7</td><td>7</td><td>7</td><td>7</td><td>7</td><td>6</td><td>5</td><td>5</td></tr>
+    <tr><td>Rolling</td><td></td><td>10</td><td>10</td><td>9</td><td>8</td><td>8</td><td>7</td><td>7</td><td>6</td></tr>
+    <tr><td>Mountainous</td><td></td><td>12</td><td>11</td><td>10</td><td>10</td><td>10</td><td>9</td><td>9</td><td>8</td></tr>
 </table>
 
 <h3>Maximum Grades (%) - Local Rural Roads</h3>
 <table>
-    <tr><th>Terrain</th><th>20</th><th>30</th><th>40</th><th>50</th><th>60</th><th>70</th><th>80</th><th>90</th><th>100</th></tr>
-    <tr><td>Level</td><td>9</td><td>8</td><td>7</td><td>7</td><td>7</td><td>7</td><td>6</td><td>6</td><td>5</td></tr>
-    <tr><td>Rolling</td><td>12</td><td>11</td><td>11</td><td>10</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td></tr>
-    <tr><td>Mountainous</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>10</td><td>10</td><td>—</td></tr>
+    <tr><th>Terrain</th><th>Design Speed (km/h)</th><th>20</th><th>30</th><th>40</th><th>50</th><th>60</th><th>70</th><th>80</th><th>90</th><th>100</th></tr>
+    <tr><td>Level</td><td></td><td>9</td><td>8</td><td>7</td><td>7</td><td>7</td><td>7</td><td>6</td><td>6</td><td>5</td></tr>
+    <tr><td>Rolling</td><td></td><td>12</td><td>11</td><td>11</td><td>10</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td></tr>
+    <tr><td>Mountainous</td><td></td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td><td>12</td><td>10</td><td>10</td><td>—</td></tr>
 </table>
 
 <h3>Side-Friction Factor (fₛ)</h3>
 <table>
-    <tr><th>Speed (km/h)</th><th>50</th><th>60</th><th>70</th><th>80</th><th>90</th><th>100</th><th>110</th><th>120</th></tr>
+    <tr><th>Design Speed (km/h)</th><th>50</th><th>60</th><th>70</th><th>80</th><th>90</th><th>100</th><th>110</th><th>120</th></tr>
     <tr><td>fₛ</td><td>0.19</td><td>0.17</td><td>0.15</td><td>0.14</td><td>0.13</td><td>0.12</td><td>0.11</td><td>0.09</td></tr>
 </table>
 
@@ -246,13 +249,6 @@ $$Y = \frac{A}{200L} \times x^2$$
     <tr><td>Single-unit truck (SU-9)</td><td>≈ 12.7 m</td></tr>
     <tr><td>City transit bus</td><td>≈ 12.8 m</td></tr>
     <tr><td>Interstate semitrailer (WB-20)</td><td>≈ 13.7 m</td></tr>
-</table>
-
-<h3>Pedestrian Design Walking Speed</h3>
-<table>
-    <tr><th>Population</th><th>Walking Speed</th></tr>
-    <tr><td>General (≤20% elderly)</td><td>1.22 m/s</td></tr>
-    <tr><td>Elderly-predominant (>20%)</td><td>0.88 m/s</td></tr>
 </table>
 
 <p class="note">Source: Based on AASHTO and dr-fahad-space.github.io/kfupm-ce341</p>
